@@ -78,6 +78,12 @@ steps:
     command: restore
     projects: '$(solution)'
 
+- task: FileTransform@1
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/'
+    fileType: 'json'
+    targetFiles: '/**/appsettings.json'
+
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
   inputs:
