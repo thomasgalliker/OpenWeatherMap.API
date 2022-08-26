@@ -49,13 +49,20 @@ namespace OpenWeatherMap
             this.verboseLogging = openWeatherMapConfiguration.VerboseLogging;
             this.httpClient = httpClient;
             this.defaultWeatherIconMapping = new DefaultWeatherIconMapping(this.httpClient);
-            this.serializerSettings = new JsonSerializerSettings
+            
+            this.serializerSettings = GetJsonSerializerSettings(openWeatherMapConfiguration.UnitSystem);
+        }
+
+        public static JsonSerializerSettings GetJsonSerializerSettings(string unitSystem)
+        {
+            var jsonSerializerSettings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
             };
 
-            var temperatureConverter = GetTemperatureConverter(openWeatherMapConfiguration.UnitSystem);
-            this.serializerSettings.Converters.Add(temperatureConverter);
+            var temperatureConverter = GetTemperatureConverter(unitSystem);
+            jsonSerializerSettings.Converters.Add(temperatureConverter);
+            return jsonSerializerSettings;
         }
 
         private static JsonConverter GetTemperatureConverter(string unitSystem)
