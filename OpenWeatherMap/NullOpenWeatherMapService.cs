@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using OpenWeatherMap.Models;
 
 namespace OpenWeatherMap
 {
+    [ExcludeFromCodeCoverage]
     public class NullOpenWeatherMapService : IOpenWeatherMapService
     {
         private readonly IOpenWeatherMapConfiguration openWeatherMapConfiguration;
