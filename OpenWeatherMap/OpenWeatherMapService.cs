@@ -201,7 +201,9 @@ namespace OpenWeatherMap
             EnsureLatitude(latitude);
             EnsureLongitude(longitude);
 
-            this.logger.LogDebug($"GetWeatherOneCallAsync: latitude={latitude}, longitude={longitude}");
+            dateTime = dateTime.ToUniversalTime();
+
+            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: latitude={latitude}, longitude={longitude}, dateTime={dateTime:O}");
 
             var lat = FormatCoordinate(latitude);
             var lon = FormatCoordinate(longitude);
@@ -215,7 +217,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherOneCallAsync: GET {uri}");
+            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: GET {uri}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
@@ -224,7 +226,7 @@ namespace OpenWeatherMap
 
             if (this.verboseLogging)
             {
-                this.logger.LogDebug($"GetWeatherOneCallAsync returned content:{Environment.NewLine}{responseJson}");
+                this.logger.LogDebug($"GetWeatherOneCallHistoricAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
             var oneCallWeatherInfo = JsonConvert.DeserializeObject<OneCallWeatherInfo>(responseJson, this.serializerSettings);

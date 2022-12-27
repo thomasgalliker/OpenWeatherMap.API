@@ -34,7 +34,7 @@ namespace OpenWeatherMap.Tests.Testdata
             return new WeatherInfo
             {
                 CityName = "Test Location",
-                Date = new DateTime(2000, 1, 1, 12, 13, 14, DateTimeKind.Local),
+                Date = new DateTime(2000, 1, 1, 12, 13, 14, DateTimeKind.Utc),
                 Main = new TemperatureInfo
                 {
                     Temperature = mainTemperature,
@@ -56,8 +56,8 @@ namespace OpenWeatherMap.Tests.Testdata
                 },
                 AdditionalInformation = new AdditionalWeatherInfo
                 {
-                    Sunrise = new DateTime(2000, 1, 1, 7, 0, 0, DateTimeKind.Local),
-                    Sunset = new DateTime(2000, 1, 1, 20, 0, 0, DateTimeKind.Local),
+                    Sunrise = new DateTime(2000, 1, 1, 7, 0, 0, DateTimeKind.Utc),
+                    Sunset = new DateTime(2000, 1, 1, 20, 0, 0, DateTimeKind.Utc),
                 }
             };
         }
