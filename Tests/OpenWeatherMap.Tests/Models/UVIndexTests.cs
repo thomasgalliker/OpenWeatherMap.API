@@ -16,7 +16,7 @@ namespace OpenWeatherMap.Tests.Models
         }
 
         [Theory]
-        [ClassData(typeof(UVIndexRangeTestData))]
+        [ClassData(typeof(UVIndexTestData))]
         public void ShouldCreateUVIndex(double uvIndexValue)
         {
             // Arrange
@@ -32,9 +32,9 @@ namespace OpenWeatherMap.Tests.Models
             stringOutput.Should().NotBeNullOrEmpty();
         }
 
-        public class UVIndexRangeTestData : TheoryData<double>
+        public class UVIndexTestData : TheoryData<double>
         {
-            public UVIndexRangeTestData()
+            public UVIndexTestData()
             {
                 this.Add(0d);
                 this.Add(1d);
