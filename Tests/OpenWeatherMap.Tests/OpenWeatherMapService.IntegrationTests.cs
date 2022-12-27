@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
@@ -116,6 +117,26 @@ namespace OpenWeatherMap.Tests
 
             // Act
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude, oneCallOptions);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallWeatherInfo, this.dumpOptions));
+
+            oneCallWeatherInfo.Should().NotBeNull();
+        }
+
+        [Fact]
+        public async Task ShouldGetWeatherOneCallHistoricAsync()
+        {
+            // Arrange
+            var latitude = 47.0907124d;
+            var longitude = 8.0559381d;
+
+            var dateTime = DateTime.Now;
+
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+
+            // Act
+            var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallHistoricAsync(latitude, longitude, dateTime);
 
             // Assert
             this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallWeatherInfo, this.dumpOptions));
