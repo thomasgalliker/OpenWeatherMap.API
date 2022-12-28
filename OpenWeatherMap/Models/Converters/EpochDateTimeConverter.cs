@@ -12,9 +12,16 @@ namespace OpenWeatherMap.Models.Converters
     {
         private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-        public static DateTime Convert(long seconds) => Epoch.AddSeconds(seconds);
+        public static DateTime Convert(long seconds)
+        {
+            return Epoch.AddSeconds(seconds);
+        }
 
-        public static long Convert(DateTime utcDateTime) => (long)(utcDateTime - Epoch).TotalSeconds;
+        public static long Convert(DateTime dateTime)
+        {
+            var utcDateTime = dateTime.ToUniversalTime();
+            return (long)(utcDateTime - Epoch).TotalSeconds;
+        }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
