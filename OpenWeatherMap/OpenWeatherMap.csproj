@@ -72,6 +72,7 @@
 	  <None Remove="Resources\Icons\sun_72.png" />
 	  <None Remove="Resources\Icons\sun_96.png" />
 	  <None Remove="Resources\Icons\temp.png" />
+	  <None Remove="Resources\Icons\temp_indoor.png" />
 	  <None Remove="Resources\Icons\temp_minus.png" />
 	  <None Remove="Resources\Icons\temp_plus.png" />
 	  <None Remove="Resources\Icons\temp_snow.png" />
@@ -121,6 +122,7 @@
 	  <EmbeddedResource Include="Resources\Icons\sun_72.png" />
 	  <EmbeddedResource Include="Resources\Icons\sun_96.png" />
 	  <EmbeddedResource Include="Resources\Icons\temp.png" />
+	  <EmbeddedResource Include="Resources\Icons\temp_indoor.png" />
 	  <EmbeddedResource Include="Resources\Icons\temp_minus.png" />
 	  <EmbeddedResource Include="Resources\Icons\temp_plus.png" />
 	  <EmbeddedResource Include="Resources\Icons\temp_snow.png" />
