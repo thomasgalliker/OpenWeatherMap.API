@@ -58,6 +58,11 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("icon_frame_72.png");
         }
+        
+        public static Stream Indoor()
+        {
+            return GetIcon("indoor.png");
+        }
 
         public static Stream Mist()
         {
