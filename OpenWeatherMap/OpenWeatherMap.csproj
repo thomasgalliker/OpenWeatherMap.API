@@ -62,7 +62,7 @@
 	  <None Remove="Resources\Icons\fog.png" />
 	  <None Remove="Resources\Icons\humidity.png" />
 	  <None Remove="Resources\Icons\icon_frame_72.png" />
-	  <None Remove="Resources\Icons\indoor.png" />
+	  <None Remove="Resources\Icons\indoor_empty.png" />
 	  <None Remove="Resources\Icons\moon_and_stars.png" />
 	  <None Remove="Resources\Icons\placeholder.png" />
 	  <None Remove="Resources\Icons\snow_rain.png" />
@@ -113,7 +113,7 @@
 	  <EmbeddedResource Include="Resources\Icons\fog.png" />
 	  <EmbeddedResource Include="Resources\Icons\humidity.png" />
 	  <EmbeddedResource Include="Resources\Icons\icon_frame_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\indoor.png" />
+	  <EmbeddedResource Include="Resources\Icons\indoor_empty.png" />
 	  <EmbeddedResource Include="Resources\Icons\moon_and_stars.png" />
 	  <EmbeddedResource Include="Resources\Icons\placeholder.png" />
 	  <EmbeddedResource Include="Resources\Icons\snow_rain.png" />

@@ -59,9 +59,9 @@ namespace WeatherDisplay.Resources
             return GetIcon("icon_frame_72.png");
         }
         
-        public static Stream Indoor()
+        public static Stream IndoorEmpty()
         {
-            return GetIcon("indoor.png");
+            return GetIcon("indoor_empty.png");
         }
 
         public static Stream Mist()
