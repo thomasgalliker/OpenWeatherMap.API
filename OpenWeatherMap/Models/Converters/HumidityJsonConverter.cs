@@ -17,7 +17,7 @@ namespace OpenWeatherMap.Models.Converters
                 return (Humidity)humidity;
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to Humidity");
+            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(Humidity)}");
         }
     }
 }
