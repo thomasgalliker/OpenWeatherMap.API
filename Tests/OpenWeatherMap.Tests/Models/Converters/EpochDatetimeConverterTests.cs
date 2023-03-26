@@ -38,7 +38,7 @@ namespace OpenWeatherMap.Tests.Models.Converters
 
             // Assert
             var exception = action.Should().Throw<FormatException>().Which;
-            exception.Message.Should().Be("Input string was not in a correct format.");
+            exception.Message.Should().Be("The input string 'not-a-long-value' was not in a correct format.");
         }
 
         private class EpochDateTimeTestObject
