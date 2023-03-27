@@ -58,6 +58,11 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("icon_frame_72.png");
         }
+        
+        public static Stream IndoorEmpty()
+        {
+            return GetIcon("indoor_empty.png");
+        }
 
         public static Stream Mist()
         {
@@ -129,6 +134,16 @@ namespace WeatherDisplay.Resources
             return GetIcon("sunset_72.png");
         }
 
+        public static Stream Temperature()
+        {
+            return GetIcon("temp.png");
+        }
+        
+        public static Stream TemperatureIndoor()
+        {
+            return GetIcon("temp_indoor.png");
+        }
+        
         public static Stream TemperatureMinus()
         {
             return GetIcon("temp_minus.png");

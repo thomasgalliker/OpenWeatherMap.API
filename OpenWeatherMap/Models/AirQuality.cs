@@ -72,12 +72,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString("N", CultureInfo.CurrentCulture);
+            return this.ToString(null, null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -101,7 +101,6 @@ namespace OpenWeatherMap.Models
                     var str = AirQualityTranslations.ResourceManager.GetString(this.resourceId, (CultureInfo)provider);
                     return str;
             }
-
         }
     }
 }
