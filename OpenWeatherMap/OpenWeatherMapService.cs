@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
@@ -34,6 +35,11 @@ namespace OpenWeatherMap
         private readonly string language;
         private readonly bool verboseLogging;
 
+        public OpenWeatherMapService(IOpenWeatherMapConfiguration openWeatherMapConfiguration)
+            : this(new NullLogger<OpenWeatherMapService>(), new HttpClient(), openWeatherMapConfiguration)
+        {
+        }
+        
         public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, IOpenWeatherMapConfiguration openWeatherMapConfiguration)
             : this(logger, new HttpClient(), openWeatherMapConfiguration)
         {
