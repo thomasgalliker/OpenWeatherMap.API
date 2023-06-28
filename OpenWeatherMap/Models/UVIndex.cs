@@ -87,12 +87,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString("F1", CultureInfo.CurrentCulture);
+            return this.ToString("F1", null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -102,12 +102,7 @@ namespace OpenWeatherMap.Models
                 format = "F1";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
-            return $"{this.Value.ToString(format, provider)}";
+            return $"{this.Value.ToString(format, provider ?? CultureInfo.CurrentCulture)}";
         }
     }
 }

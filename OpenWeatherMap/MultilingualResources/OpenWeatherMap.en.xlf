@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="sv" target-language="en" original="OPENWEATHERMAP/RESOURCES/STRINGS/PRESSURERANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/PRESSURERANGES.RESX" datatype="resx">
+        <trans-unit id="Average" translate="yes" xml:space="preserve">
+          <source>Average</source>
+          <target state="final">Average</target>
+        </trans-unit>
+        <trans-unit id="High" translate="yes" xml:space="preserve">
+          <source>High</source>
+          <target state="final">High</target>
+        </trans-unit>
+        <trans-unit id="Low" translate="yes" xml:space="preserve">
+          <source>Low</source>
+          <target state="final">Low</target>
+        </trans-unit>
+        <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
+          <source>Very high</source>
+          <target state="final">Very high</target>
+        </trans-unit>
+        <trans-unit id="VeryLow" translate="yes" xml:space="preserve">
+          <source>Very low</source>
+          <target state="final">Very low</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="en" original="OPENWEATHERMAP/RESOURCES/STRINGS/AIRQUALITYTRANSLATIONS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/AIRQUALITYTRANSLATIONS.RESX" datatype="resx">
+        <trans-unit id="Fair" translate="yes" xml:space="preserve">
+          <source>Fair</source>
+          <target state="final">Fair</target>
+        </trans-unit>
+        <trans-unit id="Good" translate="yes" xml:space="preserve">
+          <source>Good</source>
+          <target state="final">Good</target>
+        </trans-unit>
+        <trans-unit id="Moderate" translate="yes" xml:space="preserve">
+          <source>Moderate</source>
+          <target state="final">Moderate</target>
+        </trans-unit>
+        <trans-unit id="Poor" translate="yes" xml:space="preserve">
+          <source>Poor</source>
+          <target state="final">Poor</target>
+        </trans-unit>
+        <trans-unit id="VeryPoor" translate="yes" xml:space="preserve">
+          <source>Very poor</source>
+          <target state="final">Very poor</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="en" original="OPENWEATHERMAP/RESOURCES/STRINGS/UVINDEXRANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/UVINDEXRANGES.RESX" datatype="resx">
+        <trans-unit id="Extreme" translate="yes" xml:space="preserve">
+          <source>Extreme</source>
+          <target state="final">Extreme</target>
+        </trans-unit>
+        <trans-unit id="High" translate="yes" xml:space="preserve">
+          <source>High</source>
+          <target state="final">High</target>
+        </trans-unit>
+        <trans-unit id="Low" translate="yes" xml:space="preserve">
+          <source>Low</source>
+          <target state="final">Low</target>
+        </trans-unit>
+        <trans-unit id="Moderate" translate="yes" xml:space="preserve">
+          <source>Moderate</source>
+          <target state="final">Moderate</target>
+        </trans-unit>
+        <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
+          <source>Very high</source>
+          <target state="final">Very high</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="en" original="OPENWEATHERMAP/RESOURCES/STRINGS/HUMIDITYRANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/HUMIDITYRANGES.RESX" datatype="resx">
+        <trans-unit id="Average" translate="yes" xml:space="preserve">
+          <source>Average</source>
+          <target state="final">Average</target>
+        </trans-unit>
+        <trans-unit id="Dry" translate="yes" xml:space="preserve">
+          <source>Dry</source>
+          <target state="final">Dry</target>
+        </trans-unit>
+        <trans-unit id="Moist" translate="yes" xml:space="preserve">
+          <source>Moist</source>
+          <target state="final">Moist</target>
+        </trans-unit>
+        <trans-unit id="VeryDry" translate="yes" xml:space="preserve">
+          <source>Very dry</source>
+          <target state="final">Very dry</target>
+        </trans-unit>
+        <trans-unit id="VeryMoist" translate="yes" xml:space="preserve">
+          <source>Very moist</source>
+          <target state="final">Very moist</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

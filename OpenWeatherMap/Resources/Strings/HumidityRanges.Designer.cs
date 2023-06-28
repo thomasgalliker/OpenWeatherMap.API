@@ -61,7 +61,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OK.
+        ///   Looks up a localized string similar to Average.
         /// </summary>
         internal static string Average {
             get {
@@ -70,7 +70,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trocken.
+        ///   Looks up a localized string similar to Dry.
         /// </summary>
         internal static string Dry {
             get {
@@ -79,7 +79,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feucht.
+        ///   Looks up a localized string similar to Moist.
         /// </summary>
         internal static string Moist {
             get {
@@ -88,7 +88,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sehr trocken.
+        ///   Looks up a localized string similar to Very dry.
         /// </summary>
         internal static string VeryDry {
             get {
@@ -97,7 +97,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sehr feucht.
+        ///   Looks up a localized string similar to Very moist.
         /// </summary>
         internal static string VeryMoist {
             get {

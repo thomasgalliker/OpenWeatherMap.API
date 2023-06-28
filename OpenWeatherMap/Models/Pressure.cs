@@ -91,12 +91,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString(null, CultureInfo.CurrentCulture);
+            return this.ToString(null, null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -106,12 +106,7 @@ namespace OpenWeatherMap.Models
                 format = "0";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
-            return $"{this.Value.ToString(format, provider)}hPa";
+            return $"{this.Value.ToString(format, provider ?? CultureInfo.CurrentCulture)}hPa";
         }
     }
 }

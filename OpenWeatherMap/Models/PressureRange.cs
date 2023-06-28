@@ -41,12 +41,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString("N", CultureInfo.CurrentCulture);
+            return this.ToString("N", null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -56,18 +56,13 @@ namespace OpenWeatherMap.Models
                 format = "N";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
             switch (format)
             {
                 case "I":
                     return base.ToString();
                 case "N":
                 default:
-                    var str = PressureRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)provider);
+                    var str = PressureRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
                     return str;
             }
 

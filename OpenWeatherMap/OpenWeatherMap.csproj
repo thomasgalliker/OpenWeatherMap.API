@@ -1,194 +1,207 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<AssemblyTitle>OpenWeatherMap</AssemblyTitle>
-		<Description>OpenWeatherMap API client for .NET</Description>
-		<VersionPrefix>1.0.0</VersionPrefix>
-		<Version>1.0.0</Version>
-		<Authors>Thomas Galliker</Authors>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>OpenWeatherMap</AssemblyName>
-		<PackageId>OpenWeatherMap.API</PackageId>
-		<PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation</PackageTags>
-		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/OpenWeatherMap.API/develop/Images/logo.png</PackageIconUrl>
-		<PackageProjectUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</PackageProjectUrl>
-		<PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</RepositoryUrl>
-		<SignAssembly>True</SignAssembly>
-		<LangVersion>latest</LangVersion>
-	    <UserSecretsId>df2fb3f7-a0e8-48eb-b98e-f64a387871a5</UserSecretsId>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>sv</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
-
-	<PropertyGroup>
-		<ApplicationIcon />
-		<OutputType>Library</OutputType>
-		<StartupObject />
-		<Company>superdev GmbH</Company>
-		<Product>OpenWeatherMap.API</Product>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<RootNamespace>OpenWeatherMap</RootNamespace>
-		<PackageReleaseNotes>1.0.0
+  <PropertyGroup>
+    <AssemblyTitle>OpenWeatherMap</AssemblyTitle>
+    <Description>OpenWeatherMap API client for .NET</Description>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Version>1.0.0</Version>
+    <Authors>Thomas Galliker</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>OpenWeatherMap</AssemblyName>
+    <PackageId>OpenWeatherMap.API</PackageId>
+    <PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/OpenWeatherMap.API/develop/Images/logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</PackageProjectUrl>
+    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</RepositoryUrl>
+    <SignAssembly>True</SignAssembly>
+    <LangVersion>latest</LangVersion>
+    <UserSecretsId>df2fb3f7-a0e8-48eb-b98e-f64a387871a5</UserSecretsId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <Company>superdev GmbH</Company>
+    <Product>OpenWeatherMap.API</Product>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <RootNamespace>OpenWeatherMap</RootNamespace>
+    <PackageReleaseNotes>1.0.0
 - Initial release
 		</PackageReleaseNotes>
-		<Copyright>Copyright 2022</Copyright>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\Icons\alert_72.png" />
-	  <None Remove="Resources\Icons\atmospheric_pressure.png" />
-	  <None Remove="Resources\Icons\clouds_1.png" />
-	  <None Remove="Resources\Icons\clouds_2.png" />
-	  <None Remove="Resources\Icons\clouds_3.png" />
-	  <None Remove="Resources\Icons\clouds_4.png" />
-	  <None Remove="Resources\Icons\clouds_mist.png" />
-	  <None Remove="Resources\Icons\clouds_mist_day.png" />
-	  <None Remove="Resources\Icons\clouds_mist_night.png" />
-	  <None Remove="Resources\Icons\clouds_night.png" />
-	  <None Remove="Resources\Icons\clouds_rain.png" />
-	  <None Remove="Resources\Icons\clouds_rain_heavy.png" />
-	  <None Remove="Resources\Icons\clouds_rain_heavy_day.png" />
-	  <None Remove="Resources\Icons\clouds_rain_heavy_night.png" />
-	  <None Remove="Resources\Icons\clouds_rain_light.png" />
-	  <None Remove="Resources\Icons\clouds_rain_light_day.png" />
-	  <None Remove="Resources\Icons\clouds_rain_light_night.png" />
-	  <None Remove="Resources\Icons\clouds_snow.png" />
-	  <None Remove="Resources\Icons\clouds_snow_day.png" />
-	  <None Remove="Resources\Icons\clouds_snow_heavy.png" />
-	  <None Remove="Resources\Icons\clouds_snow_light.png" />
-	  <None Remove="Resources\Icons\clouds_snow_night.png" />
-	  <None Remove="Resources\Icons\earth_72.png" />
-	  <None Remove="Resources\Icons\fog.png" />
-	  <None Remove="Resources\Icons\humidity.png" />
-	  <None Remove="Resources\Icons\icon_frame_72.png" />
-	  <None Remove="Resources\Icons\indoor_empty.png" />
-	  <None Remove="Resources\Icons\moon_and_stars.png" />
-	  <None Remove="Resources\Icons\placeholder.png" />
-	  <None Remove="Resources\Icons\snow_rain.png" />
-	  <None Remove="Resources\Icons\sunrise.png" />
-	  <None Remove="Resources\Icons\sunrise_72.png" />
-	  <None Remove="Resources\Icons\sunset.png" />
-	  <None Remove="Resources\Icons\sunset_72.png" />
-	  <None Remove="Resources\Icons\sun_72.png" />
-	  <None Remove="Resources\Icons\sun_96.png" />
-	  <None Remove="Resources\Icons\temp.png" />
-	  <None Remove="Resources\Icons\temp_indoor.png" />
-	  <None Remove="Resources\Icons\temp_minus.png" />
-	  <None Remove="Resources\Icons\temp_plus.png" />
-	  <None Remove="Resources\Icons\temp_snow.png" />
-	  <None Remove="Resources\Icons\temp_sun.png" />
-	  <None Remove="Resources\Icons\thunderstorm.png" />
-	  <None Remove="Resources\Icons\thunderstorm_rain.png" />
-	  <None Remove="Resources\Icons\thunderstorm_rain_day.png" />
-	  <None Remove="Resources\Icons\thunderstorm_rain_night.png" />
-	  <None Remove="Resources\Icons\tornado.png" />
-	  <None Remove="Resources\Icons\wind.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Icons\alert_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\atmospheric_pressure.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_1.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_2.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_3.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_4.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_mist.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_mist_day.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_mist_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy_day.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_light.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_light_day.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_rain_light_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_snow.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_snow_day.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_snow_heavy.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_snow_light.png" />
-	  <EmbeddedResource Include="Resources\Icons\clouds_snow_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\earth_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\fog.png" />
-	  <EmbeddedResource Include="Resources\Icons\humidity.png" />
-	  <EmbeddedResource Include="Resources\Icons\icon_frame_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\indoor_empty.png" />
-	  <EmbeddedResource Include="Resources\Icons\moon_and_stars.png" />
-	  <EmbeddedResource Include="Resources\Icons\placeholder.png" />
-	  <EmbeddedResource Include="Resources\Icons\snow_rain.png" />
-	  <EmbeddedResource Include="Resources\Icons\sunrise.png" />
-	  <EmbeddedResource Include="Resources\Icons\sunrise_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\sunset.png" />
-	  <EmbeddedResource Include="Resources\Icons\sunset_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\sun_72.png" />
-	  <EmbeddedResource Include="Resources\Icons\sun_96.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp_indoor.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp_minus.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp_plus.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp_snow.png" />
-	  <EmbeddedResource Include="Resources\Icons\temp_sun.png" />
-	  <EmbeddedResource Include="Resources\Icons\thunderstorm.png" />
-	  <EmbeddedResource Include="Resources\Icons\thunderstorm_rain.png" />
-	  <EmbeddedResource Include="Resources\Icons\thunderstorm_rain_day.png" />
-	  <EmbeddedResource Include="Resources\Icons\thunderstorm_rain_night.png" />
-	  <EmbeddedResource Include="Resources\Icons\tornado.png" />
-	  <EmbeddedResource Include="Resources\Icons\wind.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Resources\Strings\AirQualityTranslations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>AirQualityTranslations.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Strings\HumidityRanges.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>HumidityRanges.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Strings\PressureRanges.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>PressureRanges.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Strings\UVIndexRanges.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>UVIndexRanges.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Strings\AirQualityTranslations.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>AirQualityTranslations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Strings\HumidityRanges.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>HumidityRanges.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Strings\PressureRanges.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>PressureRanges.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Strings\UVIndexRanges.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>UVIndexRanges.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
-
+    <Copyright>Copyright 2023</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NeutralLanguage>sv</NeutralLanguage>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
+  <ItemGroup>
+    <None Remove="MultilingualResources\OpenWeatherMap.de.xlf" />
+    <None Remove="MultilingualResources\OpenWeatherMap.en.xlf" />
+    <None Remove="MultilingualResources\OpenWeatherMap.fr.xlf" />
+    <None Remove="MultilingualResources\OpenWeatherMap.it.xlf" />
+    <None Remove="Resources\Icons\alert_72.png" />
+    <None Remove="Resources\Icons\atmospheric_pressure.png" />
+    <None Remove="Resources\Icons\clouds_1.png" />
+    <None Remove="Resources\Icons\clouds_2.png" />
+    <None Remove="Resources\Icons\clouds_3.png" />
+    <None Remove="Resources\Icons\clouds_4.png" />
+    <None Remove="Resources\Icons\clouds_mist.png" />
+    <None Remove="Resources\Icons\clouds_mist_day.png" />
+    <None Remove="Resources\Icons\clouds_mist_night.png" />
+    <None Remove="Resources\Icons\clouds_night.png" />
+    <None Remove="Resources\Icons\clouds_rain.png" />
+    <None Remove="Resources\Icons\clouds_rain_heavy.png" />
+    <None Remove="Resources\Icons\clouds_rain_heavy_day.png" />
+    <None Remove="Resources\Icons\clouds_rain_heavy_night.png" />
+    <None Remove="Resources\Icons\clouds_rain_light.png" />
+    <None Remove="Resources\Icons\clouds_rain_light_day.png" />
+    <None Remove="Resources\Icons\clouds_rain_light_night.png" />
+    <None Remove="Resources\Icons\clouds_snow.png" />
+    <None Remove="Resources\Icons\clouds_snow_day.png" />
+    <None Remove="Resources\Icons\clouds_snow_heavy.png" />
+    <None Remove="Resources\Icons\clouds_snow_light.png" />
+    <None Remove="Resources\Icons\clouds_snow_night.png" />
+    <None Remove="Resources\Icons\earth_72.png" />
+    <None Remove="Resources\Icons\fog.png" />
+    <None Remove="Resources\Icons\humidity.png" />
+    <None Remove="Resources\Icons\icon_frame_72.png" />
+    <None Remove="Resources\Icons\indoor_empty.png" />
+    <None Remove="Resources\Icons\moon_and_stars.png" />
+    <None Remove="Resources\Icons\placeholder.png" />
+    <None Remove="Resources\Icons\snow_rain.png" />
+    <None Remove="Resources\Icons\sunrise.png" />
+    <None Remove="Resources\Icons\sunrise_72.png" />
+    <None Remove="Resources\Icons\sunset.png" />
+    <None Remove="Resources\Icons\sunset_72.png" />
+    <None Remove="Resources\Icons\sun_72.png" />
+    <None Remove="Resources\Icons\sun_96.png" />
+    <None Remove="Resources\Icons\temp.png" />
+    <None Remove="Resources\Icons\temp_indoor.png" />
+    <None Remove="Resources\Icons\temp_minus.png" />
+    <None Remove="Resources\Icons\temp_plus.png" />
+    <None Remove="Resources\Icons\temp_snow.png" />
+    <None Remove="Resources\Icons\temp_sun.png" />
+    <None Remove="Resources\Icons\thunderstorm.png" />
+    <None Remove="Resources\Icons\thunderstorm_rain.png" />
+    <None Remove="Resources\Icons\thunderstorm_rain_day.png" />
+    <None Remove="Resources\Icons\thunderstorm_rain_night.png" />
+    <None Remove="Resources\Icons\tornado.png" />
+    <None Remove="Resources\Icons\wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\alert_72.png" />
+    <EmbeddedResource Include="Resources\Icons\atmospheric_pressure.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_1.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_2.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_3.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_4.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_mist.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_mist_day.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_mist_night.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_night.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy_day.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_heavy_night.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_light.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_light_day.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_rain_light_night.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_snow.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_snow_day.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_snow_heavy.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_snow_light.png" />
+    <EmbeddedResource Include="Resources\Icons\clouds_snow_night.png" />
+    <EmbeddedResource Include="Resources\Icons\earth_72.png" />
+    <EmbeddedResource Include="Resources\Icons\fog.png" />
+    <EmbeddedResource Include="Resources\Icons\humidity.png" />
+    <EmbeddedResource Include="Resources\Icons\icon_frame_72.png" />
+    <EmbeddedResource Include="Resources\Icons\indoor_empty.png" />
+    <EmbeddedResource Include="Resources\Icons\moon_and_stars.png" />
+    <EmbeddedResource Include="Resources\Icons\placeholder.png" />
+    <EmbeddedResource Include="Resources\Icons\snow_rain.png" />
+    <EmbeddedResource Include="Resources\Icons\sunrise.png" />
+    <EmbeddedResource Include="Resources\Icons\sunrise_72.png" />
+    <EmbeddedResource Include="Resources\Icons\sunset.png" />
+    <EmbeddedResource Include="Resources\Icons\sunset_72.png" />
+    <EmbeddedResource Include="Resources\Icons\sun_72.png" />
+    <EmbeddedResource Include="Resources\Icons\sun_96.png" />
+    <EmbeddedResource Include="Resources\Icons\temp.png" />
+    <EmbeddedResource Include="Resources\Icons\temp_indoor.png" />
+    <EmbeddedResource Include="Resources\Icons\temp_minus.png" />
+    <EmbeddedResource Include="Resources\Icons\temp_plus.png" />
+    <EmbeddedResource Include="Resources\Icons\temp_snow.png" />
+    <EmbeddedResource Include="Resources\Icons\temp_sun.png" />
+    <EmbeddedResource Include="Resources\Icons\thunderstorm.png" />
+    <EmbeddedResource Include="Resources\Icons\thunderstorm_rain.png" />
+    <EmbeddedResource Include="Resources\Icons\thunderstorm_rain_day.png" />
+    <EmbeddedResource Include="Resources\Icons\thunderstorm_rain_night.png" />
+    <EmbeddedResource Include="Resources\Icons\tornado.png" />
+    <EmbeddedResource Include="Resources\Icons\wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\OpenWeatherMap.de.xlf" />
+    <XliffResource Include="MultilingualResources\OpenWeatherMap.en.xlf" />
+    <XliffResource Include="MultilingualResources\OpenWeatherMap.fr.xlf" />
+    <XliffResource Include="MultilingualResources\OpenWeatherMap.it.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Strings\AirQualityTranslations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AirQualityTranslations.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\HumidityRanges.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HumidityRanges.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\PressureRanges.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PressureRanges.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\UVIndexRanges.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UVIndexRanges.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings\AirQualityTranslations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AirQualityTranslations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\HumidityRanges.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumidityRanges.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\PressureRanges.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PressureRanges.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\UVIndexRanges.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UVIndexRanges.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

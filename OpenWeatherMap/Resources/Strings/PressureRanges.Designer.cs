@@ -61,7 +61,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Normal.
+        ///   Looks up a localized string similar to Average.
         /// </summary>
         internal static string Average {
             get {
@@ -70,7 +70,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hochdruck.
+        ///   Looks up a localized string similar to High.
         /// </summary>
         internal static string High {
             get {
@@ -79,7 +79,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiefdruck.
+        ///   Looks up a localized string similar to Low.
         /// </summary>
         internal static string Low {
             get {
@@ -88,7 +88,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sehr hoch.
+        ///   Looks up a localized string similar to Very high.
         /// </summary>
         internal static string VeryHigh {
             get {
@@ -97,7 +97,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sehr tief.
+        ///   Looks up a localized string similar to Very low.
         /// </summary>
         internal static string VeryLow {
             get {

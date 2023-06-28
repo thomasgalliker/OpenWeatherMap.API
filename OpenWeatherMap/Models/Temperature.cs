@@ -197,7 +197,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         public override string ToString()
         {
-            return this.ToString(null, CultureInfo.CurrentCulture);
+            return this.ToString(null, null);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace OpenWeatherMap.Models
         /// </param>
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -221,17 +221,14 @@ namespace OpenWeatherMap.Models
                 format = "0.##";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
             var unitString = EnumUtils.GetDescription(this.Unit);
 
             if (format == "U")
             {
                 return unitString;
             }
+
+            provider ??= CultureInfo.CurrentCulture;
 
             // In order to avoid string formatted numbers like "-0" we parse-back to double
             // and check if the double value is exactly "0" or "-0".
