@@ -1,6 +1,4 @@
-﻿using OpenWeatherMap.Models;
-
-namespace OpenWeatherMap.Models.Converters
+﻿namespace OpenWeatherMap.Models.Converters
 {
     internal static class WindHelper
     {
@@ -9,77 +7,77 @@ namespace OpenWeatherMap.Models.Converters
         /// </summary>
         internal static CardinalWindDirection GetCardinalWindDirection(double windDegrees)
         {
-            if (windDegrees > 11.25 && windDegrees <= 33.75)
+            if (windDegrees is > 11.25 and <= 33.75)
             {
                 return CardinalWindDirection.NNE;
             }
 
-            if (windDegrees > 33.75 && windDegrees <= 56.25)
+            if (windDegrees is > 33.75 and <= 56.25)
             {
                 return CardinalWindDirection.NE;
             }
 
-            if (windDegrees > 56.25 && windDegrees <= 78.75)
+            if (windDegrees is > 56.25 and <= 78.75)
             {
                 return CardinalWindDirection.ENE;
             }
 
-            if (windDegrees > 78.75 && windDegrees <= 101.25)
+            if (windDegrees is > 78.75 and <= 101.25)
             {
                 return CardinalWindDirection.E;
             }
 
-            if (windDegrees > 101.25 && windDegrees <= 123.75)
+            if (windDegrees is > 101.25 and <= 123.75)
             {
                 return CardinalWindDirection.ESE;
             }
 
-            if (windDegrees > 123.75 && windDegrees <= 146.25)
+            if (windDegrees is > 123.75 and <= 146.25)
             {
                 return CardinalWindDirection.SE;
             }
 
-            if (windDegrees > 146.25 && windDegrees <= 168.75)
+            if (windDegrees is > 146.25 and <= 168.75)
             {
                 return CardinalWindDirection.SSE;
             }
 
-            if (windDegrees > 168.75 && windDegrees <= 191.25)
+            if (windDegrees is > 168.75 and <= 191.25)
             {
                 return CardinalWindDirection.S;
             }
 
-            if (windDegrees > 191.25 && windDegrees <= 213.75)
+            if (windDegrees is > 191.25 and <= 213.75)
             {
                 return CardinalWindDirection.SSW;
             }
 
-            if (windDegrees > 213.75 && windDegrees <= 236.25)
+            if (windDegrees is > 213.75 and <= 236.25)
             {
                 return CardinalWindDirection.SW;
             }
 
-            if (windDegrees > 236.25 && windDegrees <= 258.75)
+            if (windDegrees is > 236.25 and <= 258.75)
             {
                 return CardinalWindDirection.WSW;
             }
 
-            if (windDegrees > 258.75 && windDegrees <= 281.25)
+            if (windDegrees is > 258.75 and <= 281.25)
             {
                 return CardinalWindDirection.W;
             }
 
-            if (windDegrees > 281.25 && windDegrees <= 303.75)
+            if (windDegrees is > 281.25 and <= 303.75)
             {
                 return CardinalWindDirection.WNW;
             }
 
-            if (windDegrees > 303.75 && windDegrees <= 326.25)
+            if (windDegrees is > 303.75 and <= 326.25)
             {
                 return CardinalWindDirection.NW;
             }
 
-            if (windDegrees > 326.25 && windDegrees <= 348.75)
+            if (windDegrees is > 326.25 and <= 348.75)
             {
                 return CardinalWindDirection.NNW;
             }

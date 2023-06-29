@@ -38,7 +38,8 @@ namespace OpenWeatherMap.ConsoleSample
                 builder.AddConsole();
             });
 
-            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            CultureInfo.CurrentCulture = new CultureInfo("de");
 
             // Create weather service instance manually or resolve it from any dependency injection framework:
             var logger = loggerFactory.CreateLogger<OpenWeatherMapService>();
@@ -54,7 +55,8 @@ namespace OpenWeatherMap.ConsoleSample
                 $"Location: {weatherInfo.CityName}{Environment.NewLine}" +
                 $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
                 $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.Range}){Environment.NewLine}" +
-                $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.Range}){Environment.NewLine}");
+                $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.Range}){Environment.NewLine}" +
+                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction}){Environment.NewLine}");
 
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
             if (airPollutionInfo.Items.FirstOrDefault() is AirPollutionInfoItem airPollutionInfoItem)

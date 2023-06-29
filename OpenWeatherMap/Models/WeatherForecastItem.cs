@@ -41,6 +41,6 @@ namespace OpenWeatherMap.Models
         public IReadOnlyList<WeatherCondition> WeatherConditions { get; set; }
 
         [JsonProperty("wind")]
-        public WindInformation Wind { get; set; }
+        public WindInfo Wind { get; set; }
     }
 }

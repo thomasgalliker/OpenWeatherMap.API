@@ -64,7 +64,7 @@ namespace OpenWeatherMap.Models
         ///  Wind direction, degrees (meteorological).
         /// </summary>
         [JsonProperty("wind_deg")]
-        public int WindDirectionDegrees { get; set; }
+        public double WindDirectionDegrees { get; set; }
 
         /// <summary>
         ///  Cardinal wind direction.

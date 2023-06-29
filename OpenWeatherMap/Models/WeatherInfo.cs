@@ -26,7 +26,7 @@ namespace OpenWeatherMap.Models
         public int Visibility { get; set; }
 
         [JsonProperty("wind")]
-        public Wind Wind { get; set; }
+        public WindInfo Wind { get; set; }
 
         [JsonProperty("clouds")]
         public CloudsInformation Clouds { get; set; }

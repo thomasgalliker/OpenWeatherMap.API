@@ -50,7 +50,7 @@ namespace OpenWeatherMap.Models
         public double WindSpeed { get; set; }
 
         [JsonProperty("wind_deg")]
-        public int WindDirectionDegrees { get; set; }
+        public double WindDirectionDegrees { get; set; }
 
         [JsonIgnore]
         public CardinalWindDirection WindDirection => WindHelper.GetCardinalWindDirection(this.WindDirectionDegrees);
