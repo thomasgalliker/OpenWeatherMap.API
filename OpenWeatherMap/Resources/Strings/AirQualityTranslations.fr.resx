@@ -12,4 +12,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Fair" xml:space="preserve">
+    <value>Juste</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Bon</value>
+  </data>
+  <data name="Moderate" xml:space="preserve">
+    <value>Modéré</value>
+  </data>
+  <data name="Poor" xml:space="preserve">
+    <value>Pauvre</value>
+  </data>
+  <data name="VeryPoor" xml:space="preserve">
+    <value>Très médiocre</value>
+  </data>
 </root>

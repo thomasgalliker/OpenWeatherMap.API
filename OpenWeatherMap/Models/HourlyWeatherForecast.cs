@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using OpenWeatherMap.Internals;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
@@ -50,10 +51,8 @@ namespace OpenWeatherMap.Models
         public double WindSpeed { get; set; }
 
         [JsonProperty("wind_deg")]
-        public double WindDirectionDegrees { get; set; }
-
-        [JsonIgnore]
-        public CardinalWindDirection WindDirection => WindHelper.GetCardinalWindDirection(this.WindDirectionDegrees);
+        [JsonConverter(typeof(WindDirectionJsonConverter))]
+        public WindDirection WindDirection { get; set; }
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).

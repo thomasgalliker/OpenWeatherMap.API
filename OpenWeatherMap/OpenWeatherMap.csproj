@@ -33,7 +33,11 @@
     <Product>OpenWeatherMap.API</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>OpenWeatherMap</RootNamespace>
-    <PackageReleaseNotes>1.0.0
+    <PackageReleaseNotes>1.2.0
+- Major refactoring in wind direction data model
+- Add multilingual support
+
+1.0.0
 - Initial release
 		</PackageReleaseNotes>
     <Copyright>Copyright 2023</Copyright>
@@ -170,6 +174,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AirQualityTranslations.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Strings\CardinalWindDirectionsAcronyms.Designer.cs">
+      <DependentUpon>CardinalWindDirectionsAcronyms.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Strings\HumidityRanges.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -185,11 +194,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>UVIndexRanges.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Strings\CardinalWindDirections.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CardinalWindDirections.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Strings\AirQualityTranslations.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AirQualityTranslations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\CardinalWindDirectionsAcronyms.resx">
+      <LastGenOutput>CardinalWindDirectionsAcronyms.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Strings\HumidityRanges.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -202,6 +220,10 @@
     <EmbeddedResource Update="Resources\Strings\UVIndexRanges.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UVIndexRanges.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\CardinalWindDirections.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CardinalWindDirections.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

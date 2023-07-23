@@ -8,23 +8,23 @@
       <group id="OPENWEATHERMAP/RESOURCES/STRINGS/PRESSURERANGES.RESX" datatype="resx">
         <trans-unit id="Average" translate="yes" xml:space="preserve">
           <source>Average</source>
-          <target state="new">Average</target>
+          <target state="final" state-qualifier="mt-suggestion">Nella media</target>
         </trans-unit>
         <trans-unit id="High" translate="yes" xml:space="preserve">
           <source>High</source>
-          <target state="new">High</target>
+          <target state="final" state-qualifier="mt-suggestion">Alto</target>
         </trans-unit>
         <trans-unit id="Low" translate="yes" xml:space="preserve">
           <source>Low</source>
-          <target state="new">Low</target>
+          <target state="final" state-qualifier="mt-suggestion">Basso</target>
         </trans-unit>
         <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
           <source>Very high</source>
-          <target state="new">Very high</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto alto</target>
         </trans-unit>
         <trans-unit id="VeryLow" translate="yes" xml:space="preserve">
           <source>Very low</source>
-          <target state="new">Very low</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto basso</target>
         </trans-unit>
       </group>
     </body>
@@ -37,23 +37,23 @@
       <group id="OPENWEATHERMAP/RESOURCES/STRINGS/AIRQUALITYTRANSLATIONS.RESX" datatype="resx">
         <trans-unit id="Fair" translate="yes" xml:space="preserve">
           <source>Fair</source>
-          <target state="new">Fair</target>
+          <target state="final" state-qualifier="mt-suggestion">Fiera</target>
         </trans-unit>
         <trans-unit id="Good" translate="yes" xml:space="preserve">
           <source>Good</source>
-          <target state="new">Good</target>
+          <target state="final" state-qualifier="mt-suggestion">Buono</target>
         </trans-unit>
         <trans-unit id="Moderate" translate="yes" xml:space="preserve">
           <source>Moderate</source>
-          <target state="new">Moderate</target>
+          <target state="final" state-qualifier="mt-suggestion">Moderato</target>
         </trans-unit>
         <trans-unit id="Poor" translate="yes" xml:space="preserve">
           <source>Poor</source>
-          <target state="new">Poor</target>
+          <target state="final" state-qualifier="mt-suggestion">Povero</target>
         </trans-unit>
         <trans-unit id="VeryPoor" translate="yes" xml:space="preserve">
           <source>Very poor</source>
-          <target state="new">Very poor</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto scarso</target>
         </trans-unit>
       </group>
     </body>
@@ -66,23 +66,23 @@
       <group id="OPENWEATHERMAP/RESOURCES/STRINGS/UVINDEXRANGES.RESX" datatype="resx">
         <trans-unit id="Extreme" translate="yes" xml:space="preserve">
           <source>Extreme</source>
-          <target state="new">Extreme</target>
+          <target state="final" state-qualifier="mt-suggestion">Estremo</target>
         </trans-unit>
         <trans-unit id="High" translate="yes" xml:space="preserve">
           <source>High</source>
-          <target state="new">High</target>
+          <target state="final" state-qualifier="mt-suggestion">Alto</target>
         </trans-unit>
         <trans-unit id="Low" translate="yes" xml:space="preserve">
           <source>Low</source>
-          <target state="new">Low</target>
+          <target state="final" state-qualifier="mt-suggestion">Basso</target>
         </trans-unit>
         <trans-unit id="Moderate" translate="yes" xml:space="preserve">
           <source>Moderate</source>
-          <target state="new">Moderate</target>
+          <target state="final" state-qualifier="mt-suggestion">Moderato</target>
         </trans-unit>
         <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
           <source>Very high</source>
-          <target state="new">Very high</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto alto</target>
         </trans-unit>
       </group>
     </body>
@@ -95,23 +95,169 @@
       <group id="OPENWEATHERMAP/RESOURCES/STRINGS/HUMIDITYRANGES.RESX" datatype="resx">
         <trans-unit id="Average" translate="yes" xml:space="preserve">
           <source>Average</source>
-          <target state="new">Average</target>
+          <target state="final" state-qualifier="mt-suggestion">Nella media</target>
         </trans-unit>
         <trans-unit id="Dry" translate="yes" xml:space="preserve">
           <source>Dry</source>
-          <target state="new">Dry</target>
+          <target state="final" state-qualifier="mt-suggestion">Secco</target>
         </trans-unit>
         <trans-unit id="Moist" translate="yes" xml:space="preserve">
           <source>Moist</source>
-          <target state="new">Moist</target>
+          <target state="final" state-qualifier="mt-suggestion">Umido</target>
         </trans-unit>
         <trans-unit id="VeryDry" translate="yes" xml:space="preserve">
           <source>Very dry</source>
-          <target state="new">Very dry</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto secco</target>
         </trans-unit>
         <trans-unit id="VeryMoist" translate="yes" xml:space="preserve">
           <source>Very moist</source>
-          <target state="new">Very moist</target>
+          <target state="final" state-qualifier="mt-suggestion">Molto umido</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="it" original="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONS.RESX" datatype="resx">
+        <trans-unit id="E" translate="yes" xml:space="preserve">
+          <source>East</source>
+          <target state="final">Est</target>
+        </trans-unit>
+        <trans-unit id="ENE" translate="yes" xml:space="preserve">
+          <source>East-northeast</source>
+          <target state="final">Est-nordest</target>
+        </trans-unit>
+        <trans-unit id="ESE" translate="yes" xml:space="preserve">
+          <source>East-southeast</source>
+          <target state="final">Est-sudest</target>
+        </trans-unit>
+        <trans-unit id="N" translate="yes" xml:space="preserve">
+          <source>North</source>
+          <target state="final">Nord</target>
+        </trans-unit>
+        <trans-unit id="NE" translate="yes" xml:space="preserve">
+          <source>Northeast</source>
+          <target state="final">Nordest</target>
+        </trans-unit>
+        <trans-unit id="NNE" translate="yes" xml:space="preserve">
+          <source>North-northeast</source>
+          <target state="final">Nord-nordest</target>
+        </trans-unit>
+        <trans-unit id="NNW" translate="yes" xml:space="preserve">
+          <source>North-northwest</source>
+          <target state="final">Nord-nordovest</target>
+        </trans-unit>
+        <trans-unit id="NW" translate="yes" xml:space="preserve">
+          <source>Northwest</source>
+          <target state="final" state-qualifier="mt-suggestion">Nordovest</target>
+        </trans-unit>
+        <trans-unit id="S" translate="yes" xml:space="preserve">
+          <source>South</source>
+          <target state="final">Sud</target>
+        </trans-unit>
+        <trans-unit id="SE" translate="yes" xml:space="preserve">
+          <source>Southeast</source>
+          <target state="final" state-qualifier="mt-suggestion">Sudest</target>
+        </trans-unit>
+        <trans-unit id="SSE" translate="yes" xml:space="preserve">
+          <source>South-southeast</source>
+          <target state="final">Sud-sudest</target>
+        </trans-unit>
+        <trans-unit id="SSW" translate="yes" xml:space="preserve">
+          <source>South-southwest</source>
+          <target state="final">Sud-sudovest</target>
+        </trans-unit>
+        <trans-unit id="SW" translate="yes" xml:space="preserve">
+          <source>Southwest</source>
+          <target state="final" state-qualifier="mt-suggestion">Sudovest</target>
+        </trans-unit>
+        <trans-unit id="W" translate="yes" xml:space="preserve">
+          <source>West</source>
+          <target state="final">Ovest</target>
+        </trans-unit>
+        <trans-unit id="WNW" translate="yes" xml:space="preserve">
+          <source>West-northwest</source>
+          <target state="final">Ovest-nordovest</target>
+        </trans-unit>
+        <trans-unit id="WSW" translate="yes" xml:space="preserve">
+          <source>West-southwest</source>
+          <target state="final">Ovest-sudovest</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="it" original="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONSACRONYMS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONSACRONYMS.RESX" datatype="resx">
+        <trans-unit id="E" translate="yes" xml:space="preserve">
+          <source>E</source>
+          <target state="final" state-qualifier="mt-suggestion">E</target>
+        </trans-unit>
+        <trans-unit id="ENE" translate="yes" xml:space="preserve">
+          <source>ENE</source>
+          <target state="final" state-qualifier="mt-suggestion">ENE</target>
+        </trans-unit>
+        <trans-unit id="ESE" translate="yes" xml:space="preserve">
+          <source>ESE</source>
+          <target state="final" state-qualifier="mt-suggestion">ESE</target>
+        </trans-unit>
+        <trans-unit id="N" translate="yes" xml:space="preserve">
+          <source>N</source>
+          <target state="final" state-qualifier="mt-suggestion">N</target>
+        </trans-unit>
+        <trans-unit id="NE" translate="yes" xml:space="preserve">
+          <source>NE</source>
+          <target state="final" state-qualifier="mt-suggestion">NE</target>
+        </trans-unit>
+        <trans-unit id="NNE" translate="yes" xml:space="preserve">
+          <source>NNE</source>
+          <target state="final" state-qualifier="mt-suggestion">NNE</target>
+        </trans-unit>
+        <trans-unit id="NNW" translate="yes" xml:space="preserve">
+          <source>NNW</source>
+          <target state="final" state-qualifier="mt-suggestion">NNO</target>
+        </trans-unit>
+        <trans-unit id="NW" translate="yes" xml:space="preserve">
+          <source>NW</source>
+          <target state="final">NO</target>
+        </trans-unit>
+        <trans-unit id="S" translate="yes" xml:space="preserve">
+          <source>S</source>
+          <target state="final" state-qualifier="mt-suggestion">S</target>
+        </trans-unit>
+        <trans-unit id="SE" translate="yes" xml:space="preserve">
+          <source>SE</source>
+          <target state="final">SE</target>
+        </trans-unit>
+        <trans-unit id="SSE" translate="yes" xml:space="preserve">
+          <source>SSE</source>
+          <target state="final" state-qualifier="mt-suggestion">SSE</target>
+        </trans-unit>
+        <trans-unit id="SSW" translate="yes" xml:space="preserve">
+          <source>SSW</source>
+          <target state="final" state-qualifier="mt-suggestion">SSO</target>
+        </trans-unit>
+        <trans-unit id="SW" translate="yes" xml:space="preserve">
+          <source>SW</source>
+          <target state="final">SO</target>
+        </trans-unit>
+        <trans-unit id="W" translate="yes" xml:space="preserve">
+          <source>W</source>
+          <target state="final">O</target>
+        </trans-unit>
+        <trans-unit id="WNW" translate="yes" xml:space="preserve">
+          <source>WNW</source>
+          <target state="final" state-qualifier="mt-suggestion">ONO</target>
+        </trans-unit>
+        <trans-unit id="WSW" translate="yes" xml:space="preserve">
+          <source>WSW</source>
+          <target state="final" state-qualifier="mt-suggestion">OSO</target>
         </trans-unit>
       </group>
     </body>

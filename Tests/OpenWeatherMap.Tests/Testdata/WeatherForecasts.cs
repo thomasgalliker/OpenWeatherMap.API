@@ -49,7 +49,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 160d,
+                        Direction = 160d,
                         Speed = 1.29d
                         }
                     },
@@ -85,7 +85,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 198d,
+                        Direction = 198d,
                         Speed = 1.52d
                         }
                     },
@@ -121,7 +121,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 179d,
+                        Direction = 179d,
                         Speed = 1.72d
                         }
                     },
@@ -157,7 +157,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 216d,
+                        Direction = 216d,
                         Speed = 0.73d
                         }
                     },
@@ -197,7 +197,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 299d,
+                        Direction = 299d,
                         Speed = 1.07d
                         }
                     },
@@ -233,7 +233,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 280d,
+                        Direction = 280d,
                         Speed = 3.2d
                         }
                     },
@@ -269,7 +269,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 285d,
+                        Direction = 285d,
                         Speed = 3.24d
                         }
                     },
@@ -309,7 +309,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 17d,
+                        Direction = 17d,
                         Speed = 1.24d
                         }
                     },
@@ -349,7 +349,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 201d,
+                        Direction = 201d,
                         Speed = 2.94d
                         }
                     },
@@ -389,7 +389,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 197d,
+                        Direction = 197d,
                         Speed = 2.63d
                         }
                     },
@@ -425,7 +425,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 203d,
+                        Direction = 203d,
                         Speed = 1.99d
                         }
                     },
@@ -465,7 +465,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 218d,
+                        Direction = 218d,
                         Speed = 1.2d
                         }
                     },
@@ -505,7 +505,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 286d,
+                        Direction = 286d,
                         Speed = 1.76d
                         }
                     },
@@ -545,7 +545,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 302d,
+                        Direction = 302d,
                         Speed = 2.81d
                         }
                     },
@@ -581,7 +581,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 338d,
+                        Direction = 338d,
                         Speed = 1.98d
                         }
                     },
@@ -617,7 +617,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 335d,
+                        Direction = 335d,
                         Speed = 1.29d
                         }
                     },
@@ -653,7 +653,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 179d,
+                        Direction = 179d,
                         Speed = 1.25d
                         }
                     },
@@ -689,7 +689,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 168d,
+                        Direction = 168d,
                         Speed = 1.22d
                         }
                     },
@@ -725,7 +725,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 173d,
+                        Direction = 173d,
                         Speed = 1.53d
                         }
                     },
@@ -761,7 +761,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 91d,
+                        Direction = 91d,
                         Speed = 0.41d
                         }
                     },
@@ -797,7 +797,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 41d,
+                        Direction = 41d,
                         Speed = 1.29d
                         }
                     },
@@ -833,7 +833,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 8d,
+                        Direction = 8d,
                         Speed = 2.43d
                         }
                     },
@@ -869,7 +869,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 28d,
+                        Direction = 28d,
                         Speed = 1.81d
                         }
                     },
@@ -905,7 +905,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 96d,
+                        Direction = 96d,
                         Speed = 0.77d
                         }
                     },
@@ -941,7 +941,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 171d,
+                        Direction = 171d,
                         Speed = 1.6d
                         }
                     },
@@ -977,7 +977,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 162d,
+                        Direction = 162d,
                         Speed = 1.59d
                         }
                     },
@@ -1013,7 +1013,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 157d,
+                        Direction = 157d,
                         Speed = 1.74d
                         }
                     },
@@ -1049,7 +1049,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 108d,
+                        Direction = 108d,
                         Speed = 0.95d
                         }
                     },
@@ -1085,7 +1085,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 53d,
+                        Direction = 53d,
                         Speed = 2.06d
                         }
                     },
@@ -1121,7 +1121,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 56d,
+                        Direction = 56d,
                         Speed = 3.13d
                         }
                     },
@@ -1157,7 +1157,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 51d,
+                        Direction = 51d,
                         Speed = 3.19d
                         }
                     },
@@ -1193,7 +1193,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 59d,
+                        Direction = 59d,
                         Speed = 0.32d
                         }
                     },
@@ -1229,7 +1229,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 184d,
+                        Direction = 184d,
                         Speed = 2.14d
                         }
                     },
@@ -1265,7 +1265,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 178d,
+                        Direction = 178d,
                         Speed = 2.32d
                         }
                     },
@@ -1301,7 +1301,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 187d,
+                        Direction = 187d,
                         Speed = 2.32d
                         }
                     },
@@ -1337,7 +1337,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 183d,
+                        Direction = 183d,
                         Speed = 1.17d
                         }
                     },
@@ -1373,7 +1373,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 306d,
+                        Direction = 306d,
                         Speed = 1.19d
                         }
                     },
@@ -1409,7 +1409,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 315d,
+                        Direction = 315d,
                         Speed = 2.03d
                         }
                     },
@@ -1449,7 +1449,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 203d,
+                        Direction = 203d,
                         Speed = 1.63d
                         }
                     },
@@ -1489,7 +1489,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         },
                         Wind = new WindInfo
                         {
-                        DirectionDegrees = 149d,
+                        Direction = 149d,
                         Speed = 3.47d
                         }
                     }
@@ -1556,7 +1556,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 167d,
+                            Direction = 167d,
                             Speed = 1.38d
                           }
                         },
@@ -1592,7 +1592,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 176d,
+                            Direction = 176d,
                             Speed = 1.45d
                           }
                         },
@@ -1628,7 +1628,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 198d,
+                            Direction = 198d,
                             Speed = 1.52d
                           }
                         },
@@ -1664,7 +1664,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 196d,
+                            Direction = 196d,
                             Speed = 1.75d
                           }
                         },
@@ -1700,7 +1700,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 189d,
+                            Direction = 189d,
                             Speed = 1.9d
                           }
                         },
@@ -1736,7 +1736,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 179d,
+                            Direction = 179d,
                             Speed = 1.72d
                           }
                         },
@@ -1772,7 +1772,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 190d,
+                            Direction = 190d,
                             Speed = 1.51d
                           }
                         },
@@ -1808,7 +1808,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 199d,
+                            Direction = 199d,
                             Speed = 1.27d
                           }
                         },
@@ -1844,7 +1844,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 216d,
+                            Direction = 216d,
                             Speed = 0.73d
                           }
                         },
@@ -1880,7 +1880,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 286d,
+                            Direction = 286d,
                             Speed = 0.88d
                           }
                         },
@@ -1920,7 +1920,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 289d,
+                            Direction = 289d,
                             Speed = 0.98d
                           }
                         },
@@ -1956,7 +1956,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 299d,
+                            Direction = 299d,
                             Speed = 1.07d
                           }
                         },
@@ -1992,7 +1992,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 292d,
+                            Direction = 292d,
                             Speed = 1.6d
                           }
                         },
@@ -2028,7 +2028,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 284d,
+                            Direction = 284d,
                             Speed = 2.36d
                           }
                         },
@@ -2064,7 +2064,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 280d,
+                            Direction = 280d,
                             Speed = 3.2d
                           }
                         },
@@ -2100,7 +2100,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 272d,
+                            Direction = 272d,
                             Speed = 3.76d
                           }
                         },
@@ -2136,7 +2136,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 268d,
+                            Direction = 268d,
                             Speed = 3.74d
                           }
                         },
@@ -2172,7 +2172,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 285d,
+                            Direction = 285d,
                             Speed = 3.24d
                           }
                         },
@@ -2208,7 +2208,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 315d,
+                            Direction = 315d,
                             Speed = 2.98d
                           }
                         },
@@ -2244,7 +2244,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 342d,
+                            Direction = 342d,
                             Speed = 2.3d
                           }
                         },
@@ -2284,7 +2284,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 17d,
+                            Direction = 17d,
                             Speed = 1.24d
                           }
                         },
@@ -2324,7 +2324,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 176d,
+                            Direction = 176d,
                             Speed = 1.42d
                           }
                         },
@@ -2364,7 +2364,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 194d,
+                            Direction = 194d,
                             Speed = 2.88d
                           }
                         },
@@ -2404,7 +2404,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 201d,
+                            Direction = 201d,
                             Speed = 2.94d
                           }
                         },
@@ -2444,7 +2444,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 161d,
+                            Direction = 161d,
                             Speed = 2.94d
                           }
                         },
@@ -2484,7 +2484,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 179d,
+                            Direction = 179d,
                             Speed = 2.7d
                           }
                         },
@@ -2524,7 +2524,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 197d,
+                            Direction = 197d,
                             Speed = 2.63d
                           }
                         },
@@ -2560,7 +2560,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 202d,
+                            Direction = 202d,
                             Speed = 2.52d
                           }
                         },
@@ -2596,7 +2596,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 201d,
+                            Direction = 201d,
                             Speed = 2.44d
                           }
                         },
@@ -2632,7 +2632,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 203d,
+                            Direction = 203d,
                             Speed = 1.99d
                           }
                         },
@@ -2668,7 +2668,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 203d,
+                            Direction = 203d,
                             Speed = 1.8d
                           }
                         },
@@ -2704,7 +2704,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 213d,
+                            Direction = 213d,
                             Speed = 1.74d
                           }
                         },
@@ -2744,7 +2744,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 218d,
+                            Direction = 218d,
                             Speed = 1.2d
                           }
                         },
@@ -2780,7 +2780,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 274d,
+                            Direction = 274d,
                             Speed = 1.26d
                           }
                         },
@@ -2820,7 +2820,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 286d,
+                            Direction = 286d,
                             Speed = 1.71d
                           }
                         },
@@ -2860,7 +2860,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 286d,
+                            Direction = 286d,
                             Speed = 1.76d
                           }
                         },
@@ -2900,7 +2900,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 286d,
+                            Direction = 286d,
                             Speed = 2.12d
                           }
                         },
@@ -2936,7 +2936,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 294d,
+                            Direction = 294d,
                             Speed = 2.4d
                           }
                         },
@@ -2972,7 +2972,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 302d,
+                            Direction = 302d,
                             Speed = 2.81d
                           }
                         },
@@ -3008,7 +3008,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 313d,
+                            Direction = 313d,
                             Speed = 3.25d
                           }
                         },
@@ -3044,7 +3044,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 328d,
+                            Direction = 328d,
                             Speed = 3.58d
                           }
                         },
@@ -3080,7 +3080,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 338d,
+                            Direction = 338d,
                             Speed = 1.98d
                           }
                         },
@@ -3116,7 +3116,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 340d,
+                            Direction = 340d,
                             Speed = 2.2d
                           }
                         },
@@ -3152,7 +3152,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 338d,
+                            Direction = 338d,
                             Speed = 1.84d
                           }
                         },
@@ -3188,7 +3188,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 335d,
+                            Direction = 335d,
                             Speed = 1.29d
                           }
                         },
@@ -3224,7 +3224,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 327d,
+                            Direction = 327d,
                             Speed = 0.39d
                           }
                         },
@@ -3260,7 +3260,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 187d,
+                            Direction = 187d,
                             Speed = 0.22d
                           }
                         },
@@ -3296,7 +3296,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 179d,
+                            Direction = 179d,
                             Speed = 1.25d
                           }
                         },
@@ -3332,7 +3332,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 192d,
+                            Direction = 192d,
                             Speed = 0.67d
                           }
                         },
@@ -3368,7 +3368,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 179d,
+                            Direction = 179d,
                             Speed = 0.9d
                           }
                         },
@@ -3404,7 +3404,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 168d,
+                            Direction = 168d,
                             Speed = 1.22d
                           }
                         },
@@ -3440,7 +3440,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 171d,
+                            Direction = 171d,
                             Speed = 1.05d
                           }
                         },
@@ -3476,7 +3476,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 180d,
+                            Direction = 180d,
                             Speed = 1.04d
                           }
                         },
@@ -3512,7 +3512,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 173d,
+                            Direction = 173d,
                             Speed = 1.53d
                           }
                         },
@@ -3548,7 +3548,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 179d,
+                            Direction = 179d,
                             Speed = 1.22d
                           }
                         },
@@ -3584,7 +3584,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 163d,
+                            Direction = 163d,
                             Speed = 0.95d
                           }
                         },
@@ -3620,7 +3620,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 91d,
+                            Direction = 91d,
                             Speed = 0.41d
                           }
                         },
@@ -3656,7 +3656,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 72d,
+                            Direction = 72d,
                             Speed = 0.79d
                           }
                         },
@@ -3692,7 +3692,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 39d,
+                            Direction = 39d,
                             Speed = 1.45d
                           }
                         },
@@ -3728,7 +3728,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 41d,
+                            Direction = 41d,
                             Speed = 1.29d
                           }
                         },
@@ -3764,7 +3764,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 27d,
+                            Direction = 27d,
                             Speed = 1.53d
                           }
                         },
@@ -3800,7 +3800,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 11d,
+                            Direction = 11d,
                             Speed = 2.24d
                           }
                         },
@@ -3836,7 +3836,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 8d,
+                            Direction = 8d,
                             Speed = 2.43d
                           }
                         },
@@ -3872,7 +3872,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 20d,
+                            Direction = 20d,
                             Speed = 1.94d
                           }
                         },
@@ -3908,7 +3908,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 24d,
+                            Direction = 24d,
                             Speed = 1.83d
                           }
                         },
@@ -3944,7 +3944,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 28d,
+                            Direction = 28d,
                             Speed = 1.81d
                           }
                         },
@@ -3980,7 +3980,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 29d,
+                            Direction = 29d,
                             Speed = 1.79d
                           }
                         },
@@ -4016,7 +4016,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 41d,
+                            Direction = 41d,
                             Speed = 1.42d
                           }
                         },
@@ -4052,7 +4052,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 96d,
+                            Direction = 96d,
                             Speed = 0.77d
                           }
                         },
@@ -4088,7 +4088,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 154d,
+                            Direction = 154d,
                             Speed = 0.93d
                           }
                         },
@@ -4124,7 +4124,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 164d,
+                            Direction = 164d,
                             Speed = 1.37d
                           }
                         },
@@ -4160,7 +4160,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 171d,
+                            Direction = 171d,
                             Speed = 1.6d
                           }
                         },
@@ -4196,7 +4196,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 173d,
+                            Direction = 173d,
                             Speed = 1.63d
                           }
                         },
@@ -4232,7 +4232,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 164d,
+                            Direction = 164d,
                             Speed = 1.62d
                           }
                         },
@@ -4268,7 +4268,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 162d,
+                            Direction = 162d,
                             Speed = 1.59d
                           }
                         },
@@ -4304,7 +4304,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 160d,
+                            Direction = 160d,
                             Speed = 1.52d
                           }
                         },
@@ -4340,7 +4340,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 161d,
+                            Direction = 161d,
                             Speed = 1.53d
                           }
                         },
@@ -4376,7 +4376,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 157d,
+                            Direction = 157d,
                             Speed = 1.74d
                           }
                         },
@@ -4412,7 +4412,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 151d,
+                            Direction = 151d,
                             Speed = 1.24d
                           }
                         },
@@ -4448,7 +4448,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 143d,
+                            Direction = 143d,
                             Speed = 1.61d
                           }
                         },
@@ -4484,7 +4484,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 108d,
+                            Direction = 108d,
                             Speed = 0.95d
                           }
                         },
@@ -4520,7 +4520,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 74d,
+                            Direction = 74d,
                             Speed = 1.09d
                           }
                         },
@@ -4556,7 +4556,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 51d,
+                            Direction = 51d,
                             Speed = 1.48d
                           }
                         },
@@ -4592,7 +4592,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 53d,
+                            Direction = 53d,
                             Speed = 2.06d
                           }
                         },
@@ -4628,7 +4628,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 60d,
+                            Direction = 60d,
                             Speed = 2.6d
                           }
                         },
@@ -4664,7 +4664,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 59d,
+                            Direction = 59d,
                             Speed = 2.85d
                           }
                         },
@@ -4700,7 +4700,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 56d,
+                            Direction = 56d,
                             Speed = 3.13d
                           }
                         },
@@ -4736,7 +4736,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 54d,
+                            Direction = 54d,
                             Speed = 3.25d
                           }
                         },
@@ -4772,7 +4772,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 55d,
+                            Direction = 55d,
                             Speed = 3.29d
                           }
                         },
@@ -4808,7 +4808,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 51d,
+                            Direction = 51d,
                             Speed = 3.19d
                           }
                         },
@@ -4844,7 +4844,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 46d,
+                            Direction = 46d,
                             Speed = 2.44d
                           }
                         },
@@ -4880,7 +4880,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 47d,
+                            Direction = 47d,
                             Speed = 1.49d
                           }
                         },
@@ -4916,7 +4916,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 59d,
+                            Direction = 59d,
                             Speed = 0.32d
                           }
                         },
@@ -4952,7 +4952,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 195d,
+                            Direction = 195d,
                             Speed = 1.38d
                           }
                         },
@@ -4988,7 +4988,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 193d,
+                            Direction = 193d,
                             Speed = 1.9d
                           }
                         },
@@ -5024,7 +5024,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           },
                           Wind = new WindInfo
                           {
-                            DirectionDegrees = 184d,
+                            Direction = 184d,
                             Speed = 2.14d
                           }
                         }

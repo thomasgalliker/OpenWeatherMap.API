@@ -39,7 +39,7 @@ namespace OpenWeatherMap.ConsoleSample
             });
 
             //CultureInfo.CurrentCulture = new CultureInfo("en-US");
-            CultureInfo.CurrentCulture = new CultureInfo("de");
+            CultureInfo.CurrentCulture = new CultureInfo("de-CH");
 
             // Create weather service instance manually or resolve it from any dependency injection framework:
             var logger = loggerFactory.CreateLogger<OpenWeatherMapService>();
@@ -49,6 +49,9 @@ namespace OpenWeatherMap.ConsoleSample
             var latitude = 47.1823761d;
             var longitude = 8.4611036d;
             var weatherInfo = await openWeatherMapService.GetCurrentWeatherAsync(latitude, longitude);
+            var test = await openWeatherMapService.GetWeatherForecast5Async(latitude, longitude);
+
+            var wind = test.Items.First().Wind.Direction.ToString();
 
             Console.WriteLine(
                 $"Current Weather Info:{Environment.NewLine}" +
@@ -56,7 +59,7 @@ namespace OpenWeatherMap.ConsoleSample
                 $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
                 $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.Range}){Environment.NewLine}" +
                 $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.Range}){Environment.NewLine}" +
-                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction}){Environment.NewLine}");
+                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction.GetSecondaryIntercardinalWindDirection()}){Environment.NewLine}");
 
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
             if (airPollutionInfo.Items.FirstOrDefault() is AirPollutionInfoItem airPollutionInfoItem)

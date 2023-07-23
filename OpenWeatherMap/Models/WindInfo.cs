@@ -13,16 +13,11 @@ namespace OpenWeatherMap.Models
         public double? Speed { get; set; }
 
         /// <summary>
-        /// Wind direction, degrees (meteorological).
+        /// Wind direction (meteorological).
         /// </summary>
         [JsonProperty("deg")]
-        public double? DirectionDegrees { get; set; }
-
-        /// <summary>
-        ///  Cardinal wind direction.
-        /// </summary>
-        [JsonIgnore]
-        public CardinalWindDirection? Direction => this.DirectionDegrees is double d ? WindHelper.GetCardinalWindDirection(d) : null;
+        [JsonConverter(typeof(WindDirectionJsonConverter))]
+        public WindDirection Direction { get; set; }
 
         /// <summary>
         /// Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
@@ -32,7 +27,7 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return $"Speed: {this.Speed}, Direction: {this.DirectionDegrees}";
+            return $"Speed: {this.Speed}, Direction: {this.Direction.GetSecondaryIntercardinalWindDirection()}";
         }
     }
 }
