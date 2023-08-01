@@ -144,7 +144,7 @@ namespace OpenWeatherMap.Models
                 case 'a':
                     if (format.Length > 1 && !int.TryParse(format.Substring(1), out precisionSpecifier))
                     {
-                        throw new FormatException($"The {format} format string is not supported.");
+                        throw new FormatException($"The format string \"{format}\" is not supported.");
                     }
                     break;
             }
@@ -176,7 +176,7 @@ namespace OpenWeatherMap.Models
                     }
                     else
                     {
-                        throw new FormatException($"The {format} format string is not supported.");
+                        throw new FormatException($"The format string \"{format}\" is not supported.");
                     }
                 case 'g':
                 case 'G':
