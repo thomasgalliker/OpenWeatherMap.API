@@ -18,6 +18,11 @@ namespace OpenWeatherMap.Models.Converters
                 return RelativeHumidity.FromPercent(humidity);
             }
 
+            if (reader.Value is double doubleValue)
+            {
+                return RelativeHumidity.FromPercent(doubleValue);
+            }
+
             throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(RelativeHumidity)}");
         }
     }

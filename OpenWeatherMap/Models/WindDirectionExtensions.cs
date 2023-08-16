@@ -1,4 +1,6 @@
-﻿namespace OpenWeatherMap.Models
+﻿using UnitsNet;
+
+namespace OpenWeatherMap.Models
 {
     /// <summary>
     /// https://www.geographyrealm.com/cardinal-directions-ordinal-directions/
@@ -10,7 +12,7 @@
         /// commonly denoted by their initials N, S, E, and W respectively. 
         /// Relative to north, the directions east, south, and west are at 90 degree intervals in the clockwise direction.
         /// </summary>
-        public static CardinalWindDirection GetCardinalWindDirection(this WindDirection windDirection)
+        public static CardinalWindDirection GetCardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 
@@ -35,7 +37,7 @@
         /// <summary>
         /// The intercardinal (intermediate, or, historically, ordinal) directions are the four intermediate compass directions located halfway between each pair of cardinal directions.
         /// </summary>
-        public static CardinalWindDirection GetIntercardinalWindDirection(this WindDirection windDirection)
+        public static CardinalWindDirection GetIntercardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 
@@ -90,7 +92,7 @@
         /// http://snowfence.umn.edu/Components/winddirectionanddegrees.htm
         /// https://www.geographyrealm.com/cardinal-directions-ordinal-directions/
         /// </summary>
-        public static CardinalWindDirection GetSecondaryIntercardinalWindDirection(this WindDirection windDirection)
+        public static CardinalWindDirection GetSecondaryIntercardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 

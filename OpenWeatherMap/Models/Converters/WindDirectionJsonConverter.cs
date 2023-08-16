@@ -1,28 +1,29 @@
 ﻿using System;
 using Newtonsoft.Json;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
-    internal class WindDirectionJsonConverter : JsonConverter<WindDirection>
+    internal class WindDirectionJsonConverter : JsonConverter<Angle>
     {
-        public override void WriteJson(JsonWriter writer, WindDirection value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, Angle value, JsonSerializer serializer)
         {
             writer.WriteValue(value.Value);
         }
 
-        public override WindDirection ReadJson(JsonReader reader, Type objectType, WindDirection existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Angle ReadJson(JsonReader reader, Type objectType, Angle existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.Value is double windDirection)
+            if (reader.Value is double doubleValue)
             {
-                return (WindDirection)windDirection;
+                return Angle.FromDegrees(doubleValue);
             }
 
-            if (reader.Value is long windDirectionLong)
+            if (reader.Value is long longValue)
             {
-                return (WindDirection)windDirectionLong;
+                return Angle.FromDegrees(longValue);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to WindDirection");
+            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(Angle)}");
         }
     }
 }

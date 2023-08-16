@@ -49,7 +49,7 @@ namespace OpenWeatherMap.Tests.Testdata
                     Clouds = 73,
                     Visibility = 10000,
                     WindSpeed = 0d,
-                    WindDirection = 0,
+                    WindDirection = new Angle(0, AngleUnit.Degree),
                     WindGust = 0d,
                     Weather = new List<WeatherCondition>
                     {
@@ -384,7 +384,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 73,
                       Visibility = 10000,
                       WindSpeed = 1.2d,
-                      WindDirection = 142,
+                      WindDirection = new Angle(142, AngleUnit.Degree),
                       WindGust = 1.33d,
                       Weather = new List<WeatherCondition>
                       {
@@ -410,7 +410,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 70,
                       Visibility = 10000,
                       WindSpeed = 1.29d,
-                      WindDirection = 160,
+                      WindDirection = new Angle(160, AngleUnit.Degree),
                       WindGust = 1.35d,
                       Weather = new List<WeatherCondition>
                       {
@@ -436,7 +436,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 61,
                       Visibility = 10000,
                       WindSpeed = 1.38d,
-                      WindDirection = 167,
+                      WindDirection = new Angle(167, AngleUnit.Degree),
                       WindGust = 1.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -462,7 +462,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 50,
                       Visibility = 10000,
                       WindSpeed = 1.45d,
-                      WindDirection = 176,
+                      WindDirection = new Angle(176, AngleUnit.Degree),
                       WindGust = 1.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -488,7 +488,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 38,
                       Visibility = 10000,
                       WindSpeed = 1.52d,
-                      WindDirection = 198,
+                      WindDirection = new Angle(198, AngleUnit.Degree),
                       WindGust = 1.36d,
                       Weather = new List<WeatherCondition>
                       {
@@ -514,7 +514,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 17,
                       Visibility = 10000,
                       WindSpeed = 1.75d,
-                      WindDirection = 196,
+                      WindDirection = new Angle(196, AngleUnit.Degree),
                       WindGust = 1.58d,
                       Weather = new List<WeatherCondition>
                       {
@@ -540,7 +540,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 11,
                       Visibility = 10000,
                       WindSpeed = 1.9d,
-                      WindDirection = 189,
+                      WindDirection = new Angle(189, AngleUnit.Degree),
                       WindGust = 1.7d,
                       Weather = new List<WeatherCondition>
                       {
@@ -566,7 +566,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 8,
                       Visibility = 10000,
                       WindSpeed = 1.72d,
-                      WindDirection = 179,
+                      WindDirection = new Angle(179, AngleUnit.Degree),
                       WindGust = 1.47d,
                       Weather = new List<WeatherCondition>
                       {
@@ -592,7 +592,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 6,
                       Visibility = 10000,
                       WindSpeed = 1.51d,
-                      WindDirection = 190,
+                      WindDirection = new Angle(190, AngleUnit.Degree),
                       WindGust = 1.4d,
                       Weather = new List<WeatherCondition>
                       {
@@ -618,7 +618,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 6,
                       Visibility = 10000,
                       WindSpeed = 1.27d,
-                      WindDirection = 199,
+                      WindDirection = new Angle(199, AngleUnit.Degree),
                       WindGust = 1.29d,
                       Weather = new List<WeatherCondition>
                       {
@@ -644,7 +644,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 6,
                       Visibility = 10000,
                       WindSpeed = 0.73d,
-                      WindDirection = 216,
+                      WindDirection = new Angle(216, AngleUnit.Degree),
                       WindGust = 1.17d,
                       Weather = new List<WeatherCondition>
                       {
@@ -670,7 +670,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 19,
                       Visibility = 10000,
                       WindSpeed = 0.88d,
-                      WindDirection = 286,
+                      WindDirection = new Angle(286, AngleUnit.Degree),
                       WindGust = 1.46d,
                       Weather = new List<WeatherCondition>
                       {
@@ -696,7 +696,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 26,
                       Visibility = 10000,
                       WindSpeed = 0.98d,
-                      WindDirection = 289,
+                      WindDirection = new Angle(289, AngleUnit.Degree),
                       WindGust = 3.1d,
                       Weather = new List<WeatherCondition>
                       {
@@ -722,7 +722,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 29,
                       Visibility = 10000,
                       WindSpeed = 1.07d,
-                      WindDirection = 299,
+                      WindDirection = new Angle(299, AngleUnit.Degree),
                       WindGust = 3.32d,
                       Weather = new List<WeatherCondition>
                       {
@@ -748,7 +748,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 22,
                       Visibility = 10000,
                       WindSpeed = 1.6d,
-                      WindDirection = 292,
+                      WindDirection = new Angle(292, AngleUnit.Degree),
                       WindGust = 4.76d,
                       Weather = new List<WeatherCondition>
                       {
@@ -774,7 +774,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 20,
                       Visibility = 10000,
                       WindSpeed = 2.36d,
-                      WindDirection = 284,
+                      WindDirection = new Angle(284, AngleUnit.Degree),
                       WindGust = 5.7d,
                       Weather = new List<WeatherCondition>
                       {
@@ -800,7 +800,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 25,
                       Visibility = 10000,
                       WindSpeed = 3.2d,
-                      WindDirection = 280,
+                      WindDirection = new Angle(280, AngleUnit.Degree),
                       WindGust = 6.55d,
                       Weather = new List<WeatherCondition>
                       {
@@ -826,7 +826,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 44,
                       Visibility = 10000,
                       WindSpeed = 3.76d,
-                      WindDirection = 272,
+                      WindDirection = new Angle(272, AngleUnit.Degree),
                       WindGust = 6.65d,
                       Weather = new List<WeatherCondition>
                       {
@@ -852,7 +852,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 51,
                       Visibility = 10000,
                       WindSpeed = 3.74d,
-                      WindDirection = 268,
+                      WindDirection = new Angle(268, AngleUnit.Degree),
                       WindGust = 6.72d,
                       Weather = new List<WeatherCondition>
                       {
@@ -878,7 +878,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 37,
                       Visibility = 10000,
                       WindSpeed = 3.24d,
-                      WindDirection = 285,
+                      WindDirection = new Angle(285, AngleUnit.Degree),
                       WindGust = 5.8d,
                       Weather = new List<WeatherCondition>
                       {
@@ -904,7 +904,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 30,
                       Visibility = 10000,
                       WindSpeed = 2.98d,
-                      WindDirection = 315,
+                      WindDirection = new Angle(315, AngleUnit.Degree),
                       WindGust = 4.65d,
                       Weather = new List<WeatherCondition>
                       {
@@ -930,7 +930,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 25,
                       Visibility = 10000,
                       WindSpeed = 2.3d,
-                      WindDirection = 342,
+                      WindDirection = new Angle(342, AngleUnit.Degree),
                       WindGust = 4.49d,
                       Weather = new List<WeatherCondition>
                       {
@@ -956,7 +956,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 28,
                       Visibility = 10000,
                       WindSpeed = 1.24d,
-                      WindDirection = 17,
+                      WindDirection = new Angle(17, AngleUnit.Degree),
                       WindGust = 1.6d,
                       Weather = new List<WeatherCondition>
                       {
@@ -982,7 +982,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 10,
                       Visibility = 10000,
                       WindSpeed = 1.42d,
-                      WindDirection = 176,
+                      WindDirection = new Angle(176, AngleUnit.Degree),
                       WindGust = 1.46d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1008,7 +1008,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 18,
                       Visibility = 10000,
                       WindSpeed = 2.88d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 4.2d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1034,7 +1034,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 39,
                       Visibility = 10000,
                       WindSpeed = 2.94d,
-                      WindDirection = 201,
+                      WindDirection = new Angle(201, AngleUnit.Degree),
                       WindGust = 4.93d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1060,7 +1060,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 31,
                       Visibility = 7351,
                       WindSpeed = 2.94d,
-                      WindDirection = 161,
+                      WindDirection = new Angle(161, AngleUnit.Degree),
                       WindGust = 4.55d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1086,7 +1086,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 26,
                       Visibility = 10000,
                       WindSpeed = 2.7d,
-                      WindDirection = 179,
+                      WindDirection = new Angle(179, AngleUnit.Degree),
                       WindGust = 2.96d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1112,7 +1112,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 23,
                       Visibility = 10000,
                       WindSpeed = 2.63d,
-                      WindDirection = 197,
+                      WindDirection = new Angle(197, AngleUnit.Degree),
                       WindGust = 2.87d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1138,7 +1138,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 9,
                       Visibility = 10000,
                       WindSpeed = 2.52d,
-                      WindDirection = 202,
+                      WindDirection = new Angle(202, AngleUnit.Degree),
                       WindGust = 2.25d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1164,7 +1164,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 18,
                       Visibility = 10000,
                       WindSpeed = 2.44d,
-                      WindDirection = 201,
+                      WindDirection = new Angle(201, AngleUnit.Degree),
                       WindGust = 2.5d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1190,7 +1190,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 14,
                       Visibility = 10000,
                       WindSpeed = 1.99d,
-                      WindDirection = 203,
+                      WindDirection = new Angle(203, AngleUnit.Degree),
                       WindGust = 1.89d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1216,7 +1216,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 13,
                       Visibility = 10000,
                       WindSpeed = 1.8d,
-                      WindDirection = 203,
+                      WindDirection = new Angle(203, AngleUnit.Degree),
                       WindGust = 1.62d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1242,7 +1242,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 14,
                       Visibility = 10000,
                       WindSpeed = 1.74d,
-                      WindDirection = 213,
+                      WindDirection = new Angle(213, AngleUnit.Degree),
                       WindGust = 1.82d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1268,7 +1268,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 13,
                       Visibility = 10000,
                       WindSpeed = 1.2d,
-                      WindDirection = 218,
+                      WindDirection = new Angle(218, AngleUnit.Degree),
                       WindGust = 2.03d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1294,7 +1294,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 2,
                       Visibility = 10000,
                       WindSpeed = 1.26d,
-                      WindDirection = 274,
+                      WindDirection = new Angle(274, AngleUnit.Degree),
                       WindGust = 3.46d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1320,7 +1320,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 7,
                       Visibility = 10000,
                       WindSpeed = 1.71d,
-                      WindDirection = 286,
+                      WindDirection = new Angle(286, AngleUnit.Degree),
                       WindGust = 3.79d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1346,7 +1346,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 7,
                       Visibility = 10000,
                       WindSpeed = 1.76d,
-                      WindDirection = 286,
+                      WindDirection = new Angle(286, AngleUnit.Degree),
                       WindGust = 4.1d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1372,7 +1372,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 8,
                       Visibility = 10000,
                       WindSpeed = 2.12d,
-                      WindDirection = 286,
+                      WindDirection = new Angle(286, AngleUnit.Degree),
                       WindGust = 4.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1398,7 +1398,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 24,
                       Visibility = 10000,
                       WindSpeed = 2.4d,
-                      WindDirection = 294,
+                      WindDirection = new Angle(294, AngleUnit.Degree),
                       WindGust = 4.9d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1424,7 +1424,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 37,
                       Visibility = 10000,
                       WindSpeed = 2.81d,
-                      WindDirection = 302,
+                      WindDirection = new Angle(302, AngleUnit.Degree),
                       WindGust = 5.14d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1450,7 +1450,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 3.25d,
-                      WindDirection = 313,
+                      WindDirection = new Angle(313, AngleUnit.Degree),
                       WindGust = 4.88d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1476,7 +1476,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 97,
                       Visibility = 10000,
                       WindSpeed = 3.58d,
-                      WindDirection = 328,
+                      WindDirection = new Angle(328, AngleUnit.Degree),
                       WindGust = 4.29d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1502,7 +1502,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 87,
                       Visibility = 10000,
                       WindSpeed = 1.98d,
-                      WindDirection = 338,
+                      WindDirection = new Angle(338, AngleUnit.Degree),
                       WindGust = 3.32d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1528,7 +1528,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 74,
                       Visibility = 10000,
                       WindSpeed = 2.2d,
-                      WindDirection = 340,
+                      WindDirection = new Angle(340, AngleUnit.Degree),
                       WindGust = 2.63d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1554,7 +1554,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 65,
                       Visibility = 10000,
                       WindSpeed = 1.84d,
-                      WindDirection = 338,
+                      WindDirection = new Angle(338, AngleUnit.Degree),
                       WindGust = 3.38d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1580,7 +1580,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 62,
                       Visibility = 10000,
                       WindSpeed = 1.29d,
-                      WindDirection = 335,
+                      WindDirection = new Angle(335, AngleUnit.Degree),
                       WindGust = 1.56d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1606,7 +1606,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 97,
                       Visibility = 10000,
                       WindSpeed = 0.39d,
-                      WindDirection = 327,
+                      WindDirection = new Angle(327, AngleUnit.Degree),
                       WindGust = 0.66d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1654,7 +1654,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 0,
                       Visibility = 0,
                       WindSpeed = 2.95d,
-                      WindDirection = 48,
+                      WindDirection = new Angle(48, AngleUnit.Degree),
                       WindGust = 3.51d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1701,7 +1701,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 20,
                       Visibility = 0,
                       WindSpeed = 3.76d,
-                      WindDirection = 272,
+                      WindDirection = new Angle(272, AngleUnit.Degree),
                       WindGust = 6.72d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1748,7 +1748,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 24,
                       Visibility = 0,
                       WindSpeed = 3.58d,
-                      WindDirection = 328,
+                      WindDirection = new Angle(328, AngleUnit.Degree),
                       WindGust = 5.14d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1795,7 +1795,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 74,
                       Visibility = 0,
                       WindSpeed = 2.43d,
-                      WindDirection = 8,
+                      WindDirection = new Angle(8, AngleUnit.Degree),
                       WindGust = 2.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1842,7 +1842,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 1,
                       Visibility = 0,
                       WindSpeed = 3.19d,
-                      WindDirection = 51,
+                      WindDirection = new Angle(51, AngleUnit.Degree),
                       WindGust = 4.24d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1889,7 +1889,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 0,
                       Visibility = 0,
                       WindSpeed = 3.47d,
-                      WindDirection = 149,
+                      WindDirection = new Angle(149, AngleUnit.Degree),
                       WindGust = 7.32d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1936,7 +1936,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 76,
                       Visibility = 0,
                       WindSpeed = 3.32d,
-                      WindDirection = 359,
+                      WindDirection = new Angle(359, AngleUnit.Degree),
                       WindGust = 7.06d,
                       Weather = new List<WeatherCondition>
                       {
@@ -1983,7 +1983,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 0,
                       WindSpeed = 3.7d,
-                      WindDirection = 211,
+                      WindDirection = new Angle(211, AngleUnit.Degree),
                       WindGust = 8.22d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2026,7 +2026,7 @@ namespace OpenWeatherMap.Tests.Testdata
                 Clouds = 75,
                 Visibility = 10000,
                 WindSpeed = 0d,
-                WindDirection = 0,
+                WindDirection = new Angle(0, AngleUnit.Degree),
                 WindGust = 0d,
                 Weather = new List<WeatherCondition>
                     {
@@ -2361,7 +2361,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 75,
                       Visibility = 10000,
                       WindSpeed = 0.67d,
-                      WindDirection = 294,
+                      WindDirection = new Angle(294, AngleUnit.Degree),
                       WindGust = 1.82d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2387,7 +2387,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 80,
                       Visibility = 10000,
                       WindSpeed = 0.73d,
-                      WindDirection = 334,
+                      WindDirection = new Angle(334, AngleUnit.Degree),
                       WindGust = 1.19d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2413,7 +2413,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 85,
                       Visibility = 10000,
                       WindSpeed = 1.03d,
-                      WindDirection = 357,
+                      WindDirection = new Angle(357, AngleUnit.Degree),
                       WindGust = 0.98d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2439,7 +2439,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 90,
                       Visibility = 10000,
                       WindSpeed = 0.85d,
-                      WindDirection = 14,
+                      WindDirection = new Angle(14, AngleUnit.Degree),
                       WindGust = 0.94d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2465,7 +2465,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 95,
                       Visibility = 10000,
                       WindSpeed = 0.51d,
-                      WindDirection = 13,
+                      WindDirection = new Angle(13, AngleUnit.Degree),
                       WindGust = 0.55d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2491,7 +2491,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 0.58d,
-                      WindDirection = 139,
+                      WindDirection = new Angle(139, AngleUnit.Degree),
                       WindGust = 0.57d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2517,7 +2517,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 98,
                       Visibility = 10000,
                       WindSpeed = 0.8d,
-                      WindDirection = 170,
+                      WindDirection = new Angle(170, AngleUnit.Degree),
                       WindGust = 0.76d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2543,7 +2543,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 62,
                       Visibility = 10000,
                       WindSpeed = 1.04d,
-                      WindDirection = 184,
+                      WindDirection = new Angle(184, AngleUnit.Degree),
                       WindGust = 0.97d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2569,7 +2569,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 40,
                       Visibility = 10000,
                       WindSpeed = 1.33d,
-                      WindDirection = 198,
+                      WindDirection = new Angle(198, AngleUnit.Degree),
                       WindGust = 1.27d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2595,7 +2595,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 31,
                       Visibility = 10000,
                       WindSpeed = 1.39d,
-                      WindDirection = 210,
+                      WindDirection = new Angle(210, AngleUnit.Degree),
                       WindGust = 1.27d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2621,7 +2621,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 25,
                       Visibility = 10000,
                       WindSpeed = 1.6d,
-                      WindDirection = 214,
+                      WindDirection = new Angle(214, AngleUnit.Degree),
                       WindGust = 1.42d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2647,7 +2647,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 22,
                       Visibility = 10000,
                       WindSpeed = 1.7d,
-                      WindDirection = 208,
+                      WindDirection = new Angle(208, AngleUnit.Degree),
                       WindGust = 1.63d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2673,7 +2673,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 34,
                       Visibility = 10000,
                       WindSpeed = 1.81d,
-                      WindDirection = 200,
+                      WindDirection = new Angle(200, AngleUnit.Degree),
                       WindGust = 1.82d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2699,7 +2699,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.78d,
-                      WindDirection = 201,
+                      WindDirection = new Angle(201, AngleUnit.Degree),
                       WindGust = 1.64d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2725,7 +2725,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.88d,
-                      WindDirection = 190,
+                      WindDirection = new Angle(190, AngleUnit.Degree),
                       WindGust = 1.69d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2751,7 +2751,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.68d,
-                      WindDirection = 189,
+                      WindDirection = new Angle(189, AngleUnit.Degree),
                       WindGust = 1.53d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2777,7 +2777,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.63d,
-                      WindDirection = 196,
+                      WindDirection = new Angle(196, AngleUnit.Degree),
                       WindGust = 1.49d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2803,7 +2803,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.46d,
-                      WindDirection = 206,
+                      WindDirection = new Angle(206, AngleUnit.Degree),
                       WindGust = 1.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2829,7 +2829,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.46d,
-                      WindDirection = 221,
+                      WindDirection = new Angle(221, AngleUnit.Degree),
                       WindGust = 1.35d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2855,7 +2855,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.69d,
-                      WindDirection = 202,
+                      WindDirection = new Angle(202, AngleUnit.Degree),
                       WindGust = 1.64d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2881,7 +2881,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2d,
-                      WindDirection = 181,
+                      WindDirection = new Angle(181, AngleUnit.Degree),
                       WindGust = 2.13d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2907,7 +2907,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.3d,
-                      WindDirection = 192,
+                      WindDirection = new Angle(192, AngleUnit.Degree),
                       WindGust = 1.85d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2933,7 +2933,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.02d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 2.53d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2959,7 +2959,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 0.86d,
-                      WindDirection = 224,
+                      WindDirection = new Angle(224, AngleUnit.Degree),
                       WindGust = 3d,
                       Weather = new List<WeatherCondition>
                       {
@@ -2985,7 +2985,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 96,
                       Visibility = 10000,
                       WindSpeed = 1.06d,
-                      WindDirection = 240,
+                      WindDirection = new Angle(240, AngleUnit.Degree),
                       WindGust = 3.45d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3011,7 +3011,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 99,
                       Visibility = 10000,
                       WindSpeed = 0.78d,
-                      WindDirection = 247,
+                      WindDirection = new Angle(247, AngleUnit.Degree),
                       WindGust = 3.07d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3037,7 +3037,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 98,
                       Visibility = 10000,
                       WindSpeed = 0.59d,
-                      WindDirection = 241,
+                      WindDirection = new Angle(241, AngleUnit.Degree),
                       WindGust = 1.76d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3063,7 +3063,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 98,
                       Visibility = 10000,
                       WindSpeed = 1.06d,
-                      WindDirection = 195,
+                      WindDirection = new Angle(195, AngleUnit.Degree),
                       WindGust = 1.04d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3089,7 +3089,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 96,
                       Visibility = 10000,
                       WindSpeed = 1.46d,
-                      WindDirection = 186,
+                      WindDirection = new Angle(186, AngleUnit.Degree),
                       WindGust = 1.34d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3115,7 +3115,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 96,
                       Visibility = 10000,
                       WindSpeed = 1.77d,
-                      WindDirection = 190,
+                      WindDirection = new Angle(190, AngleUnit.Degree),
                       WindGust = 1.57d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3141,7 +3141,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 96,
                       Visibility = 10000,
                       WindSpeed = 1.91d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 1.67d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3167,7 +3167,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 1.91d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 1.68d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3193,7 +3193,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2.07d,
-                      WindDirection = 199,
+                      WindDirection = new Angle(199, AngleUnit.Degree),
                       WindGust = 1.81d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3219,7 +3219,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2.3d,
-                      WindDirection = 186,
+                      WindDirection = new Angle(186, AngleUnit.Degree),
                       WindGust = 1.96d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3245,7 +3245,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2.26d,
-                      WindDirection = 186,
+                      WindDirection = new Angle(186, AngleUnit.Degree),
                       WindGust = 1.95d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3271,7 +3271,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2.2d,
-                      WindDirection = 188,
+                      WindDirection = new Angle(188, AngleUnit.Degree),
                       WindGust = 1.88d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3297,7 +3297,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 99,
                       Visibility = 10000,
                       WindSpeed = 2.34d,
-                      WindDirection = 187,
+                      WindDirection = new Angle(187, AngleUnit.Degree),
                       WindGust = 2d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3323,7 +3323,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 23,
                       Visibility = 10000,
                       WindSpeed = 2.47d,
-                      WindDirection = 185,
+                      WindDirection = new Angle(185, AngleUnit.Degree),
                       WindGust = 2.12d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3349,7 +3349,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 28,
                       Visibility = 10000,
                       WindSpeed = 2.51d,
-                      WindDirection = 182,
+                      WindDirection = new Angle(182, AngleUnit.Degree),
                       WindGust = 2.16d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3375,7 +3375,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 31,
                       Visibility = 10000,
                       WindSpeed = 2.25d,
-                      WindDirection = 183,
+                      WindDirection = new Angle(183, AngleUnit.Degree),
                       WindGust = 1.92d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3401,7 +3401,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 48,
                       Visibility = 10000,
                       WindSpeed = 2.02d,
-                      WindDirection = 183,
+                      WindDirection = new Angle(183, AngleUnit.Degree),
                       WindGust = 1.79d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3427,7 +3427,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 58,
                       Visibility = 10000,
                       WindSpeed = 1.87d,
-                      WindDirection = 185,
+                      WindDirection = new Angle(185, AngleUnit.Degree),
                       WindGust = 1.66d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3453,7 +3453,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 65,
                       Visibility = 10000,
                       WindSpeed = 2.03d,
-                      WindDirection = 184,
+                      WindDirection = new Angle(184, AngleUnit.Degree),
                       WindGust = 1.79d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3479,7 +3479,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 10000,
                       WindSpeed = 2.14d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 1.91d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3505,7 +3505,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 88,
                       Visibility = 10000,
                       WindSpeed = 1.73d,
-                      WindDirection = 203,
+                      WindDirection = new Angle(203, AngleUnit.Degree),
                       WindGust = 1.76d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3531,7 +3531,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 77,
                       Visibility = 10000,
                       WindSpeed = 1.83d,
-                      WindDirection = 195,
+                      WindDirection = new Angle(195, AngleUnit.Degree),
                       WindGust = 3.89d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3557,7 +3557,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 82,
                       Visibility = 10000,
                       WindSpeed = 1.55d,
-                      WindDirection = 207,
+                      WindDirection = new Angle(207, AngleUnit.Degree),
                       WindGust = 5.87d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3583,7 +3583,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 81,
                       Visibility = 10000,
                       WindSpeed = 1.47d,
-                      WindDirection = 220,
+                      WindDirection = new Angle(220, AngleUnit.Degree),
                       WindGust = 5.78d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3631,7 +3631,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 80,
                       Visibility = 0,
                       WindSpeed = 2.92d,
-                      WindDirection = 263,
+                      WindDirection = new Angle(263, AngleUnit.Degree),
                       WindGust = 7.38d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3678,7 +3678,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 0,
                       WindSpeed = 2.3d,
-                      WindDirection = 186,
+                      WindDirection = new Angle(186, AngleUnit.Degree),
                       WindGust = 3.45d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3725,7 +3725,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 81,
                       Visibility = 0,
                       WindSpeed = 2.51d,
-                      WindDirection = 182,
+                      WindDirection = new Angle(182, AngleUnit.Degree),
                       WindGust = 5.87d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3772,7 +3772,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 42,
                       Visibility = 0,
                       WindSpeed = 2.2d,
-                      WindDirection = 194,
+                      WindDirection = new Angle(194, AngleUnit.Degree),
                       WindGust = 3.1d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3819,7 +3819,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 100,
                       Visibility = 0,
                       WindSpeed = 2.32d,
-                      WindDirection = 189,
+                      WindDirection = new Angle(189, AngleUnit.Degree),
                       WindGust = 5.16d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3866,7 +3866,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 34,
                       Visibility = 0,
                       WindSpeed = 1.98d,
-                      WindDirection = 193,
+                      WindDirection = new Angle(193, AngleUnit.Degree),
                       WindGust = 1.8d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3913,7 +3913,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 21,
                       Visibility = 0,
                       WindSpeed = 1.8d,
-                      WindDirection = 175,
+                      WindDirection = new Angle(175, AngleUnit.Degree),
                       WindGust = 1.59d,
                       Weather = new List<WeatherCondition>
                       {
@@ -3960,7 +3960,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Clouds = 97,
                       Visibility = 0,
                       WindSpeed = 3.41d,
-                      WindDirection = 234,
+                      WindDirection = new Angle(234, AngleUnit.Degree),
                       WindGust = 8.34d,
                       Weather = new List<WeatherCondition>
                       {

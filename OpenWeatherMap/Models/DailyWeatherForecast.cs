@@ -74,7 +74,7 @@ namespace OpenWeatherMap.Models
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
-        public WindDirection WindDirection { get; set; }
+        public Angle WindDirection { get; set; }
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).

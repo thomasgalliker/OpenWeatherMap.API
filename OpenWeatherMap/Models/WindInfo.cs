@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -17,7 +18,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonProperty("deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
-        public WindDirection Direction { get; set; }
+        public Angle Direction { get; set; }
 
         /// <summary>
         /// Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
