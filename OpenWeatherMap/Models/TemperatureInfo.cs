@@ -50,6 +50,7 @@ namespace OpenWeatherMap.Models
         /// Gets the atmospheric pressure on the ground level (in hPa).
         /// </summary>
         [JsonProperty("grnd_level")]
+        [JsonConverter(typeof(PressureJsonConverter))]
         public Pressure? GroundLevel { get; set; }
 
         /// <summary>
