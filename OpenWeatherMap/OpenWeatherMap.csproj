@@ -1,139 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Label="MultilingualAppToolkit">
-    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
-    <MultilingualFallbackLanguage>sv</MultilingualFallbackLanguage>
-    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
-    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyTitle>OpenWeatherMap</AssemblyTitle>
-    <Description>OpenWeatherMap API client for .NET</Description>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>1.0.0</Version>
-    <Authors>Thomas Galliker</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>OpenWeatherMap</AssemblyName>
-    <PackageId>OpenWeatherMap.API</PackageId>
-    <PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/OpenWeatherMap.API/develop/Images/logo.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</PackageProjectUrl>
-    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</RepositoryUrl>
-    <SignAssembly>True</SignAssembly>
-    <LangVersion>latest</LangVersion>
-    <UserSecretsId>df2fb3f7-a0e8-48eb-b98e-f64a387871a5</UserSecretsId>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon />
-    <OutputType>Library</OutputType>
-    <StartupObject />
-    <Company>superdev GmbH</Company>
-    <Product>OpenWeatherMap.API</Product>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RootNamespace>OpenWeatherMap</RootNamespace>
-    <PackageReleaseNotes>2.0.x
-- Use unit types from dependency UnitsNet
-		
-1.2.0
-- Major refactoring in wind direction data model
-- Add multilingual support
+	<PropertyGroup Label="MultilingualAppToolkit">
+		<MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+		<MultilingualFallbackLanguage>sv</MultilingualFallbackLanguage>
+		<TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+		<SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AssemblyTitle>OpenWeatherMap</AssemblyTitle>
+		<Description>OpenWeatherMap API client for .NET</Description>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<Version>1.0.0</Version>
+		<Authors>Thomas Galliker</Authors>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>OpenWeatherMap</AssemblyName>
+		<PackageId>OpenWeatherMap.API</PackageId>
+		<PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation</PackageTags>
+		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/OpenWeatherMap.API/develop/Images/logo.png</PackageIconUrl>
+		<PackageProjectUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</PackageProjectUrl>
+		<PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/thomasgalliker/OpenWeatherMap.API</RepositoryUrl>
+		<SignAssembly>True</SignAssembly>
+		<LangVersion>latest</LangVersion>
+		<UserSecretsId>df2fb3f7-a0e8-48eb-b98e-f64a387871a5</UserSecretsId>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ApplicationIcon />
+		<OutputType>Library</OutputType>
+		<StartupObject />
+		<Company>superdev GmbH</Company>
+		<Product>OpenWeatherMap.API</Product>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<RootNamespace>OpenWeatherMap</RootNamespace>
+		<PackageReleaseNotes>
+			2.0.x
+			- Use unit types from dependency UnitsNet
 
-1.0.0
-- Initial release
+			1.2.0
+			- Major refactoring in wind direction data model
+			- Add multilingual support
+
+			1.0.0
+			- Initial release
 		</PackageReleaseNotes>
-    <Copyright>Copyright 2023</Copyright>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <NeutralLanguage>sv</NeutralLanguage>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
-  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
-    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
-  </Target>
-  <ItemGroup>
-    <None Remove="MultilingualResources\OpenWeatherMap.de.xlf" />
-    <None Remove="MultilingualResources\OpenWeatherMap.en.xlf" />
-    <None Remove="MultilingualResources\OpenWeatherMap.fr.xlf" />
-    <None Remove="MultilingualResources\OpenWeatherMap.it.xlf" />
-    <None Remove="Resources\Icons\*.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Icons\*.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="MultilingualResources\OpenWeatherMap.de.xlf" />
-    <XliffResource Include="MultilingualResources\OpenWeatherMap.en.xlf" />
-    <XliffResource Include="MultilingualResources\OpenWeatherMap.fr.xlf" />
-    <XliffResource Include="MultilingualResources\OpenWeatherMap.it.xlf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Resources\Strings\AirQualityTranslations.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AirQualityTranslations.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Strings\CardinalWindDirectionsAcronyms.Designer.cs">
-      <DependentUpon>CardinalWindDirectionsAcronyms.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Resources\Strings\HumidityRanges.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>HumidityRanges.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Strings\PressureRanges.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>PressureRanges.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Strings\UVIndexRanges.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>UVIndexRanges.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Strings\CardinalWindDirections.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CardinalWindDirections.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Strings\AirQualityTranslations.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AirQualityTranslations.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Strings\CardinalWindDirectionsAcronyms.resx">
-      <LastGenOutput>CardinalWindDirectionsAcronyms.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Strings\HumidityRanges.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>HumidityRanges.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Strings\PressureRanges.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>PressureRanges.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Strings\UVIndexRanges.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>UVIndexRanges.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Strings\CardinalWindDirections.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CardinalWindDirections.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+		<Copyright>Copyright 2023</Copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<NeutralLanguage>sv</NeutralLanguage>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+	<Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+	<Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+		<Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+	</Target>
+	<ItemGroup>
+		<None Remove="MultilingualResources\OpenWeatherMap.de.xlf" />
+		<None Remove="MultilingualResources\OpenWeatherMap.en.xlf" />
+		<None Remove="MultilingualResources\OpenWeatherMap.fr.xlf" />
+		<None Remove="MultilingualResources\OpenWeatherMap.it.xlf" />
+		<None Remove="Resources\Icons\*.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Icons\*.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[6.0.1,)" />
+		<PackageReference Include="Newtonsoft.Json" Version="[12.0.1,)" />
+		<PackageReference Include="UnitsNet" Version="[5.29.0,)" />
+	</ItemGroup>
+	<ItemGroup>
+		<XliffResource Include="MultilingualResources\OpenWeatherMap.de.xlf" />
+		<XliffResource Include="MultilingualResources\OpenWeatherMap.en.xlf" />
+		<XliffResource Include="MultilingualResources\OpenWeatherMap.fr.xlf" />
+		<XliffResource Include="MultilingualResources\OpenWeatherMap.it.xlf" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\Strings\AirQualityTranslations.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>AirQualityTranslations.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Strings\CardinalWindDirectionsAcronyms.Designer.cs">
+			<DependentUpon>CardinalWindDirectionsAcronyms.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Resources\Strings\HumidityRanges.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>HumidityRanges.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Strings\PressureRanges.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>PressureRanges.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Strings\UVIndexRanges.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>UVIndexRanges.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Strings\CardinalWindDirections.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CardinalWindDirections.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Strings\AirQualityTranslations.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>AirQualityTranslations.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\CardinalWindDirectionsAcronyms.resx">
+			<LastGenOutput>CardinalWindDirectionsAcronyms.Designer.cs</LastGenOutput>
+			<Generator>ResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\HumidityRanges.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>HumidityRanges.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\PressureRanges.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>PressureRanges.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\UVIndexRanges.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>UVIndexRanges.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\CardinalWindDirections.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>CardinalWindDirections.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 </Project>
