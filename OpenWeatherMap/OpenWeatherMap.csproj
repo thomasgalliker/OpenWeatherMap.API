@@ -33,7 +33,10 @@
     <Product>OpenWeatherMap.API</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>OpenWeatherMap</RootNamespace>
-    <PackageReleaseNotes>1.2.0
+    <PackageReleaseNotes>2.0.x
+- Use unit types from dependency UnitsNet
+		
+1.2.0
 - Major refactoring in wind direction data model
 - Add multilingual support
 
