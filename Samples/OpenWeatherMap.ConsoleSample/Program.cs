@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using OpenWeatherMap.Extensions;
 using OpenWeatherMap.Models;
 
 namespace OpenWeatherMap.ConsoleSample
@@ -54,8 +55,8 @@ namespace OpenWeatherMap.ConsoleSample
                 $"Current Weather Info:{Environment.NewLine}" +
                 $"Location: {weatherInfo.CityName}{Environment.NewLine}" +
                 $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
-                $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.Range}){Environment.NewLine}" +
-                $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.Range}){Environment.NewLine}" +
+                $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
+                $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +
                 $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction}){Environment.NewLine}");
 
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);

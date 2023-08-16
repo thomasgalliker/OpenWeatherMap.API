@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using OpenWeatherMap.Models;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace OpenWeatherMap
 {
@@ -27,7 +29,7 @@ namespace OpenWeatherMap
             {
                 Main = new TemperatureInfo
                 {
-                    Temperature = new Temperature(-27d, TemperatureUnit.Celsius),
+                    Temperature = new Temperature(-27d, TemperatureUnit.DegreeCelsius),
                 }
             });
         }

@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Tests.Logging;
 using OpenWeatherMap.Tests.Testdata;
+using UnitsNet;
+using UnitsNet.Units;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -31,8 +33,8 @@ namespace OpenWeatherMap.Tests
             };
 
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<Temperature>(t => $"new Temperature({t.Value}, {nameof(TemperatureUnit)}.{t.Unit})");
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Pressure>(p => $"new Pressure({p.Value})");
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Humidity>(h => $"new Humidity({h.Value})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Pressure>(p => $"new Pressure({p.Value}, {nameof(PressureUnit)}.{p.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<RelativeHumidity>(h => $"new RelativeHumidity({h.Value}, {nameof(RelativeHumidityUnit)}.{h.Unit})");
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<UVIndex>(uvi => $"new UVIndex({uvi.Value})");
         }
 

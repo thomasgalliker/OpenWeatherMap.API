@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenWeatherMap.Internals;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -32,7 +33,7 @@ namespace OpenWeatherMap.Models
 
         [JsonProperty("humidity")]
         [JsonConverter(typeof(HumidityJsonConverter))]
-        public Humidity Humidity { get; set; }
+        public RelativeHumidity Humidity { get; set; }
 
         [JsonProperty("dew_point")]
         public Temperature DewPoint { get; set; }

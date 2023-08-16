@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-using OpenWeatherMap.Models;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
@@ -13,17 +13,19 @@ namespace OpenWeatherMap.Models.Converters
 
         public override Temperature ReadJson(JsonReader reader, Type objectType, Temperature existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.Value is double celsius)
+            if (reader.Value is double doubleValue)
             {
-                return Temperature.FromCelsius(celsius);
+                return Temperature.FromDegreesCelsius(doubleValue);
             }
 
-            if (reader.Value is long celsiusLong)
+            if (reader.Value is long longValue)
             {
-                return Temperature.FromCelsius(celsiusLong);
+                return Temperature.FromDegreesCelsius(longValue);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to °Celsius");
+            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
+                ? Temperature.FromDegreesCelsius(value)
+                : default;
         }
     }
 }

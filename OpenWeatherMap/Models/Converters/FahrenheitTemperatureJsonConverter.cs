@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
@@ -12,17 +13,19 @@ namespace OpenWeatherMap.Models.Converters
 
         public override Temperature ReadJson(JsonReader reader, Type objectType, Temperature existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.Value is double fahrenheit)
+            if (reader.Value is double doubleValue)
             {
-                return Temperature.FromFahrenheit(fahrenheit);
+                return Temperature.FromDegreesFahrenheit(doubleValue);
             }
 
-            if (reader.Value is long fahrenheitLong)
+            if (reader.Value is long longValue)
             {
-                return Temperature.FromFahrenheit(fahrenheitLong);
+                return Temperature.FromDegreesFahrenheit(longValue);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to Fahrenheit");
+            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
+                ? Temperature.FromDegreesCelsius(value)
+                : default;
         }
     }
 }
