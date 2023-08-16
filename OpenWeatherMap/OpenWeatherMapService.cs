@@ -20,10 +20,10 @@ namespace OpenWeatherMap
     /// </summary>
     public class OpenWeatherMapService : IOpenWeatherMapService
     {
-        public const double MinLatitude = -90d;
-        public const double MaxLatitude = 90d;
-        public const double MinLongitude = -180d;
-        public const double MaxLongitude = 180d;
+        internal const double MinLatitude = -90d;
+        internal const double MaxLatitude = 90d;
+        internal const double MinLongitude = -180d;
+        internal const double MaxLongitude = 180d;
 
         private readonly ILogger<OpenWeatherMapService> logger;
         private readonly HttpClient httpClient;
