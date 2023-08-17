@@ -1,19 +1,20 @@
 ﻿using FluentAssertions;
+using OpenWeatherMap.Extensions;
 using OpenWeatherMap.Models;
 using UnitsNet;
 using UnitsNet.Units;
 using Xunit;
 
-namespace OpenWeatherMap.Tests.Models
+namespace OpenWeatherMap.Tests.Extensions
 {
-    public class WindDirectionExtensionsTests
+    public class AngleExtensionsTests
     {
         [Theory]
         [ClassData(typeof(CardinalWindDirectionTestData))]
         public void ShouldGetCardinalWindDirection(Angle windDirection, CardinalWindDirection expectedCardinalWindDirection)
         {
             // Act
-            var cardinalWindDirection = windDirection.GetCardinalWindDirection();
+            var cardinalWindDirection = windDirection.ToCardinalWindDirection();
 
             // Assert
             cardinalWindDirection.Should().Be(expectedCardinalWindDirection);
@@ -34,7 +35,7 @@ namespace OpenWeatherMap.Tests.Models
         public void ShouldGetIntercardinalWindDirection(Angle windDirection, CardinalWindDirection expectedCardinalWindDirection)
         {
             // Act
-            var intercardinalWindDirection = windDirection.GetIntercardinalWindDirection();
+            var intercardinalWindDirection = windDirection.ToIntercardinalWindDirection();
 
             // Assert
             intercardinalWindDirection.Should().Be(expectedCardinalWindDirection);
@@ -49,13 +50,13 @@ namespace OpenWeatherMap.Tests.Models
                 this.Add(new Angle(147, AngleUnit.Degree), CardinalWindDirection.SE);
             }
         }
-        
+
         [Theory]
         [ClassData(typeof(SecondaryIntercardinalWindDirectionTestData))]
         public void ShouldGetSecondaryIntercardinalWindDirection(Angle windDirection, CardinalWindDirection expectedCardinalWindDirection)
         {
             // Act
-            var SecondaryIntercardinalWindDirection = windDirection.GetSecondaryIntercardinalWindDirection();
+            var SecondaryIntercardinalWindDirection = windDirection.ToSecondaryIntercardinalWindDirection();
 
             // Assert
             SecondaryIntercardinalWindDirection.Should().Be(expectedCardinalWindDirection);

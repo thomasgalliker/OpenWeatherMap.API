@@ -57,7 +57,7 @@ namespace OpenWeatherMap.ConsoleSample
                 $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
                 $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
                 $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +
-                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction}){Environment.NewLine}");
+                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction.ToIntercardinalWindDirection()}){Environment.NewLine}");
 
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
             if (airPollutionInfo.Items.FirstOrDefault() is AirPollutionInfoItem airPollutionInfoItem)

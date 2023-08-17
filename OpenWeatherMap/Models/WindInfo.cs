@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMap.Extensions;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -28,7 +29,7 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return $"Speed: {this.Speed}, Direction: {this.Direction.GetSecondaryIntercardinalWindDirection()}";
+            return $"Speed: {this.Speed}, Direction: {this.Direction.ToIntercardinalWindDirection()}";
         }
     }
 }

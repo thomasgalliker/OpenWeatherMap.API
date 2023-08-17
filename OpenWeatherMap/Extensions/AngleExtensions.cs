@@ -1,18 +1,22 @@
-﻿using UnitsNet;
+﻿using OpenWeatherMap.Models;
+using UnitsNet;
 
-namespace OpenWeatherMap.Models
+namespace OpenWeatherMap.Extensions
 {
     /// <summary>
-    /// https://www.geographyrealm.com/cardinal-directions-ordinal-directions/
+    /// Provides conversion methods from wind direction to cardinal wind directions.
     /// </summary>
-    public static class WindDirectionExtensions
+    /// <remarks>
+    /// https://www.geographyrealm.com/cardinal-directions-ordinal-directions/
+    /// </remarks>
+    public static class AngleExtensions
     {
         /// <summary>
-        /// The four cardinal directions, or cardinal points, are the four main compass directions: north, south, east, and west, 
-        /// commonly denoted by their initials N, S, E, and W respectively. 
+        /// The four cardinal directions, or cardinal points, are the four main compass directions: 
+        /// north, south, east, and west, commonly denoted by their initials N, S, E, and W respectively. 
         /// Relative to north, the directions east, south, and west are at 90 degree intervals in the clockwise direction.
         /// </summary>
-        public static CardinalWindDirection GetCardinalWindDirection(this Angle windDirection)
+        public static CardinalWindDirection ToCardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 
@@ -35,9 +39,10 @@ namespace OpenWeatherMap.Models
         }
 
         /// <summary>
-        /// The intercardinal (intermediate, or, historically, ordinal) directions are the four intermediate compass directions located halfway between each pair of cardinal directions.
+        /// The intercardinal (intermediate, or, historically, ordinal) directions 
+        /// are the four intermediate compass directions located halfway between each pair of cardinal directions.
         /// </summary>
-        public static CardinalWindDirection GetIntercardinalWindDirection(this Angle windDirection)
+        public static CardinalWindDirection ToIntercardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 
@@ -82,17 +87,17 @@ namespace OpenWeatherMap.Models
             return CardinalWindDirection.N;
         }
 
-
         /// <summary>
         /// Directions midway between each cardinal and ordinal direction are referred to as secondary intercardinal directions.
         /// On a compass rose with ordinal, cardinal, and secondary intercardinal directions, there will be 16 points: 
         /// N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, NWN, NW, and NNW.
-        /// 
+        /// </summary>
+        /// <remarks>
         /// More info:
         /// http://snowfence.umn.edu/Components/winddirectionanddegrees.htm
         /// https://www.geographyrealm.com/cardinal-directions-ordinal-directions/
-        /// </summary>
-        public static CardinalWindDirection GetSecondaryIntercardinalWindDirection(this Angle windDirection)
+        /// </remarks>
+        public static CardinalWindDirection ToSecondaryIntercardinalWindDirection(this Angle windDirection)
         {
             var windDegrees = windDirection.Value;
 
