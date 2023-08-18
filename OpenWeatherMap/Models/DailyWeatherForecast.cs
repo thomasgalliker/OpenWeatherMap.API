@@ -33,8 +33,13 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Moonset { get; set; }
 
+        /// <summary>
+        /// Moon phase (0-100%). 0 and 100% are 'new moon', 25% is 'first quarter moon', 50% is 'full moon' and 75% is 'last quarter moon'.
+        /// The periods in between are called 'waxing crescent', 'waxing gibous', 'waning gibous', and 'waning crescent', respectively.
+        /// </summary>
         [JsonProperty("moon_phase")]
-        public double MoonPhase { get; set; }
+        [JsonConverter(typeof(PopRatioJsonConverter))]
+        public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
 
         [JsonProperty("temp")]
         public DailyTemperatureForecast Temperature { get; set; }

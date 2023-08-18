@@ -1623,7 +1623,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-14T19:24:17.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-14T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-14T03:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.5d,
+                      MoonPhase = new Ratio(0.5d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(23.42, TemperatureUnit.DegreeCelsius),
@@ -1670,7 +1670,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-15T19:24:45.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-15T21:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-15T03:57:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.54d,
+                      MoonPhase = new Ratio(0.54d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(28.26, TemperatureUnit.DegreeCelsius),
@@ -1717,7 +1717,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-16T19:25:11.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("1970-01-01T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-16T05:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.58d,
+                      MoonPhase = new Ratio(0.58d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(26.27, TemperatureUnit.DegreeCelsius),
@@ -1764,7 +1764,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-17T19:25:35.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-16T22:01:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-17T06:28:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.62d,
+                      MoonPhase = new Ratio(0.62d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(27.47, TemperatureUnit.DegreeCelsius),
@@ -1811,7 +1811,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-18T19:25:56.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-17T22:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-18T07:52:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.65d,
+                      MoonPhase = new Ratio(0.65d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(30.82, TemperatureUnit.DegreeCelsius),
@@ -1858,7 +1858,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-19T19:26:15.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-18T23:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-19T09:13:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.69d,
+                      MoonPhase = new Ratio(0.69d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(31.74, TemperatureUnit.DegreeCelsius),
@@ -1905,7 +1905,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-20T19:26:31.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-19T23:32:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-20T10:30:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.72d,
+                      MoonPhase = new Ratio(0.72d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(23.92, TemperatureUnit.DegreeCelsius),
@@ -1952,7 +1952,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-21T19:26:45.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-20T23:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-21T11:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.75d,
+                      MoonPhase = new Ratio(0.75d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(7.46, TemperatureUnit.DegreeCelsius),
@@ -3602,7 +3602,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-18T18:35:34.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-18T06:15:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-18T19:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.06d,
+                      MoonPhase = new Ratio(0.06d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(29.51d, TemperatureUnit.DegreeCelsius),
@@ -3649,7 +3649,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-19T18:33:49.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-19T07:21:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-19T19:54:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.09d,
+                      MoonPhase = new Ratio(0.09d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(30.66d, TemperatureUnit.DegreeCelsius),
@@ -3696,7 +3696,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-20T18:32:03.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-20T08:26:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-20T20:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.12d,
+                      MoonPhase = new Ratio(0.12d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(30.22d, TemperatureUnit.DegreeCelsius),
@@ -3743,7 +3743,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-21T18:30:17.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-21T09:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-21T20:24:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.15d,
+                      MoonPhase = new Ratio(0.15d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(31.63d, TemperatureUnit.DegreeCelsius),
@@ -3790,7 +3790,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-22T18:28:29.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-22T10:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-22T20:42:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.19d,
+                      MoonPhase = new Ratio(0.19d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(32.73d, TemperatureUnit.DegreeCelsius),
@@ -3837,7 +3837,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-23T18:26:40.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-23T11:56:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-23T21:05:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.22d,
+                      MoonPhase = new Ratio(0.22d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(33.06d, TemperatureUnit.DegreeCelsius),
@@ -3884,7 +3884,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-24T18:24:50.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-24T13:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2023-08-24T21:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.25d,
+                      MoonPhase = new Ratio(0.25d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(29.53d, TemperatureUnit.DegreeCelsius),
@@ -3931,7 +3931,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2023-08-25T18:23:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2023-08-25T14:27:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("1970-01-01T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.29d,
+                      MoonPhase = new Ratio(0.29d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
                         Day = new Temperature(24.68d, TemperatureUnit.DegreeCelsius),
