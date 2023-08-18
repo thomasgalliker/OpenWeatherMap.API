@@ -3639,8 +3639,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         }
                       },
                       Pop = new Ratio(4d, RatioUnit.Percent),
-                      Rain = null,
-                      Snow = null
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3686,8 +3686,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         }
                       },
                       Pop = new Ratio(0d, RatioUnit.Percent),
-                      Rain = null,
-                      Snow = null
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3733,8 +3733,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         }
                       },
                       Pop = new Ratio(0d, RatioUnit.Percent),
-                      Rain = null,
-                      Snow = null
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3780,8 +3780,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         }
                       },
                       Pop = new Ratio(1d, RatioUnit.Percent),
-                      Rain = null,
-                      Snow = null
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3827,8 +3827,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         }
                       },
                       Pop = new Ratio(25d, RatioUnit.Percent),
-                      Rain = null,
-                      Snow = null
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3875,7 +3875,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       },
                       Pop = new Ratio(91d, RatioUnit.Percent),
                       Rain = new Length(16.03d, LengthUnit.Millimeter),
-                      Snow = null
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3922,7 +3922,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       },
                       Pop = new Ratio(99d, RatioUnit.Percent),
                       Rain = new Length(6.89d, LengthUnit.Millimeter),
-                      Snow = null
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -3969,7 +3969,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       },
                       Pop = new Ratio(100d, RatioUnit.Percent),
                       Rain = new Length(19.6d, LengthUnit.Millimeter),
-                      Snow = null
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     }
                   },
                                 Alerts = new List<AlertInfo>
