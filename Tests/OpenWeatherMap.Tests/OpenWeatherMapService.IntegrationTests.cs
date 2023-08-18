@@ -37,6 +37,7 @@ namespace OpenWeatherMap.Tests
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<RelativeHumidity>(h => $"new RelativeHumidity({h.Value}d, {nameof(RelativeHumidityUnit)}.{h.Unit})");
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<Length>(l => $"new Length({l.Value}d, {nameof(LengthUnit)}.{l.Unit})");
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<Ratio>(r => $"new Ratio({r.Value}d, {nameof(RatioUnit)}.{r.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<MassConcentration>(r => $"new MassConcentration({r.Value}d, {nameof(MassConcentrationUnit)}.{r.Unit})");
             this.dumpOptions.CustomInstanceFormatters.AddFormatter<UVIndex>(uvi => $"new UVIndex({uvi.Value}d)");
         }
 
@@ -161,7 +162,7 @@ namespace OpenWeatherMap.Tests
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, DumpStyle.CSharp));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
 
             airPollutionInfo.Should().NotBeNull();
         }
