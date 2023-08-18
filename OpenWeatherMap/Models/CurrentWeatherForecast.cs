@@ -50,13 +50,18 @@ namespace OpenWeatherMap.Models
         public UVIndex UVIndex { get; set; }
 
         /// <summary>
-        ///  Cloudiness, %.
+        ///  Cloudiness.
         /// </summary>
         [JsonProperty("clouds")]
-        public int Clouds { get; set; }
+        [JsonConverter(typeof(PercentRatioJsonConverter))]
+        public Ratio Clouds { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);

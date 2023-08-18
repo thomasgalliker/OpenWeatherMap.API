@@ -42,10 +42,15 @@ namespace OpenWeatherMap.Models
         public UVIndex UVIndex { get; set; }
 
         [JsonProperty("clouds")]
-        public int Clouds { get; set; }
+        [JsonConverter(typeof(PercentRatioJsonConverter))]
+        public Ratio Clouds { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
         public Speed WindSpeed { get; set; }
@@ -67,7 +72,7 @@ namespace OpenWeatherMap.Models
         /// Probability of precipitation.
         /// </summary>
         [JsonProperty("pop")]
-        [JsonConverter(typeof(PopRatioJsonConverter))]
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; }
 
         public override string ToString()

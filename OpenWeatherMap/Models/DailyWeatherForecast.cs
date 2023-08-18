@@ -38,7 +38,7 @@ namespace OpenWeatherMap.Models
         /// The periods in between are called 'waxing crescent', 'waxing gibous', 'waning gibous', and 'waning crescent', respectively.
         /// </summary>
         [JsonProperty("moon_phase")]
-        [JsonConverter(typeof(PopRatioJsonConverter))]
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
 
         [JsonProperty("temp")]
@@ -68,11 +68,19 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(UVIndexJsonConverter))]
         public UVIndex UVIndex { get; set; }
 
+        /// <summary>
+        ///  Cloudiness.
+        /// </summary>
         [JsonProperty("clouds")]
-        public int Clouds { get; set; }
+        [JsonConverter(typeof(PercentRatioJsonConverter))]
+        public Ratio Clouds { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
         public Speed WindSpeed { get; set; }
@@ -95,7 +103,7 @@ namespace OpenWeatherMap.Models
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        [JsonConverter(typeof(PopRatioJsonConverter))]
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>

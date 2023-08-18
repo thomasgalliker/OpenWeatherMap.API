@@ -24,8 +24,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-14T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 59d,
-                        Today = 0d
+                        All = new Ratio(59d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -60,8 +60,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 49d,
-                        Today = 0d
+                        All = new Ratio(49d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -96,8 +96,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 25d,
-                        Today = 0d
+                        All = new Ratio(25d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -132,8 +132,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 6d,
-                        Today = 0d
+                        All = new Ratio(6d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -168,8 +168,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 29d,
-                        Today = 0d
+                        All = new Ratio(29d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -208,8 +208,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 25d,
-                        Today = 0d
+                        All = new Ratio(25d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -244,8 +244,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 37d,
-                        Today = 0d
+                        All = new Ratio(37d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -280,8 +280,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 28d,
-                        Today = 0d
+                        All = new Ratio(28d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -320,8 +320,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-15T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 39d,
-                        Today = 0d
+                        All = new Ratio(39d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -360,8 +360,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 23d,
-                        Today = 0d
+                        All = new Ratio(23d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -400,8 +400,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 14d,
-                        Today = 0d
+                        All = new Ratio(14d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -436,8 +436,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 13d,
-                        Today = 0d
+                        All = new Ratio(13d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -476,8 +476,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 7d,
-                        Today = 0d
+                        All = new Ratio(7d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -516,8 +516,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 37d,
-                        Today = 0d
+                        All = new Ratio(37d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -556,8 +556,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 87d,
-                        Today = 0d
+                        All = new Ratio(87d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -592,8 +592,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 62d,
-                        Today = 0d
+                        All = new Ratio(62d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -628,8 +628,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-16T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 96d,
-                        Today = 0d
+                        All = new Ratio(96d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -664,8 +664,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 79d,
-                        Today = 0d
+                        All = new Ratio(79d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -700,8 +700,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 37d,
-                        Today = 0d
+                        All = new Ratio(37d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -736,8 +736,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 64d,
-                        Today = 0d
+                        All = new Ratio(64d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -772,8 +772,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 68d,
-                        Today = 0d
+                        All = new Ratio(68d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -808,8 +808,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 71d,
-                        Today = 0d
+                        All = new Ratio(71d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -844,8 +844,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 55d,
-                        Today = 0d
+                        All = new Ratio(55d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -880,8 +880,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 61d,
-                        Today = 0d
+                        All = new Ratio(61d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -916,8 +916,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-17T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 93d,
-                        Today = 0d
+                        All = new Ratio(93d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -952,8 +952,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 93d,
-                        Today = 0d
+                        All = new Ratio(93d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -988,8 +988,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 35d,
-                        Today = 0d
+                        All = new Ratio(35d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1024,8 +1024,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 23d,
-                        Today = 0d
+                        All = new Ratio(23d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1060,8 +1060,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 1d,
-                        Today = 0d
+                        All = new Ratio(1d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1096,8 +1096,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 1d,
-                        Today = 0d
+                        All = new Ratio(1d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1132,8 +1132,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1168,8 +1168,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1204,8 +1204,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-18T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1240,8 +1240,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 1d,
-                        Today = 0d
+                        All = new Ratio(1d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1276,8 +1276,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1312,8 +1312,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1348,8 +1348,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1384,8 +1384,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 0d,
-                        Today = 0d
+                        All = new Ratio(0d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = null,
                         Main = new TemperatureInfo
@@ -1420,8 +1420,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 24d,
-                        Today = 0d
+                        All = new Ratio(24d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -1460,8 +1460,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         DateTime = DateTime.ParseExact("2022-06-19T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                         Clouds = new CloudsInformation
                         {
-                        All = 49d,
-                        Today = 0d
+                        All = new Ratio(49d, RatioUnit.Percent),
+                        Today = new Ratio(0d, RatioUnit.Percent)
                         },
                         Rain = new RainInformation
                         {
@@ -1531,8 +1531,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-14T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 56d,
-                            Today = 0d
+                            All = new Ratio(56d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1567,8 +1567,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-14T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 49d,
-                            Today = 0d
+                            All = new Ratio(49d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1603,8 +1603,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 41d,
-                            Today = 0d
+                            All = new Ratio(41d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1639,8 +1639,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 25d,
-                            Today = 0d
+                            All = new Ratio(25d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1675,8 +1675,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 11d,
-                            Today = 0d
+                            All = new Ratio(11d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1711,8 +1711,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 8d,
-                            Today = 0d
+                            All = new Ratio(8d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1747,8 +1747,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 6d,
-                            Today = 0d
+                            All = new Ratio(6d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1783,8 +1783,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 6d,
-                            Today = 0d
+                            All = new Ratio(6d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1819,8 +1819,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 6d,
-                            Today = 0d
+                            All = new Ratio(6d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1855,8 +1855,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 19d,
-                            Today = 0d
+                            All = new Ratio(19d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1891,8 +1891,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 26d,
-                            Today = 0d
+                            All = new Ratio(26d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -1931,8 +1931,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 29d,
-                            Today = 0d
+                            All = new Ratio(29d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -1967,8 +1967,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 22d,
-                            Today = 0d
+                            All = new Ratio(22d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2003,8 +2003,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 20d,
-                            Today = 0d
+                            All = new Ratio(20d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2039,8 +2039,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 25d,
-                            Today = 0d
+                            All = new Ratio(25d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2075,8 +2075,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 44d,
-                            Today = 0d
+                            All = new Ratio(44d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2111,8 +2111,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 51d,
-                            Today = 0d
+                            All = new Ratio(51d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2147,8 +2147,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 37d,
-                            Today = 0d
+                            All = new Ratio(37d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2183,8 +2183,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 30d,
-                            Today = 0d
+                            All = new Ratio(30d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2219,8 +2219,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 25d,
-                            Today = 0d
+                            All = new Ratio(25d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2255,8 +2255,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 28d,
-                            Today = 0d
+                            All = new Ratio(28d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2295,8 +2295,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 10d,
-                            Today = 0d
+                            All = new Ratio(10d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2335,8 +2335,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 18d,
-                            Today = 0d
+                            All = new Ratio(18d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2375,8 +2375,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 39d,
-                            Today = 0d
+                            All = new Ratio(39d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2415,8 +2415,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 31d,
-                            Today = 0d
+                            All = new Ratio(31d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2455,8 +2455,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-15T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 26d,
-                            Today = 0d
+                            All = new Ratio(26d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2495,8 +2495,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 23d,
-                            Today = 0d
+                            All = new Ratio(23d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2535,8 +2535,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 9d,
-                            Today = 0d
+                            All = new Ratio(9d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2571,8 +2571,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 18d,
-                            Today = 0d
+                            All = new Ratio(18d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2607,8 +2607,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 14d,
-                            Today = 0d
+                            All = new Ratio(14d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2643,8 +2643,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 13d,
-                            Today = 0d
+                            All = new Ratio(13d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2679,8 +2679,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 14d,
-                            Today = 0d
+                            All = new Ratio(14d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2715,8 +2715,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 13d,
-                            Today = 0d
+                            All = new Ratio(13d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2755,8 +2755,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 2d,
-                            Today = 0d
+                            All = new Ratio(2d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2791,8 +2791,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 7d,
-                            Today = 0d
+                            All = new Ratio(7d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2831,8 +2831,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 7d,
-                            Today = 0d
+                            All = new Ratio(7d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2871,8 +2871,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 8d,
-                            Today = 0d
+                            All = new Ratio(8d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = new RainInformation
                           {
@@ -2911,8 +2911,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 24d,
-                            Today = 0d
+                            All = new Ratio(24d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2947,8 +2947,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 37d,
-                            Today = 0d
+                            All = new Ratio(37d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -2983,8 +2983,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 100d,
-                            Today = 0d
+                            All = new Ratio(100d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3019,8 +3019,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 97d,
-                            Today = 0d
+                            All = new Ratio(97d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3055,8 +3055,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 87d,
-                            Today = 0d
+                            All = new Ratio(87d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3091,8 +3091,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 74d,
-                            Today = 0d
+                            All = new Ratio(74d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3127,8 +3127,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 65d,
-                            Today = 0d
+                            All = new Ratio(65d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3163,8 +3163,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 62d,
-                            Today = 0d
+                            All = new Ratio(62d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3199,8 +3199,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 97d,
-                            Today = 0d
+                            All = new Ratio(97d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3235,8 +3235,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 94d,
-                            Today = 0d
+                            All = new Ratio(94d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3271,8 +3271,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 96d,
-                            Today = 0d
+                            All = new Ratio(96d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3307,8 +3307,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 97d,
-                            Today = 0d
+                            All = new Ratio(97d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3343,8 +3343,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-16T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 90d,
-                            Today = 0d
+                            All = new Ratio(90d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3379,8 +3379,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 79d,
-                            Today = 0d
+                            All = new Ratio(79d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3415,8 +3415,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 9d,
-                            Today = 0d
+                            All = new Ratio(9d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3451,8 +3451,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 9d,
-                            Today = 0d
+                            All = new Ratio(9d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3487,8 +3487,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 37d,
-                            Today = 0d
+                            All = new Ratio(37d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3523,8 +3523,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 53d,
-                            Today = 0d
+                            All = new Ratio(53d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3559,8 +3559,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 62d,
-                            Today = 0d
+                            All = new Ratio(62d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3595,8 +3595,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 64d,
-                            Today = 0d
+                            All = new Ratio(64d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3631,8 +3631,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 62d,
-                            Today = 0d
+                            All = new Ratio(62d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3667,8 +3667,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 53d,
-                            Today = 0d
+                            All = new Ratio(53d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3703,8 +3703,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 68d,
-                            Today = 0d
+                            All = new Ratio(68d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3739,8 +3739,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 72d,
-                            Today = 0d
+                            All = new Ratio(72d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3775,8 +3775,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 74d,
-                            Today = 0d
+                            All = new Ratio(74d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3811,8 +3811,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 71d,
-                            Today = 0d
+                            All = new Ratio(71d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3847,8 +3847,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 42d,
-                            Today = 0d
+                            All = new Ratio(42d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3883,8 +3883,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 54d,
-                            Today = 0d
+                            All = new Ratio(54d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3919,8 +3919,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 55d,
-                            Today = 0d
+                            All = new Ratio(55d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3955,8 +3955,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 66d,
-                            Today = 0d
+                            All = new Ratio(66d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -3991,8 +3991,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 59d,
-                            Today = 0d
+                            All = new Ratio(59d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4027,8 +4027,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 61d,
-                            Today = 0d
+                            All = new Ratio(61d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4063,8 +4063,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 86d,
-                            Today = 0d
+                            All = new Ratio(86d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4099,8 +4099,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 89d,
-                            Today = 0d
+                            All = new Ratio(89d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4135,8 +4135,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 93d,
-                            Today = 0d
+                            All = new Ratio(93d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4171,8 +4171,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 95d,
-                            Today = 0d
+                            All = new Ratio(95d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4207,8 +4207,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-17T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 95d,
-                            Today = 0d
+                            All = new Ratio(95d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4243,8 +4243,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 93d,
-                            Today = 0d
+                            All = new Ratio(93d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4279,8 +4279,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 61d,
-                            Today = 0d
+                            All = new Ratio(61d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4315,8 +4315,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 48d,
-                            Today = 0d
+                            All = new Ratio(48d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4351,8 +4351,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 35d,
-                            Today = 0d
+                            All = new Ratio(35d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4387,8 +4387,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 31d,
-                            Today = 0d
+                            All = new Ratio(31d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4423,8 +4423,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 27d,
-                            Today = 0d
+                            All = new Ratio(27d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4459,8 +4459,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 23d,
-                            Today = 0d
+                            All = new Ratio(23d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4495,8 +4495,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 1d,
-                            Today = 0d
+                            All = new Ratio(1d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4531,8 +4531,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 1d,
-                            Today = 0d
+                            All = new Ratio(1d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4567,8 +4567,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 1d,
-                            Today = 0d
+                            All = new Ratio(1d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4603,8 +4603,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 2d,
-                            Today = 0d
+                            All = new Ratio(2d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4639,8 +4639,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 2d,
-                            Today = 0d
+                            All = new Ratio(2d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4675,8 +4675,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 1d,
-                            Today = 0d
+                            All = new Ratio(1d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4711,8 +4711,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4747,8 +4747,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4783,8 +4783,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4819,8 +4819,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4855,8 +4855,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4891,8 +4891,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4927,8 +4927,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4963,8 +4963,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo
@@ -4999,8 +4999,8 @@ namespace OpenWeatherMap.Tests.Testdata
                           DateTime = DateTime.ParseExact("2022-06-18T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                           Clouds = new CloudsInformation
                           {
-                            All = 0d,
-                            Today = 0d
+                            All = new Ratio(0d, RatioUnit.Percent),
+                            Today = new Ratio(0d, RatioUnit.Percent)
                           },
                           Rain = null,
                           Main = new TemperatureInfo

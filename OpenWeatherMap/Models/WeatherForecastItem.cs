@@ -31,7 +31,7 @@ namespace OpenWeatherMap.Models
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        [JsonConverter(typeof(PopRatioJsonConverter))]
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; }
 
         [JsonRequired]
