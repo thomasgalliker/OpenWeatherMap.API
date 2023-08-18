@@ -2033,8 +2033,8 @@ namespace OpenWeatherMap.Tests.Testdata
                         IconId = "03d"
                       }
                     }
-                    },
-                    MinutelyForecasts = new List<MinutelyWeatherForecast>
+                },
+                MinutelyForecasts = new List<MinutelyWeatherForecast>
                   {
                     new MinutelyWeatherForecast
                     {
@@ -2342,7 +2342,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     }
                   },
-                                HourlyForecasts = new List<HourlyWeatherForecast>
+                HourlyForecasts = new List<HourlyWeatherForecast>
                   {
                     new HourlyWeatherForecast
                     {
@@ -3593,7 +3593,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Pop = new Ratio(0d, RatioUnit.Percent)
                     }
                   },
-                                DailyForecasts = new List<DailyWeatherForecast>
+                DailyForecasts = new List<DailyWeatherForecast>
                   {
                     new DailyWeatherForecast
                     {
@@ -3972,7 +3972,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       Snow = new Length(0d, LengthUnit.Millimeter)
                     }
                   },
-                                Alerts = new List<AlertInfo>
+                Alerts = new List<AlertInfo>
                   {
                     new AlertInfo
                     {
