@@ -91,21 +91,21 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonProperty("pop")]
         [JsonConverter(typeof(PopRatioJsonConverter))]
-        public Ratio Pop { get; set; }
+        public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>
         /// Daily volume of rain, in mm (where available).
         /// </summary>
         [JsonProperty("rain")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]
-        public Length? Rain { get; set; }
+        public Length Rain { get; set; } = Length.FromMillimeters(0d);
 
         /// <summary>
         /// Daily volume of snow, in mm (where available).
         /// </summary>
         [JsonProperty("snow")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]
-        public Length? Snow { get; set; }
+        public Length Snow { get; set; } = Length.FromMillimeters(0d);
 
         public override string ToString()
         {
