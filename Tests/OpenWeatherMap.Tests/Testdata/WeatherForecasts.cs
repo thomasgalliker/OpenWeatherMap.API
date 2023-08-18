@@ -52,7 +52,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(160, AngleUnit.Degree),
-                        Speed = 1.29d
+                        Speed = new Speed(1.29d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -88,7 +88,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(198, AngleUnit.Degree),
-                        Speed = 1.52d
+                        Speed = new Speed(1.52d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -124,7 +124,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(179, AngleUnit.Degree),
-                        Speed = 1.72d
+                        Speed = new Speed(1.72d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -160,7 +160,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(216, AngleUnit.Degree),
-                        Speed = 0.73d
+                        Speed = new Speed(0.73d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -200,7 +200,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(299, AngleUnit.Degree),
-                        Speed = 1.07d
+                        Speed = new Speed(1.07d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -236,7 +236,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(280, AngleUnit.Degree),
-                        Speed = 3.2d
+                        Speed = new Speed(3.2d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -272,7 +272,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(285, AngleUnit.Degree),
-                        Speed = 3.24d
+                        Speed = new Speed(3.24d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -312,7 +312,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(17, AngleUnit.Degree),
-                        Speed = 1.24d
+                        Speed = new Speed(1.24d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -352,7 +352,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(201, AngleUnit.Degree),
-                        Speed = 2.94d
+                        Speed = new Speed(2.94d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -392,7 +392,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(197, AngleUnit.Degree),
-                        Speed = 2.63d
+                        Speed = new Speed(2.63d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -428,7 +428,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(203, AngleUnit.Degree),
-                        Speed = 1.99d
+                        Speed = new Speed(1.99d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -468,7 +468,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(218, AngleUnit.Degree),
-                        Speed = 1.2d
+                        Speed = new Speed(1.2d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -508,7 +508,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(286, AngleUnit.Degree),
-                        Speed = 1.76d
+                        Speed = new Speed(1.76d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -548,7 +548,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(302, AngleUnit.Degree),
-                        Speed = 2.81d
+                        Speed = new Speed(2.81d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -584,7 +584,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(338, AngleUnit.Degree),
-                        Speed = 1.98d
+                        Speed = new Speed(1.98d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -620,7 +620,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(335, AngleUnit.Degree),
-                        Speed = 1.29d
+                        Speed = new Speed(1.29d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -656,7 +656,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(179, AngleUnit.Degree),
-                        Speed = 1.25d
+                        Speed = new Speed(1.25d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -692,7 +692,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(168, AngleUnit.Degree),
-                        Speed = 1.22d
+                        Speed = new Speed(1.22d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -728,7 +728,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(173, AngleUnit.Degree),
-                        Speed = 1.53d
+                        Speed = new Speed(1.53d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -764,7 +764,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(91, AngleUnit.Degree),
-                        Speed = 0.41d
+                        Speed = new Speed(0.41d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -800,7 +800,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(41, AngleUnit.Degree),
-                        Speed = 1.29d
+                        Speed = new Speed(1.29d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -836,7 +836,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(8, AngleUnit.Degree),
-                        Speed = 2.43d
+                        Speed = new Speed(2.43d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -872,7 +872,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(28, AngleUnit.Degree),
-                        Speed = 1.81d
+                        Speed = new Speed(1.81d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -908,7 +908,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(96, AngleUnit.Degree),
-                        Speed = 0.77d
+                        Speed = new Speed(0.77d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -944,7 +944,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(171, AngleUnit.Degree),
-                        Speed = 1.6d
+                        Speed = new Speed(1.6d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -980,7 +980,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(162, AngleUnit.Degree),
-                        Speed = 1.59d
+                        Speed = new Speed(1.59d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1016,7 +1016,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(157, AngleUnit.Degree),
-                        Speed = 1.74d
+                        Speed = new Speed(1.74d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1052,7 +1052,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(108, AngleUnit.Degree),
-                        Speed = 0.95d
+                        Speed = new Speed(0.95d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1088,7 +1088,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(53, AngleUnit.Degree),
-                        Speed = 2.06d
+                        Speed = new Speed(2.06d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1124,7 +1124,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(56, AngleUnit.Degree),
-                        Speed = 3.13d
+                        Speed = new Speed(3.13d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1160,7 +1160,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(51, AngleUnit.Degree),
-                        Speed = 3.19d
+                        Speed = new Speed(3.19d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1196,7 +1196,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(59, AngleUnit.Degree),
-                        Speed = 0.32d
+                        Speed = new Speed(0.32d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1232,7 +1232,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(184, AngleUnit.Degree),
-                        Speed = 2.14d
+                        Speed = new Speed(2.14d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1268,7 +1268,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(178, AngleUnit.Degree),
-                        Speed = 2.32d
+                        Speed = new Speed(2.32d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1304,7 +1304,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(187, AngleUnit.Degree),
-                        Speed = 2.32d
+                        Speed = new Speed(2.32d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1340,7 +1340,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(183, AngleUnit.Degree),
-                        Speed = 1.17d
+                        Speed = new Speed(1.17d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1376,7 +1376,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(306, AngleUnit.Degree),
-                        Speed = 1.19d
+                        Speed = new Speed(1.19d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1412,7 +1412,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(315, AngleUnit.Degree),
-                        Speed = 2.03d
+                        Speed = new Speed(2.03d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1452,7 +1452,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(203, AngleUnit.Degree),
-                        Speed = 1.63d
+                        Speed = new Speed(1.63d, SpeedUnit.MeterPerSecond)
                         }
                     },
                     new WeatherForecastItem
@@ -1492,7 +1492,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         Wind = new WindInfo
                         {
                         Direction = new Angle(149, AngleUnit.Degree),
-                        Speed = 3.47d
+                        Speed = new Speed(3.47d, SpeedUnit.MeterPerSecond)
                         }
                     }
                 },
@@ -1559,7 +1559,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(167, AngleUnit.Degree),
-                            Speed = 1.38d
+                            Speed = new Speed(1.38d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1595,7 +1595,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(176, AngleUnit.Degree),
-                            Speed = 1.45d
+                            Speed = new Speed(1.45d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1631,7 +1631,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(198, AngleUnit.Degree),
-                            Speed = 1.52d
+                            Speed = new Speed(1.52d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1667,7 +1667,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(196, AngleUnit.Degree),
-                            Speed = 1.75d
+                            Speed = new Speed(1.75d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1703,7 +1703,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(189, AngleUnit.Degree),
-                            Speed = 1.9d
+                            Speed = new Speed(1.9d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1739,7 +1739,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(179, AngleUnit.Degree),
-                            Speed = 1.72d
+                            Speed = new Speed(1.72d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1775,7 +1775,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(190, AngleUnit.Degree),
-                            Speed = 1.51d
+                            Speed = new Speed(1.51d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1811,7 +1811,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(199, AngleUnit.Degree),
-                            Speed = 1.27d
+                            Speed = new Speed(1.27d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1847,7 +1847,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(216, AngleUnit.Degree),
-                            Speed = 0.73d
+                            Speed = new Speed(0.73d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1883,7 +1883,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(286, AngleUnit.Degree),
-                            Speed = 0.88d
+                            Speed = new Speed(0.88d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1923,7 +1923,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(289, AngleUnit.Degree),
-                            Speed = 0.98d
+                            Speed = new Speed(0.98d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1959,7 +1959,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(299, AngleUnit.Degree),
-                            Speed = 1.07d
+                            Speed = new Speed(1.07d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -1995,7 +1995,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(292, AngleUnit.Degree),
-                            Speed = 1.6d
+                            Speed = new Speed(1.6d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2031,7 +2031,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(284, AngleUnit.Degree),
-                            Speed = 2.36d
+                            Speed = new Speed(2.36d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2067,7 +2067,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(280, AngleUnit.Degree),
-                            Speed = 3.2d
+                            Speed = new Speed(3.2d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2103,7 +2103,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(272, AngleUnit.Degree),
-                            Speed = 3.76d
+                            Speed = new Speed(3.76d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2139,7 +2139,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(268, AngleUnit.Degree),
-                            Speed = 3.74d
+                            Speed = new Speed(3.74d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2175,7 +2175,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(285, AngleUnit.Degree),
-                            Speed = 3.24d
+                            Speed = new Speed(3.24d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2211,7 +2211,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(315, AngleUnit.Degree),
-                            Speed = 2.98d
+                            Speed = new Speed(2.98d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2247,7 +2247,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(342, AngleUnit.Degree),
-                            Speed = 2.3d
+                            Speed = new Speed(2.3d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2287,7 +2287,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(17, AngleUnit.Degree),
-                            Speed = 1.24d
+                            Speed = new Speed(1.24d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2327,7 +2327,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(176, AngleUnit.Degree),
-                            Speed = 1.42d
+                            Speed = new Speed(1.42d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2367,7 +2367,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(194, AngleUnit.Degree),
-                            Speed = 2.88d
+                            Speed = new Speed(2.88d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2407,7 +2407,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(201, AngleUnit.Degree),
-                            Speed = 2.94d
+                            Speed = new Speed(2.94d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2447,7 +2447,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(161, AngleUnit.Degree),
-                            Speed = 2.94d
+                            Speed = new Speed(2.94d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2487,7 +2487,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(179, AngleUnit.Degree),
-                            Speed = 2.7d
+                            Speed = new Speed(2.7d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2527,7 +2527,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(197, AngleUnit.Degree),
-                            Speed = 2.63d
+                            Speed = new Speed(2.63d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2563,7 +2563,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(202, AngleUnit.Degree),
-                            Speed = 2.52d
+                            Speed = new Speed(2.52d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2599,7 +2599,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(201, AngleUnit.Degree),
-                            Speed = 2.44d
+                            Speed = new Speed(2.44d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2635,7 +2635,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(203, AngleUnit.Degree),
-                            Speed = 1.99d
+                            Speed = new Speed(1.99d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2671,7 +2671,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(203, AngleUnit.Degree),
-                            Speed = 1.8d
+                            Speed = new Speed(1.8d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2707,7 +2707,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(213, AngleUnit.Degree),
-                            Speed = 1.74d
+                            Speed = new Speed(1.74d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2747,7 +2747,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(218, AngleUnit.Degree),
-                            Speed = 1.2d
+                            Speed = new Speed(1.2d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2783,7 +2783,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(274, AngleUnit.Degree),
-                            Speed = 1.26d
+                            Speed = new Speed(1.26d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2823,7 +2823,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(286, AngleUnit.Degree),
-                            Speed = 1.71d
+                            Speed = new Speed(1.71d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2863,7 +2863,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(286, AngleUnit.Degree),
-                            Speed = 1.76d
+                            Speed = new Speed(1.76d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2903,7 +2903,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(286, AngleUnit.Degree),
-                            Speed = 2.12d
+                            Speed = new Speed(2.12d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2939,7 +2939,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(294, AngleUnit.Degree),
-                            Speed = 2.4d
+                            Speed = new Speed(2.4d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -2975,7 +2975,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(302, AngleUnit.Degree),
-                            Speed = 2.81d
+                            Speed = new Speed(2.81d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3011,7 +3011,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(313, AngleUnit.Degree),
-                            Speed = 3.25d
+                            Speed = new Speed(3.25d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3047,7 +3047,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(328, AngleUnit.Degree),
-                            Speed = 3.58d
+                            Speed = new Speed(3.58d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3083,7 +3083,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(338, AngleUnit.Degree),
-                            Speed = 1.98d
+                            Speed = new Speed(1.98d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3119,7 +3119,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(340, AngleUnit.Degree),
-                            Speed = 2.2d
+                            Speed = new Speed(2.2d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3155,7 +3155,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(338, AngleUnit.Degree),
-                            Speed = 1.84d
+                            Speed = new Speed(1.84d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3191,7 +3191,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(335, AngleUnit.Degree),
-                            Speed = 1.29d
+                            Speed = new Speed(1.29d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3227,7 +3227,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(327, AngleUnit.Degree),
-                            Speed = 0.39d
+                            Speed = new Speed(0.39d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3263,7 +3263,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(187, AngleUnit.Degree),
-                            Speed = 0.22d
+                            Speed = new Speed(0.22d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3299,7 +3299,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(179, AngleUnit.Degree),
-                            Speed = 1.25d
+                            Speed = new Speed(1.25d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3335,7 +3335,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(192, AngleUnit.Degree),
-                            Speed = 0.67d
+                            Speed = new Speed(0.67d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3371,7 +3371,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(179, AngleUnit.Degree),
-                            Speed = 0.9d
+                            Speed = new Speed(0.9d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3407,7 +3407,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(168, AngleUnit.Degree),
-                            Speed = 1.22d
+                            Speed = new Speed(1.22d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3443,7 +3443,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(171, AngleUnit.Degree),
-                            Speed = 1.05d
+                            Speed = new Speed(1.05d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3479,7 +3479,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(180, AngleUnit.Degree),
-                            Speed = 1.04d
+                            Speed = new Speed(1.04d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3515,7 +3515,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(173, AngleUnit.Degree),
-                            Speed = 1.53d
+                            Speed = new Speed(1.53d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3551,7 +3551,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(179, AngleUnit.Degree),
-                            Speed = 1.22d
+                            Speed = new Speed(1.22d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3587,7 +3587,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(163, AngleUnit.Degree),
-                            Speed = 0.95d
+                            Speed = new Speed(0.95d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3623,7 +3623,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(91, AngleUnit.Degree),
-                            Speed = 0.41d
+                            Speed = new Speed(0.41d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3659,7 +3659,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(72, AngleUnit.Degree),
-                            Speed = 0.79d
+                            Speed = new Speed(0.79d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3695,7 +3695,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(39, AngleUnit.Degree),
-                            Speed = 1.45d
+                            Speed = new Speed(1.45d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3731,7 +3731,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(41, AngleUnit.Degree),
-                            Speed = 1.29d
+                            Speed = new Speed(1.29d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3767,7 +3767,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(27, AngleUnit.Degree),
-                            Speed = 1.53d
+                            Speed = new Speed(1.53d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3803,7 +3803,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(11, AngleUnit.Degree),
-                            Speed = 2.24d
+                            Speed = new Speed(2.24d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3839,7 +3839,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(8, AngleUnit.Degree),
-                            Speed = 2.43d
+                            Speed = new Speed(2.43d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3875,7 +3875,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(20, AngleUnit.Degree),
-                            Speed = 1.94d
+                            Speed = new Speed(1.94d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3911,7 +3911,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(24, AngleUnit.Degree),
-                            Speed = 1.83d
+                            Speed = new Speed(1.83d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3947,7 +3947,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(28, AngleUnit.Degree),
-                            Speed = 1.81d
+                            Speed = new Speed(1.81d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -3983,7 +3983,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(29, AngleUnit.Degree),
-                            Speed = 1.79d
+                            Speed = new Speed(1.79d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4019,7 +4019,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(41, AngleUnit.Degree),
-                            Speed = 1.42d
+                            Speed = new Speed(1.42d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4055,7 +4055,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(96, AngleUnit.Degree),
-                            Speed = 0.77d
+                            Speed = new Speed(0.77d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4091,7 +4091,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(154, AngleUnit.Degree),
-                            Speed = 0.93d
+                            Speed = new Speed(0.93d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4127,7 +4127,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(164, AngleUnit.Degree),
-                            Speed = 1.37d
+                            Speed = new Speed(1.37d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4163,7 +4163,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(171, AngleUnit.Degree),
-                            Speed = 1.6d
+                            Speed = new Speed(1.6d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4199,7 +4199,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(173, AngleUnit.Degree),
-                            Speed = 1.63d
+                            Speed = new Speed(1.63d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4235,7 +4235,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(164, AngleUnit.Degree),
-                            Speed = 1.62d
+                            Speed = new Speed(1.62d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4271,7 +4271,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(162, AngleUnit.Degree),
-                            Speed = 1.59d
+                            Speed = new Speed(1.59d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4307,7 +4307,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(160, AngleUnit.Degree),
-                            Speed = 1.52d
+                            Speed = new Speed(1.52d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4343,7 +4343,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(161, AngleUnit.Degree),
-                            Speed = 1.53d
+                            Speed = new Speed(1.53d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4379,7 +4379,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(157, AngleUnit.Degree),
-                            Speed = 1.74d
+                            Speed = new Speed(1.74d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4415,7 +4415,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(151, AngleUnit.Degree),
-                            Speed = 1.24d
+                            Speed = new Speed(1.24d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4451,7 +4451,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(143, AngleUnit.Degree),
-                            Speed = 1.61d
+                            Speed = new Speed(1.61d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4487,7 +4487,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(108, AngleUnit.Degree),
-                            Speed = 0.95d
+                            Speed = new Speed(0.95d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4523,7 +4523,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(74, AngleUnit.Degree),
-                            Speed = 1.09d
+                            Speed = new Speed(1.09d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4559,7 +4559,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(51, AngleUnit.Degree),
-                            Speed = 1.48d
+                            Speed = new Speed(1.48d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4595,7 +4595,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(53, AngleUnit.Degree),
-                            Speed = 2.06d
+                            Speed = new Speed(2.06d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4631,7 +4631,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(60, AngleUnit.Degree),
-                            Speed = 2.6d
+                            Speed = new Speed(2.6d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4667,7 +4667,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(59, AngleUnit.Degree),
-                            Speed = 2.85d
+                            Speed = new Speed(2.85d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4703,7 +4703,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(56, AngleUnit.Degree),
-                            Speed = 3.13d
+                            Speed = new Speed(3.13d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4739,7 +4739,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(54, AngleUnit.Degree),
-                            Speed = 3.25d
+                            Speed = new Speed(3.25d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4775,7 +4775,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(55, AngleUnit.Degree),
-                            Speed = 3.29d
+                            Speed = new Speed(3.29d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4811,7 +4811,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(51, AngleUnit.Degree),
-                            Speed = 3.19d
+                            Speed = new Speed(3.19d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4847,7 +4847,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(46, AngleUnit.Degree),
-                            Speed = 2.44d
+                            Speed = new Speed(2.44d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4883,7 +4883,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(47, AngleUnit.Degree),
-                            Speed = 1.49d
+                            Speed = new Speed(1.49d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4919,7 +4919,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(59, AngleUnit.Degree),
-                            Speed = 0.32d
+                            Speed = new Speed(0.32d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4955,7 +4955,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(195, AngleUnit.Degree),
-                            Speed = 1.38d
+                            Speed = new Speed(1.38d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -4991,7 +4991,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(193, AngleUnit.Degree),
-                            Speed = 1.9d
+                            Speed = new Speed(1.9d, SpeedUnit.MeterPerSecond)
                           }
                         },
                         new WeatherForecastItem
@@ -5027,7 +5027,7 @@ namespace OpenWeatherMap.Tests.Testdata
                           Wind = new WindInfo
                           {
                             Direction = new Angle(184, AngleUnit.Degree),
-                            Speed = 2.14d
+                            Speed = new Speed(2.14d, SpeedUnit.MeterPerSecond)
                           }
                         }
                       },
