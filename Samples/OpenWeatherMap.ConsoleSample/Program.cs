@@ -57,14 +57,18 @@ namespace OpenWeatherMap.ConsoleSample
                 $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
                 $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
                 $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +
-                $"Wind: {weatherInfo.Wind.Speed}m/s ({weatherInfo.Wind.Direction.ToIntercardinalWindDirection()}){Environment.NewLine}");
+                $"Wind: {weatherInfo.Wind.Speed} ({weatherInfo.Wind.Direction.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
 
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
             if (airPollutionInfo.Items.FirstOrDefault() is AirPollutionInfoItem airPollutionInfoItem)
             {
                 Console.WriteLine(
                     $"Air Pollution Info:{Environment.NewLine}" +
-                    $"AirQuality: {airPollutionInfoItem.Main.AirQuality}{Environment.NewLine}");
+                    $"AirQuality: {airPollutionInfoItem.Main.AirQuality}{Environment.NewLine}" +
+                    $"CO: {airPollutionInfoItem.Components.CarbonMonoxide}{Environment.NewLine}" +
+                    $"O₃: {airPollutionInfoItem.Components.Ozone}{Environment.NewLine}" +
+                    $"PM: {airPollutionInfoItem.Components.CoarseParticulateMatter}{Environment.NewLine}" +
+                    $"PM2.5: {airPollutionInfoItem.Components.FineParticulateMatter}{Environment.NewLine}");
             }
 
             Console.WriteLine();
