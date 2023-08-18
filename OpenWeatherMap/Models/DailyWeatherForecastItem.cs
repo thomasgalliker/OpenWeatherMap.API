@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -21,7 +22,11 @@ namespace OpenWeatherMap.Models
         [JsonProperty("clouds")]
         public double Clouds { get; set; }
 
+        /// <summary>
+        /// Daily volume of rain, in mm (where available).
+        /// </summary>
         [JsonProperty("rain")]
-        public double Rain { get; set; }
+        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        public Length Rain { get; set; } = Length.FromMillimeters(0d);
     }
 }
