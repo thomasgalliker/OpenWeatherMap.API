@@ -59,17 +59,33 @@ namespace OpenWeatherMap.Models
         public int Visibility { get; set; }
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; }
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
         public Angle WindDirection { get; set; }
 
         /// <summary>
-        /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
+        /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds.
+        /// (where available)
+        /// (German: Windböe).
         /// </summary>
         [JsonProperty("wind_gust")]
-        public double WindGust { get; set; }
+        public Speed? WindGust { get; set; }
+
+        /// <summary>
+        /// Precipitation of rain, mm/h (where available).
+        /// </summary>
+        [JsonProperty("rain")]
+        [JsonConverter(typeof(MillimeterPerHourJsonConverter))]
+        public Speed? Rain { get; set; }
+
+        /// <summary>
+        /// Precipitation of snow, mm/h (where available).
+        /// </summary>
+        [JsonProperty("snow")]
+        [JsonConverter(typeof(MillimeterPerHourJsonConverter))]
+        public Speed? Snow { get; set; }
 
         [JsonProperty("weather")]
         public List<WeatherCondition> Weather { get; set; }

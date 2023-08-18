@@ -70,7 +70,7 @@ namespace OpenWeatherMap.Models
         public int Visibility { get; set; }
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; }
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
@@ -80,7 +80,7 @@ namespace OpenWeatherMap.Models
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
         /// </summary>
         [JsonProperty("wind_gust")]
-        public double WindGust { get; set; }
+        public Speed? WindGust { get; set; }
 
         [JsonProperty("weather")]
         public List<WeatherCondition> Weather { get; set; }
@@ -90,19 +90,22 @@ namespace OpenWeatherMap.Models
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(PopRatioJsonConverter))]
+        public Ratio Pop { get; set; }
 
         /// <summary>
-        /// Daily amount of rain, precipitation volume, mm.
+        /// Daily volume of rain, in mm (where available).
         /// </summary>
         [JsonProperty("rain")]
-        public double Rain { get; set; }
+        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        public Length? Rain { get; set; }
 
         /// <summary>
-        /// Daily amount of snow, precipitation volume, mm.
+        /// Daily volume of snow, in mm (where available).
         /// </summary>
         [JsonProperty("snow")]
-        public double Snow { get; set; }
+        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        public Length? Snow { get; set; }
 
         public override string ToString()
         {

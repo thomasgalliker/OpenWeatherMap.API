@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
+using OpenWeatherMap.Utils;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace OpenWeatherMap
 {
@@ -39,7 +42,7 @@ namespace OpenWeatherMap
             : this(new NullLogger<OpenWeatherMapService>(), new HttpClient(), openWeatherMapConfiguration)
         {
         }
-        
+
         public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, IOpenWeatherMapConfiguration openWeatherMapConfiguration)
             : this(logger, new HttpClient(), openWeatherMapConfiguration)
         {
@@ -55,33 +58,8 @@ namespace OpenWeatherMap
             this.verboseLogging = openWeatherMapConfiguration.VerboseLogging;
             this.httpClient = httpClient;
             this.defaultWeatherIconMapping = new DefaultWeatherIconMapping(this.httpClient);
-            
-            this.serializerSettings = GetJsonSerializerSettings(openWeatherMapConfiguration.UnitSystem);
-        }
 
-        public static JsonSerializerSettings GetJsonSerializerSettings(string unitSystem)
-        {
-            var jsonSerializerSettings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-            };
-
-            var temperatureConverter = GetTemperatureConverter(unitSystem);
-            jsonSerializerSettings.Converters.Add(temperatureConverter);
-            return jsonSerializerSettings;
-        }
-
-        private static JsonConverter GetTemperatureConverter(string unitSystem)
-        {
-            switch (unitSystem)
-            {
-                case "metric":
-                    return new CelsiusTemperatureJsonConverter();
-                case "imperial":
-                    return new FahrenheitTemperatureJsonConverter();
-                default:
-                    throw new NotSupportedException($"UnitSystem '{unitSystem}' is not supported");
-            }
+            this.serializerSettings = OpenWeatherMapJsonSerializerSettings.GetJsonSerializerSettings(openWeatherMapConfiguration.UnitSystem);
         }
 
         public async Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude)

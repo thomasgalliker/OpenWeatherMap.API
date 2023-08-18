@@ -2,21 +2,13 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models;
-using OpenWeatherMap.Models.Converters;
+using OpenWeatherMap.Utils;
 using UnitsNet;
 
 namespace OpenWeatherMap.Tests.Testdata
 {
     internal static class WeatherInfos
     {
-        private static readonly JsonSerializerSettings JsonSerializerSettings = CreateMetricJsonSerializerSettings();
-
-        private static JsonSerializerSettings CreateMetricJsonSerializerSettings()
-        {
-            var settings = new JsonSerializerSettings();
-            settings.Converters.Add(new CelsiusTemperatureJsonConverter());
-            return settings;
-        }
 
         internal static WeatherInfo GetTestWeatherInfo()
         {
@@ -25,8 +17,10 @@ namespace OpenWeatherMap.Tests.Testdata
 
         internal static string GetTestWeatherInfoJson()
         {
+            var jsonSerializerSettings = OpenWeatherMapJsonSerializerSettings.GetJsonSerializerSettings("metric");
+
             var weatherInfo = GetTestWeatherInfo();
-            var weatherInfoJson = JsonConvert.SerializeObject(weatherInfo, JsonSerializerSettings);
+            var weatherInfoJson = JsonConvert.SerializeObject(weatherInfo, jsonSerializerSettings);
             return weatherInfoJson;
         }
 

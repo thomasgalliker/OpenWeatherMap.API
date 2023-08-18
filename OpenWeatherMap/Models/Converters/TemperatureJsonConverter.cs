@@ -1,11 +1,19 @@
 ﻿using System;
 using Newtonsoft.Json;
 using UnitsNet;
+using UnitsNet.Units;
 
 namespace OpenWeatherMap.Models.Converters
 {
-    internal class FahrenheitTemperatureJsonConverter : JsonConverter<Temperature>
+    internal class TemperatureJsonConverter : JsonConverter<Temperature>
     {
+        private readonly TemperatureUnit temperatureUnit;
+
+        public TemperatureJsonConverter(TemperatureUnit temperatureUnit)
+        {
+            this.temperatureUnit = temperatureUnit;
+        }
+
         public override void WriteJson(JsonWriter writer, Temperature value, JsonSerializer serializer)
         {
             writer.WriteValue(value.Value);
@@ -15,16 +23,16 @@ namespace OpenWeatherMap.Models.Converters
         {
             if (reader.Value is double doubleValue)
             {
-                return Temperature.FromDegreesFahrenheit(doubleValue);
+                return new Temperature(doubleValue, this.temperatureUnit);
             }
 
             if (reader.Value is long longValue)
             {
-                return Temperature.FromDegreesFahrenheit(longValue);
+                return new Temperature(longValue, this.temperatureUnit);
             }
 
             return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
-                ? Temperature.FromDegreesCelsius(value)
+                ? new Temperature(value, this.temperatureUnit)
                 : default;
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using OpenWeatherMap.Internals;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -49,7 +48,7 @@ namespace OpenWeatherMap.Models
         public int Visibility { get; set; }
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; }
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
@@ -59,17 +58,17 @@ namespace OpenWeatherMap.Models
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
         /// </summary>
         [JsonProperty("wind_gust")]
-        public double WindGust { get; set; }
+        public Speed? WindGust { get; set; }
 
         [JsonProperty("weather")]
         public List<WeatherCondition> Weather { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
-        /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(PopRatioJsonConverter))]
+        public Ratio Pop { get; set; }
 
         public override string ToString()
         {
