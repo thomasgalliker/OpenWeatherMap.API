@@ -16,6 +16,7 @@ namespace OpenWeatherMap.Tests
     {
         private readonly AutoMocker autoMocker;
         private readonly Mock<HttpMessageHandler> httpMessageHandlerMock;
+        private readonly IOpenWeatherMapJsonSerializer jsonSerializer;
 
         public OpenWeatherMapServiceUnitTests(ITestOutputHelper testOutputHelper)
         {
@@ -35,6 +36,8 @@ namespace OpenWeatherMap.Tests
                 .Returns("apikey");
             openWeatherMapConfigurationMock.SetupGet(c => c.UnitSystem)
                 .Returns("metric");
+
+            this.jsonSerializer = new OpenWeatherMapJsonSerializer("metric");
         }
 
         [Fact]
@@ -45,7 +48,7 @@ namespace OpenWeatherMap.Tests
             var longitude = 1.2222222222d;
 
             this.httpMessageHandlerMock.SetupRequest(HttpMethod.Get, r => r.RequestUri.LocalPath == "/data/2.5/weather")
-                .ReturnsResponse(WeatherInfos.GetTestWeatherInfoJson(), "application/json");
+                .ReturnsResponse(WeatherInfos.GetTestWeatherInfoJson(this.jsonSerializer), "application/json");
 
             IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
 
@@ -74,7 +77,7 @@ namespace OpenWeatherMap.Tests
             var longitude = 1.2222222222d;
 
             this.httpMessageHandlerMock.SetupRequest(HttpMethod.Get, r => r.RequestUri.LocalPath == "/data/2.5/onecall")
-                .ReturnsResponse(OneCallWeatherInfos.GetTestWeatherInfoJson(), "application/json");
+                .ReturnsResponse(OneCallWeatherInfos.GetTestWeatherInfoJson(this.jsonSerializer), "application/json");
 
             IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
 

@@ -7,12 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using Newtonsoft.Json;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
-using OpenWeatherMap.Utils;
-using UnitsNet;
-using UnitsNet.Units;
 
 namespace OpenWeatherMap
 {
@@ -31,10 +27,10 @@ namespace OpenWeatherMap
         private readonly ILogger<OpenWeatherMapService> logger;
         private readonly HttpClient httpClient;
         private readonly IWeatherIconMapping defaultWeatherIconMapping;
-        private readonly JsonSerializerSettings serializerSettings;
+        private readonly IOpenWeatherMapJsonSerializer jsonSerializer;
         private readonly string apiEndpoint;
         private readonly string apiKey;
-        private readonly string unitSystem;
+        private readonly UnitSystem unitSystem;
         private readonly string language;
         private readonly bool verboseLogging;
 
@@ -58,8 +54,7 @@ namespace OpenWeatherMap
             this.verboseLogging = openWeatherMapConfiguration.VerboseLogging;
             this.httpClient = httpClient;
             this.defaultWeatherIconMapping = new DefaultWeatherIconMapping(this.httpClient);
-
-            this.serializerSettings = OpenWeatherMapJsonSerializerSettings.GetJsonSerializerSettings(openWeatherMapConfiguration.UnitSystem);
+            this.jsonSerializer = new OpenWeatherMapJsonSerializer(this.unitSystem);
         }
 
         public async Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude)
@@ -88,7 +83,7 @@ namespace OpenWeatherMap
                 this.logger.LogDebug($"GetCurrentWeatherAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
-            var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(responseJson, this.serializerSettings);
+            var weatherInfo = this.jsonSerializer.DeserializeObject<WeatherInfo>(responseJson);
             return weatherInfo;
         }
 
@@ -136,7 +131,7 @@ namespace OpenWeatherMap
                 this.logger.LogDebug($"GetWeatherForecastAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
-            var weatherForecast = JsonConvert.DeserializeObject<T>(responseJson, this.serializerSettings);
+            var weatherForecast = this.jsonSerializer.DeserializeObject<T>(responseJson);
             return weatherForecast;
         }
 
@@ -147,10 +142,7 @@ namespace OpenWeatherMap
 
             this.logger.LogDebug($"GetWeatherOneCallAsync: latitude={latitude}, longitude={longitude}");
 
-            if (oneCallOptions == null)
-            {
-                oneCallOptions = OneCallOptions.Default;
-            }
+            oneCallOptions ??= OneCallOptions.Default;
 
             var lat = FormatCoordinate(latitude);
             var lon = FormatCoordinate(longitude);
@@ -176,7 +168,7 @@ namespace OpenWeatherMap
                 this.logger.LogDebug($"GetWeatherOneCallAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
-            var oneCallWeatherInfo = JsonConvert.DeserializeObject<OneCallWeatherInfo>(responseJson, this.serializerSettings);
+            var oneCallWeatherInfo = this.jsonSerializer.DeserializeObject<OneCallWeatherInfo>(responseJson);
             return oneCallWeatherInfo;
         }
 
@@ -213,7 +205,7 @@ namespace OpenWeatherMap
                 this.logger.LogDebug($"GetWeatherOneCallHistoricAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
-            var oneCallWeatherInfo = JsonConvert.DeserializeObject<OneCallWeatherInfo>(responseJson, this.serializerSettings);
+            var oneCallWeatherInfo = this.jsonSerializer.DeserializeObject<OneCallWeatherInfo>(responseJson);
             return oneCallWeatherInfo;
         }
 
@@ -249,7 +241,7 @@ namespace OpenWeatherMap
 
         private static void EnsureLongitude(double longitude)
         {
-            if (longitude < MinLongitude || longitude > MaxLongitude)
+            if (longitude is < MinLongitude or > MaxLongitude)
             {
                 throw new ArgumentOutOfRangeException(nameof(longitude));
             }
@@ -257,7 +249,7 @@ namespace OpenWeatherMap
 
         private static void EnsureLatitude(double latitude)
         {
-            if (latitude < MinLatitude || latitude > MaxLatitude)
+            if (latitude is < MinLatitude or > MaxLatitude)
             {
                 throw new ArgumentOutOfRangeException(nameof(latitude));
             }
@@ -265,10 +257,7 @@ namespace OpenWeatherMap
 
         public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping weatherIconMapping = null)
         {
-            if (weatherIconMapping == null)
-            {
-                weatherIconMapping = this.defaultWeatherIconMapping;
-            }
+            weatherIconMapping ??= this.defaultWeatherIconMapping;
 
             this.logger.LogDebug($"GetWeatherIconAsync: weatherCondition.Id={weatherCondition.Id}, weatherIconMapping={weatherIconMapping.GetType().Name}");
 
@@ -305,7 +294,7 @@ namespace OpenWeatherMap
                 this.logger.LogDebug($"GetAirPollutionAsync returned content:{Environment.NewLine}{responseJson}");
             }
 
-            var pollutionInfo = JsonConvert.DeserializeObject<AirPollutionInfo>(responseJson, this.serializerSettings);
+            var pollutionInfo = this.jsonSerializer.DeserializeObject<AirPollutionInfo>(responseJson);
             return pollutionInfo;
         }
 

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Newtonsoft.Json;
 using OpenWeatherMap.Models;
-using OpenWeatherMap.Utils;
 using UnitsNet;
 using UnitsNet.Units;
 
@@ -11,12 +9,10 @@ namespace OpenWeatherMap.Tests.Testdata
 {
     internal static class OneCallWeatherInfos
     {
-        internal static string GetTestWeatherInfoJson()
+        internal static string GetTestWeatherInfoJson(IOpenWeatherMapJsonSerializer jsonSerializer)
         {
-            var jsonSerializerSettings = OpenWeatherMapJsonSerializerSettings.GetJsonSerializerSettings("metric");
-
             var weatherInfo = GetTestWeatherInfo();
-            var weatherInfoJson = JsonConvert.SerializeObject(weatherInfo, jsonSerializerSettings);
+            var weatherInfoJson = jsonSerializer.SerializeObject(weatherInfo);
             return weatherInfoJson;
         }
 
