@@ -53,7 +53,7 @@ namespace OpenWeatherMap.Models
         public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
-        public Speed WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
