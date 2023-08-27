@@ -1,6 +1,7 @@
 using System;
 using FluentAssertions;
 using OpenWeatherMap.Models;
+using UnitsNet;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -18,7 +19,7 @@ namespace OpenWeatherMap.Tests.Models
         [Theory]
         [ClassData(typeof(PressureRangeTestData))]
 
-        public void ShouldGetFromValue(int pressure, PressureRange expectedPressureRange)
+        public void ShouldGetFromValue(Pressure pressure, PressureRange expectedPressureRange)
         {
             // Act
             var pressureRange = PressureRange.FromValue(pressure);
@@ -27,20 +28,20 @@ namespace OpenWeatherMap.Tests.Models
             pressureRange.Should().Be(expectedPressureRange);
         }
 
-        public class PressureRangeTestData : TheoryData<int, PressureRange>
+        public class PressureRangeTestData : TheoryData<Pressure, PressureRange>
         {
             public PressureRangeTestData()
             {
-                this.Add(0, PressureRange.VeryLow);
-                this.Add(998, PressureRange.VeryLow);
-                this.Add(999, PressureRange.Low);
-                this.Add(1007, PressureRange.Low);
-                this.Add(1008, PressureRange.Average);
-                this.Add(1018, PressureRange.Average);
-                this.Add(1019, PressureRange.High);
-                this.Add(1027, PressureRange.High);
-                this.Add(1028, PressureRange.VeryHigh);
-                this.Add(1044, PressureRange.VeryHigh);
+                this.Add(Pressure.FromHectopascals(0), PressureRange.VeryLow);
+                this.Add(Pressure.FromHectopascals(998), PressureRange.VeryLow);
+                this.Add(Pressure.FromHectopascals(999), PressureRange.Low);
+                this.Add(Pressure.FromHectopascals(1007), PressureRange.Low);
+                this.Add(Pressure.FromHectopascals(1008), PressureRange.Average);
+                this.Add(Pressure.FromHectopascals(1018), PressureRange.Average);
+                this.Add(Pressure.FromHectopascals(1019), PressureRange.High);
+                this.Add(Pressure.FromHectopascals(1027), PressureRange.High);
+                this.Add(Pressure.FromHectopascals(1028), PressureRange.VeryHigh);
+                this.Add(Pressure.FromHectopascals(1044), PressureRange.VeryHigh);
             }
         }
 
@@ -48,7 +49,7 @@ namespace OpenWeatherMap.Tests.Models
         public void ShouldThrowOutOfRangeException()
         {
             // Arrange
-            var pressure = -1;
+            var pressure = Pressure.FromHectopascals(-1);
 
             // Act
             Action action = () => PressureRange.FromValue(pressure);

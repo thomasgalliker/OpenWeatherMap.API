@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -30,7 +31,8 @@ namespace OpenWeatherMap.Models
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
+        public Ratio Pop { get; set; }
 
         [JsonRequired]
         [JsonProperty("main")]

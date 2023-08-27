@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
@@ -12,12 +13,19 @@ namespace OpenWeatherMap.Models.Converters
 
         public override Pressure ReadJson(JsonReader reader, Type objectType, Pressure existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.Value is long pressure)
+            if (reader.Value is long longValue)
             {
-                return (Pressure)pressure;
+                return Pressure.FromHectopascals(longValue);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to Pressure");
+            if (reader.Value is double doubleValue)
+            {
+                return Pressure.FromHectopascals(doubleValue);
+            }
+
+            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
+                ? Pressure.FromHectopascals(value)
+                : default;
         }
     }
 }

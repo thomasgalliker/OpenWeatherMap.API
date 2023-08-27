@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using OpenWeatherMap.Internals;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -33,8 +33,13 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Moonset { get; set; }
 
+        /// <summary>
+        /// Moon phase (0-100%). 0 and 100% are 'new moon', 25% is 'first quarter moon', 50% is 'full moon' and 75% is 'last quarter moon'.
+        /// The periods in between are called 'waxing crescent', 'waxing gibous', 'waning gibous', and 'waning crescent', respectively.
+        /// </summary>
         [JsonProperty("moon_phase")]
-        public double MoonPhase { get; set; }
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
+        public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
 
         [JsonProperty("temp")]
         public DailyTemperatureForecast Temperature { get; set; }
@@ -51,7 +56,7 @@ namespace OpenWeatherMap.Models
 
         [JsonProperty("humidity")]
         [JsonConverter(typeof(HumidityJsonConverter))]
-        public Humidity Humidity { get; set; }
+        public RelativeHumidity Humidity { get; set; }
 
         [JsonProperty("dew_point")]
         public Temperature DewPoint { get; set; }
@@ -63,24 +68,32 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(UVIndexJsonConverter))]
         public UVIndex UVIndex { get; set; }
 
+        /// <summary>
+        ///  Cloudiness.
+        /// </summary>
         [JsonProperty("clouds")]
-        public int Clouds { get; set; }
+        [JsonConverter(typeof(PercentRatioJsonConverter))]
+        public Ratio Clouds { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         [JsonProperty("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
-        public WindDirection WindDirection { get; set; }
+        public Angle WindDirection { get; set; }
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
         /// </summary>
         [JsonProperty("wind_gust")]
-        public double WindGust { get; set; }
+        public Speed? WindGust { get; set; }
 
         [JsonProperty("weather")]
         public List<WeatherCondition> Weather { get; set; }
@@ -90,19 +103,22 @@ namespace OpenWeatherMap.Models
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
+        public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>
-        /// Daily amount of rain, precipitation volume, mm.
+        /// Daily volume of rain, in mm (where available).
         /// </summary>
         [JsonProperty("rain")]
-        public double Rain { get; set; }
+        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        public Length Rain { get; set; } = Length.FromMillimeters(0d);
 
         /// <summary>
-        /// Daily amount of snow, precipitation volume, mm.
+        /// Daily volume of snow, in mm (where available).
         /// </summary>
         [JsonProperty("snow")]
-        public double Snow { get; set; }
+        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        public Length Snow { get; set; } = Length.FromMillimeters(0d);
 
         public override string ToString()
         {

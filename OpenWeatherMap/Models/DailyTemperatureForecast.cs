@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {

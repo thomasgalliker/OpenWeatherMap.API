@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMap.Extensions;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -7,27 +9,27 @@ namespace OpenWeatherMap.Models
     public class WindInfo
     {
         /// <summary>
-        /// Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+        /// Wind speed.
         /// </summary>
         [JsonProperty("speed")]
-        public double? Speed { get; set; }
+        public Speed Speed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         /// <summary>
         /// Wind direction (meteorological).
         /// </summary>
         [JsonProperty("deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
-        public WindDirection Direction { get; set; }
+        public Angle Direction { get; set; }
 
         /// <summary>
-        /// Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+        /// Wind gust.
         /// </summary>
         [JsonProperty("gust")]
-        public double? Gust { get; set; }
+        public Speed? Gust { get; set; }
 
         public override string ToString()
         {
-            return $"Speed: {this.Speed}, Direction: {this.Direction.GetSecondaryIntercardinalWindDirection()}";
+            return $"Speed: {this.Speed}, Direction: {this.Direction.ToIntercardinalWindDirection()}";
         }
     }
 }
