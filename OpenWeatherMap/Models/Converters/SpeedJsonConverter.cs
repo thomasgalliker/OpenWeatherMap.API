@@ -31,7 +31,9 @@ namespace OpenWeatherMap.Models.Converters
                 return new Speed(longValue, this.speedUnit);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(Speed)}");
+            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
+                 ? new Speed(value, this.speedUnit)
+                 : default;
         }
     }
 }

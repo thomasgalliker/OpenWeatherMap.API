@@ -46,19 +46,35 @@ namespace OpenWeatherMap.ConsoleSample
             var logger = loggerFactory.CreateLogger<OpenWeatherMapService>();
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(logger, openWeatherMapConfiguration);
 
-            // Request weather info:
-            var latitude = 47.1823761d;
-            var longitude = 8.4611036d;
-            var weatherInfo = await openWeatherMapService.GetCurrentWeatherAsync(latitude, longitude);
+            var latitude = 47.181510d;
+            var longitude = 8.460620d;
 
-            Console.WriteLine(
-                $"Current Weather Info:{Environment.NewLine}" +
-                $"Location: {weatherInfo.CityName}{Environment.NewLine}" +
-                $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
-                $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
-                $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +
-                $"Wind: {weatherInfo.Wind.Speed} ({weatherInfo.Wind.Direction.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
+            // Request weather info using GetCurrentWeatherAsync:
+            {
+                var weatherInfo = await openWeatherMapService.GetCurrentWeatherAsync(latitude, longitude);
 
+                Console.WriteLine(
+                    $"Current Weather Info:{Environment.NewLine}" +
+                    $"Location: {weatherInfo.CityName}{Environment.NewLine}" +
+                    $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
+                    $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
+                    $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +
+                    $"Wind: {weatherInfo.Wind.Speed} ({weatherInfo.Wind.Direction.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
+            }
+
+            // Request weather info using GetWeatherOneCallAsync:
+            {
+                var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude);
+
+                Console.WriteLine(
+                    $"Current Weather Info:{Environment.NewLine}" +
+                    $"Temperature: {oneCallWeatherInfo.CurrentWeather.Temperature}{Environment.NewLine}" +
+                    $"Humidity: {oneCallWeatherInfo.CurrentWeather.Humidity} ({oneCallWeatherInfo.CurrentWeather.Humidity.GetRange()}){Environment.NewLine}" +
+                    $"Pressure: {oneCallWeatherInfo.CurrentWeather.Pressure} ({oneCallWeatherInfo.CurrentWeather.Pressure.GetRange()}){Environment.NewLine}" +
+                    $"Wind: {oneCallWeatherInfo.CurrentWeather.WindSpeed} ({oneCallWeatherInfo.CurrentWeather.WindDirection.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
+            }
+
+            // Request air pollution information:
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
             if (airPollutionInfo.Items.FirstOrDefault() is AirPollutionInfoItem airPollutionInfoItem)
             {

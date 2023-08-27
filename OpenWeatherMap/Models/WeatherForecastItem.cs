@@ -24,7 +24,7 @@ namespace OpenWeatherMap.Models
         public CloudsInformation Clouds { get; set; }
 
         [JsonProperty("rain")]
-        public RainInformation Rain { get; set; }
+        public PrecipitationVolume Rain { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
