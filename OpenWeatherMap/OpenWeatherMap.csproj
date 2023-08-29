@@ -58,9 +58,9 @@
 		<None Remove="MultilingualResources\OpenWeatherMap.en.xlf" />
 		<None Remove="MultilingualResources\OpenWeatherMap.fr.xlf" />
 		<None Remove="MultilingualResources\OpenWeatherMap.it.xlf" />
-		<None Remove="Resources\Icons\*.png" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Remove="Resources\Icons\*.png" />
 		<EmbeddedResource Include="Resources\Icons\*.png" />
 	</ItemGroup>
 	<ItemGroup>

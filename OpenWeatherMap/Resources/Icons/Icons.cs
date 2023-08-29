@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using OpenWeatherMap;
-using OpenWeatherMap.Internals;
+using OpenWeatherMap.Utils;
 
 namespace WeatherDisplay.Resources
 {
