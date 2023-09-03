@@ -7,16 +7,20 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap
 {
     /// <summary>
-    ///     OpenWeatherMap API Documentation:
-    ///     https://openweathermap.org/current
-    ///     https://openweathermap.org/weather-conditions
+    /// The API access service for OpenWeatherMap.
     /// </summary>
+    /// <remarks>
+    /// OpenWeatherMap API documentation can be found here:
+    /// https://openweathermap.org/current
+    /// https://openweathermap.org/weather-conditions
+    /// </remarks>
     public class OpenWeatherMapService : IOpenWeatherMapService
     {
         internal const double MinLatitude = -90d;
@@ -34,17 +38,60 @@ namespace OpenWeatherMap
         private readonly string language;
         private readonly bool verboseLogging;
 
-        public OpenWeatherMapService(OpenWeatherMapOptions options)
-            : this(new NullLogger<OpenWeatherMapService>(), new HttpClient(), options)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenWeatherMapService"/> class.
+        /// </summary>
+        /// <param name="options">The service options.</param>
+        public OpenWeatherMapService(
+            OpenWeatherMapOptions options)
+            : this(new NullLogger<OpenWeatherMapService>(), options)
         {
         }
 
-        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, OpenWeatherMapOptions options)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenWeatherMapService"/> class.
+        /// </summary>
+        /// <param name="options">The service options.</param>
+        public OpenWeatherMapService(
+            IOptions<OpenWeatherMapOptions> options)
+            : this(new NullLogger<OpenWeatherMapService>(), options)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenWeatherMapService"/> class.
+        /// </summary>
+        /// <param name="logger">The logger instance.</param>
+        /// <param name="options">The service options.</param>
+        public OpenWeatherMapService(
+            ILogger<OpenWeatherMapService> logger,
+            IOptions<OpenWeatherMapOptions> options)
+            : this(logger, options.Value)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenWeatherMapService"/> class.
+        /// </summary>
+        /// <param name="logger">The logger instance.</param>
+        /// <param name="options">The service options.</param>
+        public OpenWeatherMapService(
+            ILogger<OpenWeatherMapService> logger,
+            OpenWeatherMapOptions options)
             : this(logger, new HttpClient(), options)
         {
         }
 
-        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, HttpClient httpClient, OpenWeatherMapOptions options)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenWeatherMapService"/> class.
+        /// </summary>
+        /// <param name="logger">The logger instance.</param>
+        /// <param name="httpClient">The HttpClient instance.</param>
+        /// <param name="options">The service options.</param>
+        public OpenWeatherMapService(
+            ILogger<OpenWeatherMapService> logger,
+            HttpClient httpClient,
+            OpenWeatherMapOptions options)
         {
             this.logger = logger;
             this.apiEndpoint = options.ApiEndpoint;
