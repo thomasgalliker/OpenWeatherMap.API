@@ -15,14 +15,14 @@ namespace OpenWeatherMap.Tests
     public class OpenWeatherMapServiceIntegrationTests
     {
         private readonly ILogger<OpenWeatherMapService> logger;
-        private readonly IOpenWeatherMapConfiguration openWeatherMapConfiguration;
+        private readonly OpenWeatherMapOptions openWeatherMapOptions;
         private readonly ITestOutputHelper testOutputHelper;
         private readonly DumpOptions dumpOptions;
 
         public OpenWeatherMapServiceIntegrationTests(ITestOutputHelper testOutputHelper)
         {
             this.logger = new TestOutputHelperLogger<OpenWeatherMapService>(testOutputHelper);
-            this.openWeatherMapConfiguration = AppSettings.GetApiConfiguration("OpenWeatherMap_PRO");
+            this.openWeatherMapOptions = AppSettings.GetApiConfiguration("OpenWeatherMap_PRO");
             this.testOutputHelper = testOutputHelper;
 
 
@@ -50,7 +50,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecast4Async(latitude, longitude, count);
@@ -70,7 +70,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecast5Async(latitude, longitude);
@@ -90,7 +90,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecastDailyAsync(latitude, longitude);
@@ -118,7 +118,7 @@ namespace OpenWeatherMap.Tests
                 IncludeHourlyForecasts = true,
             };
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude, oneCallOptions);
@@ -138,7 +138,7 @@ namespace OpenWeatherMap.Tests
 
             var dateTime = DateTime.Now;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallHistoricAsync(latitude, longitude, dateTime);
@@ -156,7 +156,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);

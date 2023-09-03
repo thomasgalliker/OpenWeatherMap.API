@@ -11,11 +11,11 @@ namespace OpenWeatherMap
     [ExcludeFromCodeCoverage]
     public class NullOpenWeatherMapService : IOpenWeatherMapService
     {
-        private readonly IOpenWeatherMapConfiguration openWeatherMapConfiguration;
+        private readonly OpenWeatherMapOptions options;
 
-        public NullOpenWeatherMapService(IOpenWeatherMapConfiguration openWeatherMapConfiguration)
+        public NullOpenWeatherMapService(OpenWeatherMapOptions options)
         {
-            this.openWeatherMapConfiguration = openWeatherMapConfiguration;
+            this.options = options;
         }
 
         public Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude)

@@ -5,7 +5,7 @@ namespace OpenWeatherMap.Tests.Testdata
 {
     internal class AppSettings
     {
-        public static IOpenWeatherMapConfiguration GetApiConfiguration(string sectionName = "OpenWeatherMap")
+        public static OpenWeatherMapOptions GetApiConfiguration(string sectionName = "OpenWeatherMap")
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -13,11 +13,11 @@ namespace OpenWeatherMap.Tests.Testdata
                 .AddUserSecrets<AppSettings>()
                 .Build();
 
-            var openWeatherMapConfiguration = new OpenWeatherMapConfiguration();
+            var openWeatherMapOptions = new OpenWeatherMapOptions();
             var openWeatherMapSection = configuration.GetSection(sectionName);
-            openWeatherMapSection.Bind(openWeatherMapConfiguration);
+            openWeatherMapSection.Bind(openWeatherMapOptions);
 
-            return openWeatherMapConfiguration;
+            return openWeatherMapOptions;
         }
     }
 }

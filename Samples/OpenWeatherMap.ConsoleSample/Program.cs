@@ -30,9 +30,9 @@ namespace OpenWeatherMap.ConsoleSample
 #endif
                 .Build();
 
-            var openWeatherMapConfiguration = new OpenWeatherMapConfiguration();
+            var openWeatherMapOptions = new OpenWeatherMapOptions();
             var openWeatherMapSection = configuration.GetSection("OpenWeatherMap");
-            openWeatherMapSection.Bind(openWeatherMapConfiguration);
+            openWeatherMapSection.Bind(openWeatherMapOptions);
 
             using var loggerFactory = LoggerFactory.Create(builder =>
             {
@@ -44,7 +44,7 @@ namespace OpenWeatherMap.ConsoleSample
 
             // Create weather service instance manually or resolve it from any dependency injection framework:
             var logger = loggerFactory.CreateLogger<OpenWeatherMapService>();
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(logger, openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(logger, openWeatherMapOptions);
 
             var latitude = 47.181510d;
             var longitude = 8.460620d;

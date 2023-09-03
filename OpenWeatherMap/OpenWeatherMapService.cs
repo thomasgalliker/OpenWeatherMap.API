@@ -34,24 +34,24 @@ namespace OpenWeatherMap
         private readonly string language;
         private readonly bool verboseLogging;
 
-        public OpenWeatherMapService(IOpenWeatherMapConfiguration openWeatherMapConfiguration)
-            : this(new NullLogger<OpenWeatherMapService>(), new HttpClient(), openWeatherMapConfiguration)
+        public OpenWeatherMapService(OpenWeatherMapOptions options)
+            : this(new NullLogger<OpenWeatherMapService>(), new HttpClient(), options)
         {
         }
 
-        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, IOpenWeatherMapConfiguration openWeatherMapConfiguration)
-            : this(logger, new HttpClient(), openWeatherMapConfiguration)
+        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, OpenWeatherMapOptions options)
+            : this(logger, new HttpClient(), options)
         {
         }
 
-        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, HttpClient httpClient, IOpenWeatherMapConfiguration openWeatherMapConfiguration)
+        public OpenWeatherMapService(ILogger<OpenWeatherMapService> logger, HttpClient httpClient, OpenWeatherMapOptions options)
         {
             this.logger = logger;
-            this.apiEndpoint = openWeatherMapConfiguration.ApiEndpoint;
-            this.apiKey = openWeatherMapConfiguration.ApiKey;
-            this.unitSystem = openWeatherMapConfiguration.UnitSystem;
-            this.language = openWeatherMapConfiguration.Language;
-            this.verboseLogging = openWeatherMapConfiguration.VerboseLogging;
+            this.apiEndpoint = options.ApiEndpoint;
+            this.apiKey = options.ApiKey;
+            this.unitSystem = options.UnitSystem;
+            this.language = options.Language;
+            this.verboseLogging = options.VerboseLogging;
             this.httpClient = httpClient;
             this.defaultWeatherIconMapping = new DefaultWeatherIconMapping(this.httpClient);
             this.jsonSerializer = new OpenWeatherMapJsonSerializer(this.unitSystem);

@@ -27,14 +27,14 @@ namespace OpenWeatherMap.Tests
 
             this.autoMocker.Use<ILogger<OpenWeatherMapService>>(new TestOutputHelperLogger<OpenWeatherMapService>(testOutputHelper));
 
-            var openWeatherMapConfigurationMock = this.autoMocker.GetMock<IOpenWeatherMapConfiguration>();
-            openWeatherMapConfigurationMock.SetupGet(c => c.ApiEndpoint)
+            var openWeatherMapOptionsMock = this.autoMocker.GetMock<OpenWeatherMapOptions>();
+            openWeatherMapOptionsMock.SetupGet(c => c.ApiEndpoint)
                 .Returns("https://api.openweathermap.org");
-            openWeatherMapConfigurationMock.SetupGet(c => c.Language)
+            openWeatherMapOptionsMock.SetupGet(c => c.Language)
                 .Returns("en");
-            openWeatherMapConfigurationMock.SetupGet(c => c.ApiKey)
+            openWeatherMapOptionsMock.SetupGet(c => c.ApiKey)
                 .Returns("apikey");
-            openWeatherMapConfigurationMock.SetupGet(c => c.UnitSystem)
+            openWeatherMapOptionsMock.SetupGet(c => c.UnitSystem)
                 .Returns("metric");
 
             this.jsonSerializer = new OpenWeatherMapJsonSerializer("metric");
