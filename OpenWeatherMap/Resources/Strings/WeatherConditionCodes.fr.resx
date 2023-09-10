@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="200" xml:space="preserve">
+    <value>Orage avec pluie légère</value>
+  </data>
+  <data name="201" xml:space="preserve">
+    <value>Orage avec pluie</value>
+  </data>
+  <data name="202" xml:space="preserve">
+    <value>Orage avec fortes pluies</value>
+  </data>
+  <data name="210" xml:space="preserve">
+    <value>Orage léger</value>
+  </data>
+  <data name="211" xml:space="preserve">
+    <value>Orage</value>
+  </data>
+  <data name="212" xml:space="preserve">
+    <value>Orage violent</value>
+  </data>
+  <data name="221" xml:space="preserve">
+    <value>Orage extrêmement violent</value>
+  </data>
+  <data name="230" xml:space="preserve">
+    <value>Orage avec légère bruine</value>
+  </data>
+  <data name="231" xml:space="preserve">
+    <value>Orage avec bruine</value>
+  </data>
+  <data name="232" xml:space="preserve">
+    <value>Orage avec forte bruine</value>
+  </data>
+  <data name="300" xml:space="preserve">
+    <value>Bruine d’intensité lumineuse</value>
+  </data>
+  <data name="301" xml:space="preserve">
+    <value>Bruine</value>
+  </data>
+  <data name="302" xml:space="preserve">
+    <value>Bruine de forte intensité</value>
+  </data>
+  <data name="310" xml:space="preserve">
+    <value>Pluie de bruine d’intensité légère</value>
+  </data>
+  <data name="311" xml:space="preserve">
+    <value>Pluie de bruine</value>
+  </data>
+  <data name="312" xml:space="preserve">
+    <value>Fortes pluies de bruine</value>
+  </data>
+  <data name="313" xml:space="preserve">
+    <value>Averse de pluie et de bruine</value>
+  </data>
+  <data name="314" xml:space="preserve">
+    <value>Forte pluie d’averses et bruine</value>
+  </data>
+  <data name="321" xml:space="preserve">
+    <value>Bruine de douche</value>
+  </data>
+  <data name="500" xml:space="preserve">
+    <value>Bruine</value>
+  </data>
+  <data name="501" xml:space="preserve">
+    <value>Pluie modérée</value>
+  </data>
+  <data name="502" xml:space="preserve">
+    <value>Fortes pluies intenses</value>
+  </data>
+  <data name="503" xml:space="preserve">
+    <value>Très fortes pluies</value>
+  </data>
+  <data name="504" xml:space="preserve">
+    <value>Pluies extrêmes</value>
+  </data>
+  <data name="511" xml:space="preserve">
+    <value>Pluie verglaçante</value>
+  </data>
+  <data name="520" xml:space="preserve">
+    <value>Pluie d’averses d’intensité légère</value>
+  </data>
+  <data name="521" xml:space="preserve">
+    <value>Pluie de pluie</value>
+  </data>
+  <data name="522" xml:space="preserve">
+    <value>Forte intensité pluie d’averses</value>
+  </data>
+  <data name="531" xml:space="preserve">
+    <value>Pluie d’averse extrême</value>
+  </data>
+  <data name="600" xml:space="preserve">
+    <value>Neige légère</value>
+  </data>
+  <data name="601" xml:space="preserve">
+    <value>Neige</value>
+  </data>
+  <data name="602" xml:space="preserve">
+    <value>Neige abondante</value>
+  </data>
+  <data name="611" xml:space="preserve">
+    <value>Grésil</value>
+  </data>
+  <data name="612" xml:space="preserve">
+    <value>Grésil de douche légère</value>
+  </data>
+  <data name="613" xml:space="preserve">
+    <value>Spectacles grésil</value>
+  </data>
+  <data name="615" xml:space="preserve">
+    <value>Pluie légère et neige</value>
+  </data>
+  <data name="616" xml:space="preserve">
+    <value>Pluie et neige</value>
+  </data>
+  <data name="620" xml:space="preserve">
+    <value>Légère averse de neige</value>
+  </data>
+  <data name="621" xml:space="preserve">
+    <value>Averse de neige</value>
+  </data>
+  <data name="622" xml:space="preserve">
+    <value>Forte averse de neige</value>
+  </data>
+  <data name="701" xml:space="preserve">
+    <value>Brouillard</value>
+  </data>
+  <data name="711" xml:space="preserve">
+    <value>Fumée</value>
+  </data>
+  <data name="721" xml:space="preserve">
+    <value>Brume</value>
+  </data>
+  <data name="731" xml:space="preserve">
+    <value>Tourbillons de sable/poussière</value>
+  </data>
+  <data name="741" xml:space="preserve">
+    <value>Articulation</value>
+  </data>
+  <data name="751" xml:space="preserve">
+    <value>Sable</value>
+  </data>
+  <data name="761" xml:space="preserve">
+    <value>Bagarre</value>
+  </data>
+  <data name="762" xml:space="preserve">
+    <value>Cendres volcaniques</value>
+  </data>
+  <data name="771" xml:space="preserve">
+    <value>Rafales</value>
+  </data>
+  <data name="781" xml:space="preserve">
+    <value>Tornade</value>
+  </data>
+  <data name="800" xml:space="preserve">
+    <value>Ciel dégagé</value>
+  </data>
+  <data name="801" xml:space="preserve">
+    <value>Peu de nuages: 11-25%</value>
+  </data>
+  <data name="802" xml:space="preserve">
+    <value>Nuages épars: 25-50%</value>
+  </data>
+  <data name="803" xml:space="preserve">
+    <value>Nuages brisés: 51-84%</value>
+  </data>
+  <data name="804" xml:space="preserve">
+    <value>Nuages couverts: 85-100%</value>
+  </data>
+</root>

@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using OpenWeatherMap.Models;
 using Xunit;
 using static OpenWeatherMap.Tests.Testdata.WeatherForecasts;
 

@@ -39,10 +39,10 @@ namespace OpenWeatherMap.Tests.Testdata
                 {
                     new WeatherCondition
                     {
-                        Id = 1,
+                        Id = WeatherConditionCode.Clear,
                         Description = "Klarer Himmel",
                         IconId = "09d",
-                        Type = WeatherConditionType.Clear,
+                        Main = WeatherConditionGroup.Clear,
                     },
                 },
                 AdditionalInformation = new AdditionalWeatherInfo

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="200" xml:space="preserve">
+    <value>Temporali con pioggia leggera</value>
+  </data>
+  <data name="201" xml:space="preserve">
+    <value>Temporale con pioggia</value>
+  </data>
+  <data name="202" xml:space="preserve">
+    <value>Temporali con pioggia battente</value>
+  </data>
+  <data name="210" xml:space="preserve">
+    <value>Leggero temporale</value>
+  </data>
+  <data name="211" xml:space="preserve">
+    <value>Temporale</value>
+  </data>
+  <data name="212" xml:space="preserve">
+    <value>Forti temporali</value>
+  </data>
+  <data name="221" xml:space="preserve">
+    <value>Fortissimo temporale</value>
+  </data>
+  <data name="230" xml:space="preserve">
+    <value>Temporali con leggera pioggerellina</value>
+  </data>
+  <data name="231" xml:space="preserve">
+    <value>Temporali con pioggerellina</value>
+  </data>
+  <data name="232" xml:space="preserve">
+    <value>Temporali con pioviggine pesante</value>
+  </data>
+  <data name="300" xml:space="preserve">
+    <value>Pioggerellina di intensità luminosa</value>
+  </data>
+  <data name="301" xml:space="preserve">
+    <value>Pioggerella</value>
+  </data>
+  <data name="302" xml:space="preserve">
+    <value>Pioggerellina di forte intensità</value>
+  </data>
+  <data name="310" xml:space="preserve">
+    <value>Pioggia piovigginosa di leggera intensità</value>
+  </data>
+  <data name="311" xml:space="preserve">
+    <value>Pioggia piovigginosa</value>
+  </data>
+  <data name="312" xml:space="preserve">
+    <value>Pioggia piovigginosa di forte intensità</value>
+  </data>
+  <data name="313" xml:space="preserve">
+    <value>Pioggia e pioviggine</value>
+  </data>
+  <data name="314" xml:space="preserve">
+    <value>Pioggia e pioviggine</value>
+  </data>
+  <data name="321" xml:space="preserve">
+    <value>Doccia pioviggina</value>
+  </data>
+  <data name="500" xml:space="preserve">
+    <value>Pioggia leggera</value>
+  </data>
+  <data name="501" xml:space="preserve">
+    <value>Pioggia moderata</value>
+  </data>
+  <data name="502" xml:space="preserve">
+    <value>Pioggia intensa</value>
+  </data>
+  <data name="503" xml:space="preserve">
+    <value>Pioggia molto forte</value>
+  </data>
+  <data name="504" xml:space="preserve">
+    <value>Pioggia estrema</value>
+  </data>
+  <data name="511" xml:space="preserve">
+    <value>Pioggia gelata</value>
+  </data>
+  <data name="520" xml:space="preserve">
+    <value>Pioggia pioggia di intensità luminosa</value>
+  </data>
+  <data name="521" xml:space="preserve">
+    <value>Pioggia a pioggia</value>
+  </data>
+  <data name="522" xml:space="preserve">
+    <value>Pioggia a pioggia di forte intensità</value>
+  </data>
+  <data name="531" xml:space="preserve">
+    <value>Pioggia estrema della pioggia</value>
+  </data>
+  <data name="600" xml:space="preserve">
+    <value>Neve leggera</value>
+  </data>
+  <data name="601" xml:space="preserve">
+    <value>Neve</value>
+  </data>
+  <data name="602" xml:space="preserve">
+    <value>Nevicate</value>
+  </data>
+  <data name="611" xml:space="preserve">
+    <value>Nevischio</value>
+  </data>
+  <data name="612" xml:space="preserve">
+    <value>Nevischio doccia leggero</value>
+  </data>
+  <data name="613" xml:space="preserve">
+    <value>Mostra nevischio</value>
+  </data>
+  <data name="615" xml:space="preserve">
+    <value>Pioggia leggera e neve</value>
+  </data>
+  <data name="616" xml:space="preserve">
+    <value>Pioggia e neve</value>
+  </data>
+  <data name="620" xml:space="preserve">
+    <value>Pioggia leggera neve</value>
+  </data>
+  <data name="621" xml:space="preserve">
+    <value>Doccia neve</value>
+  </data>
+  <data name="622" xml:space="preserve">
+    <value>Pioggia di neve pesante</value>
+  </data>
+  <data name="701" xml:space="preserve">
+    <value>Nebbia</value>
+  </data>
+  <data name="711" xml:space="preserve">
+    <value>Fumo</value>
+  </data>
+  <data name="721" xml:space="preserve">
+    <value>Nebbia</value>
+  </data>
+  <data name="731" xml:space="preserve">
+    <value>Vortici di sabbia/polvere</value>
+  </data>
+  <data name="741" xml:space="preserve">
+    <value>Giuntura</value>
+  </data>
+  <data name="751" xml:space="preserve">
+    <value>Sabbia</value>
+  </data>
+  <data name="761" xml:space="preserve">
+    <value>Bagarre</value>
+  </data>
+  <data name="762" xml:space="preserve">
+    <value>Cenere vulcanica</value>
+  </data>
+  <data name="771" xml:space="preserve">
+    <value>Burrasche</value>
+  </data>
+  <data name="781" xml:space="preserve">
+    <value>Tornado</value>
+  </data>
+  <data name="800" xml:space="preserve">
+    <value>Cielo sereno</value>
+  </data>
+  <data name="801" xml:space="preserve">
+    <value>Poche nuvole: 11-25%</value>
+  </data>
+  <data name="802" xml:space="preserve">
+    <value>Nuvolosità sparse: 25-50%</value>
+  </data>
+  <data name="803" xml:space="preserve">
+    <value>Nuvole spezzate: 51-84%</value>
+  </data>
+  <data name="804" xml:space="preserve">
+    <value>Nuvolosità nuvoloso: 85-100%</value>
+  </data>
+</root>
