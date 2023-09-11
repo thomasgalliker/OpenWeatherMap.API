@@ -9,66 +9,66 @@ namespace OpenWeatherMap.Models
     [Serializable]
     public struct WeatherConditionCode : IComparable, IComparable<WeatherConditionCode>, IComparable<int>, IEquatable<WeatherConditionCode>, IFormattable
     {
-        public static readonly WeatherConditionCode ThunderstormWithLighRain = new WeatherConditionCode(nameof(ThunderstormWithLighRain), 200);
-        public static readonly WeatherConditionCode ThunderstormWithRain = new WeatherConditionCode(nameof(ThunderstormWithRain), 201);
-        public static readonly WeatherConditionCode ThunderstormWithHeavyRain = new WeatherConditionCode(nameof(ThunderstormWithHeavyRain), 202);
-        public static readonly WeatherConditionCode LightThunderstorm = new WeatherConditionCode(nameof(LightThunderstorm), 210);
-        public static readonly WeatherConditionCode Thunderstorm = new WeatherConditionCode(nameof(Thunderstorm), 211);
-        public static readonly WeatherConditionCode HeavyThunderstorm = new WeatherConditionCode(nameof(HeavyThunderstorm), 212);
-        public static readonly WeatherConditionCode RaggedThunderstorm = new WeatherConditionCode(nameof(RaggedThunderstorm), 221);
-        public static readonly WeatherConditionCode ThunderstormWithLightDrizzle = new WeatherConditionCode(nameof(ThunderstormWithLightDrizzle), 230);
-        public static readonly WeatherConditionCode ThunderstormWithDrizzle = new WeatherConditionCode(nameof(ThunderstormWithDrizzle), 231);
-        public static readonly WeatherConditionCode ThunderstormWithHeavyDrizzle = new WeatherConditionCode(nameof(ThunderstormWithHeavyDrizzle), 232);
+        public static readonly WeatherConditionCode ThunderstormWithLighRain = new WeatherConditionCode(200);
+        public static readonly WeatherConditionCode ThunderstormWithRain = new WeatherConditionCode(201);
+        public static readonly WeatherConditionCode ThunderstormWithHeavyRain = new WeatherConditionCode(202);
+        public static readonly WeatherConditionCode LightThunderstorm = new WeatherConditionCode(210);
+        public static readonly WeatherConditionCode Thunderstorm = new WeatherConditionCode(211);
+        public static readonly WeatherConditionCode HeavyThunderstorm = new WeatherConditionCode(212);
+        public static readonly WeatherConditionCode RaggedThunderstorm = new WeatherConditionCode(221);
+        public static readonly WeatherConditionCode ThunderstormWithLightDrizzle = new WeatherConditionCode(230);
+        public static readonly WeatherConditionCode ThunderstormWithDrizzle = new WeatherConditionCode(231);
+        public static readonly WeatherConditionCode ThunderstormWithHeavyDrizzle = new WeatherConditionCode(232);
 
-        public static readonly WeatherConditionCode LightIntensityDrizzle = new WeatherConditionCode(nameof(LightIntensityDrizzle), 300);
-        public static readonly WeatherConditionCode Drizzle = new WeatherConditionCode(nameof(Drizzle), 301);
-        public static readonly WeatherConditionCode HeavyIntensityDrizzle = new WeatherConditionCode(nameof(HeavyIntensityDrizzle), 302);
-        public static readonly WeatherConditionCode LightIntensityDrizzleRain = new WeatherConditionCode(nameof(LightIntensityDrizzleRain), 310);
-        public static readonly WeatherConditionCode DrizzleRain = new WeatherConditionCode(nameof(DrizzleRain), 311);
-        public static readonly WeatherConditionCode HeavyIntensityDrizzleRain = new WeatherConditionCode(nameof(HeavyIntensityDrizzleRain), 312);
-        public static readonly WeatherConditionCode ShowerRainAndDrizzle = new WeatherConditionCode(nameof(ShowerRainAndDrizzle), 313);
-        public static readonly WeatherConditionCode HeavyShowerRainAndDrizzle = new WeatherConditionCode(nameof(HeavyShowerRainAndDrizzle), 314);
-        public static readonly WeatherConditionCode ShowerDrizzle = new WeatherConditionCode(nameof(ShowerDrizzle), 321);
+        public static readonly WeatherConditionCode LightIntensityDrizzle = new WeatherConditionCode(300);
+        public static readonly WeatherConditionCode Drizzle = new WeatherConditionCode(301);
+        public static readonly WeatherConditionCode HeavyIntensityDrizzle = new WeatherConditionCode(302);
+        public static readonly WeatherConditionCode LightIntensityDrizzleRain = new WeatherConditionCode(310);
+        public static readonly WeatherConditionCode DrizzleRain = new WeatherConditionCode(311);
+        public static readonly WeatherConditionCode HeavyIntensityDrizzleRain = new WeatherConditionCode(312);
+        public static readonly WeatherConditionCode ShowerRainAndDrizzle = new WeatherConditionCode(313);
+        public static readonly WeatherConditionCode HeavyShowerRainAndDrizzle = new WeatherConditionCode(314);
+        public static readonly WeatherConditionCode ShowerDrizzle = new WeatherConditionCode(321);
 
-        public static readonly WeatherConditionCode LightRain = new WeatherConditionCode(nameof(LightRain), 500);
-        public static readonly WeatherConditionCode ModerateRain = new WeatherConditionCode(nameof(ModerateRain), 501);
-        public static readonly WeatherConditionCode HeavyIntensityRain = new WeatherConditionCode(nameof(HeavyIntensityRain), 502);
-        public static readonly WeatherConditionCode VeryHeavyRain = new WeatherConditionCode(nameof(VeryHeavyRain), 503);
-        public static readonly WeatherConditionCode ExtremeRain = new WeatherConditionCode(nameof(ExtremeRain), 504);
-        public static readonly WeatherConditionCode FreezingRain = new WeatherConditionCode(nameof(FreezingRain), 511);
-        public static readonly WeatherConditionCode LightIntensityShowerRain = new WeatherConditionCode(nameof(LightIntensityShowerRain), 520);
-        public static readonly WeatherConditionCode ShowerRain = new WeatherConditionCode(nameof(ShowerRain), 521);
-        public static readonly WeatherConditionCode HeavyIntensityShowerRain = new WeatherConditionCode(nameof(HeavyIntensityShowerRain), 522);
-        public static readonly WeatherConditionCode RaggedShowerRain = new WeatherConditionCode(nameof(RaggedShowerRain), 531);
+        public static readonly WeatherConditionCode LightRain = new WeatherConditionCode(500);
+        public static readonly WeatherConditionCode ModerateRain = new WeatherConditionCode(501);
+        public static readonly WeatherConditionCode HeavyIntensityRain = new WeatherConditionCode(502);
+        public static readonly WeatherConditionCode VeryHeavyRain = new WeatherConditionCode(503);
+        public static readonly WeatherConditionCode ExtremeRain = new WeatherConditionCode(504);
+        public static readonly WeatherConditionCode FreezingRain = new WeatherConditionCode(511);
+        public static readonly WeatherConditionCode LightIntensityShowerRain = new WeatherConditionCode(520);
+        public static readonly WeatherConditionCode ShowerRain = new WeatherConditionCode(521);
+        public static readonly WeatherConditionCode HeavyIntensityShowerRain = new WeatherConditionCode(522);
+        public static readonly WeatherConditionCode RaggedShowerRain = new WeatherConditionCode(531);
 
-        public static readonly WeatherConditionCode LightSnow = new WeatherConditionCode(nameof(LightSnow), 600);
-        public static readonly WeatherConditionCode Snow = new WeatherConditionCode(nameof(Snow), 601);
-        public static readonly WeatherConditionCode HeavySnow = new WeatherConditionCode(nameof(HeavySnow), 602);
-        public static readonly WeatherConditionCode Sleet = new WeatherConditionCode(nameof(Sleet), 611);
-        public static readonly WeatherConditionCode LightShowerSleet = new WeatherConditionCode(nameof(LightShowerSleet), 612);
-        public static readonly WeatherConditionCode ShowerSleet = new WeatherConditionCode(nameof(ShowerSleet), 613);
-        public static readonly WeatherConditionCode LightRainAndSnow = new WeatherConditionCode(nameof(LightRainAndSnow), 615);
-        public static readonly WeatherConditionCode RainAndSnow = new WeatherConditionCode(nameof(RainAndSnow), 616);
-        public static readonly WeatherConditionCode LightShowerSnow = new WeatherConditionCode(nameof(LightShowerSnow), 620);
-        public static readonly WeatherConditionCode ShowerSnow = new WeatherConditionCode(nameof(ShowerSnow), 621);
-        public static readonly WeatherConditionCode HeavyShowerSnow = new WeatherConditionCode(nameof(HeavyShowerSnow), 622);
+        public static readonly WeatherConditionCode LightSnow = new WeatherConditionCode(600);
+        public static readonly WeatherConditionCode Snow = new WeatherConditionCode(601);
+        public static readonly WeatherConditionCode HeavySnow = new WeatherConditionCode(602);
+        public static readonly WeatherConditionCode Sleet = new WeatherConditionCode(611);
+        public static readonly WeatherConditionCode LightShowerSleet = new WeatherConditionCode(612);
+        public static readonly WeatherConditionCode ShowerSleet = new WeatherConditionCode(613);
+        public static readonly WeatherConditionCode LightRainAndSnow = new WeatherConditionCode(615);
+        public static readonly WeatherConditionCode RainAndSnow = new WeatherConditionCode(616);
+        public static readonly WeatherConditionCode LightShowerSnow = new WeatherConditionCode(620);
+        public static readonly WeatherConditionCode ShowerSnow = new WeatherConditionCode(621);
+        public static readonly WeatherConditionCode HeavyShowerSnow = new WeatherConditionCode(622);
 
-        public static readonly WeatherConditionCode Mist = new WeatherConditionCode(nameof(Mist), 701);
-        public static readonly WeatherConditionCode Smoke = new WeatherConditionCode(nameof(Smoke), 711);
-        public static readonly WeatherConditionCode Haze = new WeatherConditionCode(nameof(Haze), 721);
-        public static readonly WeatherConditionCode SandDustWhirls = new WeatherConditionCode(nameof(SandDustWhirls), 731);
-        public static readonly WeatherConditionCode Fog = new WeatherConditionCode(nameof(Fog), 741);
-        public static readonly WeatherConditionCode Sand = new WeatherConditionCode(nameof(Sand), 751);
-        public static readonly WeatherConditionCode Dust = new WeatherConditionCode(nameof(Dust), 761);
-        public static readonly WeatherConditionCode VolcanicAsh = new WeatherConditionCode(nameof(VolcanicAsh), 762);
-        public static readonly WeatherConditionCode Squalls = new WeatherConditionCode(nameof(Squalls), 771);
-        public static readonly WeatherConditionCode Tornado = new WeatherConditionCode(nameof(Tornado), 781);
+        public static readonly WeatherConditionCode Mist = new WeatherConditionCode(701);
+        public static readonly WeatherConditionCode Smoke = new WeatherConditionCode(711);
+        public static readonly WeatherConditionCode Haze = new WeatherConditionCode(721);
+        public static readonly WeatherConditionCode SandDustWhirls = new WeatherConditionCode(731);
+        public static readonly WeatherConditionCode Fog = new WeatherConditionCode(741);
+        public static readonly WeatherConditionCode Sand = new WeatherConditionCode(751);
+        public static readonly WeatherConditionCode Dust = new WeatherConditionCode(761);
+        public static readonly WeatherConditionCode VolcanicAsh = new WeatherConditionCode(762);
+        public static readonly WeatherConditionCode Squalls = new WeatherConditionCode(771);
+        public static readonly WeatherConditionCode Tornado = new WeatherConditionCode(781);
 
-        public static readonly WeatherConditionCode Clear = new WeatherConditionCode(nameof(Clear), 800);
-        public static readonly WeatherConditionCode FewClouds = new WeatherConditionCode(nameof(FewClouds), 801);
-        public static readonly WeatherConditionCode ScatteredClouds = new WeatherConditionCode(nameof(ScatteredClouds), 802);
-        public static readonly WeatherConditionCode BrokenClouds = new WeatherConditionCode(nameof(BrokenClouds), 803);
-        public static readonly WeatherConditionCode OvercastClouds = new WeatherConditionCode(nameof(OvercastClouds), 804);
+        public static readonly WeatherConditionCode Clear = new WeatherConditionCode(800);
+        public static readonly WeatherConditionCode FewClouds = new WeatherConditionCode(801);
+        public static readonly WeatherConditionCode ScatteredClouds = new WeatherConditionCode(802);
+        public static readonly WeatherConditionCode BrokenClouds = new WeatherConditionCode(803);
+        public static readonly WeatherConditionCode OvercastClouds = new WeatherConditionCode(804);
 
         public static readonly IEnumerable<WeatherConditionCode> All = new List<WeatherConditionCode>
         {
@@ -134,11 +134,8 @@ namespace OpenWeatherMap.Models
             OvercastClouds,
         };
 
-        private readonly string resourceId;
-
-        private WeatherConditionCode(string resourceId, int value)
+        private WeatherConditionCode(int value)
         {
-            this.resourceId = resourceId;
             this.Value = value;
         }
 
