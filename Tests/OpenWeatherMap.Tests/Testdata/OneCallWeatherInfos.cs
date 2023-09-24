@@ -45,7 +45,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       new WeatherCondition
                       {
                         Id = 803,
-                        Type = WeatherConditionType.Clouds,
+                        Main = WeatherConditionGroup.Clouds,
                         Description = "Überwiegend bewölkt",
                         IconId = "04n"
                       }
@@ -380,7 +380,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
@@ -406,7 +406,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
@@ -432,7 +432,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
@@ -458,7 +458,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03n"
                         }
@@ -484,7 +484,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03n"
                         }
@@ -510,7 +510,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
@@ -536,7 +536,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
@@ -562,7 +562,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01n"
                         }
@@ -588,7 +588,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -614,7 +614,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -640,7 +640,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -666,7 +666,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -692,7 +692,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -718,7 +718,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -744,7 +744,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -770,7 +770,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -796,7 +796,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -822,7 +822,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -848,7 +848,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
@@ -874,7 +874,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -900,7 +900,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -926,7 +926,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -952,7 +952,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -978,7 +978,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1004,7 +1004,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
@@ -1030,7 +1030,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10n"
                         }
@@ -1056,7 +1056,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10n"
                         }
@@ -1082,7 +1082,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
@@ -1108,7 +1108,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
@@ -1134,7 +1134,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01n"
                         }
@@ -1160,7 +1160,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
@@ -1186,7 +1186,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
@@ -1212,7 +1212,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -1238,7 +1238,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -1264,7 +1264,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1290,7 +1290,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -1316,7 +1316,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1342,7 +1342,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1368,7 +1368,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1394,7 +1394,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
@@ -1420,7 +1420,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
@@ -1446,7 +1446,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
@@ -1472,7 +1472,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
@@ -1498,7 +1498,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
@@ -1524,7 +1524,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
@@ -1550,7 +1550,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
@@ -1576,7 +1576,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
@@ -1602,7 +1602,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
@@ -1650,7 +1650,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -1697,7 +1697,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
@@ -1744,7 +1744,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
@@ -1791,7 +1791,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
@@ -1838,7 +1838,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
@@ -1885,7 +1885,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
@@ -1932,7 +1932,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
@@ -1979,7 +1979,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 502,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Starker Regen",
                           IconId = "10d"
                         }
@@ -2024,7 +2024,7 @@ namespace OpenWeatherMap.Tests.Testdata
                       new WeatherCondition
                       {
                         Id = 802,
-                        Type = WeatherConditionType.Clouds,
+                        Main = WeatherConditionGroup.Clouds,
                         Description = "scattered clouds",
                         IconId = "03d"
                       }
@@ -2359,7 +2359,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2385,7 +2385,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2411,7 +2411,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
@@ -2437,7 +2437,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
@@ -2463,7 +2463,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -2489,7 +2489,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -2515,7 +2515,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -2541,7 +2541,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
@@ -2567,7 +2567,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01n"
                         }
@@ -2593,7 +2593,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
@@ -2619,7 +2619,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04n"
                         }
@@ -2645,7 +2645,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
@@ -2671,7 +2671,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2697,7 +2697,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2723,7 +2723,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -2749,7 +2749,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "overcast clouds",
                           IconId = "04d"
                         }
@@ -2775,7 +2775,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "overcast clouds",
                           IconId = "04d"
                         }
@@ -2801,7 +2801,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -2827,7 +2827,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -2853,7 +2853,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -2879,7 +2879,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -2905,7 +2905,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2931,7 +2931,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2957,7 +2957,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -2983,7 +2983,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -3009,7 +3009,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -3035,7 +3035,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01n"
                         }
@@ -3061,7 +3061,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3087,7 +3087,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3113,7 +3113,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3139,7 +3139,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3165,7 +3165,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3191,7 +3191,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01n"
                         }
@@ -3217,7 +3217,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01n"
                         }
@@ -3243,7 +3243,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3269,7 +3269,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
@@ -3295,7 +3295,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -3321,7 +3321,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -3347,7 +3347,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3373,7 +3373,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3399,7 +3399,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3425,7 +3425,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3451,7 +3451,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3477,7 +3477,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3503,7 +3503,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3529,7 +3529,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3555,7 +3555,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3581,7 +3581,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3629,7 +3629,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3676,7 +3676,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
@@ -3723,7 +3723,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3770,7 +3770,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "clear sky",
                           IconId = "01d"
                         }
@@ -3817,7 +3817,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03d"
                         }
@@ -3864,7 +3864,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 502,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "heavy intensity rain",
                           IconId = "10d"
                         }
@@ -3911,7 +3911,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "moderate rain",
                           IconId = "10d"
                         }
@@ -3958,7 +3958,7 @@ namespace OpenWeatherMap.Tests.Testdata
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "moderate rain",
                           IconId = "10d"
                         }

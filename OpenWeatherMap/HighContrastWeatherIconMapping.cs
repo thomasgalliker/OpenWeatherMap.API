@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using DisplayService.Extensions;
 using OpenWeatherMap.Models;
-using WeatherDisplay.Resources;
+using OpenWeatherMap.Resources.Icons;
 
 namespace OpenWeatherMap
 {

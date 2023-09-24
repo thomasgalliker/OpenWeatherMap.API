@@ -1,9 +1,8 @@
 using System;
 using FluentAssertions;
 using Xunit;
-using static OpenWeatherMap.Tests.Testdata.WeatherForecasts;
 
-namespace OpenWeatherMap.Tests
+namespace OpenWeatherMap.Tests.Models
 {
     public class UnitSystemTests
     {

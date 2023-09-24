@@ -12,11 +12,11 @@ namespace OpenWeatherMap.Models.Converters
 
         public override AirQuality ReadJson(JsonReader reader, Type objectType, AirQuality existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.Value is long celsiusLong)
+            if (reader.Value is long longValue)
             {
-                return AirQuality.FromValue((int)celsiusLong);
+                return AirQuality.FromValue((int)longValue);
             }
-
+            
             throw new NotSupportedException($"Cannot convert from {reader.Value} to AirQuality");
         }
     }

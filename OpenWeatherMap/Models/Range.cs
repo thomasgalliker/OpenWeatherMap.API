@@ -3,11 +3,13 @@
 namespace OpenWeatherMap.Models
 {
     /// <summary>
-    /// Sources:
+    /// Data range type.
+    /// </summary>
+    /// <remarks>
+    /// See also:
     /// https://raw.githubusercontent.com/ImaMapleTree/MirenFalls/0a482e153d3353d45608cd936a02445ddcdf023c/MirenFalls/Internal/Utils/Range.cs
     /// https://github.com/dundich/Pay/blob/f06645ce1c57c4be33f783944965d3faaaad6b88/Libs/Maybe2/IRange.cs
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// </remarks>
     public class Range<T> where T : IComparable
     {
         private readonly bool minInclusive;

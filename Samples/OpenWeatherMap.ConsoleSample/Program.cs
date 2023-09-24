@@ -56,6 +56,7 @@ namespace OpenWeatherMap.ConsoleSample
                 Console.WriteLine(
                     $"Current Weather Info:{Environment.NewLine}" +
                     $"Location: {weatherInfo.CityName}{Environment.NewLine}" +
+                    $"Weather condition: {weatherInfo.Weather.ElementAtOrDefault(0)?.Id}{Environment.NewLine}" +
                     $"Temperature: {weatherInfo.Main.Temperature}{Environment.NewLine}" +
                     $"Humidity: {weatherInfo.Main.Humidity} ({weatherInfo.Main.Humidity.GetRange()}){Environment.NewLine}" +
                     $"Pressure: {weatherInfo.Main.Pressure} ({weatherInfo.Main.Pressure.GetRange()}){Environment.NewLine}" +

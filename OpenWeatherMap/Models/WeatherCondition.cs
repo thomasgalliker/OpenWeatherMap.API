@@ -1,34 +1,45 @@
-﻿using Newtonsoft.Json;
+﻿using System.Diagnostics;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
 {
+    [DebuggerDisplay("{this.Id}")]
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class WeatherCondition
     {
         /// <summary>
-        ///     Gets the identifier of the weather condition.
+        /// Gets the identifier of the weather condition.
+        /// See also: https://openweathermap.org/weather-conditions
         /// </summary>
-        [JsonRequired, JsonProperty("id")]
-        public int Id { get; set; }
+        [JsonRequired]
+        [JsonProperty("id")]
+        [JsonConverter(typeof(WeatherConditionCodeJsonConverter))]
+        public WeatherConditionCode Id { get; set; }
 
         /// <summary>
-        ///     Gets the scalar type of the weather condition.
+        /// Gets the scalar type of the weather condition.
+        /// See also: https://openweathermap.org/weather-conditions
         /// </summary>
-        [JsonRequired, JsonProperty("main")]
+        [JsonRequired]
+        [JsonProperty("main")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public WeatherConditionType Type { get; set; }
+        public WeatherConditionGroup Main { get; set; }
+
         /// <summary>
-        ///     Gets the description of the weather (localized).
+        /// Gets the language-specific description of the weather condition.
         /// </summary>
-        [JsonRequired, JsonProperty("description")]
+        [JsonRequired]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
         /// <summary>
-        ///     Gets the openweathermap icon identifier (e.g. 09d).
-        ///     See also: https://openweathermap.org/weather-conditions#How-to-get-icon-URL
+        /// Gets the openweathermap icon identifier (e.g. 09d).
+        /// See also: https://openweathermap.org/weather-conditions#How-to-get-icon-URL
         /// </summary>
-        [JsonRequired, JsonProperty("icon")]
+        [JsonRequired]
+        [JsonProperty("icon")]
         public string IconId { get; set; }
     }
 }

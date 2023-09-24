@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet.Units;
 
