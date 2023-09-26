@@ -69,6 +69,11 @@ namespace OpenWeatherMap.Resources.Icons
             return GetIcon("clouds_mist.png");
         }
 
+        public static Stream Location()
+        {
+            return GetIcon("location.png");
+        }
+        
         public static Stream Placeholder()
         {
             return GetIcon("placeholder.png");
