@@ -61,16 +61,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Luftqualität.
-        /// </summary>
-        internal static string AirQuality {
-            get {
-                return ResourceManager.GetString("AirQuality", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OK.
+        ///   Looks up a localized string similar to Fair.
         /// </summary>
         internal static string Fair {
             get {
@@ -79,7 +70,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gut.
+        ///   Looks up a localized string similar to Good.
         /// </summary>
         internal static string Good {
             get {
@@ -88,7 +79,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mässig.
+        ///   Looks up a localized string similar to Moderate.
         /// </summary>
         internal static string Moderate {
             get {
@@ -97,7 +88,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schlecht.
+        ///   Looks up a localized string similar to Poor.
         /// </summary>
         internal static string Poor {
             get {
@@ -106,7 +97,7 @@ namespace OpenWeatherMap.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sehr schlecht.
+        ///   Looks up a localized string similar to Very poor.
         /// </summary>
         internal static string VeryPoor {
             get {

@@ -1,6 +1,7 @@
 using System;
 using FluentAssertions;
 using OpenWeatherMap.Models;
+using UnitsNet;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -18,7 +19,7 @@ namespace OpenWeatherMap.Tests.Models
         [Theory]
         [ClassData(typeof(HumidityRangeTestData))]
 
-        public void ShouldGetFromValue(int humidity, HumidityRange expectedHumidityRange)
+        public void ShouldGetFromValue(RelativeHumidity humidity, HumidityRange expectedHumidityRange)
         {
             // Act
             var humidityRange = HumidityRange.FromValue(humidity);
@@ -27,20 +28,20 @@ namespace OpenWeatherMap.Tests.Models
             humidityRange.Should().Be(expectedHumidityRange);
         }
 
-        public class HumidityRangeTestData : TheoryData<int, HumidityRange>
+        public class HumidityRangeTestData : TheoryData<RelativeHumidity, HumidityRange>
         {
             public HumidityRangeTestData()
             {
-                this.Add(0, HumidityRange.VeryDry);
-                this.Add(30, HumidityRange.VeryDry);
-                this.Add(31, HumidityRange.Dry);
-                this.Add(39, HumidityRange.Dry);
-                this.Add(40, HumidityRange.Average);
-                this.Add(70, HumidityRange.Average);
-                this.Add(71, HumidityRange.Moist);
-                this.Add(79, HumidityRange.Moist);
-                this.Add(80, HumidityRange.VeryMoist);
-                this.Add(100, HumidityRange.VeryMoist);
+                this.Add(RelativeHumidity.FromPercent(0), HumidityRange.VeryDry);
+                this.Add(RelativeHumidity.FromPercent(30), HumidityRange.VeryDry);
+                this.Add(RelativeHumidity.FromPercent(31), HumidityRange.Dry);
+                this.Add(RelativeHumidity.FromPercent(39), HumidityRange.Dry);
+                this.Add(RelativeHumidity.FromPercent(40), HumidityRange.Average);
+                this.Add(RelativeHumidity.FromPercent(70), HumidityRange.Average);
+                this.Add(RelativeHumidity.FromPercent(71), HumidityRange.Moist);
+                this.Add(RelativeHumidity.FromPercent(79), HumidityRange.Moist);
+                this.Add(RelativeHumidity.FromPercent(80), HumidityRange.VeryMoist);
+                this.Add(RelativeHumidity.FromPercent(100), HumidityRange.VeryMoist);
             }
         }
 
@@ -48,7 +49,7 @@ namespace OpenWeatherMap.Tests.Models
         public void ShouldThrowOutOfRangeException()
         {
             // Arrange
-            var humidity = 120;
+            var humidity = RelativeHumidity.FromPercent(120);
 
             // Act
             Action action = () => HumidityRange.FromValue(humidity);

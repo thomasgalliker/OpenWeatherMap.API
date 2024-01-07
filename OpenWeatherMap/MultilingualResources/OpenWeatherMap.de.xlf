@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/PRESSURERANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/PRESSURERANGES.RESX" datatype="resx">
+        <trans-unit id="Average" translate="yes" xml:space="preserve">
+          <source>Average</source>
+          <target state="final">Normal</target>
+        </trans-unit>
+        <trans-unit id="High" translate="yes" xml:space="preserve">
+          <source>High</source>
+          <target state="final">Hochdruck</target>
+        </trans-unit>
+        <trans-unit id="Low" translate="yes" xml:space="preserve">
+          <source>Low</source>
+          <target state="final">Tiefdruck</target>
+        </trans-unit>
+        <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
+          <source>Very high</source>
+          <target state="final">Sehr hoch</target>
+        </trans-unit>
+        <trans-unit id="VeryLow" translate="yes" xml:space="preserve">
+          <source>Very low</source>
+          <target state="final">Sehr tief</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/AIRQUALITYTRANSLATIONS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/AIRQUALITYTRANSLATIONS.RESX" datatype="resx">
+        <trans-unit id="Fair" translate="yes" xml:space="preserve">
+          <source>Fair</source>
+          <target state="final">OK</target>
+        </trans-unit>
+        <trans-unit id="Good" translate="yes" xml:space="preserve">
+          <source>Good</source>
+          <target state="final">Gut</target>
+        </trans-unit>
+        <trans-unit id="Moderate" translate="yes" xml:space="preserve">
+          <source>Moderate</source>
+          <target state="final">Mässig</target>
+        </trans-unit>
+        <trans-unit id="Poor" translate="yes" xml:space="preserve">
+          <source>Poor</source>
+          <target state="final">Schlecht</target>
+        </trans-unit>
+        <trans-unit id="VeryPoor" translate="yes" xml:space="preserve">
+          <source>Very poor</source>
+          <target state="final">Sehr schlecht</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/UVINDEXRANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/UVINDEXRANGES.RESX" datatype="resx">
+        <trans-unit id="Extreme" translate="yes" xml:space="preserve">
+          <source>Extreme</source>
+          <target state="final">Extrem</target>
+        </trans-unit>
+        <trans-unit id="High" translate="yes" xml:space="preserve">
+          <source>High</source>
+          <target state="final">Hoch</target>
+        </trans-unit>
+        <trans-unit id="Low" translate="yes" xml:space="preserve">
+          <source>Low</source>
+          <target state="final">Tief</target>
+        </trans-unit>
+        <trans-unit id="Moderate" translate="yes" xml:space="preserve">
+          <source>Moderate</source>
+          <target state="final">Mässig</target>
+        </trans-unit>
+        <trans-unit id="VeryHigh" translate="yes" xml:space="preserve">
+          <source>Very high</source>
+          <target state="final">Sehr hoch</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/HUMIDITYRANGES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/HUMIDITYRANGES.RESX" datatype="resx">
+        <trans-unit id="Average" translate="yes" xml:space="preserve">
+          <source>Average</source>
+          <target state="final">OK</target>
+        </trans-unit>
+        <trans-unit id="Dry" translate="yes" xml:space="preserve">
+          <source>Dry</source>
+          <target state="final">Trocken</target>
+        </trans-unit>
+        <trans-unit id="Moist" translate="yes" xml:space="preserve">
+          <source>Moist</source>
+          <target state="final">Feucht</target>
+        </trans-unit>
+        <trans-unit id="VeryDry" translate="yes" xml:space="preserve">
+          <source>Very dry</source>
+          <target state="final">Sehr trocken</target>
+        </trans-unit>
+        <trans-unit id="VeryMoist" translate="yes" xml:space="preserve">
+          <source>Very moist</source>
+          <target state="final">Sehr feucht</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONS.RESX" datatype="resx">
+        <trans-unit id="E" translate="yes" xml:space="preserve">
+          <source>East</source>
+          <target state="final">Ost</target>
+        </trans-unit>
+        <trans-unit id="ENE" translate="yes" xml:space="preserve">
+          <source>East-northeast</source>
+          <target state="final">Ost-Nordost</target>
+        </trans-unit>
+        <trans-unit id="ESE" translate="yes" xml:space="preserve">
+          <source>East-southeast</source>
+          <target state="final">Ost-Südost</target>
+        </trans-unit>
+        <trans-unit id="N" translate="yes" xml:space="preserve">
+          <source>North</source>
+          <target state="final">Nord</target>
+        </trans-unit>
+        <trans-unit id="NE" translate="yes" xml:space="preserve">
+          <source>Northeast</source>
+          <target state="final">Nordost</target>
+        </trans-unit>
+        <trans-unit id="NNE" translate="yes" xml:space="preserve">
+          <source>North-northeast</source>
+          <target state="final">Nord-Nordost</target>
+        </trans-unit>
+        <trans-unit id="NNW" translate="yes" xml:space="preserve">
+          <source>North-northwest</source>
+          <target state="final">Nord-Nordwest</target>
+        </trans-unit>
+        <trans-unit id="NW" translate="yes" xml:space="preserve">
+          <source>Northwest</source>
+          <target state="final">Nordwest</target>
+        </trans-unit>
+        <trans-unit id="S" translate="yes" xml:space="preserve">
+          <source>South</source>
+          <target state="final">Süd</target>
+        </trans-unit>
+        <trans-unit id="SE" translate="yes" xml:space="preserve">
+          <source>Southeast</source>
+          <target state="final">Südost</target>
+        </trans-unit>
+        <trans-unit id="SSE" translate="yes" xml:space="preserve">
+          <source>South-southeast</source>
+          <target state="final">Süd-Südost</target>
+        </trans-unit>
+        <trans-unit id="SSW" translate="yes" xml:space="preserve">
+          <source>South-southwest</source>
+          <target state="final">Süd-Südwest</target>
+        </trans-unit>
+        <trans-unit id="SW" translate="yes" xml:space="preserve">
+          <source>Southwest</source>
+          <target state="final">Südwest</target>
+        </trans-unit>
+        <trans-unit id="W" translate="yes" xml:space="preserve">
+          <source>West</source>
+          <target state="final">West</target>
+        </trans-unit>
+        <trans-unit id="WNW" translate="yes" xml:space="preserve">
+          <source>West-northwest</source>
+          <target state="final">West-Nordwest</target>
+        </trans-unit>
+        <trans-unit id="WSW" translate="yes" xml:space="preserve">
+          <source>West-southwest</source>
+          <target state="final">West-Südwest</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONSACRONYMS.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/CARDINALWINDDIRECTIONSACRONYMS.RESX" datatype="resx">
+        <trans-unit id="E" translate="yes" xml:space="preserve">
+          <source>E</source>
+          <target state="final">O</target>
+        </trans-unit>
+        <trans-unit id="ENE" translate="yes" xml:space="preserve">
+          <source>ENE</source>
+          <target state="final">ONO</target>
+        </trans-unit>
+        <trans-unit id="ESE" translate="yes" xml:space="preserve">
+          <source>ESE</source>
+          <target state="final">OSO</target>
+        </trans-unit>
+        <trans-unit id="N" translate="yes" xml:space="preserve">
+          <source>N</source>
+          <target state="final">N</target>
+        </trans-unit>
+        <trans-unit id="NE" translate="yes" xml:space="preserve">
+          <source>NE</source>
+          <target state="final">NO</target>
+        </trans-unit>
+        <trans-unit id="NNE" translate="yes" xml:space="preserve">
+          <source>NNE</source>
+          <target state="final">NNO</target>
+        </trans-unit>
+        <trans-unit id="NNW" translate="yes" xml:space="preserve">
+          <source>NNW</source>
+          <target state="final">NNW</target>
+        </trans-unit>
+        <trans-unit id="NW" translate="yes" xml:space="preserve">
+          <source>NW</source>
+          <target state="final">NW</target>
+        </trans-unit>
+        <trans-unit id="S" translate="yes" xml:space="preserve">
+          <source>S</source>
+          <target state="final">S</target>
+        </trans-unit>
+        <trans-unit id="SE" translate="yes" xml:space="preserve">
+          <source>SE</source>
+          <target state="final">SO</target>
+        </trans-unit>
+        <trans-unit id="SSE" translate="yes" xml:space="preserve">
+          <source>SSE</source>
+          <target state="final">SSO</target>
+        </trans-unit>
+        <trans-unit id="SSW" translate="yes" xml:space="preserve">
+          <source>SSW</source>
+          <target state="final">SSW</target>
+        </trans-unit>
+        <trans-unit id="SW" translate="yes" xml:space="preserve">
+          <source>SW</source>
+          <target state="final">SW</target>
+        </trans-unit>
+        <trans-unit id="W" translate="yes" xml:space="preserve">
+          <source>W</source>
+          <target state="final">W</target>
+        </trans-unit>
+        <trans-unit id="WNW" translate="yes" xml:space="preserve">
+          <source>WNW</source>
+          <target state="final">WNW</target>
+        </trans-unit>
+        <trans-unit id="WSW" translate="yes" xml:space="preserve">
+          <source>WSW</source>
+          <target state="final">WSW</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="sv" target-language="de" original="OPENWEATHERMAP/RESOURCES/STRINGS/WEATHERCONDITIONCODES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="OPENWEATHERMAP/RESOURCES/STRINGS/WEATHERCONDITIONCODES.RESX" datatype="resx">
+        <trans-unit id="200" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with light rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit leichtem Regen</target>
+        </trans-unit>
+        <trans-unit id="201" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit Regen</target>
+        </trans-unit>
+        <trans-unit id="202" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with heavy rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit Starkregen</target>
+        </trans-unit>
+        <trans-unit id="210" translate="yes" xml:space="preserve">
+          <source>Light thunderstorm</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichtes Gewitter</target>
+        </trans-unit>
+        <trans-unit id="211" translate="yes" xml:space="preserve">
+          <source>Thunderstorm</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter</target>
+        </trans-unit>
+        <trans-unit id="212" translate="yes" xml:space="preserve">
+          <source>Heavy thunderstorm</source>
+          <target state="final" state-qualifier="mt-suggestion">Heftiges Gewitter</target>
+        </trans-unit>
+        <trans-unit id="221" translate="yes" xml:space="preserve">
+          <source>Extremely heavy thunderstorm</source>
+          <target state="final">Extrem heftiges Gewitter</target>
+        </trans-unit>
+        <trans-unit id="230" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with light drizzle</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit leichtem Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="231" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with drizzle</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="232" translate="yes" xml:space="preserve">
+          <source>Thunderstorm with heavy drizzle</source>
+          <target state="final" state-qualifier="mt-suggestion">Gewitter mit starkem Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="300" translate="yes" xml:space="preserve">
+          <source>Light intensity drizzle</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichter Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="301" translate="yes" xml:space="preserve">
+          <source>Drizzle</source>
+          <target state="final">Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="302" translate="yes" xml:space="preserve">
+          <source>Heavy intensity drizzle</source>
+          <target state="final" state-qualifier="mt-suggestion">Starker Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="310" translate="yes" xml:space="preserve">
+          <source>Light intensity drizzle rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichter Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="311" translate="yes" xml:space="preserve">
+          <source>Drizzle rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="312" translate="yes" xml:space="preserve">
+          <source>Heavy intensity drizzle rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Starker Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="313" translate="yes" xml:space="preserve">
+          <source>Shower rain and drizzle</source>
+          <target state="final">Schauer- und Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="314" translate="yes" xml:space="preserve">
+          <source>Heavy shower rain and drizzle</source>
+          <target state="final">Starker Schauerregen und Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="321" translate="yes" xml:space="preserve">
+          <source>Shower drizzle</source>
+          <target state="final">Schauer-Nieselregen</target>
+        </trans-unit>
+        <trans-unit id="500" translate="yes" xml:space="preserve">
+          <source>Light rain</source>
+          <target state="final">Leichter Regen
+</target>
+        </trans-unit>
+        <trans-unit id="501" translate="yes" xml:space="preserve">
+          <source>Moderate rain</source>
+          <target state="final">Mässiger Regen</target>
+        </trans-unit>
+        <trans-unit id="502" translate="yes" xml:space="preserve">
+          <source>Heavy intensity rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Starker Regen</target>
+        </trans-unit>
+        <trans-unit id="503" translate="yes" xml:space="preserve">
+          <source>Very heavy rain</source>
+          <target state="final" state-qualifier="mt-suggestion">Sehr starker Regen</target>
+        </trans-unit>
+        <trans-unit id="504" translate="yes" xml:space="preserve">
+          <source>Extreme rain</source>
+          <target state="final">Extrem starker Regen</target>
+        </trans-unit>
+        <trans-unit id="511" translate="yes" xml:space="preserve">
+          <source>Freezing rain</source>
+          <target state="final">Eisregen</target>
+        </trans-unit>
+        <trans-unit id="520" translate="yes" xml:space="preserve">
+          <source>Light intensity shower rain</source>
+          <target state="final">Leichter Schauerregen</target>
+        </trans-unit>
+        <trans-unit id="521" translate="yes" xml:space="preserve">
+          <source>Shower rain</source>
+          <target state="final">Schauerregen</target>
+        </trans-unit>
+        <trans-unit id="522" translate="yes" xml:space="preserve">
+          <source>Heavy intensity shower rain</source>
+          <target state="final">Starker Schauerregen</target>
+        </trans-unit>
+        <trans-unit id="531" translate="yes" xml:space="preserve">
+          <source>Extreme shower rain</source>
+          <target state="final">Extrem starker Schauerregen</target>
+        </trans-unit>
+        <trans-unit id="600" translate="yes" xml:space="preserve">
+          <source>Light snow</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichter Schneefall</target>
+        </trans-unit>
+        <trans-unit id="601" translate="yes" xml:space="preserve">
+          <source>Snow</source>
+          <target state="final" state-qualifier="mt-suggestion">Schnee</target>
+        </trans-unit>
+        <trans-unit id="602" translate="yes" xml:space="preserve">
+          <source>Heavy snow</source>
+          <target state="final" state-qualifier="mt-suggestion">Starker Schneefall</target>
+        </trans-unit>
+        <trans-unit id="611" translate="yes" xml:space="preserve">
+          <source>Sleet</source>
+          <target state="final" state-qualifier="mt-suggestion">Schneeregen</target>
+        </trans-unit>
+        <trans-unit id="612" translate="yes" xml:space="preserve">
+          <source>Light shower sleet</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichter Regenregen</target>
+        </trans-unit>
+        <trans-unit id="613" translate="yes" xml:space="preserve">
+          <source>Shower sleet</source>
+          <target state="final">Graupelregen</target>
+        </trans-unit>
+        <trans-unit id="615" translate="yes" xml:space="preserve">
+          <source>Light rain and snow</source>
+          <target state="final" state-qualifier="mt-suggestion">Leichter Regen und Schnee</target>
+        </trans-unit>
+        <trans-unit id="616" translate="yes" xml:space="preserve">
+          <source>Rain and snow</source>
+          <target state="final" state-qualifier="mt-suggestion">Regen und Schnee</target>
+        </trans-unit>
+        <trans-unit id="620" translate="yes" xml:space="preserve">
+          <source>Light shower snow</source>
+          <target state="final">Leichter Schneefall</target>
+        </trans-unit>
+        <trans-unit id="621" translate="yes" xml:space="preserve">
+          <source>Shower snow</source>
+          <target state="final">Schneefall</target>
+        </trans-unit>
+        <trans-unit id="622" translate="yes" xml:space="preserve">
+          <source>Heavy shower snow</source>
+          <target state="final">Starker Schneefall</target>
+        </trans-unit>
+        <trans-unit id="701" translate="yes" xml:space="preserve">
+          <source>Mist</source>
+          <target state="final" state-qualifier="mt-suggestion">Nebel</target>
+        </trans-unit>
+        <trans-unit id="711" translate="yes" xml:space="preserve">
+          <source>Smoke</source>
+          <target state="final" state-qualifier="mt-suggestion">Rauch</target>
+        </trans-unit>
+        <trans-unit id="721" translate="yes" xml:space="preserve">
+          <source>Haze</source>
+          <target state="final" state-qualifier="mt-suggestion">Dunst</target>
+        </trans-unit>
+        <trans-unit id="731" translate="yes" xml:space="preserve">
+          <source>Sand/dust whirls</source>
+          <target state="final" state-qualifier="mt-suggestion">Sand-/Staubwirbel</target>
+        </trans-unit>
+        <trans-unit id="741" translate="yes" xml:space="preserve">
+          <source>Fog</source>
+          <target state="final">Nebel</target>
+        </trans-unit>
+        <trans-unit id="751" translate="yes" xml:space="preserve">
+          <source>Sand</source>
+          <target state="final" state-qualifier="mt-suggestion">Sand</target>
+        </trans-unit>
+        <trans-unit id="761" translate="yes" xml:space="preserve">
+          <source>Dust</source>
+          <target state="final">Staub</target>
+        </trans-unit>
+        <trans-unit id="762" translate="yes" xml:space="preserve">
+          <source>Volcanic ash</source>
+          <target state="final" state-qualifier="mt-suggestion">Vulkanasche</target>
+        </trans-unit>
+        <trans-unit id="771" translate="yes" xml:space="preserve">
+          <source>Squalls</source>
+          <target state="final" state-qualifier="mt-suggestion">Sturmböen</target>
+        </trans-unit>
+        <trans-unit id="781" translate="yes" xml:space="preserve">
+          <source>Tornado</source>
+          <target state="final" state-qualifier="mt-suggestion">Tornado</target>
+        </trans-unit>
+        <trans-unit id="800" translate="yes" xml:space="preserve">
+          <source>Clear sky</source>
+          <target state="final" state-qualifier="mt-suggestion">Klarer Himmel</target>
+        </trans-unit>
+        <trans-unit id="801" translate="yes" xml:space="preserve">
+          <source>Few clouds: 11-25%</source>
+          <target state="final" state-qualifier="mt-suggestion">Wenige Wolken: 11-25%</target>
+        </trans-unit>
+        <trans-unit id="802" translate="yes" xml:space="preserve">
+          <source>Scattered clouds: 25-50%</source>
+          <target state="final" state-qualifier="mt-suggestion">Vereinzelte Wolken: 25-50%</target>
+        </trans-unit>
+        <trans-unit id="803" translate="yes" xml:space="preserve">
+          <source>Broken clouds: 51-84%</source>
+          <target state="final" state-qualifier="mt-suggestion">Aufgebrochene Wolken: 51-84%</target>
+        </trans-unit>
+        <trans-unit id="804" translate="yes" xml:space="preserve">
+          <source>Overcast clouds: 85-100%</source>
+          <target state="final" state-qualifier="mt-suggestion">Bewölkt: 85-100%</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

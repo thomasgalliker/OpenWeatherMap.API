@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Tests.Logging;
 using OpenWeatherMap.Tests.Testdata;
+using UnitsNet;
+using UnitsNet.Units;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -13,14 +15,14 @@ namespace OpenWeatherMap.Tests
     public class OpenWeatherMapServiceIntegrationTests
     {
         private readonly ILogger<OpenWeatherMapService> logger;
-        private readonly IOpenWeatherMapConfiguration openWeatherMapConfiguration;
+        private readonly OpenWeatherMapOptions openWeatherMapOptions;
         private readonly ITestOutputHelper testOutputHelper;
         private readonly DumpOptions dumpOptions;
 
         public OpenWeatherMapServiceIntegrationTests(ITestOutputHelper testOutputHelper)
         {
             this.logger = new TestOutputHelperLogger<OpenWeatherMapService>(testOutputHelper);
-            this.openWeatherMapConfiguration = AppSettings.GetApiConfiguration("OpenWeatherMap_PRO");
+            this.openWeatherMapOptions = AppSettings.GetApiConfiguration("OpenWeatherMap_PRO");
             this.testOutputHelper = testOutputHelper;
 
 
@@ -30,10 +32,13 @@ namespace OpenWeatherMap.Tests
                 SetPropertiesOnly = true
             };
 
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Temperature>(t => $"new Temperature({t.Value}, {nameof(TemperatureUnit)}.{t.Unit})");
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Pressure>(p => $"new Pressure({p.Value})");
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Humidity>(h => $"new Humidity({h.Value})");
-            this.dumpOptions.CustomInstanceFormatters.AddFormatter<UVIndex>(uvi => $"new UVIndex({uvi.Value})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Temperature>(t => $"new Temperature({t.Value}d, {nameof(TemperatureUnit)}.{t.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Pressure>(p => $"new Pressure({p.Value}d, {nameof(PressureUnit)}.{p.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<RelativeHumidity>(h => $"new RelativeHumidity({h.Value}d, {nameof(RelativeHumidityUnit)}.{h.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Length>(l => $"new Length({l.Value}d, {nameof(LengthUnit)}.{l.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<Ratio>(r => $"new Ratio({r.Value}d, {nameof(RatioUnit)}.{r.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<MassConcentration>(r => $"new MassConcentration({r.Value}d, {nameof(MassConcentrationUnit)}.{r.Unit})");
+            this.dumpOptions.CustomInstanceFormatters.AddFormatter<UVIndex>(uvi => $"new UVIndex({uvi.Value}d)");
         }
 
         [Theory]
@@ -45,7 +50,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecast4Async(latitude, longitude, count);
@@ -65,7 +70,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecast5Async(latitude, longitude);
@@ -85,7 +90,7 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var weatherForecast = await openWeatherMapService.GetWeatherForecastDailyAsync(latitude, longitude);
@@ -113,7 +118,7 @@ namespace OpenWeatherMap.Tests
                 IncludeHourlyForecasts = true,
             };
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude, oneCallOptions);
@@ -133,7 +138,7 @@ namespace OpenWeatherMap.Tests
 
             var dateTime = DateTime.Now;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallHistoricAsync(latitude, longitude, dateTime);
@@ -151,13 +156,13 @@ namespace OpenWeatherMap.Tests
             var latitude = 47.0907124d;
             var longitude = 8.0559381d;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapConfiguration);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
             var airPollutionInfo = await openWeatherMapService.GetAirPollutionAsync(latitude, longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, DumpStyle.CSharp));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
 
             airPollutionInfo.Should().NotBeNull();
         }

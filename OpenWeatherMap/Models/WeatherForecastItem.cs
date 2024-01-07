@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -23,14 +24,15 @@ namespace OpenWeatherMap.Models
         public CloudsInformation Clouds { get; set; }
 
         [JsonProperty("rain")]
-        public RainInformation Rain { get; set; }
+        public PrecipitationVolume Rain { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
+        public Ratio Pop { get; set; }
 
         [JsonRequired]
         [JsonProperty("main")]
@@ -41,6 +43,6 @@ namespace OpenWeatherMap.Models
         public IReadOnlyList<WeatherCondition> WeatherConditions { get; set; }
 
         [JsonProperty("wind")]
-        public WindInformation Wind { get; set; }
+        public WindInfo Wind { get; set; }
     }
 }

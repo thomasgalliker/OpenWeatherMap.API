@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using OpenWeatherMap.Models;
-using OpenWeatherMap.Tests.Testdata;
 using Xunit;
 
 namespace OpenWeatherMap.Tests
@@ -26,9 +25,9 @@ namespace OpenWeatherMap.Tests
         {
             public WeatherConditionTestData()
             {
-                foreach (var weatherCondition in WeatherConditions.GetTestWeatherConditions())
+                foreach (var weatherCondition in WeatherConditionCode.All)
                 {
-                    this.Add(weatherCondition);
+                    this.Add(new WeatherCondition { Id = weatherCondition });
                 }
             }
         }

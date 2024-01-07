@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Reflection;
 using OpenWeatherMap;
-using OpenWeatherMap.Internals;
+using OpenWeatherMap.Utils;
 
-namespace WeatherDisplay.Resources
+namespace OpenWeatherMap.Resources.Icons
 {
     public static class Icons
     {
@@ -43,12 +43,12 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("earth_72.png");
         }
-        
+
         public static Stream Fog()
         {
             return GetIcon("fog.png");
         }
-        
+
         public static Stream Humidity()
         {
             return GetIcon("humidity.png");
@@ -58,7 +58,7 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("icon_frame_72.png");
         }
-        
+
         public static Stream IndoorEmpty()
         {
             return GetIcon("indoor_empty.png");
@@ -69,6 +69,11 @@ namespace WeatherDisplay.Resources
             return GetIcon("clouds_mist.png");
         }
 
+        public static Stream Location()
+        {
+            return GetIcon("location.png");
+        }
+        
         public static Stream Placeholder()
         {
             return GetIcon("placeholder.png");
@@ -78,7 +83,7 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("clouds_rain.png");
         }
-        
+
         public static Stream RainHeavy()
         {
             return GetIcon("clouds_rain_heavy.png");
@@ -88,12 +93,12 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("clouds_rain_light.png");
         }
-        
+
         public static Stream RainLightDay()
         {
             return GetIcon("clouds_rain_light_day.png");
         }
-        
+
         public static Stream RainLightNight()
         {
             return GetIcon("clouds_rain_light_night.png");
@@ -103,12 +108,12 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("clouds_snow.png");
         }
-        
+
         public static Stream SnowHeavy()
         {
             return GetIcon("clouds_snow_heavy.png");
         }
-        
+
         public static Stream SnowLight()
         {
             return GetIcon("clouds_snow_light.png");
@@ -138,12 +143,12 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("temp.png");
         }
-        
+
         public static Stream TemperatureIndoor()
         {
             return GetIcon("temp_indoor.png");
         }
-        
+
         public static Stream TemperatureMinus()
         {
             return GetIcon("temp_minus.png");
@@ -168,7 +173,7 @@ namespace WeatherDisplay.Resources
         {
             return GetIcon("tornado.png");
         }
-        
+
         public static Stream Wind()
         {
             return GetIcon("wind.png");

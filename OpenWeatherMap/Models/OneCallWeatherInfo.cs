@@ -14,9 +14,11 @@ namespace OpenWeatherMap.Models
             this.Alerts = new List<AlertInfo>();
         }
 
+        // TODO: Use Geolocation
         [JsonProperty("lat")]
         public double Latitude { get; set; }
 
+        // TODO: Use Geolocation
         [JsonProperty("lon")]
         public double Longitude { get; set; }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -22,11 +23,15 @@ namespace OpenWeatherMap.Models
         [JsonProperty("main")]
         public TemperatureInfo Main { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind")]
-        public Wind Wind { get; set; }
+        public WindInfo Wind { get; set; }
 
         [JsonProperty("clouds")]
         public CloudsInformation Clouds { get; set; }

@@ -2,31 +2,36 @@
 using System.Collections.Generic;
 using System.Globalization;
 using OpenWeatherMap.Resources.Strings;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    public class PressureRange : Range<int>, IFormattable
+    public class PressureRange : Range<Pressure>, IFormattable
     {
-        public static readonly PressureRange VeryLow = new PressureRange(nameof(VeryLow), min: 0, max: 998, minInclusive: true, maxInclusive: true);
-        public static readonly PressureRange Low = new PressureRange(nameof(Low), min: 998, max: 1008, minInclusive: false, maxInclusive: false);
-        public static readonly PressureRange Average = new PressureRange(nameof(Average), min: 1008, max: 1018, minInclusive: true, maxInclusive: true);
-        public static readonly PressureRange High = new PressureRange(nameof(High), min: 1018, max: 1028, minInclusive: false, maxInclusive: false);
-        public static readonly PressureRange VeryHigh = new PressureRange(nameof(VeryHigh), min: 1028, max: int.MaxValue, minInclusive: true, maxInclusive: true);
+        public static readonly PressureRange VeryLow = new PressureRange(nameof(VeryLow), min: Pressure.FromHectopascals(0), max: Pressure.FromHectopascals(998), minInclusive: true, maxInclusive: true);
+        public static readonly PressureRange Low = new PressureRange(nameof(Low), min: Pressure.FromHectopascals(998), max: Pressure.FromHectopascals(1008), minInclusive: false, maxInclusive: false);
+        public static readonly PressureRange Average = new PressureRange(nameof(Average), min: Pressure.FromHectopascals(1008), max: Pressure.FromHectopascals(1018), minInclusive: true, maxInclusive: true);
+        public static readonly PressureRange High = new PressureRange(nameof(High), min: Pressure.FromHectopascals(1018), max: Pressure.FromHectopascals(1028), minInclusive: false, maxInclusive: false);
+        public static readonly PressureRange VeryHigh = new PressureRange(nameof(VeryHigh), min: Pressure.FromHectopascals(1028), max: Pressure.FromHectopascals(int.MaxValue), minInclusive: true, maxInclusive: true);
 
         public static readonly IEnumerable<PressureRange> All = new List<PressureRange>
         {
-            VeryLow, Low, Average, High, VeryHigh
+            VeryLow, 
+            Low,
+            Average, 
+            High,
+            VeryHigh
         };
 
         private readonly string resourceId;
 
-        private PressureRange(string resourceId, int min, int max, bool minInclusive, bool maxInclusive)
+        private PressureRange(string resourceId, Pressure min, Pressure max, bool minInclusive, bool maxInclusive)
             : base(min, max, minInclusive, maxInclusive)
         {
             this.resourceId = resourceId;
         }
 
-        public static PressureRange FromValue(int value)
+        public static PressureRange FromValue(Pressure value)
         {
             foreach (var pressureRange in All)
             {
@@ -41,12 +46,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString("N", CultureInfo.CurrentCulture);
+            return this.ToString("N", null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -56,18 +61,13 @@ namespace OpenWeatherMap.Models
                 format = "N";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
             switch (format)
             {
                 case "I":
                     return base.ToString();
                 case "N":
                 default:
-                    var str = PressureRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)provider);
+                    var str = PressureRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
                     return str;
             }
 

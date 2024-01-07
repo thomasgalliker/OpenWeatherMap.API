@@ -1,28 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using Newtonsoft.Json;
 using OpenWeatherMap.Models;
-using OpenWeatherMap.Models.Converters;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace OpenWeatherMap.Tests.Testdata
 {
     internal static class OneCallWeatherInfos
     {
-        private static readonly JsonSerializerSettings JsonSerializerSettings = CreateMetricJsonSerializerSettings();
-
-        private static JsonSerializerSettings CreateMetricJsonSerializerSettings()
-        {
-            var settings = new JsonSerializerSettings();
-            settings.Converters.Add(new CelsiusTemperatureJsonConverter());
-            return settings;
-        }
-
-        internal static string GetTestWeatherInfoJson()
+        internal static string GetTestWeatherInfoJson(IOpenWeatherMapJsonSerializer jsonSerializer)
         {
             var weatherInfo = GetTestWeatherInfo();
-            var weatherInfoJson = JsonConvert.SerializeObject(weatherInfo, JsonSerializerSettings);
+            var weatherInfoJson = jsonSerializer.SerializeObject(weatherInfo);
             return weatherInfoJson;
         }
 
@@ -39,23 +29,23 @@ namespace OpenWeatherMap.Tests.Testdata
                     DateTime = DateTime.ParseExact("2022-06-14T20:05:49.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                     Sunrise = DateTime.ParseExact("2022-06-14T03:31:53.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                     Sunset = DateTime.ParseExact("2022-06-14T19:24:17.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                    Temperature = new Temperature(18.01, TemperatureUnit.Celsius),
-                    FeelsLike = new Temperature(17.54, TemperatureUnit.Celsius),
-                    Pressure = new Pressure(1017),
-                    Humidity = new Humidity(64),
-                    DewPoint = new Temperature(11.11, TemperatureUnit.Celsius),
+                    Temperature = new Temperature(18.01, TemperatureUnit.DegreeCelsius),
+                    FeelsLike = new Temperature(17.54, TemperatureUnit.DegreeCelsius),
+                    Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                    Humidity = new RelativeHumidity(64, RelativeHumidityUnit.Percent),
+                    DewPoint = new Temperature(11.11, TemperatureUnit.DegreeCelsius),
                     UVIndex = new UVIndex(0),
-                    Clouds = 73,
-                    Visibility = 10000,
-                    WindSpeed = 0d,
-                    WindDirectionDegrees = 0,
-                    WindGust = 0d,
+                    Clouds = new Ratio(73, RatioUnit.Percent),
+                    Visibility = new Length(10000, LengthUnit.Meter),
+                    WindSpeed = new Speed(0d, SpeedUnit.MeterPerSecond),
+                    WindDirection = new Angle(0, AngleUnit.Degree),
+                    WindGust = new Speed(0d, SpeedUnit.MeterPerSecond),
                     Weather = new List<WeatherCondition>
                     {
                       new WeatherCondition
                       {
                         Id = 803,
-                        Type = WeatherConditionType.Clouds,
+                        Main = WeatherConditionGroup.Clouds,
                         Description = "Überwiegend bewölkt",
                         IconId = "04n"
                       }
@@ -66,307 +56,307 @@ namespace OpenWeatherMap.Tests.Testdata
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:06:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:07:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:10:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:11:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:13:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:14:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:15:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:16:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:17:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:18:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:19:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:20:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:21:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:22:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:23:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:24:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:25:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:26:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:27:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:28:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:29:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:30:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:31:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:32:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:33:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:35:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:37:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:38:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:39:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:41:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:42:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:44:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:45:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:46:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:47:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:48:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:49:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:50:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:52:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:53:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:54:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:55:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:56:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:57:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:58:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:59:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:01:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:03:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:04:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:05:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:06:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     }
                   },
                 HourlyForecasts = new List<HourlyWeatherForecast>
@@ -374,1250 +364,1250 @@ namespace OpenWeatherMap.Tests.Testdata
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(18.01, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(17.54, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(64),
-                      DewPoint = new Temperature(11.11, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(18.01, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(17.54, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.11, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 73,
-                      Visibility = 10000,
-                      WindSpeed = 1.2d,
-                      WindDirectionDegrees = 142,
-                      WindGust = 1.33d,
+                      Clouds = new Ratio(73, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.2d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(142, AngleUnit.Degree),
+                      WindGust = new Speed(1.33d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
                       },
-                      Pop = 0.03d
+                      Pop = new Ratio(0.03d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(17.32, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(16.88, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(68),
-                      DewPoint = new Temperature(11.36, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(17.32, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(16.88, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(68, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.36, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 70,
-                      Visibility = 10000,
-                      WindSpeed = 1.29d,
-                      WindDirectionDegrees = 160,
-                      WindGust = 1.35d,
+                      Clouds = new Ratio(70, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.29d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(160, AngleUnit.Degree),
+                      WindGust = new Speed(1.35d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
                       },
-                      Pop = 0.03d
+                      Pop = new Ratio(0.03d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(16.49, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(16.07, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(72),
-                      DewPoint = new Temperature(11.43, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(16.49, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(16.07, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(72, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.43, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 61,
-                      Visibility = 10000,
-                      WindSpeed = 1.38d,
-                      WindDirectionDegrees = 167,
-                      WindGust = 1.34d,
+                      Clouds = new Ratio(61, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.38d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(167, AngleUnit.Degree),
+                      WindGust = new Speed(1.34d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04n"
                         }
                       },
-                      Pop = 0.01d
+                      Pop = new Ratio(0.01d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-14T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(15.6, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(15.17, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(75),
-                      DewPoint = new Temperature(11.19, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(15.6, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(15.17, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(75, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.19, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 50,
-                      Visibility = 10000,
-                      WindSpeed = 1.45d,
-                      WindDirectionDegrees = 176,
-                      WindGust = 1.34d,
+                      Clouds = new Ratio(50, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.45d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(176, AngleUnit.Degree),
+                      WindGust = new Speed(1.34d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14.66, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(14.19, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(77),
-                      DewPoint = new Temperature(10.68, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14.66, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(14.19, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(77, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.68, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 38,
-                      Visibility = 10000,
-                      WindSpeed = 1.52d,
-                      WindDirectionDegrees = 198,
-                      WindGust = 1.36d,
+                      Clouds = new Ratio(38, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.52d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(198, AngleUnit.Degree),
+                      WindGust = new Speed(1.36d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.71, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.23, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(80),
-                      DewPoint = new Temperature(9.43, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.71, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.23, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(80, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(9.43, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 17,
-                      Visibility = 10000,
-                      WindSpeed = 1.75d,
-                      WindDirectionDegrees = 196,
-                      WindGust = 1.58d,
+                      Clouds = new Ratio(17, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.75d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(196, AngleUnit.Degree),
+                      WindGust = new Speed(1.58d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0.03d
+                      Pop = new Ratio(0.03d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.7, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.19, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(79),
-                      DewPoint = new Temperature(9.18, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.7, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.19, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(79, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(9.18, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 11,
-                      Visibility = 10000,
-                      WindSpeed = 1.9d,
-                      WindDirectionDegrees = 189,
-                      WindGust = 1.7d,
+                      Clouds = new Ratio(11, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.9d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(189, AngleUnit.Degree),
+                      WindGust = new Speed(1.7d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0.01d
+                      Pop = new Ratio(0.01d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.77, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.21, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(77),
-                      DewPoint = new Temperature(8.99, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.77, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.21, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(77, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(8.99, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 8,
-                      Visibility = 10000,
-                      WindSpeed = 1.72d,
-                      WindDirectionDegrees = 179,
-                      WindGust = 1.47d,
+                      Clouds = new Ratio(8, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.72d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(179, AngleUnit.Degree),
+                      WindGust = new Speed(1.47d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.96, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.42, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(77),
-                      DewPoint = new Temperature(9.14, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.96, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.42, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(77, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(9.14, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 6,
-                      Visibility = 10000,
-                      WindSpeed = 1.51d,
-                      WindDirectionDegrees = 190,
-                      WindGust = 1.4d,
+                      Clouds = new Ratio(6, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.51d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(190, AngleUnit.Degree),
+                      WindGust = new Speed(1.4d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(15.86, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(15.51, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(77),
-                      DewPoint = new Temperature(10.83, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(15.86, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(15.51, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(77, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.83, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.34),
-                      Clouds = 6,
-                      Visibility = 10000,
-                      WindSpeed = 1.27d,
-                      WindDirectionDegrees = 199,
-                      WindGust = 1.29d,
+                      Clouds = new Ratio(6, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.27d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(199, AngleUnit.Degree),
+                      WindGust = new Speed(1.29d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(19.04, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(18.75, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(67),
-                      DewPoint = new Temperature(11.93, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(19.04, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.75, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(67, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.93, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(1.01),
-                      Clouds = 6,
-                      Visibility = 10000,
-                      WindSpeed = 0.73d,
-                      WindDirectionDegrees = 216,
-                      WindGust = 1.17d,
+                      Clouds = new Ratio(6, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(0.73d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(216, AngleUnit.Degree),
+                      WindGust = new Speed(1.17d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(21.42, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(21.18, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(60),
-                      DewPoint = new Temperature(12.48, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(21.42, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(21.18, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(60, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.48, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(2.18),
-                      Clouds = 19,
-                      Visibility = 10000,
-                      WindSpeed = 0.88d,
-                      WindDirectionDegrees = 286,
-                      WindGust = 1.46d,
+                      Clouds = new Ratio(19, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(0.88d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(286, AngleUnit.Degree),
+                      WindGust = new Speed(1.46d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.14d
+                      Pop = new Ratio(0.14d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(23.33, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(23.13, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(54),
-                      DewPoint = new Temperature(12.54, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(23.33, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(23.13, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(54, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.54, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(3.82),
-                      Clouds = 26,
-                      Visibility = 10000,
-                      WindSpeed = 0.98d,
-                      WindDirectionDegrees = 289,
-                      WindGust = 3.1d,
+                      Clouds = new Ratio(26, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(0.98d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(289, AngleUnit.Degree),
+                      WindGust = new Speed(3.1d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.3d
+                      Pop = new Ratio(0.3d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(25.57, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(25.36, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(45),
-                      DewPoint = new Temperature(12.1, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(25.57, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.36, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(45, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.1, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(5.63),
-                      Clouds = 29,
-                      Visibility = 10000,
-                      WindSpeed = 1.07d,
-                      WindDirectionDegrees = 299,
-                      WindGust = 3.32d,
+                      Clouds = new Ratio(29, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.07d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(299, AngleUnit.Degree),
+                      WindGust = new Speed(3.32d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.27d
+                      Pop = new Ratio(0.27d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(27.13, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(26.96, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(40),
-                      DewPoint = new Temperature(11.68, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(27.13, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.96, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(40, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.68, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.22),
-                      Clouds = 22,
-                      Visibility = 10000,
-                      WindSpeed = 1.6d,
-                      WindDirectionDegrees = 292,
-                      WindGust = 4.76d,
+                      Clouds = new Ratio(22, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.6d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(292, AngleUnit.Degree),
+                      WindGust = new Speed(4.76d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.19d
+                      Pop = new Ratio(0.19d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(28.26, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(27.69, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(37),
-                      DewPoint = new Temperature(11.53, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(28.26, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(27.69, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(37, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.53, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.11),
-                      Clouds = 20,
-                      Visibility = 10000,
-                      WindSpeed = 2.36d,
-                      WindDirectionDegrees = 284,
-                      WindGust = 5.7d,
+                      Clouds = new Ratio(20, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.36d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(284, AngleUnit.Degree),
+                      WindGust = new Speed(5.7d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.15d
+                      Pop = new Ratio(0.15d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(29, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(28.27, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(36),
-                      DewPoint = new Temperature(11.68, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(29, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.27, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.68, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.08),
-                      Clouds = 25,
-                      Visibility = 10000,
-                      WindSpeed = 3.2d,
-                      WindDirectionDegrees = 280,
-                      WindGust = 6.55d,
+                      Clouds = new Ratio(25, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.2d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(280, AngleUnit.Degree),
+                      WindGust = new Speed(6.55d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.07d
+                      Pop = new Ratio(0.07d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(29.44, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(28.61, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(35),
-                      DewPoint = new Temperature(11.82, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(29.44, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.61, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(35, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.82, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.08),
-                      Clouds = 44,
-                      Visibility = 10000,
-                      WindSpeed = 3.76d,
-                      WindDirectionDegrees = 272,
-                      WindGust = 6.65d,
+                      Clouds = new Ratio(44, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.76d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(272, AngleUnit.Degree),
+                      WindGust = new Speed(6.65d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.06d
+                      Pop = new Ratio(0.06d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(29.64, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(28.72, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(34),
-                      DewPoint = new Temperature(11.63, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(29.64, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.72, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(34, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.63, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(5.49),
-                      Clouds = 51,
-                      Visibility = 10000,
-                      WindSpeed = 3.74d,
-                      WindDirectionDegrees = 268,
-                      WindGust = 6.72d,
+                      Clouds = new Ratio(51, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.74d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(268, AngleUnit.Degree),
+                      WindGust = new Speed(6.72d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.06d
+                      Pop = new Ratio(0.06d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(29.38, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(28.64, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(36),
-                      DewPoint = new Temperature(12.37, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(29.38, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.64, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.37, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(3.68),
-                      Clouds = 37,
-                      Visibility = 10000,
-                      WindSpeed = 3.24d,
-                      WindDirectionDegrees = 285,
-                      WindGust = 5.8d,
+                      Clouds = new Ratio(37, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.24d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(285, AngleUnit.Degree),
+                      WindGust = new Speed(5.8d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.08d
+                      Pop = new Ratio(0.08d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(28.28, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(28.23, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(44),
-                      DewPoint = new Temperature(14.37, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(28.28, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.23, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.37, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(2.09),
-                      Clouds = 30,
-                      Visibility = 10000,
-                      WindSpeed = 2.98d,
-                      WindDirectionDegrees = 315,
-                      WindGust = 4.65d,
+                      Clouds = new Ratio(30, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.98d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(315, AngleUnit.Degree),
+                      WindGust = new Speed(4.65d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.08d
+                      Pop = new Ratio(0.08d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(26.64, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(26.64, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(57),
-                      DewPoint = new Temperature(16.83, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(26.64, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.64, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(57, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.83, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.94),
-                      Clouds = 25,
-                      Visibility = 10000,
-                      WindSpeed = 2.3d,
-                      WindDirectionDegrees = 342,
-                      WindGust = 4.49d,
+                      Clouds = new Ratio(25, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.3d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(342, AngleUnit.Degree),
+                      WindGust = new Speed(4.49d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.12d
+                      Pop = new Ratio(0.12d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(23.48, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(23.82, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(74),
-                      DewPoint = new Temperature(17.73, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(23.48, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(23.82, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(74, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(17.73, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.31),
-                      Clouds = 28,
-                      Visibility = 10000,
-                      WindSpeed = 1.24d,
-                      WindDirectionDegrees = 17,
-                      WindGust = 1.6d,
+                      Clouds = new Ratio(28, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.24d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(17, AngleUnit.Degree),
+                      WindGust = new Speed(1.6d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.28d
+                      Pop = new Ratio(0.28d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(20.36, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(20.62, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(83),
-                      DewPoint = new Temperature(16.48, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(20.36, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.62, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(83, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.48, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 10,
-                      Visibility = 10000,
-                      WindSpeed = 1.42d,
-                      WindDirectionDegrees = 176,
-                      WindGust = 1.46d,
+                      Clouds = new Ratio(10, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.42d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(176, AngleUnit.Degree),
+                      WindGust = new Speed(1.46d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.53d
+                      Pop = new Ratio(0.53d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(18.12, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(18.29, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(88),
-                      DewPoint = new Temperature(15.35, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(18.12, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.29, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(88, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.35, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 18,
-                      Visibility = 10000,
-                      WindSpeed = 2.88d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 4.2d,
+                      Clouds = new Ratio(18, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.88d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(194, AngleUnit.Degree),
+                      WindGust = new Speed(4.2d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
                       },
-                      Pop = 0.75d
+                      Pop = new Ratio(0.75d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(16.64, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(16.76, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(92),
-                      DewPoint = new Temperature(14.54, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(16.64, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(16.76, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(92, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.54, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 39,
-                      Visibility = 10000,
-                      WindSpeed = 2.94d,
-                      WindDirectionDegrees = 201,
-                      WindGust = 4.93d,
+                      Clouds = new Ratio(39, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.94d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(201, AngleUnit.Degree),
+                      WindGust = new Speed(4.93d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10n"
                         }
                       },
-                      Pop = 0.74d
+                      Pop = new Ratio(0.74d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14.59, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(14.59, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(95),
-                      DewPoint = new Temperature(12.89, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14.59, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(14.59, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(95, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.89, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 31,
-                      Visibility = 7351,
-                      WindSpeed = 2.94d,
-                      WindDirectionDegrees = 161,
-                      WindGust = 4.55d,
+                      Clouds = new Ratio(31, RatioUnit.Percent),
+                      Visibility = new Length(7351, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.94d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(161, AngleUnit.Degree),
+                      WindGust = new Speed(4.55d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10n"
                         }
                       },
-                      Pop = 0.9d
+                      Pop = new Ratio(0.9d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-15T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.88, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(93),
-                      DewPoint = new Temperature(12.09, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.88, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(93, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.09, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 26,
-                      Visibility = 10000,
-                      WindSpeed = 2.7d,
-                      WindDirectionDegrees = 179,
-                      WindGust = 2.96d,
+                      Clouds = new Ratio(26, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.7d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(179, AngleUnit.Degree),
+                      WindGust = new Speed(2.96d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
                       },
-                      Pop = 0.96d
+                      Pop = new Ratio(0.96d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.87, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.69, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(91),
-                      DewPoint = new Temperature(11.63, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.87, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.69, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(91, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.63, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 23,
-                      Visibility = 10000,
-                      WindSpeed = 2.63d,
-                      WindDirectionDegrees = 197,
-                      WindGust = 2.87d,
+                      Clouds = new Ratio(23, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.63d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(197, AngleUnit.Degree),
+                      WindGust = new Speed(2.87d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10n"
                         }
                       },
-                      Pop = 0.96d
+                      Pop = new Ratio(0.96d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(13.99, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(13.79, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(90),
-                      DewPoint = new Temperature(11.63, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(13.99, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(13.79, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(90, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.63, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 9,
-                      Visibility = 10000,
-                      WindSpeed = 2.52d,
-                      WindDirectionDegrees = 202,
-                      WindGust = 2.25d,
+                      Clouds = new Ratio(9, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.52d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(202, AngleUnit.Degree),
+                      WindGust = new Speed(2.25d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01n"
                         }
                       },
-                      Pop = 0.11d
+                      Pop = new Ratio(0.11d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14.15, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(14, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(91),
-                      DewPoint = new Temperature(11.91, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14.15, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(14, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(91, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.91, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 18,
-                      Visibility = 10000,
-                      WindSpeed = 2.44d,
-                      WindDirectionDegrees = 201,
-                      WindGust = 2.5d,
+                      Clouds = new Ratio(18, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.44d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(201, AngleUnit.Degree),
+                      WindGust = new Speed(2.5d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0.07d
+                      Pop = new Ratio(0.07d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14.29, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(14.15, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(91),
-                      DewPoint = new Temperature(11.98, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14.29, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(14.15, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(91, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.98, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 14,
-                      Visibility = 10000,
-                      WindSpeed = 1.99d,
-                      WindDirectionDegrees = 203,
-                      WindGust = 1.89d,
+                      Clouds = new Ratio(14, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.99d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(203, AngleUnit.Degree),
+                      WindGust = new Speed(1.89d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0.04d
+                      Pop = new Ratio(0.04d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(14.45, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(14.3, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(90),
-                      DewPoint = new Temperature(12.08, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(14.45, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(14.3, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(90, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.08, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 13,
-                      Visibility = 10000,
-                      WindSpeed = 1.8d,
-                      WindDirectionDegrees = 203,
-                      WindGust = 1.62d,
+                      Clouds = new Ratio(13, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.8d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(203, AngleUnit.Degree),
+                      WindGust = new Speed(1.62d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.01d
+                      Pop = new Ratio(0.01d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(16.1, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(16.09, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(89),
-                      DewPoint = new Temperature(13.5, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(16.1, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(16.09, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(89, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.5, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.34),
-                      Clouds = 14,
-                      Visibility = 10000,
-                      WindSpeed = 1.74d,
-                      WindDirectionDegrees = 213,
-                      WindGust = 1.82d,
+                      Clouds = new Ratio(14, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.74d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(213, AngleUnit.Degree),
+                      WindGust = new Speed(1.82d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.08d
+                      Pop = new Ratio(0.08d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(18.79, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(18.89, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(83),
-                      DewPoint = new Temperature(14.93, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(18.79, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.89, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(83, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.93, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(1.01),
-                      Clouds = 13,
-                      Visibility = 10000,
-                      WindSpeed = 1.2d,
-                      WindDirectionDegrees = 218,
-                      WindGust = 2.03d,
+                      Clouds = new Ratio(13, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.2d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(218, AngleUnit.Degree),
+                      WindGust = new Speed(2.03d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.36d
+                      Pop = new Ratio(0.36d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(20.93, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(20.98, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(73),
-                      DewPoint = new Temperature(15.05, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(20.93, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.98, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(73, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.05, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(2.21),
-                      Clouds = 2,
-                      Visibility = 10000,
-                      WindSpeed = 1.26d,
-                      WindDirectionDegrees = 274,
-                      WindGust = 3.46d,
+                      Clouds = new Ratio(2, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.26d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(274, AngleUnit.Degree),
+                      WindGust = new Speed(3.46d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0.38d
+                      Pop = new Ratio(0.38d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(21.6, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(21.8, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(76),
-                      DewPoint = new Temperature(16.42, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(21.6, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(21.8, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(76, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.42, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(3.87),
-                      Clouds = 7,
-                      Visibility = 10000,
-                      WindSpeed = 1.71d,
-                      WindDirectionDegrees = 286,
-                      WindGust = 3.79d,
+                      Clouds = new Ratio(7, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.71d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(286, AngleUnit.Degree),
+                      WindGust = new Speed(3.79d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.7d
+                      Pop = new Ratio(0.7d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(23.13, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(23.3, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(69),
-                      DewPoint = new Temperature(16.45, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(23.13, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(23.3, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(69, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.45, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(5.7),
-                      Clouds = 7,
-                      Visibility = 10000,
-                      WindSpeed = 1.76d,
-                      WindDirectionDegrees = 286,
-                      WindGust = 4.1d,
+                      Clouds = new Ratio(7, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.76d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(286, AngleUnit.Degree),
+                      WindGust = new Speed(4.1d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.74d
+                      Pop = new Ratio(0.74d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(25.26, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(25.2, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(52),
-                      DewPoint = new Temperature(13.95, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(25.26, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.2, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(52, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.95, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(6.88),
-                      Clouds = 8,
-                      Visibility = 10000,
-                      WindSpeed = 2.12d,
-                      WindDirectionDegrees = 286,
-                      WindGust = 4.34d,
+                      Clouds = new Ratio(8, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.12d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(286, AngleUnit.Degree),
+                      WindGust = new Speed(4.34d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.74d
+                      Pop = new Ratio(0.74d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(26.27, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(26.27, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(46),
-                      DewPoint = new Temperature(12.92, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(26.27, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.27, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(46, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.92, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.72),
-                      Clouds = 24,
-                      Visibility = 10000,
-                      WindSpeed = 2.4d,
-                      WindDirectionDegrees = 294,
-                      WindGust = 4.9d,
+                      Clouds = new Ratio(24, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.4d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(294, AngleUnit.Degree),
+                      WindGust = new Speed(4.9d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Ein paar Wolken",
                           IconId = "02d"
                         }
                       },
-                      Pop = 0.69d
+                      Pop = new Ratio(0.69d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(26.88, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(26.92, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(43),
-                      DewPoint = new Temperature(12.45, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(26.88, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.92, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(43, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.45, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.7),
-                      Clouds = 37,
-                      Visibility = 10000,
-                      WindSpeed = 2.81d,
-                      WindDirectionDegrees = 302,
-                      WindGust = 5.14d,
+                      Clouds = new Ratio(37, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.81d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(302, AngleUnit.Degree),
+                      WindGust = new Speed(5.14d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Mäßig bewölkt",
                           IconId = "03d"
                         }
                       },
-                      Pop = 0.64d
+                      Pop = new Ratio(0.64d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(27.28, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(27.07, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(40),
-                      DewPoint = new Temperature(12.05, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(27.28, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(27.07, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(40, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.05, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(6.96),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 3.25d,
-                      WindDirectionDegrees = 313,
-                      WindGust = 4.88d,
+                      Clouds = new Ratio(100, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.25d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(313, AngleUnit.Degree),
+                      WindGust = new Speed(4.88d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.2d
+                      Pop = new Ratio(0.2d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(26.53, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(26.53, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(44),
-                      DewPoint = new Temperature(12.64, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(26.53, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.53, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.64, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(5.4),
-                      Clouds = 97,
-                      Visibility = 10000,
-                      WindSpeed = 3.58d,
-                      WindDirectionDegrees = 328,
-                      WindGust = 4.29d,
+                      Clouds = new Ratio(97, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.58d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(328, AngleUnit.Degree),
+                      WindGust = new Speed(4.29d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.2d
+                      Pop = new Ratio(0.2d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(24.58, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(24.53, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(55),
-                      DewPoint = new Temperature(13.71, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(24.58, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(24.53, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(55, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.71, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(3.62),
-                      Clouds = 87,
-                      Visibility = 10000,
-                      WindSpeed = 1.98d,
-                      WindDirectionDegrees = 338,
-                      WindGust = 3.32d,
+                      Clouds = new Ratio(87, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.98d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(338, AngleUnit.Degree),
+                      WindGust = new Speed(3.32d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.18d
+                      Pop = new Ratio(0.18d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(25.67, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(25.49, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(46),
-                      DewPoint = new Temperature(12.28, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(25.67, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.49, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(46, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.28, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(2.15),
-                      Clouds = 74,
-                      Visibility = 10000,
-                      WindSpeed = 2.2d,
-                      WindDirectionDegrees = 340,
-                      WindGust = 2.63d,
+                      Clouds = new Ratio(74, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.2d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(340, AngleUnit.Degree),
+                      WindGust = new Speed(2.63d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.14d
+                      Pop = new Ratio(0.14d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(24.81, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(24.76, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(54),
-                      DewPoint = new Temperature(14.28, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(24.81, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(24.76, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(54, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.28, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.97),
-                      Clouds = 65,
-                      Visibility = 10000,
-                      WindSpeed = 1.84d,
-                      WindDirectionDegrees = 338,
-                      WindGust = 3.38d,
+                      Clouds = new Ratio(65, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.84d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(338, AngleUnit.Degree),
+                      WindGust = new Speed(3.38d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.1d
+                      Pop = new Ratio(0.1d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(22.4, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(22.5, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(69),
-                      DewPoint = new Temperature(15.58, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(22.4, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(22.5, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(69, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.58, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0.32),
-                      Clouds = 62,
-                      Visibility = 10000,
-                      WindSpeed = 1.29d,
-                      WindDirectionDegrees = 335,
-                      WindGust = 1.56d,
+                      Clouds = new Ratio(62, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(1.29d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(335, AngleUnit.Degree),
+                      WindGust = new Speed(1.56d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.1d
+                      Pop = new Ratio(0.1d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
                       DateTime = DateTime.ParseExact("2022-06-16T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(20.11, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(20.06, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1022),
-                      Humidity = new Humidity(72),
-                      DewPoint = new Temperature(14.21, TemperatureUnit.Celsius),
+                      Temperature = new Temperature(20.11, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.06, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1022, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(72, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.21, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(0),
-                      Clouds = 97,
-                      Visibility = 10000,
-                      WindSpeed = 0.39d,
-                      WindDirectionDegrees = 327,
-                      WindGust = 0.66d,
+                      Clouds = new Ratio(97, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(0.39d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(327, AngleUnit.Degree),
+                      WindGust = new Speed(0.66d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Bedeckt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0.05d
+                      Pop = new Ratio(0.05d, RatioUnit.Percent)
                     }
                   },
                 DailyForecasts = new List<DailyWeatherForecast>
@@ -1629,45 +1619,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-14T19:24:17.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-14T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-14T03:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.5d,
+                      MoonPhase = new Ratio(0.5d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(23.42, TemperatureUnit.Celsius),
-                        Min = new Temperature(9.96, TemperatureUnit.Celsius),
-                        Max = new Temperature(25.01, TemperatureUnit.Celsius),
-                        Night = new Temperature(17.32, TemperatureUnit.Celsius),
-                        Evening = new Temperature(20.7, TemperatureUnit.Celsius),
-                        Morning = new Temperature(12.16, TemperatureUnit.Celsius)
+                        Day = new Temperature(23.42, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(9.96, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(25.01, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.32, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(20.7, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(12.16, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(22.94, TemperatureUnit.Celsius),
-                        Night = new Temperature(16.88, TemperatureUnit.Celsius),
-                        Evening = new Temperature(20.34, TemperatureUnit.Celsius),
-                        Morning = new Temperature(11.55, TemperatureUnit.Celsius)
+                        Day = new Temperature(22.94, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(16.88, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(20.34, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(11.55, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(43),
-                      DewPoint = new Temperature(9.49, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1019, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(43, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(9.49, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.88),
-                      Clouds = 0,
-                      Visibility = 0,
-                      WindSpeed = 2.95d,
-                      WindDirectionDegrees = 48,
-                      WindGust = 3.51d,
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.95d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(48, AngleUnit.Degree),
+                      WindGust = new Speed(3.51d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0.06d,
-                      Rain = 0d,
-                      Snow = 0d
+                      Pop = new Ratio(0.06d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1676,45 +1666,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-15T19:24:45.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-15T21:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-15T03:57:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.54d,
+                      MoonPhase = new Ratio(0.54d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(28.26, TemperatureUnit.Celsius),
-                        Min = new Temperature(13.7, TemperatureUnit.Celsius),
-                        Max = new Temperature(29.64, TemperatureUnit.Celsius),
-                        Night = new Temperature(16.64, TemperatureUnit.Celsius),
-                        Evening = new Temperature(26.64, TemperatureUnit.Celsius),
-                        Morning = new Temperature(15.86, TemperatureUnit.Celsius)
+                        Day = new Temperature(28.26, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(13.7, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(29.64, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(16.64, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.64, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(15.86, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(27.69, TemperatureUnit.Celsius),
-                        Night = new Temperature(16.76, TemperatureUnit.Celsius),
-                        Evening = new Temperature(26.64, TemperatureUnit.Celsius),
-                        Morning = new Temperature(15.51, TemperatureUnit.Celsius)
+                        Day = new Temperature(27.69, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(16.76, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.64, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(15.51, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(37),
-                      DewPoint = new Temperature(11.53, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(37, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.53, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.11),
-                      Clouds = 20,
-                      Visibility = 0,
-                      WindSpeed = 3.76d,
-                      WindDirectionDegrees = 272,
-                      WindGust = 6.72d,
+                      Clouds = new Ratio(20, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.76d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(272, AngleUnit.Degree),
+                      WindGust = new Speed(6.72d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.75d,
-                      Rain = 2.77d,
-                      Snow = 0d
+                      Pop = new Ratio(0.75d, RatioUnit.Percent),
+                      Rain = new Length(2.77d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1723,45 +1713,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-16T19:25:11.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("1970-01-01T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-16T05:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.58d,
+                      MoonPhase = new Ratio(0.58d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(26.27, TemperatureUnit.Celsius),
-                        Min = new Temperature(13.87, TemperatureUnit.Celsius),
-                        Max = new Temperature(27.28, TemperatureUnit.Celsius),
-                        Night = new Temperature(17.66, TemperatureUnit.Celsius),
-                        Evening = new Temperature(24.81, TemperatureUnit.Celsius),
-                        Morning = new Temperature(16.1, TemperatureUnit.Celsius)
+                        Day = new Temperature(26.27, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(13.87, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(27.28, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.66, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(24.81, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(16.1, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(26.27, TemperatureUnit.Celsius),
-                        Night = new Temperature(17.49, TemperatureUnit.Celsius),
-                        Evening = new Temperature(24.76, TemperatureUnit.Celsius),
-                        Morning = new Temperature(16.09, TemperatureUnit.Celsius)
+                        Day = new Temperature(26.27, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.49, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(24.76, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(16.09, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(46),
-                      DewPoint = new Temperature(12.92, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1020, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(46, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.92, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(7.72),
-                      Clouds = 24,
-                      Visibility = 0,
-                      WindSpeed = 3.58d,
-                      WindDirectionDegrees = 328,
-                      WindGust = 5.14d,
+                      Clouds = new Ratio(24, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.58d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(328, AngleUnit.Degree),
+                      WindGust = new Speed(5.14d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.96d,
-                      Rain = 3.39d,
-                      Snow = 0d
+                      Pop = new Ratio(0.96d, RatioUnit.Percent),
+                      Rain = new Length(3.39d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1770,45 +1760,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-17T19:25:35.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-16T22:01:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-17T06:28:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.62d,
+                      MoonPhase = new Ratio(0.62d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(27.47, TemperatureUnit.Celsius),
-                        Min = new Temperature(14.53, TemperatureUnit.Celsius),
-                        Max = new Temperature(28.3, TemperatureUnit.Celsius),
-                        Night = new Temperature(18.61, TemperatureUnit.Celsius),
-                        Evening = new Temperature(23.73, TemperatureUnit.Celsius),
-                        Morning = new Temperature(16.47, TemperatureUnit.Celsius)
+                        Day = new Temperature(27.47, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(14.53, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(28.3, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(18.61, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(23.73, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(16.47, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(27.17, TemperatureUnit.Celsius),
-                        Night = new Temperature(18.43, TemperatureUnit.Celsius),
-                        Evening = new Temperature(23.91, TemperatureUnit.Celsius),
-                        Morning = new Temperature(16.31, TemperatureUnit.Celsius)
+                        Day = new Temperature(27.17, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(18.43, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(23.91, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(16.31, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1022),
-                      Humidity = new Humidity(39),
-                      DewPoint = new Temperature(11.72, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1022, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(39, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.72, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.52),
-                      Clouds = 74,
-                      Visibility = 0,
-                      WindSpeed = 2.43d,
-                      WindDirectionDegrees = 8,
-                      WindGust = 2.34d,
+                      Clouds = new Ratio(74, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(2.43d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(8, AngleUnit.Degree),
+                      WindGust = new Speed(2.34d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "Überwiegend bewölkt",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0d,
-                      Rain = 0d,
-                      Snow = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1817,45 +1807,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-18T19:25:56.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-17T22:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-18T07:52:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.65d,
+                      MoonPhase = new Ratio(0.65d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(30.82, TemperatureUnit.Celsius),
-                        Min = new Temperature(16.34, TemperatureUnit.Celsius),
-                        Max = new Temperature(31.58, TemperatureUnit.Celsius),
-                        Night = new Temperature(21.31, TemperatureUnit.Celsius),
-                        Evening = new Temperature(25.86, TemperatureUnit.Celsius),
-                        Morning = new Temperature(20.74, TemperatureUnit.Celsius)
+                        Day = new Temperature(30.82, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(16.34, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(31.58, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.31, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(25.86, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(20.74, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(29.84, TemperatureUnit.Celsius),
-                        Night = new Temperature(21.3, TemperatureUnit.Celsius),
-                        Evening = new Temperature(26.17, TemperatureUnit.Celsius),
-                        Morning = new Temperature(20.57, TemperatureUnit.Celsius)
+                        Day = new Temperature(29.84, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.3, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.17, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(20.57, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1017),
-                      Humidity = new Humidity(33),
-                      DewPoint = new Temperature(12.28, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1017, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(33, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.28, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.56),
-                      Clouds = 1,
-                      Visibility = 0,
-                      WindSpeed = 3.19d,
-                      WindDirectionDegrees = 51,
-                      WindGust = 4.24d,
+                      Clouds = new Ratio(1, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.19d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(51, AngleUnit.Degree),
+                      WindGust = new Speed(4.24d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 800,
-                          Type = WeatherConditionType.Clear,
+                          Main = WeatherConditionGroup.Clear,
                           Description = "Klarer Himmel",
                           IconId = "01d"
                         }
                       },
-                      Pop = 0.03d,
-                      Rain = 0d,
-                      Snow = 0d
+                      Pop = new Ratio(0.03d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1864,45 +1854,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-19T19:26:15.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-18T23:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-19T09:13:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.69d,
+                      MoonPhase = new Ratio(0.69d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(31.74, TemperatureUnit.Celsius),
-                        Min = new Temperature(17.84, TemperatureUnit.Celsius),
-                        Max = new Temperature(31.74, TemperatureUnit.Celsius),
-                        Night = new Temperature(17.84, TemperatureUnit.Celsius),
-                        Evening = new Temperature(20.36, TemperatureUnit.Celsius),
-                        Morning = new Temperature(21.82, TemperatureUnit.Celsius)
+                        Day = new Temperature(31.74, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(17.84, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(31.74, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.84, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(20.36, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.82, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(31.01, TemperatureUnit.Celsius),
-                        Night = new Temperature(17.9, TemperatureUnit.Celsius),
-                        Evening = new Temperature(20.8, TemperatureUnit.Celsius),
-                        Morning = new Temperature(21.75, TemperatureUnit.Celsius)
+                        Day = new Temperature(31.01, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.9, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(20.8, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.75, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1010),
-                      Humidity = new Humidity(34),
-                      DewPoint = new Temperature(13.19, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1010, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(34, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.19, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(8.57),
-                      Clouds = 0,
-                      Visibility = 0,
-                      WindSpeed = 3.47d,
-                      WindDirectionDegrees = 149,
-                      WindGust = 7.32d,
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.47d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(149, AngleUnit.Degree),
+                      WindGust = new Speed(7.32d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 500,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Leichter Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.85d,
-                      Rain = 4.93d,
-                      Snow = 0d
+                      Pop = new Ratio(0.85d, RatioUnit.Percent),
+                      Rain = new Length(4.93d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1911,45 +1901,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-20T19:26:31.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-19T23:32:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-20T10:30:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.72d,
+                      MoonPhase = new Ratio(0.72d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(23.92, TemperatureUnit.Celsius),
-                        Min = new Temperature(14.68, TemperatureUnit.Celsius),
-                        Max = new Temperature(24.37, TemperatureUnit.Celsius),
-                        Night = new Temperature(14.68, TemperatureUnit.Celsius),
-                        Evening = new Temperature(18.14, TemperatureUnit.Celsius),
-                        Morning = new Temperature(20.58, TemperatureUnit.Celsius)
+                        Day = new Temperature(23.92, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(14.68, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(24.37, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(14.68, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(18.14, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(20.58, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(23.88, TemperatureUnit.Celsius),
-                        Night = new Temperature(14.76, TemperatureUnit.Celsius),
-                        Evening = new Temperature(18.52, TemperatureUnit.Celsius),
-                        Morning = new Temperature(20.5, TemperatureUnit.Celsius)
+                        Day = new Temperature(23.88, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(14.76, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(18.52, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(20.5, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1012),
-                      Humidity = new Humidity(58),
-                      DewPoint = new Temperature(14.37, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1012  , PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(58, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.37, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(9),
-                      Clouds = 76,
-                      Visibility = 0,
-                      WindSpeed = 3.32d,
-                      WindDirectionDegrees = 359,
-                      WindGust = 7.06d,
+                      Clouds = new Ratio(76, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.32d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(359, AngleUnit.Degree),
+                      WindGust = new Speed(7.06d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Mäßiger Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 1d,
-                      Rain = 9.69d,
-                      Snow = 0d
+                      Pop = new Ratio(1d, RatioUnit.Percent),
+                      Rain = new Length(9.69d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
@@ -1958,45 +1948,45 @@ namespace OpenWeatherMap.Tests.Testdata
                       Sunset = DateTime.ParseExact("2022-06-21T19:26:45.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonrise = DateTime.ParseExact("2022-06-20T23:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("2022-06-21T11:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.75d,
+                      MoonPhase = new Ratio(0.75d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(7.46, TemperatureUnit.Celsius),
-                        Min = new Temperature(7.46, TemperatureUnit.Celsius),
-                        Max = new Temperature(14.02, TemperatureUnit.Celsius),
-                        Night = new Temperature(8.01, TemperatureUnit.Celsius),
-                        Evening = new Temperature(12.57, TemperatureUnit.Celsius),
-                        Morning = new Temperature(10.98, TemperatureUnit.Celsius)
+                        Day = new Temperature(7.46, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(7.46, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(14.02, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(8.01, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(12.57, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(10.98, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(5.04, TemperatureUnit.Celsius),
-                        Night = new Temperature(6.87, TemperatureUnit.Celsius),
-                        Evening = new Temperature(11.68, TemperatureUnit.Celsius),
-                        Morning = new Temperature(10.69, TemperatureUnit.Celsius)
+                        Day = new Temperature(5.04, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(6.87, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(11.68, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(10.69, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1015),
-                      Humidity = new Humidity(96),
-                      DewPoint = new Temperature(6.06, TemperatureUnit.Celsius),
+                      Pressure = new Pressure(1015      , PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(96, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(6.06, TemperatureUnit.DegreeCelsius),
                       UVIndex = new UVIndex(9),
-                      Clouds = 100,
-                      Visibility = 0,
-                      WindSpeed = 3.7d,
-                      WindDirectionDegrees = 211,
-                      WindGust = 8.22d,
+                      Clouds = new Ratio(100, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(3.7d, SpeedUnit.MeterPerSecond),
+                      WindDirection = new Angle(211, AngleUnit.Degree),
+                      WindGust = new Speed(8.22d, SpeedUnit.MeterPerSecond),
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 502,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "Starker Regen",
                           IconId = "10d"
                         }
                       },
-                      Pop = 1d,
-                      Rain = 50.16d,
-                      Snow = 0d
+                      Pop = new Ratio(1d, RatioUnit.Percent),
+                      Rain = new Length(50.16d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     }
                 },
                 Alerts = new List<AlertInfo>
@@ -2005,1980 +1995,1995 @@ namespace OpenWeatherMap.Tests.Testdata
             };
         }
 
-        internal static OneCallWeatherInfo GetTestWeatherInfo() => new OneCallWeatherInfo
+        internal static OneCallWeatherInfo GetTestWeatherInfo()
         {
-            Latitude = 47.0907d,
-            Longitude = 8.0559d,
-            Timezone = "Europe/Zurich",
-            TimezoneOffset = 3600,
-            CurrentWeather = new CurrentWeatherForecast
+            return new OneCallWeatherInfo
             {
-                DateTime = DateTime.ParseExact("2022-12-27T12:06:29.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                Sunrise = DateTime.ParseExact("2022-12-27T07:13:16.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                Sunset = DateTime.ParseExact("2022-12-27T15:44:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                Temperature = new Temperature(6.42, TemperatureUnit.Celsius),
-                FeelsLike = new Temperature(6.42, TemperatureUnit.Celsius),
-                Pressure = new Pressure(1030),
-                Humidity = new Humidity(89),
-                DewPoint = new Temperature(4.74, TemperatureUnit.Celsius),
-                UVIndex = new UVIndex(0.69),
-                Clouds = 75,
-                Visibility = 10000,
-                WindSpeed = 0d,
-                WindDirectionDegrees = 0,
-                WindGust = 0d,
-                Weather = new List<WeatherCondition>
+                Latitude = 47.0907d,
+                Longitude = 8.0559d,
+                Timezone = "Europe/Zurich",
+                TimezoneOffset = 7200,
+                CurrentWeather = new CurrentWeatherForecast
+                {
+                    DateTime = DateTime.ParseExact("2023-08-18T17:57:03.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                    Sunrise = DateTime.ParseExact("2023-08-18T04:28:12.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                    Sunset = DateTime.ParseExact("2023-08-18T18:35:34.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                    Temperature = new Temperature(26.98d, TemperatureUnit.DegreeCelsius),
+                    FeelsLike = new Temperature(26.85d, TemperatureUnit.DegreeCelsius),
+                    Pressure = new Pressure(1015d, PressureUnit.Hectopascal),
+                    Humidity = new RelativeHumidity(40d, RelativeHumidityUnit.Percent),
+                    DewPoint = new Temperature(12.24d, TemperatureUnit.DegreeCelsius),
+                    UVIndex = new UVIndex(0d),
+                    Clouds = new Ratio(30, RatioUnit.Percent),
+                    Visibility = new Length(10000, LengthUnit.Meter),
+                    WindSpeed = new Speed(),
+                    WindDirection = new Angle(),
+                    WindGust = null,
+                    Weather = new List<WeatherCondition>
                     {
                       new WeatherCondition
                       {
-                        Id = 803,
-                        Type = WeatherConditionType.Clouds,
-                        Description = "broken clouds",
-                        IconId = "04d"
+                        Id = 802,
+                        Main = WeatherConditionGroup.Clouds,
+                        Description = "scattered clouds",
+                        IconId = "03d"
                       }
                     }
-            },
-            MinutelyForecasts = new List<MinutelyWeatherForecast>
+                },
+                MinutelyForecasts = new List<MinutelyWeatherForecast>
                   {
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:07:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T17:58:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T17:59:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:10:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:01:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:11:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:03:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:13:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:04:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:14:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:05:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:15:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:06:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:16:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:07:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:17:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:18:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:09:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:19:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:10:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:20:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:11:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:21:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:22:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:13:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:23:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:14:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:24:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:15:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:25:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:16:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:26:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:17:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:27:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:18:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:28:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:19:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:29:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:20:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:30:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:21:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:31:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:22:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:32:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:23:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:33:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:24:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:25:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:35:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:26:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:27:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:37:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:28:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:38:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:29:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:39:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:30:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:31:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:41:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:32:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:42:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:33:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:44:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:35:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:45:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:46:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:37:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:47:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:38:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:48:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:39:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:49:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:50:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:41:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:42:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:52:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:53:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:44:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:54:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:45:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:55:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:46:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:56:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:47:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:57:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:48:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:58:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:49:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:59:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:50:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:01:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:52:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:53:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:03:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:54:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:04:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:55:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:05:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:56:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:06:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:57:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     },
                     new MinutelyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:07:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Precipitation = 0d
+                      DateTime = DateTime.ParseExact("2023-08-18T18:58:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Precipitation = new Speed(0d, SpeedUnit.MillimeterPerHour)
                     }
                   },
-            HourlyForecasts = new List<HourlyWeatherForecast>
+                HourlyForecasts = new List<HourlyWeatherForecast>
                   {
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(6.42, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.42, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1030),
-                      Humidity = new Humidity(89),
-                      DewPoint = new Temperature(4.74, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.69),
-                      Clouds = 75,
-                      Visibility = 10000,
-                      WindSpeed = 0.67d,
-                      WindDirectionDegrees = 294,
-                      WindGust = 1.82d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 803,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "broken clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(6.57, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.57, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1030),
-                      Humidity = new Humidity(87),
-                      DewPoint = new Temperature(4.56, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.42),
-                      Clouds = 80,
-                      Visibility = 10000,
-                      WindSpeed = 0.73d,
-                      WindDirectionDegrees = 334,
-                      WindGust = 1.19d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 803,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "broken clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(6.57, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.57, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1030),
-                      Humidity = new Humidity(87),
-                      DewPoint = new Temperature(4.56, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.22),
-                      Clouds = 85,
-                      Visibility = 10000,
-                      WindSpeed = 1.03d,
-                      WindDirectionDegrees = 357,
-                      WindGust = 0.98d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(6.14, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.14, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(91),
-                      DewPoint = new Temperature(4.78, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 90,
-                      Visibility = 10000,
-                      WindSpeed = 0.85d,
-                      WindDirectionDegrees = 14,
-                      WindGust = 0.94d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(5.24, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(5.24, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(95),
-                      DewPoint = new Temperature(4.51, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 95,
-                      Visibility = 10000,
-                      WindSpeed = 0.51d,
-                      WindDirectionDegrees = 13,
-                      WindGust = 0.55d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(4.75, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(4.75, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(96),
-                      DewPoint = new Temperature(3.32, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 0.58d,
-                      WindDirectionDegrees = 139,
-                      WindGust = 0.57d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(4.28, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(4.28, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(95),
-                      DewPoint = new Temperature(2.75, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 98,
-                      Visibility = 10000,
-                      WindSpeed = 0.8d,
-                      WindDirectionDegrees = 170,
-                      WindGust = 0.76d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.82, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(3.82, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(94),
-                      DewPoint = new Temperature(2.19, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 62,
-                      Visibility = 10000,
-                      WindSpeed = 1.04d,
-                      WindDirectionDegrees = 184,
-                      WindGust = 0.97d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 803,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "broken clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-27T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.45, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(3.45, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(93),
-                      DewPoint = new Temperature(1.64, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 40,
-                      Visibility = 10000,
-                      WindSpeed = 1.33d,
-                      WindDirectionDegrees = 198,
-                      WindGust = 1.27d,
+                      DateTime = DateTime.ParseExact("2023-08-18T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(26.9d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.99d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1015d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.63d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0.44d),
+                      Clouds = new Ratio(28, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
-                          IconId = "03n"
+                          IconId = "03d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.14, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.99, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(93),
-                      DewPoint = new Temperature(1.26, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 31,
-                      Visibility = 10000,
-                      WindSpeed = 1.39d,
-                      WindDirectionDegrees = 210,
-                      WindGust = 1.27d,
+                      DateTime = DateTime.ParseExact("2023-08-18T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(26.98d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(26.85d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1015d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(40d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.24d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(30, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
-                          IconId = "03n"
+                          IconId = "03d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.89, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.4, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(93),
-                      DewPoint = new Temperature(0.98, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 25,
-                      Visibility = 10000,
-                      WindSpeed = 1.6d,
-                      WindDirectionDegrees = 214,
-                      WindGust = 1.42d,
+                      DateTime = DateTime.ParseExact("2023-08-18T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(25.91d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.71d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1015d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.73d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(31, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(3d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.77, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.13, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(92),
-                      DewPoint = new Temperature(0.79, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 22,
-                      Visibility = 10000,
-                      WindSpeed = 1.7d,
-                      WindDirectionDegrees = 208,
-                      WindGust = 1.63d,
+                      DateTime = DateTime.ParseExact("2023-08-18T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(24.51d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(24.3d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1015d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(49d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.1d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(26, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-18T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(22.91d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(22.67d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1016d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(54d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.12d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(22, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-28T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.6, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.8, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1029),
-                      Humidity = new Humidity(91),
-                      DewPoint = new Temperature(0.46, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 34,
-                      Visibility = 10000,
-                      WindSpeed = 1.81d,
-                      WindDirectionDegrees = 200,
-                      WindGust = 1.82d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 802,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "scattered clouds",
-                          IconId = "03n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.53, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.75, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1028),
-                      Humidity = new Humidity(90),
-                      DewPoint = new Temperature(0.19, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.78d,
-                      WindDirectionDegrees = 201,
-                      WindGust = 1.64d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.55, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.65, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1028),
-                      Humidity = new Humidity(89),
-                      DewPoint = new Temperature(0.02, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.88d,
-                      WindDirectionDegrees = 190,
-                      WindGust = 1.69d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.2, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.65, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1027),
-                      Humidity = new Humidity(86),
-                      DewPoint = new Temperature(0.33, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.68d,
-                      WindDirectionDegrees = 189,
-                      WindGust = 1.53d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.39, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.94, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1026),
-                      Humidity = new Humidity(85),
-                      DewPoint = new Temperature(0.34, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.63d,
-                      WindDirectionDegrees = 196,
-                      WindGust = 1.49d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.34, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(2.11, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1026),
-                      Humidity = new Humidity(84),
-                      DewPoint = new Temperature(0.15, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.46d,
-                      WindDirectionDegrees = 206,
-                      WindGust = 1.34d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.87, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.58, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1026),
-                      Humidity = new Humidity(85),
-                      DewPoint = new Temperature(-0.29, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.46d,
-                      WindDirectionDegrees = 221,
-                      WindGust = 1.35d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.7, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.06, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1026),
-                      Humidity = new Humidity(84),
-                      DewPoint = new Temperature(-0.5, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.69d,
-                      WindDirectionDegrees = 202,
-                      WindGust = 1.64d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.09, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.14, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1026),
-                      Humidity = new Humidity(82),
-                      DewPoint = new Temperature(-0.54, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.09),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2d,
-                      WindDirectionDegrees = 181,
-                      WindGust = 2.13d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(4.48, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(4.48, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1025),
-                      Humidity = new Humidity(78),
-                      DewPoint = new Temperature(0.1, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.28),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.3d,
-                      WindDirectionDegrees = 192,
-                      WindGust = 1.85d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(6.07, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.07, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1025),
-                      Humidity = new Humidity(71),
-                      DewPoint = new Temperature(0.4, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.63),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.02d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 2.53d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(7.05, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(7.05, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1023),
-                      Humidity = new Humidity(66),
-                      DewPoint = new Temperature(0.21, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.81),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 0.86d,
-                      WindDirectionDegrees = 224,
-                      WindGust = 3d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(7.69, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(7.69, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1022),
-                      Humidity = new Humidity(62),
-                      DewPoint = new Temperature(0.14, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.71),
-                      Clouds = 96,
-                      Visibility = 10000,
-                      WindSpeed = 1.06d,
-                      WindDirectionDegrees = 240,
-                      WindGust = 3.45d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(7.67, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(7.67, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(65),
-                      DewPoint = new Temperature(0.82, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.6),
-                      Clouds = 99,
-                      Visibility = 10000,
-                      WindSpeed = 0.78d,
-                      WindDirectionDegrees = 247,
-                      WindGust = 3.07d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(7.1, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(7.1, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(73),
-                      DewPoint = new Temperature(1.79, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.33),
-                      Clouds = 98,
-                      Visibility = 10000,
-                      WindSpeed = 0.59d,
-                      WindDirectionDegrees = 241,
-                      WindGust = 1.76d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(5.45, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(5.45, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(76),
-                      DewPoint = new Temperature(0.67, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 98,
-                      Visibility = 10000,
-                      WindSpeed = 1.06d,
-                      WindDirectionDegrees = 195,
-                      WindGust = 1.04d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.93, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(2.78, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(76),
-                      DewPoint = new Temperature(-0.74, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 96,
-                      Visibility = 10000,
-                      WindSpeed = 1.46d,
-                      WindDirectionDegrees = 186,
-                      WindGust = 1.34d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.34, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.7, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(75),
-                      DewPoint = new Temperature(-1.53, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 96,
-                      Visibility = 10000,
-                      WindSpeed = 1.77d,
-                      WindDirectionDegrees = 190,
-                      WindGust = 1.57d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.09, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.25, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(73),
-                      DewPoint = new Temperature(-2.04, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 96,
-                      Visibility = 10000,
-                      WindSpeed = 1.91d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 1.67d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.91, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.04, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(72),
-                      DewPoint = new Temperature(-2.39, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 1.91d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 1.68d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.77, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.69, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(72),
-                      DewPoint = new Temperature(-2.67, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2.07d,
-                      WindDirectionDegrees = 199,
-                      WindGust = 1.81d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.58, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.23, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(71),
-                      DewPoint = new Temperature(-3.05, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2.3d,
-                      WindDirectionDegrees = 186,
-                      WindGust = 1.96d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.72, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.43, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(69),
-                      DewPoint = new Temperature(-3.27, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2.26d,
-                      WindDirectionDegrees = 186,
-                      WindGust = 1.95d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-28T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.63, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.39, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(67),
-                      DewPoint = new Temperature(-3.68, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2.2d,
-                      WindDirectionDegrees = 188,
-                      WindGust = 1.88d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-29T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.38, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(-0.05, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(66),
-                      DewPoint = new Temperature(-4.1, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 99,
-                      Visibility = 10000,
-                      WindSpeed = 2.34d,
-                      WindDirectionDegrees = 187,
-                      WindGust = 2d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-29T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.33, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(-0.23, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(65),
-                      DewPoint = new Temperature(-4.4, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 23,
-                      Visibility = 10000,
-                      WindSpeed = 2.47d,
-                      WindDirectionDegrees = 185,
-                      WindGust = 2.12d,
+                      DateTime = DateTime.ParseExact("2023-08-18T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(21.13d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.87d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(60d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.07d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(17, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 801,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "few clouds",
                           IconId = "02n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.41, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(-0.18, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(63),
-                      DewPoint = new Temperature(-4.68, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 28,
-                      Visibility = 10000,
-                      WindSpeed = 2.51d,
-                      WindDirectionDegrees = 182,
-                      WindGust = 2.16d,
+                      DateTime = DateTime.ParseExact("2023-08-18T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(19.28d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.93d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.57d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(22, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.96d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.58d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.27d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(25, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(2.7, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(0.42, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(61),
-                      DewPoint = new Temperature(-4.88, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 31,
-                      Visibility = 10000,
-                      WindSpeed = 2.25d,
-                      WindDirectionDegrees = 183,
-                      WindGust = 1.92d,
+                      DateTime = DateTime.ParseExact("2023-08-19T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.7d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.3d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.01d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(5, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.6d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.19d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.7d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(46, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 802,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "scattered clouds",
                           IconId = "03n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.45, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.54, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(59),
-                      DewPoint = new Temperature(-4.66, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 48,
-                      Visibility = 10000,
-                      WindSpeed = 2.02d,
-                      WindDirectionDegrees = 183,
-                      WindGust = 1.79d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 802,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "scattered clouds",
-                          IconId = "03n"
-                        }
-                      },
-                      Pop = 0d
-                    },
-                    new HourlyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-29T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.79, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(2.1, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(58),
-                      DewPoint = new Temperature(-4.53, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 58,
-                      Visibility = 10000,
-                      WindSpeed = 1.87d,
-                      WindDirectionDegrees = 185,
-                      WindGust = 1.66d,
+                      DateTime = DateTime.ParseExact("2023-08-19T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.44d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(17.98d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(63d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.46d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(54, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04n"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.55, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.65, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(59),
-                      DewPoint = new Temperature(-4.61, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 65,
-                      Visibility = 10000,
-                      WindSpeed = 2.03d,
-                      WindDirectionDegrees = 184,
-                      WindGust = 1.79d,
+                      DateTime = DateTime.ParseExact("2023-08-19T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.2d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(17.72d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(63d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.2d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(44, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.02d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(17.57d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(65d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(10.62d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(39, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(19.97d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(19.77d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(67d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.76d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0.49d),
+                      Clouds = new Ratio(41, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(23.1d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(22.95d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(57d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.38d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(1.35d),
+                      Clouds = new Ratio(83, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
-                          IconId = "04n"
+                          IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.25, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.18, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(61),
-                      DewPoint = new Temperature(-4.46, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0),
-                      Clouds = 100,
-                      Visibility = 10000,
-                      WindSpeed = 2.14d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 1.91d,
+                      DateTime = DateTime.ParseExact("2023-08-19T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(25.36d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.26d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(50d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.58d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(2.79d),
+                      Clouds = new Ratio(91, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "overcast clouds",
-                          IconId = "04n"
+                          IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(3.41, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(1.83, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1020),
-                      Humidity = new Humidity(62),
-                      DewPoint = new Temperature(-4.09, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.1),
-                      Clouds = 88,
-                      Visibility = 10000,
-                      WindSpeed = 1.73d,
-                      WindDirectionDegrees = 203,
-                      WindGust = 1.76d,
+                      DateTime = DateTime.ParseExact("2023-08-19T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(27.67d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(27.64d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.69d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(4.53d),
+                      Clouds = new Ratio(92, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 804,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "overcast clouds",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(5.39, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(4, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(60),
-                      DewPoint = new Temperature(-2.59, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.31),
-                      Clouds = 77,
-                      Visibility = 10000,
-                      WindSpeed = 1.83d,
-                      WindDirectionDegrees = 195,
-                      WindGust = 3.89d,
+                      DateTime = DateTime.ParseExact("2023-08-19T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(29.52d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.96d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(38d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.23d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.26d),
+                      Clouds = new Ratio(82, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(7.61, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(6.87, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1019),
-                      Humidity = new Humidity(59),
-                      DewPoint = new Temperature(-0.62, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.59),
-                      Clouds = 82,
-                      Visibility = 10000,
-                      WindSpeed = 1.55d,
-                      WindDirectionDegrees = 207,
-                      WindGust = 5.87d,
+                      DateTime = DateTime.ParseExact("2023-08-19T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(30.66d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(29.87d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(35d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.84d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.2d),
+                      Clouds = new Ratio(83, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     },
                     new HourlyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-29T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Temperature = new Temperature(8.89, TemperatureUnit.Celsius),
-                      FeelsLike = new Temperature(8.42, TemperatureUnit.Celsius),
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(55),
-                      DewPoint = new Temperature(-0.41, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.72),
-                      Clouds = 81,
-                      Visibility = 10000,
-                      WindSpeed = 1.47d,
-                      WindDirectionDegrees = 220,
-                      WindGust = 5.78d,
+                      DateTime = DateTime.ParseExact("2023-08-19T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.58d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.57d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(32d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.44d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.16d),
+                      Clouds = new Ratio(78, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 803,
-                          Type = WeatherConditionType.Clouds,
+                          Main = WeatherConditionGroup.Clouds,
                           Description = "broken clouds",
                           IconId = "04d"
                         }
                       },
-                      Pop = 0d
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(32d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.93d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(31d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.1d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.19d),
+                      Clouds = new Ratio(75, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 803,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "broken clouds",
+                          IconId = "04d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.96d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.89d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(31d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.9d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(4.56d),
+                      Clouds = new Ratio(49, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.52d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.5d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(32d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.05d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(2.78d),
+                      Clouds = new Ratio(46, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(30.66d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.62d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(41d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.08d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(1.29d),
+                      Clouds = new Ratio(42, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T17:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(27.8d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(28.67d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(55d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(17.11d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0.43d),
+                      Clouds = new Ratio(47, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(24.22d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(24.29d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1019d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(61d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.51d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(42, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T19:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(22.62d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(22.5d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(60d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.62d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(10, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T20:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(21.82d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(21.62d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(60d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.02d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(14, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T21:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(21.26d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(21.03d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(61d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.77d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(12, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T22:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(20.69d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.46d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(63d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.6d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(11, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T23:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(20.23d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(19.98d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(64d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.47d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(11, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(19.76d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(19.51d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(66d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.4d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(11, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T01:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(19.29d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(19.02d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(67d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.26d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(7, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T02:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.89d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.61d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(68d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.1d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(7, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T03:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.59d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.31d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(69d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.87d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(12, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T04:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.45d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.13d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(68d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.6d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(20, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 801,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "few clouds",
+                          IconId = "02n"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T05:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(18.55d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(18.26d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1022d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(69d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(11.89d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0d),
+                      Clouds = new Ratio(25, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T06:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(20.35d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(20.24d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1022d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(69d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(13.65d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(0.46d),
+                      Clouds = new Ratio(29, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T07:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(23.39d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(23.33d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1022d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(59d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.19d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(1.36d),
+                      Clouds = new Ratio(6, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T08:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(25.71d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(25.72d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1022d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(53d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.59d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(2.82d),
+                      Clouds = new Ratio(6, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T09:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(27.55d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(27.81d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(48d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.96d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(4.58d),
+                      Clouds = new Ratio(5, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(29.05d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(29.05d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(44d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.18d),
+                      Clouds = new Ratio(3, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(30.22d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.07d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(41d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.84d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.11d),
+                      Clouds = new Ratio(3, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T12:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.08d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.73d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(38d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.53d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.08d),
+                      Clouds = new Ratio(2, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T13:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.58d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(31.08d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.23d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.04d),
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T14:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.69d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(31.22d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.01d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(4.43d),
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T15:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(31.37d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.82d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.05d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(2.7d),
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
+                    },
+                    new HourlyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T16:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Temperature = new Temperature(30.6d, TemperatureUnit.DegreeCelsius),
+                      FeelsLike = new Temperature(30.82d, TemperatureUnit.DegreeCelsius),
+                      Pressure = new Pressure(1020d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(43d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.83d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(1.28d),
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(10000, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent)
                     }
                   },
-            DailyForecasts = new List<DailyWeatherForecast>
+                DailyForecasts = new List<DailyWeatherForecast>
                   {
                     new DailyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-27T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2022-12-27T07:13:16.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2022-12-27T15:44:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2022-12-27T10:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2022-12-27T20:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.16d,
+                      DateTime = DateTime.ParseExact("2023-08-18T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-18T04:28:12.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-18T18:35:34.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-18T06:15:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-18T19:40:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.06d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(6.51, TemperatureUnit.Celsius),
-                        Min = new Temperature(2.89, TemperatureUnit.Celsius),
-                        Max = new Temperature(7.25, TemperatureUnit.Celsius),
-                        Night = new Temperature(2.89, TemperatureUnit.Celsius),
-                        Evening = new Temperature(4.75, TemperatureUnit.Celsius),
-                        Morning = new Temperature(5.09, TemperatureUnit.Celsius)
+                        Day = new Temperature(29.51d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(16.29d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(30.68d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.91d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.9d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(16.39d, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(6.51, TemperatureUnit.Celsius),
-                        Night = new Temperature(1.4, TemperatureUnit.Celsius),
-                        Evening = new Temperature(4.75, TemperatureUnit.Celsius),
-                        Morning = new Temperature(5.09, TemperatureUnit.Celsius)
+                        Day = new Temperature(28.76d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.67d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.99d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(15.78d, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1030),
-                      Humidity = new Humidity(88),
-                      DewPoint = new Temperature(4.67, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.69),
-                      Clouds = 80,
-                      Visibility = 0,
-                      WindSpeed = 2.92d,
-                      WindDirectionDegrees = 263,
-                      WindGust = 7.38d,
+                      Pressure = new Pressure(1016d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(36d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.19d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.93d),
+                      Clouds = new Ratio(2, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(4d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-19T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-19T04:29:31.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-19T18:33:49.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-19T07:21:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-19T19:54:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.09d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(30.66d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(18.02d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(32d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.26d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(27.8d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(18.02d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(29.87d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.03d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(28.67d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(17.57d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1018d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(35d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(12.84d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.2d),
+                      Clouds = new Ratio(83, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 803,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "broken clouds",
+                          IconId = "04d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-20T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-20T04:30:50.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-20T18:32:03.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-20T08:26:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-20T20:08:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.12d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(30.22d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(18.45d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(31.69d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.6d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(28.28d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(18.55d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(30.07d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(21.57d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(29.52d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(18.26d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(41d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(14.84d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7.11d),
+                      Clouds = new Ratio(3, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(0d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-21T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-21T04:32:09.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-21T18:30:17.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-21T09:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-21T20:24:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.15d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(31.63d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(19.11d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(32.63d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.84d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(25.6d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(19.11d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(31.44d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.88d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(25.83d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(18.93d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1021d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(38d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(15.15d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.93d),
+                      Clouds = new Ratio(0, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 800,
+                          Main = WeatherConditionGroup.Clear,
+                          Description = "clear sky",
+                          IconId = "01d"
+                        }
+                      },
+                      Pop = new Ratio(1d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-22T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-22T04:33:28.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-22T18:28:29.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-22T10:43:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-22T20:42:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.19d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(32.73d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(20.79d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(32.87d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.72d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.12d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.96d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(32.97d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(22.9d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(26.12d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.96d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1017d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(38d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.03d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.96d),
+                      Clouds = new Ratio(39, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 802,
+                          Main = WeatherConditionGroup.Clouds,
+                          Description = "scattered clouds",
+                          IconId = "03d"
+                        }
+                      },
+                      Pop = new Ratio(25d, RatioUnit.Percent),
+                      Rain = new Length(0d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-23T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-23T04:34:47.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-23T18:26:40.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-23T11:56:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-23T21:05:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.22d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(33.06d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(18.24d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(33.19d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(18.24d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(18.71d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.89d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(33.66d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(18.55d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(19.09d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(21.99d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1014d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(39d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(16.61d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(6.87d),
+                      Clouds = new Ratio(14, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
+                      Weather = new List<WeatherCondition>
+                      {
+                        new WeatherCondition
+                        {
+                          Id = 502,
+                          Main = WeatherConditionGroup.Rain,
+                          Description = "heavy intensity rain",
+                          IconId = "10d"
+                        }
+                      },
+                      Pop = new Ratio(91d, RatioUnit.Percent),
+                      Rain = new Length(16.03d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
+                    },
+                    new DailyWeatherForecast
+                    {
+                      DateTime = DateTime.ParseExact("2023-08-24T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-24T04:36:06.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-24T18:24:50.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-24T13:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonset = DateTime.ParseExact("2023-08-24T21:36:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      MoonPhase = new Ratio(0.25d, RatioUnit.Percent),
+                      Temperature = new DailyTemperatureForecast
+                      {
+                        Day = new Temperature(29.53d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(18.07d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(29.8d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(19.01d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(23.09d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(19.06d, TemperatureUnit.DegreeCelsius)
+                      },
+                      FeelsLike = new DailyFeelsLikeForecast
+                      {
+                        Day = new Temperature(30.66d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(19.39d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(23.57d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(19.37d, TemperatureUnit.DegreeCelsius)
+                      },
+                      Pressure = new Pressure(1014d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(52d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(17.93d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7d),
+                      Clouds = new Ratio(31, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
                           Id = 501,
-                          Type = WeatherConditionType.Rain,
+                          Main = WeatherConditionGroup.Rain,
                           Description = "moderate rain",
                           IconId = "10d"
                         }
                       },
-                      Pop = 1d,
-                      Rain = 4.4d,
-                      Snow = 0d
+                      Pop = new Ratio(99d, RatioUnit.Percent),
+                      Rain = new Length(6.89d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     },
                     new DailyWeatherForecast
                     {
-                      DateTime = DateTime.ParseExact("2022-12-28T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2022-12-28T07:13:29.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2022-12-28T15:44:44.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2022-12-28T10:58:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2022-12-28T22:10:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.19d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(7.05, TemperatureUnit.Celsius),
-                        Min = new Temperature(2.53, TemperatureUnit.Celsius),
-                        Max = new Temperature(7.69, TemperatureUnit.Celsius),
-                        Night = new Temperature(2.72, TemperatureUnit.Celsius),
-                        Evening = new Temperature(3.34, TemperatureUnit.Celsius),
-                        Morning = new Temperature(3.34, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(7.05, TemperatureUnit.Celsius),
-                        Night = new Temperature(0.43, TemperatureUnit.Celsius),
-                        Evening = new Temperature(1.7, TemperatureUnit.Celsius),
-                        Morning = new Temperature(2.11, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1023),
-                      Humidity = new Humidity(66),
-                      DewPoint = new Temperature(0.21, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.81),
-                      Clouds = 100,
-                      Visibility = 0,
-                      WindSpeed = 2.3d,
-                      WindDirectionDegrees = 186,
-                      WindGust = 3.45d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 804,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "overcast clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0d,
-                      Rain = 0d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-29T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2022-12-29T07:13:40.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2022-12-29T15:45:31.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2022-12-29T11:16:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      DateTime = DateTime.ParseExact("2023-08-25T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunrise = DateTime.ParseExact("2023-08-25T04:37:25.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Sunset = DateTime.ParseExact("2023-08-25T18:23:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Moonrise = DateTime.ParseExact("2023-08-25T14:27:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
                       Moonset = DateTime.ParseExact("1970-01-01T00:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.23d,
+                      MoonPhase = new Ratio(0.29d, RatioUnit.Percent),
                       Temperature = new DailyTemperatureForecast
                       {
-                        Day = new Temperature(8.89, TemperatureUnit.Celsius),
-                        Min = new Temperature(2.33, TemperatureUnit.Celsius),
-                        Max = new Temperature(9.62, TemperatureUnit.Celsius),
-                        Night = new Temperature(4.37, TemperatureUnit.Celsius),
-                        Evening = new Temperature(5, TemperatureUnit.Celsius),
-                        Morning = new Temperature(3.79, TemperatureUnit.Celsius)
+                        Day = new Temperature(24.68d, TemperatureUnit.DegreeCelsius),
+                        Min = new Temperature(17.92d, TemperatureUnit.DegreeCelsius),
+                        Max = new Temperature(25.12d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(17.92d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(18.92d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(18.87d, TemperatureUnit.DegreeCelsius)
                       },
                       FeelsLike = new DailyFeelsLikeForecast
                       {
-                        Day = new Temperature(8.42, TemperatureUnit.Celsius),
-                        Night = new Temperature(2.88, TemperatureUnit.Celsius),
-                        Evening = new Temperature(3.4, TemperatureUnit.Celsius),
-                        Morning = new Temperature(2.1, TemperatureUnit.Celsius)
+                        Day = new Temperature(25.06d, TemperatureUnit.DegreeCelsius),
+                        Night = new Temperature(18.33d, TemperatureUnit.DegreeCelsius),
+                        Evening = new Temperature(19.35d, TemperatureUnit.DegreeCelsius),
+                        Morning = new Temperature(19.27d, TemperatureUnit.DegreeCelsius)
                       },
-                      Pressure = new Pressure(1018),
-                      Humidity = new Humidity(55),
-                      DewPoint = new Temperature(-0.41, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.72),
-                      Clouds = 81,
-                      Visibility = 0,
-                      WindSpeed = 2.51d,
-                      WindDirectionDegrees = 182,
-                      WindGust = 5.87d,
+                      Pressure = new Pressure(1010d, PressureUnit.Hectopascal),
+                      Humidity = new RelativeHumidity(71d, RelativeHumidityUnit.Percent),
+                      DewPoint = new Temperature(18.02d, TemperatureUnit.DegreeCelsius),
+                      UVIndex = new UVIndex(7d),
+                      Clouds = new Ratio(100, RatioUnit.Percent),
+                      Visibility = new Length(0, LengthUnit.Meter),
+                      WindSpeed = new Speed(),
+                      WindDirection = new Angle(),
+                      WindGust = null,
                       Weather = new List<WeatherCondition>
                       {
                         new WeatherCondition
                         {
-                          Id = 803,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "broken clouds",
-                          IconId = "04d"
-                        }
-                      },
-                      Pop = 0.29d,
-                      Rain = 0d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-30T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2022-12-30T07:13:47.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2022-12-30T15:46:19.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2022-12-30T11:34:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2022-12-29T23:25:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.25d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(9.37, TemperatureUnit.Celsius),
-                        Min = new Temperature(3.83, TemperatureUnit.Celsius),
-                        Max = new Temperature(9.37, TemperatureUnit.Celsius),
-                        Night = new Temperature(6.54, TemperatureUnit.Celsius),
-                        Evening = new Temperature(5.74, TemperatureUnit.Celsius),
-                        Morning = new Temperature(3.83, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(9.37, TemperatureUnit.Celsius),
-                        Night = new Temperature(4.98, TemperatureUnit.Celsius),
-                        Evening = new Temperature(4.28, TemperatureUnit.Celsius),
-                        Morning = new Temperature(2.53, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1016),
-                      Humidity = new Humidity(55),
-                      DewPoint = new Temperature(0.02, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(0.64),
-                      Clouds = 42,
-                      Visibility = 0,
-                      WindSpeed = 2.2d,
-                      WindDirectionDegrees = 194,
-                      WindGust = 3.1d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 500,
-                          Type = WeatherConditionType.Rain,
-                          Description = "light rain",
+                          Id = 501,
+                          Main = WeatherConditionGroup.Rain,
+                          Description = "moderate rain",
                           IconId = "10d"
                         }
                       },
-                      Pop = 0.43d,
-                      Rain = 0.15d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2022-12-31T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2022-12-31T07:13:52.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2022-12-31T15:47:10.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2022-12-31T11:51:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2022-12-31T00:39:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.3d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(13.56, TemperatureUnit.Celsius),
-                        Min = new Temperature(6.88, TemperatureUnit.Celsius),
-                        Max = new Temperature(13.56, TemperatureUnit.Celsius),
-                        Night = new Temperature(8.93, TemperatureUnit.Celsius),
-                        Evening = new Temperature(9.22, TemperatureUnit.Celsius),
-                        Morning = new Temperature(7.1, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(12.9, TemperatureUnit.Celsius),
-                        Night = new Temperature(7.7, TemperatureUnit.Celsius),
-                        Evening = new Temperature(8.13, TemperatureUnit.Celsius),
-                        Morning = new Temperature(5.81, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1021),
-                      Humidity = new Humidity(74),
-                      DewPoint = new Temperature(8.19, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(1),
-                      Clouds = 100,
-                      Visibility = 0,
-                      WindSpeed = 2.32d,
-                      WindDirectionDegrees = 189,
-                      WindGust = 5.16d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 500,
-                          Type = WeatherConditionType.Rain,
-                          Description = "light rain",
-                          IconId = "10d"
-                        }
-                      },
-                      Pop = 0.56d,
-                      Rain = 0.68d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2023-01-01T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2023-01-01T07:13:55.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2023-01-01T15:48:04.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2023-01-01T12:10:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2023-01-01T01:50:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.33d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(13.61, TemperatureUnit.Celsius),
-                        Min = new Temperature(7.42, TemperatureUnit.Celsius),
-                        Max = new Temperature(13.61, TemperatureUnit.Celsius),
-                        Night = new Temperature(7.42, TemperatureUnit.Celsius),
-                        Evening = new Temperature(8.25, TemperatureUnit.Celsius),
-                        Morning = new Temperature(7.66, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(12.67, TemperatureUnit.Celsius),
-                        Night = new Temperature(6.38, TemperatureUnit.Celsius),
-                        Evening = new Temperature(7.47, TemperatureUnit.Celsius),
-                        Morning = new Temperature(7.66, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1024),
-                      Humidity = new Humidity(63),
-                      DewPoint = new Temperature(6.08, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(1),
-                      Clouds = 34,
-                      Visibility = 0,
-                      WindSpeed = 1.98d,
-                      WindDirectionDegrees = 193,
-                      WindGust = 1.8d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 802,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "scattered clouds",
-                          IconId = "03d"
-                        }
-                      },
-                      Pop = 0d,
-                      Rain = 0d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2023-01-02T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2023-01-02T07:13:54.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2023-01-02T15:48:59.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2023-01-02T12:33:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2023-01-02T03:02:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.36d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(12.03, TemperatureUnit.Celsius),
-                        Min = new Temperature(5.89, TemperatureUnit.Celsius),
-                        Max = new Temperature(12.03, TemperatureUnit.Celsius),
-                        Night = new Temperature(5.89, TemperatureUnit.Celsius),
-                        Evening = new Temperature(6.56, TemperatureUnit.Celsius),
-                        Morning = new Temperature(5.89, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(10.88, TemperatureUnit.Celsius),
-                        Night = new Temperature(4.72, TemperatureUnit.Celsius),
-                        Evening = new Temperature(5.61, TemperatureUnit.Celsius),
-                        Morning = new Temperature(4.61, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1022),
-                      Humidity = new Humidity(61),
-                      DewPoint = new Temperature(3.91, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(1),
-                      Clouds = 21,
-                      Visibility = 0,
-                      WindSpeed = 1.8d,
-                      WindDirectionDegrees = 175,
-                      WindGust = 1.59d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 801,
-                          Type = WeatherConditionType.Clouds,
-                          Description = "few clouds",
-                          IconId = "02d"
-                        }
-                      },
-                      Pop = 0d,
-                      Rain = 0d,
-                      Snow = 0d
-                    },
-                    new DailyWeatherForecast
-                    {
-                      DateTime = DateTime.ParseExact("2023-01-03T11:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunrise = DateTime.ParseExact("2023-01-03T07:13:51.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Sunset = DateTime.ParseExact("2023-01-03T15:49:57.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonrise = DateTime.ParseExact("2023-01-03T12:59:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      Moonset = DateTime.ParseExact("2023-01-03T04:12:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                      MoonPhase = 0.39d,
-                      Temperature = new DailyTemperatureForecast
-                      {
-                        Day = new Temperature(7.22, TemperatureUnit.Celsius),
-                        Min = new Temperature(2.27, TemperatureUnit.Celsius),
-                        Max = new Temperature(7.72, TemperatureUnit.Celsius),
-                        Night = new Temperature(2.27, TemperatureUnit.Celsius),
-                        Evening = new Temperature(3.54, TemperatureUnit.Celsius),
-                        Morning = new Temperature(6.86, TemperatureUnit.Celsius)
-                      },
-                      FeelsLike = new DailyFeelsLikeForecast
-                      {
-                        Day = new Temperature(6.23, TemperatureUnit.Celsius),
-                        Night = new Temperature(2.27, TemperatureUnit.Celsius),
-                        Evening = new Temperature(1.61, TemperatureUnit.Celsius),
-                        Morning = new Temperature(6.86, TemperatureUnit.Celsius)
-                      },
-                      Pressure = new Pressure(1027),
-                      Humidity = new Humidity(93),
-                      DewPoint = new Temperature(5.37, TemperatureUnit.Celsius),
-                      UVIndex = new UVIndex(1),
-                      Clouds = 97,
-                      Visibility = 0,
-                      WindSpeed = 3.41d,
-                      WindDirectionDegrees = 234,
-                      WindGust = 8.34d,
-                      Weather = new List<WeatherCondition>
-                      {
-                        new WeatherCondition
-                        {
-                          Id = 500,
-                          Type = WeatherConditionType.Rain,
-                          Description = "light rain",
-                          IconId = "10d"
-                        }
-                      },
-                      Pop = 0.63d,
-                      Rain = 2.35d,
-                      Snow = 0d
+                      Pop = new Ratio(100d, RatioUnit.Percent),
+                      Rain = new Length(19.6d, LengthUnit.Millimeter),
+                      Snow = new Length(0d, LengthUnit.Millimeter)
                     }
                   },
-            Alerts = new List<AlertInfo>
-            {
-            }
-        };
+                Alerts = new List<AlertInfo>
+                  {
+                    new AlertInfo
+                    {
+                      SenderName = "MeteoSwiss",
+                      EventName = "Orange High-Temperature Warning",
+                      StartTime = DateTime.ParseExact("2023-08-19T10:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      EndTime = DateTime.ParseExact("2023-08-24T18:00:00.0000000Z", "O", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
+                      Description = "- Warning valid below 800 m a.s.l\n- Possible impacts: Significant risk of circulatory problems\n- Recommendations for action: Drink (preferably unsweetened) liquids regularly and in sufficient quantities (at least 1.5 litres a day). Contact those around you who fall into the risk category and ensure that they are well and able to follow the existing recommendations. Do not leave people or animals unattended in cars\n- Highest temperatures and humidity: 31 - 35 °C, 30 - 40 %\n- Lowest night temperatures: 18 - 22 °C\n- Peak phase of the event: -\n- Temporary mitigation: -",
+                      Tags = new List<string>
+                      {
+                        "Extreme temperature value"
+                      }
+                    }
+                  }
+            };
+        }
     }
 }

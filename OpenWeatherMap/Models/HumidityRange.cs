@@ -2,31 +2,36 @@
 using System.Collections.Generic;
 using System.Globalization;
 using OpenWeatherMap.Resources.Strings;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    public class HumidityRange : Range<int>, IFormattable
+    public class HumidityRange : Range<RelativeHumidity>, IFormattable
     {
-        public static readonly HumidityRange VeryDry = new HumidityRange(nameof(VeryDry), min: 0, max: 30, minInclusive: true, maxInclusive: true);
-        public static readonly HumidityRange Dry = new HumidityRange(nameof(Dry), min: 30, max: 40, minInclusive: false, maxInclusive: false);
-        public static readonly HumidityRange Average = new HumidityRange(nameof(Average), min: 40, max: 70, minInclusive: true, maxInclusive: true);
-        public static readonly HumidityRange Moist = new HumidityRange(nameof(Moist), min: 70, max: 80, minInclusive: false, maxInclusive: false);
-        public static readonly HumidityRange VeryMoist = new HumidityRange(nameof(VeryMoist), min: 80, max: 100, minInclusive: true, maxInclusive: true);
+        public static readonly HumidityRange VeryDry = new HumidityRange(nameof(VeryDry), min: RelativeHumidity.FromPercent(0), max: RelativeHumidity.FromPercent(30), minInclusive: true, maxInclusive: true);
+        public static readonly HumidityRange Dry = new HumidityRange(nameof(Dry), min: RelativeHumidity.FromPercent(30), max: RelativeHumidity.FromPercent(40), minInclusive: false, maxInclusive: false);
+        public static readonly HumidityRange Average = new HumidityRange(nameof(Average), min: RelativeHumidity.FromPercent(40), max: RelativeHumidity.FromPercent(70), minInclusive: true, maxInclusive: true);
+        public static readonly HumidityRange Moist = new HumidityRange(nameof(Moist), min: RelativeHumidity.FromPercent(70), max: RelativeHumidity.FromPercent(80), minInclusive: false, maxInclusive: false);
+        public static readonly HumidityRange VeryMoist = new HumidityRange(nameof(VeryMoist), min: RelativeHumidity.FromPercent(80), max: RelativeHumidity.FromPercent(100), minInclusive: true, maxInclusive: true);
 
         public static readonly IEnumerable<HumidityRange> All = new List<HumidityRange>
         {
-            VeryDry, Dry, Average, Moist, VeryMoist
+            VeryDry,
+            Dry, 
+            Average,
+            Moist,
+            VeryMoist
         };
 
         private readonly string resourceId;
 
-        private HumidityRange(string resourceId, int min, int max, bool minInclusive, bool maxInclusive)
+        private HumidityRange(string resourceId, RelativeHumidity min, RelativeHumidity max, bool minInclusive, bool maxInclusive)
             : base(min, max, minInclusive, maxInclusive)
         {
             this.resourceId = resourceId;
         }
 
-        public static HumidityRange FromValue(int value)
+        public static HumidityRange FromValue(RelativeHumidity value)
         {
             foreach (var humidityRange in All)
             {
@@ -41,12 +46,12 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            return this.ToString("N", CultureInfo.CurrentCulture);
+            return this.ToString("N", null);
         }
 
         public string ToString(string format)
         {
-            return this.ToString(format, CultureInfo.CurrentCulture);
+            return this.ToString(format, null);
         }
 
         public string ToString(string format, IFormatProvider provider)
@@ -56,15 +61,13 @@ namespace OpenWeatherMap.Models
                 format = "N";
             }
 
-            provider ??= CultureInfo.CurrentCulture;
-
             switch (format)
             {
                 case "I":
                     return base.ToString();
                 case "N":
                 default:
-                    var str = HumidityRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)provider);
+                    var str = HumidityRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
                     return str;
             }
 

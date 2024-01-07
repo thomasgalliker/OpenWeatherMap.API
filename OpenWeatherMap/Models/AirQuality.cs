@@ -87,18 +87,13 @@ namespace OpenWeatherMap.Models
                 format = "N";
             }
 
-            if (provider == null)
-            {
-                provider = CultureInfo.CurrentCulture;
-            }
-
             switch (format)
             {
                 case "I":
                     return base.ToString();
                 case "N":
                 default:
-                    var str = AirQualityTranslations.ResourceManager.GetString(this.resourceId, (CultureInfo)provider);
+                    var str = AirQualityTranslations.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
                     return str;
             }
         }

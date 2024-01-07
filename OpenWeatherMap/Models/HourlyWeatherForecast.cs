@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
+using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
@@ -31,7 +32,7 @@ namespace OpenWeatherMap.Models
 
         [JsonProperty("humidity")]
         [JsonConverter(typeof(HumidityJsonConverter))]
-        public Humidity Humidity { get; set; }
+        public RelativeHumidity Humidity { get; set; }
 
         [JsonProperty("dew_point")]
         public Temperature DewPoint { get; set; }
@@ -41,35 +42,38 @@ namespace OpenWeatherMap.Models
         public UVIndex UVIndex { get; set; }
 
         [JsonProperty("clouds")]
-        public int Clouds { get; set; }
+        [JsonConverter(typeof(PercentRatioJsonConverter))]
+        public Ratio Clouds { get; set; }
 
+        /// <summary>
+        ///  Average visibility. The maximum value of the visibility is 10km.
+        /// </summary>
         [JsonProperty("visibility")]
-        public int Visibility { get; set; }
+        [JsonConverter(typeof(MeterLengthJsonConverter))]
+        public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; }
+        public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         [JsonProperty("wind_deg")]
-        public int WindDirectionDegrees { get; set; }
-
-        [JsonIgnore]
-        public CardinalWindDirection WindDirection => WindHelper.GetCardinalWindDirection(this.WindDirectionDegrees);
+        [JsonConverter(typeof(WindDirectionJsonConverter))]
+        public Angle WindDirection { get; set; }
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
         /// </summary>
         [JsonProperty("wind_gust")]
-        public double WindGust { get; set; }
+        public Speed? WindGust { get; set; }
 
         [JsonProperty("weather")]
         public List<WeatherCondition> Weather { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
-        /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
         [JsonProperty("pop")]
-        public double Pop { get; set; }
+        [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
+        public Ratio Pop { get; set; }
 
         public override string ToString()
         {

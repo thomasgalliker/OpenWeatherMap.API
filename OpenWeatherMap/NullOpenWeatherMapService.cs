@@ -3,17 +3,19 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using OpenWeatherMap.Models;
+using UnitsNet;
+using UnitsNet.Units;
 
 namespace OpenWeatherMap
 {
     [ExcludeFromCodeCoverage]
     public class NullOpenWeatherMapService : IOpenWeatherMapService
     {
-        private readonly IOpenWeatherMapConfiguration openWeatherMapConfiguration;
+        private readonly OpenWeatherMapOptions options;
 
-        public NullOpenWeatherMapService(IOpenWeatherMapConfiguration openWeatherMapConfiguration)
+        public NullOpenWeatherMapService(OpenWeatherMapOptions options)
         {
-            this.openWeatherMapConfiguration = openWeatherMapConfiguration;
+            this.options = options;
         }
 
         public Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude)
@@ -27,7 +29,7 @@ namespace OpenWeatherMap
             {
                 Main = new TemperatureInfo
                 {
-                    Temperature = new Temperature(-27d, TemperatureUnit.Celsius),
+                    Temperature = new Temperature(-27d, TemperatureUnit.DegreeCelsius),
                 }
             });
         }

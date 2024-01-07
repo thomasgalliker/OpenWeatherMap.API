@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="200" xml:space="preserve">
+    <value>Gewitter mit leichtem Regen</value>
+  </data>
+  <data name="201" xml:space="preserve">
+    <value>Gewitter mit Regen</value>
+  </data>
+  <data name="202" xml:space="preserve">
+    <value>Gewitter mit Starkregen</value>
+  </data>
+  <data name="210" xml:space="preserve">
+    <value>Leichtes Gewitter</value>
+  </data>
+  <data name="211" xml:space="preserve">
+    <value>Gewitter</value>
+  </data>
+  <data name="212" xml:space="preserve">
+    <value>Heftiges Gewitter</value>
+  </data>
+  <data name="221" xml:space="preserve">
+    <value>Extrem heftiges Gewitter</value>
+  </data>
+  <data name="230" xml:space="preserve">
+    <value>Gewitter mit leichtem Nieselregen</value>
+  </data>
+  <data name="231" xml:space="preserve">
+    <value>Gewitter mit Nieselregen</value>
+  </data>
+  <data name="232" xml:space="preserve">
+    <value>Gewitter mit starkem Nieselregen</value>
+  </data>
+  <data name="300" xml:space="preserve">
+    <value>Leichter Nieselregen</value>
+  </data>
+  <data name="301" xml:space="preserve">
+    <value>Nieselregen</value>
+  </data>
+  <data name="302" xml:space="preserve">
+    <value>Starker Nieselregen</value>
+  </data>
+  <data name="310" xml:space="preserve">
+    <value>Leichter Nieselregen</value>
+  </data>
+  <data name="311" xml:space="preserve">
+    <value>Nieselregen</value>
+  </data>
+  <data name="312" xml:space="preserve">
+    <value>Starker Nieselregen</value>
+  </data>
+  <data name="313" xml:space="preserve">
+    <value>Schauer- und Nieselregen</value>
+  </data>
+  <data name="314" xml:space="preserve">
+    <value>Starker Schauerregen und Nieselregen</value>
+  </data>
+  <data name="321" xml:space="preserve">
+    <value>Schauer-Nieselregen</value>
+  </data>
+  <data name="500" xml:space="preserve">
+    <value>Leichter Regen
+</value>
+  </data>
+  <data name="501" xml:space="preserve">
+    <value>Mässiger Regen</value>
+  </data>
+  <data name="502" xml:space="preserve">
+    <value>Starker Regen</value>
+  </data>
+  <data name="503" xml:space="preserve">
+    <value>Sehr starker Regen</value>
+  </data>
+  <data name="504" xml:space="preserve">
+    <value>Extrem starker Regen</value>
+  </data>
+  <data name="511" xml:space="preserve">
+    <value>Eisregen</value>
+  </data>
+  <data name="520" xml:space="preserve">
+    <value>Leichter Schauerregen</value>
+  </data>
+  <data name="521" xml:space="preserve">
+    <value>Schauerregen</value>
+  </data>
+  <data name="522" xml:space="preserve">
+    <value>Starker Schauerregen</value>
+  </data>
+  <data name="531" xml:space="preserve">
+    <value>Extrem starker Schauerregen</value>
+  </data>
+  <data name="600" xml:space="preserve">
+    <value>Leichter Schneefall</value>
+  </data>
+  <data name="601" xml:space="preserve">
+    <value>Schnee</value>
+  </data>
+  <data name="602" xml:space="preserve">
+    <value>Starker Schneefall</value>
+  </data>
+  <data name="611" xml:space="preserve">
+    <value>Schneeregen</value>
+  </data>
+  <data name="612" xml:space="preserve">
+    <value>Leichter Regenregen</value>
+  </data>
+  <data name="613" xml:space="preserve">
+    <value>Graupelregen</value>
+  </data>
+  <data name="615" xml:space="preserve">
+    <value>Leichter Regen und Schnee</value>
+  </data>
+  <data name="616" xml:space="preserve">
+    <value>Regen und Schnee</value>
+  </data>
+  <data name="620" xml:space="preserve">
+    <value>Leichter Schneefall</value>
+  </data>
+  <data name="621" xml:space="preserve">
+    <value>Schneefall</value>
+  </data>
+  <data name="622" xml:space="preserve">
+    <value>Starker Schneefall</value>
+  </data>
+  <data name="701" xml:space="preserve">
+    <value>Nebel</value>
+  </data>
+  <data name="711" xml:space="preserve">
+    <value>Rauch</value>
+  </data>
+  <data name="721" xml:space="preserve">
+    <value>Dunst</value>
+  </data>
+  <data name="731" xml:space="preserve">
+    <value>Sand-/Staubwirbel</value>
+  </data>
+  <data name="741" xml:space="preserve">
+    <value>Nebel</value>
+  </data>
+  <data name="751" xml:space="preserve">
+    <value>Sand</value>
+  </data>
+  <data name="761" xml:space="preserve">
+    <value>Staub</value>
+  </data>
+  <data name="762" xml:space="preserve">
+    <value>Vulkanasche</value>
+  </data>
+  <data name="771" xml:space="preserve">
+    <value>Sturmböen</value>
+  </data>
+  <data name="781" xml:space="preserve">
+    <value>Tornado</value>
+  </data>
+  <data name="800" xml:space="preserve">
+    <value>Klarer Himmel</value>
+  </data>
+  <data name="801" xml:space="preserve">
+    <value>Wenige Wolken: 11-25%</value>
+  </data>
+  <data name="802" xml:space="preserve">
+    <value>Vereinzelte Wolken: 25-50%</value>
+  </data>
+  <data name="803" xml:space="preserve">
+    <value>Aufgebrochene Wolken: 51-84%</value>
+  </data>
+  <data name="804" xml:space="preserve">
+    <value>Bewölkt: 85-100%</value>
+  </data>
+</root>

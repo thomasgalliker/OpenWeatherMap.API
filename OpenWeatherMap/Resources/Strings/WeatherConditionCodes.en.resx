@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="200" xml:space="preserve">
+    <value>Thunderstorm with light rain</value>
+  </data>
+  <data name="201" xml:space="preserve">
+    <value>Thunderstorm with rain</value>
+  </data>
+  <data name="202" xml:space="preserve">
+    <value>Thunderstorm with heavy rain</value>
+  </data>
+  <data name="210" xml:space="preserve">
+    <value>Light thunderstorm</value>
+  </data>
+  <data name="211" xml:space="preserve">
+    <value>Thunderstorm</value>
+  </data>
+  <data name="212" xml:space="preserve">
+    <value>Heavy thunderstorm</value>
+  </data>
+  <data name="221" xml:space="preserve">
+    <value>Extremely heavy thunderstorm</value>
+  </data>
+  <data name="230" xml:space="preserve">
+    <value>Thunderstorm with light drizzle</value>
+  </data>
+  <data name="231" xml:space="preserve">
+    <value>Thunderstorm with drizzle</value>
+  </data>
+  <data name="232" xml:space="preserve">
+    <value>Thunderstorm with heavy drizzle</value>
+  </data>
+  <data name="300" xml:space="preserve">
+    <value>Light intensity drizzle</value>
+  </data>
+  <data name="301" xml:space="preserve">
+    <value>Drizzle</value>
+  </data>
+  <data name="302" xml:space="preserve">
+    <value>Heavy intensity drizzle</value>
+  </data>
+  <data name="310" xml:space="preserve">
+    <value>Light intensity drizzle rain</value>
+  </data>
+  <data name="311" xml:space="preserve">
+    <value>Drizzle rain</value>
+  </data>
+  <data name="312" xml:space="preserve">
+    <value>Heavy intensity drizzle rain</value>
+  </data>
+  <data name="313" xml:space="preserve">
+    <value>Shower rain and drizzle</value>
+  </data>
+  <data name="314" xml:space="preserve">
+    <value>Heavy shower rain and drizzle</value>
+  </data>
+  <data name="321" xml:space="preserve">
+    <value>Shower drizzle</value>
+  </data>
+  <data name="500" xml:space="preserve">
+    <value>Light rain</value>
+  </data>
+  <data name="501" xml:space="preserve">
+    <value>Moderate rain</value>
+  </data>
+  <data name="502" xml:space="preserve">
+    <value>Heavy intensity rain</value>
+  </data>
+  <data name="503" xml:space="preserve">
+    <value>Very heavy rain</value>
+  </data>
+  <data name="504" xml:space="preserve">
+    <value>Extreme rain</value>
+  </data>
+  <data name="511" xml:space="preserve">
+    <value>Freezing rain</value>
+  </data>
+  <data name="520" xml:space="preserve">
+    <value>Light intensity shower rain</value>
+  </data>
+  <data name="521" xml:space="preserve">
+    <value>Shower rain</value>
+  </data>
+  <data name="522" xml:space="preserve">
+    <value>Heavy intensity shower rain</value>
+  </data>
+  <data name="531" xml:space="preserve">
+    <value>Extreme shower rain</value>
+  </data>
+  <data name="600" xml:space="preserve">
+    <value>Light snow</value>
+  </data>
+  <data name="601" xml:space="preserve">
+    <value>Snow</value>
+  </data>
+  <data name="602" xml:space="preserve">
+    <value>Heavy snow</value>
+  </data>
+  <data name="611" xml:space="preserve">
+    <value>Sleet</value>
+  </data>
+  <data name="612" xml:space="preserve">
+    <value>Light shower sleet</value>
+  </data>
+  <data name="613" xml:space="preserve">
+    <value>Shower sleet</value>
+  </data>
+  <data name="615" xml:space="preserve">
+    <value>Light rain and snow</value>
+  </data>
+  <data name="616" xml:space="preserve">
+    <value>Rain and snow</value>
+  </data>
+  <data name="620" xml:space="preserve">
+    <value>Light shower snow</value>
+  </data>
+  <data name="621" xml:space="preserve">
+    <value>Shower snow</value>
+  </data>
+  <data name="622" xml:space="preserve">
+    <value>Heavy shower snow</value>
+  </data>
+  <data name="701" xml:space="preserve">
+    <value>Mist</value>
+  </data>
+  <data name="711" xml:space="preserve">
+    <value>Smoke</value>
+  </data>
+  <data name="721" xml:space="preserve">
+    <value>Haze</value>
+  </data>
+  <data name="731" xml:space="preserve">
+    <value>Sand/dust whirls</value>
+  </data>
+  <data name="741" xml:space="preserve">
+    <value>Fog</value>
+  </data>
+  <data name="751" xml:space="preserve">
+    <value>Sand</value>
+  </data>
+  <data name="761" xml:space="preserve">
+    <value>Dust</value>
+  </data>
+  <data name="762" xml:space="preserve">
+    <value>Volcanic ash</value>
+  </data>
+  <data name="771" xml:space="preserve">
+    <value>Squalls</value>
+  </data>
+  <data name="781" xml:space="preserve">
+    <value>Tornado</value>
+  </data>
+  <data name="800" xml:space="preserve">
+    <value>Clear sky</value>
+  </data>
+  <data name="801" xml:space="preserve">
+    <value>Few clouds: 11-25%</value>
+  </data>
+  <data name="802" xml:space="preserve">
+    <value>Scattered clouds: 25-50%</value>
+  </data>
+  <data name="803" xml:space="preserve">
+    <value>Broken clouds: 51-84%</value>
+  </data>
+  <data name="804" xml:space="preserve">
+    <value>Overcast clouds: 85-100%</value>
+  </data>
+</root>
