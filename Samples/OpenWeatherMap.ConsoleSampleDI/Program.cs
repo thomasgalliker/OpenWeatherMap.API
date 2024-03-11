@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using OpenWeatherMap;
 using OpenWeatherMap.Extensions;
-using OpenWeatherMap.Models;
 
 internal class Program
 {

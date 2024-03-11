@@ -22,7 +22,7 @@ namespace OpenWeatherMap.Models.Converters
             {
                 return Ratio.FromPercent(longValue);
             }
-            
+
             if (reader.Value is null)
             {
                 return Ratio.Zero;
