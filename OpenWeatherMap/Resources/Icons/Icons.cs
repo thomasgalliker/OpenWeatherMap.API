@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Reflection;
-using OpenWeatherMap;
 using OpenWeatherMap.Utils;
 
 namespace OpenWeatherMap.Resources.Icons
@@ -73,7 +72,7 @@ namespace OpenWeatherMap.Resources.Icons
         {
             return GetIcon("location.png");
         }
-        
+
         public static Stream Placeholder()
         {
             return GetIcon("placeholder.png");

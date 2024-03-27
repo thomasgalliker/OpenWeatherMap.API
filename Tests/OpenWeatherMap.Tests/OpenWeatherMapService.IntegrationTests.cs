@@ -103,7 +103,7 @@ namespace OpenWeatherMap.Tests
             weatherForecast.Items.Should().HaveCount(7);
         }
 
-        [Fact]
+        [Fact(Skip = "Runs only with pro license")]
         public async Task ShouldGetWeatherOneCallAsync()
         {
             // Arrange
@@ -129,7 +129,7 @@ namespace OpenWeatherMap.Tests
             oneCallWeatherInfo.Should().NotBeNull();
         }
 
-        [Fact]
+        [Fact(Skip = "Runs only with pro license")]
         public async Task ShouldGetWeatherOneCallHistoricAsync()
         {
             // Arrange

@@ -16,9 +16,9 @@ namespace OpenWeatherMap.Models
 
         public static readonly IEnumerable<PressureRange> All = new List<PressureRange>
         {
-            VeryLow, 
+            VeryLow,
             Low,
-            Average, 
+            Average,
             High,
             VeryHigh
         };

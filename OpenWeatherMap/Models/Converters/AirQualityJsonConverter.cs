@@ -16,7 +16,7 @@ namespace OpenWeatherMap.Models.Converters
             {
                 return AirQuality.FromValue((int)longValue);
             }
-            
+
             throw new NotSupportedException($"Cannot convert from {reader.Value} to AirQuality");
         }
     }

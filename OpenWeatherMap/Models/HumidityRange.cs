@@ -17,7 +17,7 @@ namespace OpenWeatherMap.Models
         public static readonly IEnumerable<HumidityRange> All = new List<HumidityRange>
         {
             VeryDry,
-            Dry, 
+            Dry,
             Average,
             Moist,
             VeryMoist
