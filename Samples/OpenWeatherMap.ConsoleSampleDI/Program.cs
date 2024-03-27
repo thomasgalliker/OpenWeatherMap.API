@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OpenWeatherMap;
 using OpenWeatherMap.Extensions;
 
@@ -33,7 +34,7 @@ internal class Program
         //    .Build();
 
         //var configurationSection = configuration.GetSection("OpenWeatherMap");
-        //serviceCollection.AddMeteoSwissApi(configurationSection);
+        //serviceCollection.AddOpenWeatherMap(configurationSection);
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
