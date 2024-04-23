@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
+using OpenWeatherMap.Utils;
 
 namespace OpenWeatherMap
 {
@@ -118,7 +119,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetCurrentWeatherAsync: GET {uri}");
+            this.logger.LogDebug($"GetCurrentWeatherAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
@@ -166,7 +167,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherForecastAsync: GET {uri}");
+            this.logger.LogDebug($"GetWeatherForecastAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
@@ -203,7 +204,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherOneCallAsync: GET {uri}");
+            this.logger.LogDebug($"GetWeatherOneCallAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
@@ -240,7 +241,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: GET {uri}");
+            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
@@ -329,7 +330,7 @@ namespace OpenWeatherMap
             };
 
             var uri = builder.ToString();
-            this.logger.LogDebug($"GetAirPollutionAsync: GET {uri}");
+            this.logger.LogDebug($"GetAirPollutionAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
 
             var response = await this.httpClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();

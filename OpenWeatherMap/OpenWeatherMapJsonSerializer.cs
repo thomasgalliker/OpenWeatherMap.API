@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet.Units;
 
@@ -7,7 +6,7 @@ namespace OpenWeatherMap
 {
     public class OpenWeatherMapJsonSerializer : IOpenWeatherMapJsonSerializer
     {
-        private JsonSerializerSettings serializerSettings;
+        private readonly JsonSerializerSettings serializerSettings;
 
         public OpenWeatherMapJsonSerializer(UnitSystem unitSystem)
         {

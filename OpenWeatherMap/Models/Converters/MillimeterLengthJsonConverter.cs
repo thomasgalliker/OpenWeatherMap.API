@@ -7,7 +7,6 @@ namespace OpenWeatherMap.Models.Converters
         public MillimeterLengthJsonConverter()
             : base(LengthUnit.Millimeter)
         {
-            
         }
     }
 }
