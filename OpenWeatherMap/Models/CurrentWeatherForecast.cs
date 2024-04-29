@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
@@ -10,7 +9,7 @@ namespace OpenWeatherMap.Models
     {
         public CurrentWeatherForecast()
         {
-            this.Weather = new List<WeatherCondition>();
+            this.Weather = Array.Empty<WeatherCondition>();
         }
 
         [JsonProperty("dt")]
@@ -91,7 +90,7 @@ namespace OpenWeatherMap.Models
         public PrecipitationSpeed Snow { get; set; }
 
         [JsonProperty("weather")]
-        public List<WeatherCondition> Weather { get; set; }
+        public WeatherCondition[] Weather { get; set; }
 
         public override string ToString()
         {

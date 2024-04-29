@@ -10,7 +10,7 @@ namespace OpenWeatherMap.Models
     {
         public DailyWeatherForecast()
         {
-            this.Weather = new List<WeatherCondition>();
+            this.Weather = Array.Empty<WeatherCondition>();
         }
 
         [JsonProperty("dt")]
@@ -96,7 +96,7 @@ namespace OpenWeatherMap.Models
         public Speed? WindGust { get; set; }
 
         [JsonProperty("weather")]
-        public List<WeatherCondition> Weather { get; set; }
+        public WeatherCondition[] Weather { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
