@@ -33,18 +33,19 @@
 		<Product>OpenWeatherMap.API</Product>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<RootNamespace>OpenWeatherMap</RootNamespace>
-		<PackageReleaseNotes>
-			2.0.x
-			- Use unit types from dependency UnitsNet
+		<PackageReleaseNotes>2.1.x
+- Extended the 16-day forecast model (DailyWeatherForecastItem) with missing properties
+2.0.x
+- Use unit types from dependency UnitsNet
 
-			1.2.0
-			- Major refactoring in wind direction data model
-			- Add multilingual support
+1.2.x
+- Major refactoring in wind direction data model
+- Add multilingual support
 
-			1.0.0
-			- Initial release
+1.0.x
+- Initial release
 		</PackageReleaseNotes>
-		<Copyright>Copyright 2023</Copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<NeutralLanguage>sv</NeutralLanguage>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
