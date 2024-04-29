@@ -35,7 +35,7 @@ namespace OpenWeatherMap.Tests.Testdata
                     MinimumTemperature = new Temperature(mainTemperature.Value - 10, mainTemperature.Unit),
                     MaximumTemperature = new Temperature(mainTemperature.Value + 10, mainTemperature.Unit),
                 },
-                Weather = new List<WeatherCondition>
+                Weather = new[]
                 {
                     new WeatherCondition
                     {
