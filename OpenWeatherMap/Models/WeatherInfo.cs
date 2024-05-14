@@ -10,7 +10,7 @@ namespace OpenWeatherMap.Models
     {
         public WeatherInfo()
         {
-            this.Weather = new List<WeatherCondition>();
+            this.Weather = Array.Empty<WeatherCondition>();
         }
 
         [JsonProperty("dt")]
@@ -18,7 +18,7 @@ namespace OpenWeatherMap.Models
         public DateTime Date { get; set; }
 
         [JsonProperty("weather")]
-        public List<WeatherCondition> Weather { get; set; }
+        public WeatherCondition[] Weather { get; set; }
 
         [JsonProperty("main")]
         public TemperatureInfo Main { get; set; }

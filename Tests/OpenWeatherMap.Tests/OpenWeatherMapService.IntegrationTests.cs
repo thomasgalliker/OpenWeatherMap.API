@@ -101,6 +101,23 @@ namespace OpenWeatherMap.Tests
             weatherForecast.Should().NotBeNull();
             weatherForecast.Count.Should().Be(7);
             weatherForecast.Items.Should().HaveCount(7);
+
+            foreach (var dailyWeatherForecastItem in weatherForecast.Items)
+            {
+                dailyWeatherForecastItem.DateTime.Should().BeAfter(DateTime.MinValue);
+                dailyWeatherForecastItem.Sunrise.Should().BeAfter(DateTime.MinValue);
+                dailyWeatherForecastItem.Sunset.Should().BeAfter(DateTime.MinValue);
+                dailyWeatherForecastItem.Temperature.Should().NotBeNull();
+                dailyWeatherForecastItem.FeelsLike.Should().NotBeNull();
+                dailyWeatherForecastItem.Pressure.Should().NotBeNull();
+                dailyWeatherForecastItem.Humidity.Should().NotBeNull();
+                dailyWeatherForecastItem.Weather.Should().HaveCountGreaterThanOrEqualTo(1);
+                dailyWeatherForecastItem.Wind.Should().NotBeNull();
+                dailyWeatherForecastItem.Wind.Speed.Should().NotBeNull();
+                dailyWeatherForecastItem.Clouds.Should().NotBeNull();
+                dailyWeatherForecastItem.Pop.Should().NotBeNull();
+                dailyWeatherForecastItem.Rain.Should().NotBeNull();
+            }
         }
 
         [Fact(Skip = "Runs only with pro license")]
