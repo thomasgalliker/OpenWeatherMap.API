@@ -7,6 +7,12 @@ namespace OpenWeatherMap
 {
     public interface IOpenWeatherMapService
     {
+        /// <summary>
+        /// Gets the current weather data for given <paramref name="latitude"/> and <paramref name="longitude"/>.
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <returns></returns>
         Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude);
 
         /// <summary>
