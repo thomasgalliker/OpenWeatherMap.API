@@ -1,5 +1,5 @@
 # OpenWeatherMap.API
-[![Version](https://img.shields.io/nuget/v/OpenWeatherMap.API.svg)](https://www.nuget.org/packages/OpenWeatherMap.API)  [![Downloads](https://img.shields.io/nuget/dt/OpenWeatherMap.API.svg)](https://www.nuget.org/packages/OpenWeatherMap.API)
+[![Version](https://img.shields.io/nuget/v/OpenWeatherMap.API.svg)](https://www.nuget.org/packages/OpenWeatherMap.API) [![Downloads](https://img.shields.io/nuget/dt/OpenWeatherMap.API.svg)](https://www.nuget.org/packages/OpenWeatherMap.API) [![Buy Me a Coffee](https://img.shields.io/badge/support-buy%20me%20a%20coffee-FFDD00)](https://buymeacoffee.com/thomasgalliker)
 
 OpenWeatherMap API client for .NET
 
