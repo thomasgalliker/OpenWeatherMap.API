@@ -1,12 +1,10 @@
 ﻿using System.Diagnostics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
 {
     [DebuggerDisplay("{this.Id}")]
-    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class WeatherCondition
     {
         /// <summary>
@@ -14,7 +12,7 @@ namespace OpenWeatherMap.Models
         /// See also: https://openweathermap.org/weather-conditions
         /// </summary>
         [JsonRequired]
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         [JsonConverter(typeof(WeatherConditionCodeJsonConverter))]
         public WeatherConditionCode Id { get; set; }
 
@@ -23,15 +21,15 @@ namespace OpenWeatherMap.Models
         /// See also: https://openweathermap.org/weather-conditions
         /// </summary>
         [JsonRequired]
-        [JsonProperty("main")]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonPropertyName("main")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public WeatherConditionGroup Main { get; set; }
 
         /// <summary>
         /// Gets the language-specific description of the weather condition.
         /// </summary>
         [JsonRequired]
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace OpenWeatherMap.Models
         /// See also: https://openweathermap.org/weather-conditions#How-to-get-icon-URL
         /// </summary>
         [JsonRequired]
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         public string IconId { get; set; }
     }
 }

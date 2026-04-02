@@ -1,23 +1,24 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class AirQualityJsonConverter : JsonConverter<AirQuality>
     {
-        public override void WriteJson(JsonWriter writer, AirQuality value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, AirQuality value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override AirQuality ReadJson(JsonReader reader, Type objectType, AirQuality existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override AirQuality Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is long longValue)
+            if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt32(out var value))
             {
-                return AirQuality.FromValue((int)longValue);
+                return AirQuality.FromValue(value);
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to AirQuality");
+            throw new NotSupportedException($"Cannot convert from {reader.TokenType} to AirQuality");
         }
     }
 }

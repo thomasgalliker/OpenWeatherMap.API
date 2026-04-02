@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models
 {
@@ -15,17 +15,17 @@ namespace OpenWeatherMap.Models
         }
 
         // TODO: Use Geolocation
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Latitude { get; set; }
 
         // TODO: Use Geolocation
-        [JsonProperty("lon")]
+        [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
-        [JsonProperty("timezone")]
+        [JsonPropertyName("timezone")]
         public string Timezone { get; set; }
 
-        [JsonProperty("timezone_offset")]
+        [JsonPropertyName("timezone_offset")]
         public int TimezoneOffset { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace OpenWeatherMap.Models
         /// <remarks>
         /// Is only included if <seealso cref="OneCallOptions.IncludeCurrentWeather"/> is true.
         /// </remarks>
-        [JsonProperty("current")]
+        [JsonPropertyName("current")]
         public CurrentWeatherForecast CurrentWeather { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace OpenWeatherMap.Models
         /// <remarks>
         /// Is only included if <seealso cref="OneCallOptions.IncludeMinutelyForecasts"/> is true.
         /// </remarks>
-        [JsonProperty("minutely")]
+        [JsonPropertyName("minutely")]
         public IReadOnlyCollection<MinutelyWeatherForecast> MinutelyForecasts { get; set; }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace OpenWeatherMap.Models
         /// <remarks>
         /// Is only included if <seealso cref="OneCallOptions.IncludeHourlyForecasts"/> is true.
         /// </remarks>
-        [JsonProperty("hourly")]
+        [JsonPropertyName("hourly")]
         public IReadOnlyCollection<HourlyWeatherForecast> HourlyForecasts { get; set; }
 
         /// <summary>
@@ -61,10 +61,10 @@ namespace OpenWeatherMap.Models
         /// <remarks>
         /// Is only included if <seealso cref="OneCallOptions.IncludeDailyForecasts"/> is true.
         /// </remarks>
-        [JsonProperty("daily")]
+        [JsonPropertyName("daily")]
         public IReadOnlyCollection<DailyWeatherForecast> DailyForecasts { get; set; }
 
-        [JsonProperty("alerts")]
+        [JsonPropertyName("alerts")]
         public IReadOnlyCollection<AlertInfo> Alerts { get; set; }
 
         public override string ToString()

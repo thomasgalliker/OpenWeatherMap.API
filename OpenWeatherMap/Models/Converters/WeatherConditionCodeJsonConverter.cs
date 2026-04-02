@@ -1,23 +1,19 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class WeatherConditionCodeJsonConverter : JsonConverter<WeatherConditionCode>
     {
-        public override void WriteJson(JsonWriter writer, WeatherConditionCode value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, WeatherConditionCode value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override WeatherConditionCode ReadJson(JsonReader reader, Type objectType, WeatherConditionCode existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override WeatherConditionCode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is long longValue)
-            {
-                return WeatherConditionCode.FromValue((int)longValue);
-            }
-
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to WeatherConditionCode");
+            return WeatherConditionCode.FromValue((int)reader.ReadInt64());
         }
     }
 }

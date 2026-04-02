@@ -1,6 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
@@ -8,7 +8,7 @@ namespace OpenWeatherMap.Models.Converters
     /// Converts integer/long dates starting from 1970-01-01 (Epoch) to DateTime.
     /// Helpful source: https://www.epochconverter.com
     /// </summary>
-    public class EpochDateTimeConverter : DateTimeConverterBase
+    public class EpochDateTimeConverter : JsonConverter<DateTime>
     {
         private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -23,23 +23,14 @@ namespace OpenWeatherMap.Models.Converters
             return (long)(utcDateTime - Epoch).TotalSeconds;
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            var utcDateTime = (DateTime)value;
-            var seconds = Convert(utcDateTime);
-            writer.WriteValue(seconds);
+            writer.WriteNumberValue(Convert(value));
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value == null)
-            {
-                return null;
-            }
-
-            var seconds = System.Convert.ToInt64(reader.Value);
-            var dateTime = Convert(seconds);
-            return dateTime;
+            return Convert(reader.ReadInt64());
         }
     }
 }

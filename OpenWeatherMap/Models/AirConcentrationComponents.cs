@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -15,56 +15,56 @@ namespace OpenWeatherMap.Models
         /// <summary>
         /// Concentration of Carbon Monoxide (CO) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("co")]
+        [JsonPropertyName("co")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration CarbonMonoxide { get; set; }
 
         /// <summary>
         /// Concentration of Nitrogen Monoxide (NO) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("no")]
+        [JsonPropertyName("no")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration NitrogenMonoxide { get; set; }
 
         /// <summary>
         /// Concentration of Nitrogen Dioxide (NO2) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("no2")]
+        [JsonPropertyName("no2")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration NitrogenDioxide { get; set; }
 
         /// <summary>
         /// Concentration of Ozone (O3) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("o3")]
+        [JsonPropertyName("o3")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration Ozone { get; set; }
 
         /// <summary>
         /// Concentration of Sulphur Dioxide (SO2) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("so2")]
+        [JsonPropertyName("so2")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration SulphurDioxide { get; set; }
 
         /// <summary>
         /// Concentration of fine particles matter (PM2.5) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("pm2_5")]
+        [JsonPropertyName("pm2_5")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration FineParticulateMatter { get; set; }
 
         /// <summary>
         /// Concentration of coarse particulate matter (PM10) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("pm10")]
+        [JsonPropertyName("pm10")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration CoarseParticulateMatter { get; set; }
 
         /// <summary>
         /// Concentration of ammonia (NH3) in the air, in µg/m3.
         /// </summary>
-        [JsonProperty("nh3")]
+        [JsonPropertyName("nh3")]
         [JsonConverter(typeof(MicrogramPerCubicMeterJsonConverter))]
         public MassConcentration Ammonia { get; set; }
     }

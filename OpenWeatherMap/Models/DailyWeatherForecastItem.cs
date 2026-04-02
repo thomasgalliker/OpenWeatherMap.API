@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -16,49 +16,49 @@ namespace OpenWeatherMap.Models
             this.Weather = Array.Empty<WeatherCondition>();
         }
 
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunrise { get; set; }
 
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunset { get; set; }
 
-        [JsonProperty("temp")]
+        [JsonPropertyName("temp")]
         public DailyTemperatureForecast Temperature { get; set; }
 
-        [JsonProperty("feels_like")]
+        [JsonPropertyName("feels_like")]
         public DailyFeelsLikeForecast FeelsLike { get; set; }
 
         /// <summary>
         ///  Atmospheric pressure on the sea level, hPa.
         /// </summary>
-        [JsonProperty("pressure")]
+        [JsonPropertyName("pressure")]
         [JsonConverter(typeof(PressureJsonConverter))]
         public Pressure Pressure { get; set; }
 
-        [JsonProperty("humidity")]
+        [JsonPropertyName("humidity")]
         [JsonConverter(typeof(HumidityJsonConverter))]
         public RelativeHumidity Humidity { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }
 
         /// <see cref="Wind">
-        [JsonProperty("speed")]
+        [JsonPropertyName("speed")]
         private Speed Speed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         /// <see cref="Wind">
-        [JsonProperty("deg")]
+        [JsonPropertyName("deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
         private Angle Direction { get; set; }
 
         /// <see cref="Wind">
-        [JsonProperty("gust")]
+        [JsonPropertyName("gust")]
         private Speed? Gust { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace OpenWeatherMap.Models
         /// <summary>
         ///  Cloudiness.
         /// </summary>
-        [JsonProperty("clouds")]
+        [JsonPropertyName("clouds")]
         [JsonConverter(typeof(PercentRatioJsonConverter))]
         public Ratio Clouds { get; set; }
 
@@ -89,14 +89,14 @@ namespace OpenWeatherMap.Models
         /// Probability of precipitation.
         /// The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%.
         /// </summary>
-        [JsonProperty("pop")]
+        [JsonPropertyName("pop")]
         [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>
         /// Daily volume of rain, in mm (where available).
         /// </summary>
-        [JsonProperty("rain")]
+        [JsonPropertyName("rain")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]
         public Length Rain { get; set; } = Length.FromMillimeters(0d);
     }

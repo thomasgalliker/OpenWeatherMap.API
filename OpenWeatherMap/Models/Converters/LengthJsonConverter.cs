@@ -1,5 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnitsNet;
 using UnitsNet.Units;
 
@@ -14,26 +15,14 @@ namespace OpenWeatherMap.Models.Converters
             this.lengthUnit = lengthUnit;
         }
 
-        public override void WriteJson(JsonWriter writer, Length value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, Length value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override Length ReadJson(JsonReader reader, Type objectType, Length existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Length Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is double doubleValue)
-            {
-                return Length.From(doubleValue, this.lengthUnit);
-            }
-
-            if (reader.Value is long longValue)
-            {
-                return Length.From(longValue, this.lengthUnit);
-            }
-
-            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
-                ? Length.From(value, this.lengthUnit)
-                : default;
+            return Length.From(reader.ReadDouble(), this.lengthUnit);
         }
     }
 }

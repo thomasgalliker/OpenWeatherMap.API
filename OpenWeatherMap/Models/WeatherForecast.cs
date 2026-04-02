@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models
 {
@@ -11,7 +11,7 @@ namespace OpenWeatherMap.Models
             this.Items = new List<WeatherForecastItem>();
         }
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public IReadOnlyCollection<WeatherForecastItem> Items { get; set; }
 
         public override string ToString()
