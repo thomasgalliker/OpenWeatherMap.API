@@ -50,7 +50,7 @@ steps:
     inputs:
       Path: '$(Build.SourcesDirectory)'
       FileNames: |
-        **/*.csprojs
+        **/*.csproj
       InsertAttributes: true
       FileEncoding: 'auto'
       WriteBOM: false
