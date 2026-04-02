@@ -81,13 +81,13 @@ namespace OpenWeatherMap.Models
         /// Precipitation of rain, mm/h (where available).
         /// </summary>
         [JsonPropertyName("rain")]
-        public PrecipitationSpeed Rain { get; set; }
+        public PrecipitationSpeed Rain { get; set; } = null!;
 
         /// <summary>
         /// Precipitation of snow, mm/h (where available).
         /// </summary>
         [JsonPropertyName("snow")]
-        public PrecipitationSpeed Snow { get; set; }
+        public PrecipitationSpeed Snow { get; set; } = null!;
 
         [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }

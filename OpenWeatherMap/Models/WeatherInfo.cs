@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -21,7 +19,7 @@ namespace OpenWeatherMap.Models
         public WeatherCondition[] Weather { get; set; }
 
         [JsonPropertyName("main")]
-        public TemperatureInfo Main { get; set; }
+        public TemperatureInfo Main { get; set; } = null!;
 
         /// <summary>
         ///  Average visibility. The maximum value of the visibility is 10km.
@@ -31,13 +29,13 @@ namespace OpenWeatherMap.Models
         public Length Visibility { get; set; } = Length.FromMeters(0d);
 
         [JsonPropertyName("wind")]
-        public WindInfo Wind { get; set; }
+        public WindInfo Wind { get; set; } = null!;
 
         [JsonPropertyName("clouds")]
-        public CloudsInformation Clouds { get; set; }
+        public CloudsInformation Clouds { get; set; } = null!;
 
         [JsonPropertyName("sys")]
-        public AdditionalWeatherInfo AdditionalInformation { get; set; }
+        public AdditionalWeatherInfo AdditionalInformation { get; set; } = null!;
 
         /// <summary>
         /// Shift in seconds from UTC.
@@ -49,18 +47,18 @@ namespace OpenWeatherMap.Models
         /// City ID.
         /// </summary>
         [JsonPropertyName("id")]
-        public string CityId { get; set; }
+        public string CityId { get; set; } = null!;
 
         /// <summary>
         /// City name.
         /// </summary>
         [JsonPropertyName("name")]
-        public string CityName { get; set; }
+        public string CityName { get; set; } = null!;
 
         /// <summary>
         /// City geo location.
         /// </summary>
         [JsonPropertyName("coord")]
-        public Coordinates Coordinates { get; set; }
+        public Coordinates Coordinates { get; set; } = null!;
     }
 }

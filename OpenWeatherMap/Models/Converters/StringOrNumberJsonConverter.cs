@@ -5,9 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
-    internal class StringOrNumberJsonConverter : JsonConverter<string>
+    internal class StringOrNumberJsonConverter : JsonConverter<string?>
     {
-        public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override string? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             switch (reader.TokenType)
             {
@@ -32,7 +32,7 @@ namespace OpenWeatherMap.Models.Converters
             throw new JsonException($"Cannot convert token type {reader.TokenType} to string.");
         }
 
-        public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, string? value, JsonSerializerOptions options)
         {
             writer.WriteStringValue(value);
         }

@@ -12,7 +12,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; }
+        public RegionInfo Country { get; set; } = null!;
 
         [JsonPropertyName("sunrise")]
         [JsonConverter(typeof(EpochDateTimeConverter))]

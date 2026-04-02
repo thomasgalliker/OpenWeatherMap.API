@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
@@ -20,10 +18,10 @@ namespace OpenWeatherMap.Models
         public DateTime DateTime { get; set; }
 
         [JsonPropertyName("clouds")]
-        public CloudsInformation Clouds { get; set; }
+        public CloudsInformation Clouds { get; set; } = null!;
 
         [JsonPropertyName("rain")]
-        public PrecipitationVolume Rain { get; set; }
+        public PrecipitationVolume Rain { get; set; } = null!;
 
         /// <summary>
         /// Probability of precipitation.
@@ -35,13 +33,13 @@ namespace OpenWeatherMap.Models
 
         [JsonRequired]
         [JsonPropertyName("main")]
-        public TemperatureInfo Main { get; set; }
+        public TemperatureInfo Main { get; set; } = null!;
 
         [JsonRequired]
         [JsonPropertyName("weather")]
         public IReadOnlyList<WeatherCondition> WeatherConditions { get; set; }
 
         [JsonPropertyName("wind")]
-        public WindInfo Wind { get; set; }
+        public WindInfo Wind { get; set; } = null!;
     }
 }

@@ -11,9 +11,9 @@ namespace OpenWeatherMap.Models
         public DateTime DateTime { get; set; }
 
         [JsonPropertyName("main")]
-        public AirQualitySummary Main { get; set; }
+        public AirQualitySummary Main { get; set; } = null!;
 
         [JsonPropertyName("components")]
-        public AirConcentrationComponents Components { get; set; }
+        public AirConcentrationComponents Components { get; set; } = null!;
     }
 }

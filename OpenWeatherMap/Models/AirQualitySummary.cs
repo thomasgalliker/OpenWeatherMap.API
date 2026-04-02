@@ -10,6 +10,6 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("aqi")]
         [JsonConverter(typeof(AirQualityJsonConverter))]
-        public AirQuality AirQuality { get; set; }
+        public AirQuality AirQuality { get; set; } = null!;
     }
 }

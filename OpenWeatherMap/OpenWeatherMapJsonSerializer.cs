@@ -58,7 +58,7 @@ namespace OpenWeatherMap
 
         public T DeserializeObject<T>(string value)
         {
-            return JsonSerializer.Deserialize<T>(value, this.serializerOptions);
+            return JsonSerializer.Deserialize<T>(value, this.serializerOptions)!;
         }
 
         public string SerializeObject<T>(T value)

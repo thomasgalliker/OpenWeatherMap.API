@@ -9,7 +9,7 @@ namespace OpenWeatherMap.Models
     [DebuggerDisplay("WeatherForecastItem: {DateTime}, {Temperature}")]
     public class DailyWeatherForecastItem
     {
-        private WindInfo wind;
+        private WindInfo? wind;
 
         public DailyWeatherForecastItem()
         {
@@ -29,10 +29,10 @@ namespace OpenWeatherMap.Models
         public DateTime Sunset { get; set; }
 
         [JsonPropertyName("temp")]
-        public DailyTemperatureForecast Temperature { get; set; }
+        public DailyTemperatureForecast Temperature { get; set; } = null!;
 
         [JsonPropertyName("feels_like")]
-        public DailyFeelsLikeForecast FeelsLike { get; set; }
+        public DailyFeelsLikeForecast FeelsLike { get; set; } = null!;
 
         /// <summary>
         ///  Atmospheric pressure on the sea level, hPa.

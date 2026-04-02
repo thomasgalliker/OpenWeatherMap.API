@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models
 {
@@ -23,7 +21,7 @@ namespace OpenWeatherMap.Models
         public double Longitude { get; set; }
 
         [JsonPropertyName("timezone")]
-        public string Timezone { get; set; }
+        public string Timezone { get; set; } = null!;
 
         [JsonPropertyName("timezone_offset")]
         public int TimezoneOffset { get; set; }
@@ -35,7 +33,7 @@ namespace OpenWeatherMap.Models
         /// Is only included if <seealso cref="OneCallOptions.IncludeCurrentWeather"/> is true.
         /// </remarks>
         [JsonPropertyName("current")]
-        public CurrentWeatherForecast CurrentWeather { get; set; }
+        public CurrentWeatherForecast CurrentWeather { get; set; } = null!;
 
         /// <summary>
         /// 60-minutes weather forecast.

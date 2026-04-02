@@ -19,20 +19,20 @@ namespace OpenWeatherMap.Models
         /// City name.
         /// </summary>
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// City geo location.
         /// </summary>
         [JsonPropertyName("coord")]
-        public Coordinates Coordinates { get; set; }
+        public Coordinates Coordinates { get; set; } = null!;
 
         /// <summary>
         /// Country code.
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; }
+        public RegionInfo Country { get; set; } = null!;
 
         [JsonPropertyName("population")]
         public int Population { get; set; }

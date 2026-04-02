@@ -30,7 +30,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonRequired]
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         /// <summary>
         /// Gets the openweathermap icon identifier (e.g. 09d).
@@ -38,6 +38,6 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonRequired]
         [JsonPropertyName("icon")]
-        public string IconId { get; set; }
+        public string IconId { get; set; } = null!;
     }
 }

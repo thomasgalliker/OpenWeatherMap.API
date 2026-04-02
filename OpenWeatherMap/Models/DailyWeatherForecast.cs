@@ -42,10 +42,10 @@ namespace OpenWeatherMap.Models
         public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
 
         [JsonPropertyName("temp")]
-        public DailyTemperatureForecast Temperature { get; set; }
+        public DailyTemperatureForecast Temperature { get; set; } = null!;
 
         [JsonPropertyName("feels_like")]
-        public DailyFeelsLikeForecast FeelsLike { get; set; }
+        public DailyFeelsLikeForecast FeelsLike { get; set; } = null!;
 
         /// <summary>
         ///  Atmospheric pressure on the sea level, hPa.

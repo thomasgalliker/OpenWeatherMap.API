@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
@@ -13,10 +11,10 @@ namespace OpenWeatherMap.Models
         }
 
         [JsonPropertyName("sender_name")]
-        public string SenderName { get; set; }
+        public string SenderName { get; set; } = null!;
 
         [JsonPropertyName("event")]
-        public string EventName { get; set; }
+        public string EventName { get; set; } = null!;
 
         [JsonPropertyName("start")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
@@ -27,7 +25,7 @@ namespace OpenWeatherMap.Models
         public DateTime EndTime { get; set; }
 
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         [JsonPropertyName("tags")]
         public IReadOnlyCollection<string> Tags { get; set; }
