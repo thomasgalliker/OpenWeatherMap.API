@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models
 {
@@ -16,7 +14,7 @@ namespace OpenWeatherMap.Models
 
         public override string ToString()
         {
-            var orderedItems = this.Items.OrderBy(i => i.DateTime);
+            var orderedItems = this.Items.OrderBy(i => i.DateTime).ToArray();
             return $"From: {orderedItems.First().DateTime}, To: {orderedItems.Last().DateTime}";
         }
     }
