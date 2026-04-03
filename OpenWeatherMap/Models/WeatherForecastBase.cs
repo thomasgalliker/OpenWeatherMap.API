@@ -1,19 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
 {
     public abstract class WeatherForecastBase
     {
-        [JsonProperty("cod")]
-        public string Code { get; set; }
+        [JsonPropertyName("cod")]
+        public string Code { get; set; } = null!;
 
-        [JsonProperty("message")]
-        public string Message { get; set; }
+        [JsonPropertyName("message")]
+        [JsonConverter(typeof(StringOrNumberJsonConverter))]
+        public string Message { get; set; } = null!;
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int Count { get; set; }
 
-        [JsonProperty("city")]
-        public City City { get; set; }
+        [JsonPropertyName("city")]
+        public City City { get; set; } = null!;
     }
 }

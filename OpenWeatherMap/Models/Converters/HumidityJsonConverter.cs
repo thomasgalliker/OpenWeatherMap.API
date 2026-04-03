@@ -1,29 +1,20 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class HumidityJsonConverter : JsonConverter<RelativeHumidity>
     {
-        public override void WriteJson(JsonWriter writer, RelativeHumidity value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, RelativeHumidity value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override RelativeHumidity ReadJson(JsonReader reader, Type objectType, RelativeHumidity existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override RelativeHumidity Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is long humidity)
-            {
-                return RelativeHumidity.FromPercent(humidity);
-            }
-
-            if (reader.Value is double doubleValue)
-            {
-                return RelativeHumidity.FromPercent(doubleValue);
-            }
-
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(RelativeHumidity)}");
+            return RelativeHumidity.FromPercent(reader.ReadDouble());
         }
     }
 }

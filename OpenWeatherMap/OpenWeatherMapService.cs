@@ -34,7 +34,7 @@ namespace OpenWeatherMap
         private readonly IWeatherIconMapping defaultWeatherIconMapping;
         private readonly IOpenWeatherMapJsonSerializer jsonSerializer;
         private readonly string apiEndpoint;
-        private readonly string apiKey;
+        private readonly string? apiKey;
         private readonly UnitSystem unitSystem;
         private readonly string language;
         private readonly bool verboseLogging;
@@ -183,7 +183,7 @@ namespace OpenWeatherMap
             return weatherForecast;
         }
 
-        public async Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions oneCallOptions = null)
+        public async Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
             EnsureLatitude(latitude);
             EnsureLongitude(longitude);
@@ -257,7 +257,7 @@ namespace OpenWeatherMap
             return oneCallWeatherInfo;
         }
 
-        private static string GetExcludeQueryParameter(OneCallOptions oneCallOptions)
+        private static string? GetExcludeQueryParameter(OneCallOptions oneCallOptions)
         {
             var excludes = new HashSet<string>();
 
@@ -278,7 +278,7 @@ namespace OpenWeatherMap
                 excludes.Add("daily");
             }
 
-            string excludeQueryParameter = null;
+            string? excludeQueryParameter = null;
             if (excludes.Any())
             {
                 excludeQueryParameter = $"&exclude={string.Join(",", excludes)}";
@@ -303,7 +303,7 @@ namespace OpenWeatherMap
             }
         }
 
-        public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping weatherIconMapping = null)
+        public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null)
         {
             weatherIconMapping ??= this.defaultWeatherIconMapping;
 

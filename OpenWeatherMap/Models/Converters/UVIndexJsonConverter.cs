@@ -1,28 +1,19 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class UVIndexJsonConverter : JsonConverter<UVIndex>
     {
-        public override void WriteJson(JsonWriter writer, UVIndex value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, UVIndex value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override UVIndex ReadJson(JsonReader reader, Type objectType, UVIndex existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override UVIndex Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is double uvIndex)
-            {
-                return (UVIndex)uvIndex;
-            }
-
-            if (reader.Value is long uvIndexLong)
-            {
-                return (UVIndex)uvIndexLong;
-            }
-
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to UVIndex");
+            return (UVIndex)reader.ReadDouble();
         }
     }
 }
