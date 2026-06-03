@@ -117,6 +117,7 @@ steps:
 
   - task: DotNetCoreCLI@2
     displayName: 'Pack OpenWeatherMap'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     inputs:
       command: pack
       packagesToPack: OpenWeatherMap/OpenWeatherMap.csproj
