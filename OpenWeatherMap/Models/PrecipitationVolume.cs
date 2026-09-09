@@ -1,23 +1,22 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class PrecipitationVolume
     {
         /// <summary>
         /// Precipitation volume for the last 1 hour, mm.
         /// </summary>
-        [JsonProperty("1h")]
+        [JsonPropertyName("1h")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]
         public Length? Last1h { get; set; }
 
         /// <summary>
         /// Precipitation volume for the last 3 hours, mm.
         /// </summary>
-        [JsonProperty("3h")]
+        [JsonPropertyName("3h")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]
         public Length? Last3h { get; set; }
 

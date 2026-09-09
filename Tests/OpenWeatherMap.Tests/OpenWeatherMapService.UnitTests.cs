@@ -9,6 +9,7 @@ using OpenWeatherMap.Tests.Logging;
 using OpenWeatherMap.Tests.Testdata;
 using Xunit;
 using Xunit.Abstractions;
+using MockHttpMessageHandlerExtensions = Moq.Contrib.HttpClient.MockHttpMessageHandlerExtensions;
 
 namespace OpenWeatherMap.Tests
 {
@@ -23,7 +24,7 @@ namespace OpenWeatherMap.Tests
             this.autoMocker = new AutoMocker();
 
             this.httpMessageHandlerMock = this.autoMocker.GetMock<HttpMessageHandler>();
-            this.autoMocker.Use(this.httpMessageHandlerMock.CreateClient());
+            this.autoMocker.Use(MockHttpMessageHandlerExtensions.CreateClient(this.httpMessageHandlerMock));
 
             this.autoMocker.Use<ILogger<OpenWeatherMapService>>(new TestOutputHelperLogger<OpenWeatherMapService>(testOutputHelper));
 

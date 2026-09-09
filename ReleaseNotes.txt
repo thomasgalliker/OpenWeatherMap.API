@@ -1,0 +1,16 @@
+2.2
+- Maintenance updates
+- Replace Newtonsoft.Json with System.Text.Json
+
+2.1
+- Extended the 16-day forecast model (DailyWeatherForecastItem) with missing properties
+
+2.0
+- Use unit types from dependency UnitsNet
+
+1.2
+- Major refactoring in wind direction data model
+- Add multilingual support
+
+1.0
+- Initial release

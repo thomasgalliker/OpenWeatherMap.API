@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet.Units;
 
@@ -6,27 +7,27 @@ namespace OpenWeatherMap
 {
     public class OpenWeatherMapJsonSerializer : IOpenWeatherMapJsonSerializer
     {
-        private readonly JsonSerializerSettings serializerSettings;
+        private readonly JsonSerializerOptions serializerOptions;
 
         public OpenWeatherMapJsonSerializer(UnitSystem unitSystem)
         {
-            this.serializerSettings = GetJsonSerializerSettings(unitSystem);
+            this.serializerOptions = GetJsonSerializerOptions(unitSystem);
         }
 
-        public static JsonSerializerSettings GetJsonSerializerSettings(UnitSystem unitSystem)
+        public static JsonSerializerOptions GetJsonSerializerOptions(UnitSystem unitSystem)
         {
-            var jsonSerializerSettings = new JsonSerializerSettings
+            var jsonSerializerOptions = new JsonSerializerOptions
             {
-                NullValueHandling = NullValueHandling.Ignore,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
 
             var temperatureUnit = GetTemperatureUnit(unitSystem);
-            jsonSerializerSettings.Converters.Add(new TemperatureJsonConverter(temperatureUnit));
+            jsonSerializerOptions.Converters.Add(new TemperatureJsonConverter(temperatureUnit));
 
             var speedUnit = GetWindSpeedUnit(unitSystem);
-            jsonSerializerSettings.Converters.Add(new WindSpeedJsonConverter(speedUnit));
+            jsonSerializerOptions.Converters.Add(new WindSpeedJsonConverter(speedUnit));
 
-            return jsonSerializerSettings;
+            return jsonSerializerOptions;
         }
 
         private static TemperatureUnit GetTemperatureUnit(UnitSystem unitSystem)
@@ -57,12 +58,12 @@ namespace OpenWeatherMap
 
         public T DeserializeObject<T>(string value)
         {
-            return JsonConvert.DeserializeObject<T>(value, this.serializerSettings);
+            return JsonSerializer.Deserialize<T>(value, this.serializerOptions)!;
         }
 
         public string SerializeObject<T>(T value)
         {
-            return JsonConvert.SerializeObject(value, this.serializerSettings);
+            return JsonSerializer.Serialize(value, this.serializerOptions);
         }
     }
 }

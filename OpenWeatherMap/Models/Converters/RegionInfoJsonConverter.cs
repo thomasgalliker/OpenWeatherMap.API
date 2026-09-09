@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Globalization;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class RegionInfoJsonConverter : JsonConverter<RegionInfo>
     {
-        public override void WriteJson(JsonWriter writer, RegionInfo value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, RegionInfo value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.TwoLetterISORegionName);
+            writer.WriteStringValue(value.TwoLetterISORegionName);
         }
 
-        public override RegionInfo ReadJson(JsonReader reader, Type objectType, RegionInfo existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override RegionInfo Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is string twoLetterISORegionName)
+            if (reader.TokenType == JsonTokenType.String)
             {
-                return new RegionInfo(twoLetterISORegionName);
+                return new RegionInfo(reader.GetString());
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to RegionInfo");
+            throw new NotSupportedException($"Cannot convert from {reader.TokenType} to RegionInfo");
         }
     }
 }
