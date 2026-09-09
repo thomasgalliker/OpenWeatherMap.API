@@ -1,5 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnitsNet;
 using UnitsNet.Units;
 
@@ -14,24 +15,14 @@ namespace OpenWeatherMap.Models.Converters
             this.unit = MassConcentrationUnit.MicrogramPerCubicMeter;
         }
 
-        public override void WriteJson(JsonWriter writer, MassConcentration value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, MassConcentration value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override MassConcentration ReadJson(JsonReader reader, Type objectType, MassConcentration existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override MassConcentration Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is double doubleValue)
-            {
-                return new MassConcentration(doubleValue, this.unit);
-            }
-
-            if (reader.Value is long longValue)
-            {
-                return new MassConcentration(longValue, this.unit);
-            }
-
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(MassConcentration)}");
+            return new MassConcentration(reader.ReadDouble(), this.unit);
         }
     }
 }

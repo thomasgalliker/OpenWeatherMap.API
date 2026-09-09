@@ -1,5 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnitsNet;
 using UnitsNet.Units;
 
@@ -14,26 +15,14 @@ namespace OpenWeatherMap.Models.Converters
             this.temperatureUnit = temperatureUnit;
         }
 
-        public override void WriteJson(JsonWriter writer, Temperature value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, Temperature value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override Temperature ReadJson(JsonReader reader, Type objectType, Temperature existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Temperature Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is double doubleValue)
-            {
-                return new Temperature(doubleValue, this.temperatureUnit);
-            }
-
-            if (reader.Value is long longValue)
-            {
-                return new Temperature(longValue, this.temperatureUnit);
-            }
-
-            return reader.Value is string stringValue && double.TryParse(stringValue, out var value)
-                ? new Temperature(value, this.temperatureUnit)
-                : default;
+            return new Temperature(reader.ReadDouble(), this.temperatureUnit);
         }
     }
 }

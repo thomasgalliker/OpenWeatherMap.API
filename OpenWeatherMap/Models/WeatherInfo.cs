@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -13,54 +11,54 @@ namespace OpenWeatherMap.Models
             this.Weather = Array.Empty<WeatherCondition>();
         }
 
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Date { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }
 
-        [JsonProperty("main")]
-        public TemperatureInfo Main { get; set; }
+        [JsonPropertyName("main")]
+        public TemperatureInfo Main { get; set; } = null!;
 
         /// <summary>
         ///  Average visibility. The maximum value of the visibility is 10km.
         /// </summary>
-        [JsonProperty("visibility")]
+        [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
         public Length Visibility { get; set; } = Length.FromMeters(0d);
 
-        [JsonProperty("wind")]
-        public WindInfo Wind { get; set; }
+        [JsonPropertyName("wind")]
+        public WindInfo Wind { get; set; } = null!;
 
-        [JsonProperty("clouds")]
-        public CloudsInformation Clouds { get; set; }
+        [JsonPropertyName("clouds")]
+        public CloudsInformation Clouds { get; set; } = null!;
 
-        [JsonProperty("sys")]
-        public AdditionalWeatherInfo AdditionalInformation { get; set; }
+        [JsonPropertyName("sys")]
+        public AdditionalWeatherInfo AdditionalInformation { get; set; } = null!;
 
         /// <summary>
         /// Shift in seconds from UTC.
         /// </summary>
-        [JsonProperty("timezone")]
+        [JsonPropertyName("timezone")]
         public int Timezone { get; set; }
 
         /// <summary>
         /// City ID.
         /// </summary>
-        [JsonProperty("id")]
-        public string CityId { get; set; }
+        [JsonPropertyName("id")]
+        public string CityId { get; set; } = null!;
 
         /// <summary>
         /// City name.
         /// </summary>
-        [JsonProperty("name")]
-        public string CityName { get; set; }
+        [JsonPropertyName("name")]
+        public string CityName { get; set; } = null!;
 
         /// <summary>
         /// City geo location.
         /// </summary>
-        [JsonProperty("coord")]
-        public Coordinates Coordinates { get; set; }
+        [JsonPropertyName("coord")]
+        public Coordinates Coordinates { get; set; } = null!;
     }
 }

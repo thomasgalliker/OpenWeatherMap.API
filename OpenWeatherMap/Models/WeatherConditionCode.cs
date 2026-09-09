@@ -143,7 +143,7 @@ namespace OpenWeatherMap.Models
 
         public static WeatherConditionCode FromValue(int value)
         {
-            var weatherConditionCode = All.Cast<WeatherConditionCode?>().SingleOrDefault(x => x.Value == value);
+            var weatherConditionCode = All.Cast<WeatherConditionCode?>().SingleOrDefault(x => x?.Value == value);
             if (weatherConditionCode == null)
             {
                 throw new ArgumentOutOfRangeException(
@@ -198,7 +198,7 @@ namespace OpenWeatherMap.Models
             return this.ToString(format, null);
         }
 
-        public string ToString(string format, IFormatProvider provider)
+        public string ToString(string? format, IFormatProvider? provider)
         {
             if (string.IsNullOrEmpty(format))
             {
@@ -212,7 +212,7 @@ namespace OpenWeatherMap.Models
             {
                 case "G":
                     var translation = WeatherConditionCodes.ResourceManager.GetString(valueString, (CultureInfo)provider);
-                    return translation;
+                    return translation ?? valueString;
                 default:
                     return valueString;
             }

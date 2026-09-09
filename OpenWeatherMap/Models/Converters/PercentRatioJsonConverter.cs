@@ -1,34 +1,25 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models.Converters
 {
     internal class PercentRatioJsonConverter : JsonConverter<Ratio>
     {
-        public override void WriteJson(JsonWriter writer, Ratio value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, Ratio value, JsonSerializerOptions options)
         {
-            writer.WriteValue(value.Value);
+            writer.WriteNumberValue(value.Value);
         }
 
-        public override Ratio ReadJson(JsonReader reader, Type objectType, Ratio existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Ratio Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.Value is double doubleValue)
-            {
-                return Ratio.FromPercent(doubleValue);
-            }
-
-            if (reader.Value is long longValue)
-            {
-                return Ratio.FromPercent(longValue);
-            }
-
-            if (reader.Value is null)
+            if (reader.TokenType == JsonTokenType.Null)
             {
                 return Ratio.Zero;
             }
 
-            throw new NotSupportedException($"Cannot convert from {reader.Value} to {nameof(Ratio)}");
+            return Ratio.FromPercent(reader.ReadDouble());
         }
     }
 }

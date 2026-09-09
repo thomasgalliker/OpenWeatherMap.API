@@ -1,30 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Extensions;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class WindInfo
     {
         /// <summary>
         /// Wind speed.
         /// </summary>
-        [JsonProperty("speed")]
+        [JsonPropertyName("speed")]
         public Speed Speed { get; set; } = Speed.FromMetersPerSecond(0d);
 
         /// <summary>
         /// Wind direction (meteorological).
         /// </summary>
-        [JsonProperty("deg")]
+        [JsonPropertyName("deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
         public Angle Direction { get; set; }
 
         /// <summary>
         /// Wind gust.
         /// </summary>
-        [JsonProperty("gust")]
+        [JsonPropertyName("gust")]
         public Speed? Gust { get; set; }
 
         public override string ToString()

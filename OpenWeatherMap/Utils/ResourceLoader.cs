@@ -45,7 +45,7 @@ namespace OpenWeatherMap.Utils
                 throw new MultipleResourcesFoundException(resourceFileName, resourcePaths);
             }
 
-            return assembly.GetManifestResourceStream(resourcePaths.Single());
+            return assembly.GetManifestResourceStream(resourcePaths.Single()) ?? throw new ResourceNotFoundException(resourceFileName);
         }
 
         public IEnumerable<Stream> GetEmbeddedResourceStreams(Assembly assembly, string resourceFileName)
@@ -55,7 +55,7 @@ namespace OpenWeatherMap.Utils
             var resourcePaths = resourceNames.Where(x => x.Contains(resourceFileName)).ToArray();
             foreach (var resourcePath in resourcePaths)
             {
-                yield return assembly.GetManifestResourceStream(resourcePath);
+                yield return assembly.GetManifestResourceStream(resourcePath) ?? throw new ResourceNotFoundException(resourceFileName);
             }
         }
 
@@ -84,7 +84,7 @@ namespace OpenWeatherMap.Utils
             }
         }
 
-        public string GetEmbeddedResourceString(Assembly assembly, string resourceFileName, Encoding encoding = null)
+        public string GetEmbeddedResourceString(Assembly assembly, string resourceFileName, Encoding? encoding = null)
         {
             var stream = this.GetEmbeddedResourceStream(assembly, resourceFileName);
 
@@ -96,7 +96,7 @@ namespace OpenWeatherMap.Utils
             }
         }
 
-        public IEnumerable<string> GetEmbeddedResourceStrings(Assembly assembly, string resourceFileName, Encoding encoding = null)
+        public IEnumerable<string> GetEmbeddedResourceStrings(Assembly assembly, string resourceFileName, Encoding? encoding = null)
         {
             var streams = this.GetEmbeddedResourceStreams(assembly, resourceFileName);
 
