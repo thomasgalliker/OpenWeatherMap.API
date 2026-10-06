@@ -1,6 +1,7 @@
 using System;
 using FluentAssertions;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using Xunit;
 
@@ -13,7 +14,7 @@ namespace OpenWeatherMap.Tests.Models.Converters
         public void ShouldConvert(string json, DateTime? expectedDateTime)
         {
             // Act
-            var testObject = JsonConvert.DeserializeObject<EpochDateTimeTestObject>(json);
+            var testObject = JsonSerializer.Deserialize<EpochDateTimeTestObject>(json);
 
             // Assert
             testObject.DateTime.Should().Be(expectedDateTime);
@@ -34,7 +35,7 @@ namespace OpenWeatherMap.Tests.Models.Converters
         public void ShouldThrowFormatException(string json)
         {
             // Act
-            Action action = () => JsonConvert.DeserializeObject<EpochDateTimeTestObject>(json);
+            Action action = () => JsonSerializer.Deserialize<EpochDateTimeTestObject>(json);
 
             // Assert
             var exception = action.Should().Throw<FormatException>().Which;
@@ -43,7 +44,7 @@ namespace OpenWeatherMap.Tests.Models.Converters
 
         private class EpochDateTimeTestObject
         {
-            [JsonProperty("dt")]
+            [JsonPropertyName("dt")]
             [JsonConverter(typeof(EpochDateTimeConverter))]
             public DateTime? DateTime { get; set; }
         }

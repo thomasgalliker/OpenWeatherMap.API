@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/OpenWeatherMap.ConsoleSample/OpenWeatherMap.ConsoleSample.csproj" />
+    <Project Path="Samples/OpenWeatherMap.ConsoleSampleDI/OpenWeatherMap.ConsoleSampleDI.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="azure-pipelines.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+    <File Path="ReleaseNotes.txt" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/OpenWeatherMap.Tests/OpenWeatherMap.Tests.csproj" />
+  </Folder>
+  <Project Path="OpenWeatherMap/OpenWeatherMap.csproj" />
+</Solution>

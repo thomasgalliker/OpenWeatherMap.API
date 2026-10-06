@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
@@ -8,8 +8,8 @@ namespace OpenWeatherMap.Models
         /// <summary>
         /// Air quality index.
         /// </summary>
-        [JsonProperty("aqi")]
+        [JsonPropertyName("aqi")]
         [JsonConverter(typeof(AirQualityJsonConverter))]
-        public AirQuality AirQuality { get; set; }
+        public AirQuality AirQuality { get; set; } = null!;
     }
 }

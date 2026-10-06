@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
@@ -12,42 +12,42 @@ namespace OpenWeatherMap.Models
         /// <summary>
         /// City ID.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
         /// City name.
         /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// City geo location.
         /// </summary>
-        [JsonProperty("coord")]
-        public Coordinates Coordinates { get; set; }
+        [JsonPropertyName("coord")]
+        public Coordinates Coordinates { get; set; } = null!;
 
         /// <summary>
         /// Country code.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; }
+        public RegionInfo Country { get; set; } = null!;
 
-        [JsonProperty("population")]
+        [JsonPropertyName("population")]
         public int Population { get; set; }
 
         /// <summary>
         /// Shift in seconds from UTC.
         /// </summary>
-        [JsonProperty("timezone")]
+        [JsonPropertyName("timezone")]
         public int Timezone { get; set; }
 
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunrise { get; set; }
 
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunset { get; set; }
     }

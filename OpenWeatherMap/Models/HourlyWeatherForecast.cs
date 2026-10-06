@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -13,65 +13,65 @@ namespace OpenWeatherMap.Models
             this.Weather = Array.Empty<WeatherCondition>();
         }
 
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
-        [JsonProperty("temp")]
+        [JsonPropertyName("temp")]
         public Temperature Temperature { get; set; }
 
-        [JsonProperty("feels_like")]
+        [JsonPropertyName("feels_like")]
         public Temperature FeelsLike { get; set; }
 
         /// <summary>
         ///  Atmospheric pressure on the sea level, hPa.
         /// </summary>
-        [JsonProperty("pressure")]
+        [JsonPropertyName("pressure")]
         [JsonConverter(typeof(PressureJsonConverter))]
         public Pressure Pressure { get; set; }
 
-        [JsonProperty("humidity")]
+        [JsonPropertyName("humidity")]
         [JsonConverter(typeof(HumidityJsonConverter))]
         public RelativeHumidity Humidity { get; set; }
 
-        [JsonProperty("dew_point")]
+        [JsonPropertyName("dew_point")]
         public Temperature DewPoint { get; set; }
 
-        [JsonProperty("uvi")]
+        [JsonPropertyName("uvi")]
         [JsonConverter(typeof(UVIndexJsonConverter))]
         public UVIndex UVIndex { get; set; }
 
-        [JsonProperty("clouds")]
+        [JsonPropertyName("clouds")]
         [JsonConverter(typeof(PercentRatioJsonConverter))]
         public Ratio Clouds { get; set; }
 
         /// <summary>
         ///  Average visibility. The maximum value of the visibility is 10km.
         /// </summary>
-        [JsonProperty("visibility")]
+        [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
         public Length Visibility { get; set; } = Length.FromMeters(0d);
 
-        [JsonProperty("wind_speed")]
+        [JsonPropertyName("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
 
-        [JsonProperty("wind_deg")]
+        [JsonPropertyName("wind_deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
         public Angle WindDirection { get; set; }
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds. (German: Windböe).
         /// </summary>
-        [JsonProperty("wind_gust")]
+        [JsonPropertyName("wind_gust")]
         public Speed? WindGust { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }
 
         /// <summary>
         /// Probability of precipitation.
         /// </summary>
-        [JsonProperty("pop")]
+        [JsonPropertyName("pop")]
         [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; }
 

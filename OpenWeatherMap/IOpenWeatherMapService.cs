@@ -36,10 +36,20 @@ namespace OpenWeatherMap
         /// <param name="count">Number of days to be returned.</param>
         Task<WeatherForecastDaily> GetWeatherForecastDailyAsync(double latitude, double longitude, int? count = null);
 
-        Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping weatherIconMapping = null);
+        Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null);
 
-        Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions oneCallOptions = null);
+        /// <summary>
+        /// Current weather, minutely, hourly and daily forecasts and weather alerts using One Call API 2.5.
+        /// </summary>
+        /// <param name="oneCallOptions">Selects the parts of the response to be returned.</param>
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
+        Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null);
 
+        /// <summary>
+        /// Historical weather data for the given <paramref name="dateTime"/> using One Call API 2.5.
+        /// </summary>
+        /// <param name="onlyCurrent">Returns only the current weather data if set to <c>true</c>.</param>
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false);
 
         Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude);

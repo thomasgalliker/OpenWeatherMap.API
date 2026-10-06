@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -10,14 +10,14 @@ namespace OpenWeatherMap.Models
         /// <summary>
         /// Time of the forecasted data.
         /// </summary>
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
         /// <summary>
         /// Precipitation volume.
         /// </summary>
-        [JsonProperty("precipitation")]
+        [JsonPropertyName("precipitation")]
         [JsonConverter(typeof(MillimeterPerHourJsonConverter))]
         public Speed Precipitation { get; set; }
 

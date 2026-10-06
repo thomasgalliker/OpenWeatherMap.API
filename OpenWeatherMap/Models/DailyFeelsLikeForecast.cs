@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
     public class DailyFeelsLikeForecast
     {
-        [JsonProperty("day")]
+        [JsonPropertyName("day")]
         public Temperature Day { get; set; }
 
-        [JsonProperty("night")]
+        [JsonPropertyName("night")]
         public Temperature Night { get; set; }
 
-        [JsonProperty("eve")]
+        [JsonPropertyName("eve")]
         public Temperature Evening { get; set; }
 
-        [JsonProperty("morn")]
+        [JsonPropertyName("morn")]
         public Temperature Morning { get; set; }
 
         public override string ToString()

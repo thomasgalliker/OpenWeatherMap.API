@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMap.Models
 {
@@ -10,10 +9,10 @@ namespace OpenWeatherMap.Models
             this.Items = new List<AirPollutionInfoItem>();
         }
 
-        [JsonProperty("coord")]
-        public Coordinates Coordinates { get; set; }
+        [JsonPropertyName("coord")]
+        public Coordinates Coordinates { get; set; } = null!;
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public IReadOnlyCollection<AirPollutionInfoItem> Items { get; set; }
     }
 }

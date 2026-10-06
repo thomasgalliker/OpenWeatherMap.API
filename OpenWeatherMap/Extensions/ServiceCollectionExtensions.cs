@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using OpenWeatherMap;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -17,9 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return serviceCollection;
         }
 
-        public static IServiceCollection AddOpenWeatherMap(
-            this IServiceCollection services,
-            Action<OpenWeatherMapOptions> options = null)
+        public static IServiceCollection AddOpenWeatherMap(this IServiceCollection services, Action<OpenWeatherMapOptions>? options = null)
         {
             // Configuration
             if (options != null)

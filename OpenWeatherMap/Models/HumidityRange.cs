@@ -49,12 +49,12 @@ namespace OpenWeatherMap.Models
             return this.ToString("N", null);
         }
 
-        public string ToString(string format)
+        public string ToString(string? format)
         {
             return this.ToString(format, null);
         }
 
-        public string ToString(string format, IFormatProvider provider)
+        public string ToString(string? format, IFormatProvider? provider)
         {
             if (string.IsNullOrEmpty(format))
             {
@@ -68,7 +68,7 @@ namespace OpenWeatherMap.Models
                 case "N":
                 default:
                     var str = HumidityRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
-                    return str;
+                    return str ?? this.resourceId;
             }
 
         }

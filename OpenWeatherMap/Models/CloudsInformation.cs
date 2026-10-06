@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
@@ -9,14 +9,14 @@ namespace OpenWeatherMap.Models
         /// <summary>
         /// Gets the cloudiness in percent (%).
         /// </summary>
-        [JsonProperty("all")]
+        [JsonPropertyName("all")]
         [JsonConverter(typeof(PercentRatioJsonConverter))]
         public Ratio All { get; set; }
 
         /// <summary>
         /// Gets the cloudiness today in percent (%).
         /// </summary>
-        [JsonProperty("today")]
+        [JsonPropertyName("today")]
         [JsonConverter(typeof(PercentRatioJsonConverter))]
         public Ratio Today { get; set; }
     }

@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Globalization;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
 {
-    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class AdditionalWeatherInfo
     {
         /// <summary>
         /// Country code.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; }
+        public RegionInfo Country { get; set; } = null!;
 
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunrise { get; set; }
 
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime Sunset { get; set; }
 

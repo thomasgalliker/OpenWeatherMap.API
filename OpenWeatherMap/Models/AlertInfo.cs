@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 
 namespace OpenWeatherMap.Models
@@ -12,24 +10,24 @@ namespace OpenWeatherMap.Models
             this.Tags = new List<string>();
         }
 
-        [JsonProperty("sender_name")]
-        public string SenderName { get; set; }
+        [JsonPropertyName("sender_name")]
+        public string SenderName { get; set; } = null!;
 
-        [JsonProperty("event")]
-        public string EventName { get; set; }
+        [JsonPropertyName("event")]
+        public string EventName { get; set; } = null!;
 
-        [JsonProperty("start")]
+        [JsonPropertyName("start")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime StartTime { get; set; }
 
-        [JsonProperty("end")]
+        [JsonPropertyName("end")]
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime EndTime { get; set; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        [JsonPropertyName("description")]
+        public string Description { get; set; } = null!;
 
-        [JsonProperty("tags")]
+        [JsonPropertyName("tags")]
         public IReadOnlyCollection<string> Tags { get; set; }
     }
 }

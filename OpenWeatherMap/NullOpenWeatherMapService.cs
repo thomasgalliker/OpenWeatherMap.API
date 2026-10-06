@@ -49,16 +49,18 @@ namespace OpenWeatherMap
             throw new NotImplementedException();
         }
 
-        public Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping weatherIconMapping = null)
+        public Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions oneCallOptions = null)
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
+        public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
             throw new NotImplementedException();
         }
 
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         public Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
         {
             throw new NotImplementedException();
