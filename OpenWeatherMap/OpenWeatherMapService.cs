@@ -105,158 +105,60 @@ namespace OpenWeatherMap
             this.jsonSerializer = new OpenWeatherMapJsonSerializer(this.unitSystem);
         }
 
-        public async Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude)
+        public Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude)
         {
             this.logger.LogDebug($"GetCurrentWeatherAsync: latitude={latitude}, longitude={longitude}");
 
-            var lat = latitude.ToString("0.0000", CultureInfo.InvariantCulture);
-            var lon = longitude.ToString("0.0000", CultureInfo.InvariantCulture);
-
-            var builder = new UriBuilder(this.apiEndpoint)
-            {
-                Path = "data/2.5/weather",
-                Query = $"lat={lat}&lon={lon}&units={this.unitSystem}&lang={this.language}&appid={this.apiKey}"
-            };
-
-            var uri = builder.ToString();
-            this.logger.LogDebug($"GetCurrentWeatherAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
-
-            var response = await this.httpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            if (this.verboseLogging)
-            {
-                this.logger.LogDebug($"GetCurrentWeatherAsync returned content:{Environment.NewLine}{responseJson}");
-            }
-
-            var weatherInfo = this.jsonSerializer.DeserializeObject<WeatherInfo>(responseJson);
-            return weatherInfo;
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<WeatherInfo>(nameof(this.GetCurrentWeatherAsync), ApiPaths.CurrentWeather, query);
         }
 
         public Task<WeatherForecast> GetWeatherForecast4Async(double latitude, double longitude, int? count = null)
         {
-            return this.GetWeatherForecastInternalAsync<WeatherForecast>("/hourly", latitude, longitude, count);
+            return this.GetWeatherForecastInternalAsync<WeatherForecast>(ApiPaths.ForecastHourly, latitude, longitude, count);
         }
 
         public Task<WeatherForecast> GetWeatherForecast5Async(double latitude, double longitude, int? count = null)
         {
-            return this.GetWeatherForecastInternalAsync<WeatherForecast>("", latitude, longitude, count);
+            return this.GetWeatherForecastInternalAsync<WeatherForecast>(ApiPaths.Forecast, latitude, longitude, count);
         }
 
         public Task<WeatherForecastDaily> GetWeatherForecastDailyAsync(double latitude, double longitude, int? count = null)
         {
-            return this.GetWeatherForecastInternalAsync<WeatherForecastDaily>("/daily", latitude, longitude, count);
+            return this.GetWeatherForecastInternalAsync<WeatherForecastDaily>(ApiPaths.ForecastDaily, latitude, longitude, count);
         }
 
-        private async Task<T> GetWeatherForecastInternalAsync<T>(string url, double latitude, double longitude, int? count = null)
+        private Task<T> GetWeatherForecastInternalAsync<T>(string path, double latitude, double longitude, int? count)
         {
-            EnsureLatitude(latitude);
-            EnsureLongitude(longitude);
-
             this.logger.LogDebug($"GetWeatherForecastAsync: latitude={latitude}, longitude={longitude}");
 
-            var lat = FormatCoordinate(latitude);
-            var lon = FormatCoordinate(longitude);
-
-            var builder = new UriBuilder(this.apiEndpoint)
-            {
-                Path = $"data/2.5/forecast{url}",
-                Query = $"lat={lat}&lon={lon}&units={this.unitSystem}&lang={this.language}{(count > 0 ? $"&cnt={count}" : "")}&appid={this.apiKey}"
-            };
-
-            var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherForecastAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
-
-            var response = await this.httpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            if (this.verboseLogging)
-            {
-                this.logger.LogDebug($"GetWeatherForecastAsync returned content:{Environment.NewLine}{responseJson}");
-            }
-
-            var weatherForecast = this.jsonSerializer.DeserializeObject<T>(responseJson);
-            return weatherForecast;
+            var countQuery = count > 0 ? $"&cnt={count}" : "";
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&{this.GetUnitsAndLanguageQuery()}{countQuery}";
+            return this.GetAsync<T>("GetWeatherForecastAsync", path, query);
         }
 
         [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
-        public async Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
+        public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
-            EnsureLatitude(latitude);
-            EnsureLongitude(longitude);
-
             this.logger.LogDebug($"GetWeatherOneCallAsync: latitude={latitude}, longitude={longitude}");
 
             oneCallOptions ??= OneCallOptions.Default;
 
-            var lat = FormatCoordinate(latitude);
-            var lon = FormatCoordinate(longitude);
-
             var excludeQueryParameter = GetExcludeQueryParameter(oneCallOptions);
-
-            var builder = new UriBuilder(this.apiEndpoint)
-            {
-                Path = "data/2.5/onecall",
-                Query = $"lat={lat}&lon={lon}{excludeQueryParameter}&units={this.unitSystem}&lang={this.language}&appid={this.apiKey}"
-            };
-
-            var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherOneCallAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
-
-            var response = await this.httpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            if (this.verboseLogging)
-            {
-                this.logger.LogDebug($"GetWeatherOneCallAsync returned content:{Environment.NewLine}{responseJson}");
-            }
-
-            var oneCallWeatherInfo = this.jsonSerializer.DeserializeObject<OneCallWeatherInfo>(responseJson);
-            return oneCallWeatherInfo;
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}{excludeQueryParameter}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallWeatherInfo>(nameof(this.GetWeatherOneCallAsync), ApiPaths.OneCall, query);
         }
 
         [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
-        public async Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
+        public Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
         {
-            EnsureLatitude(latitude);
-            EnsureLongitude(longitude);
-
             dateTime = dateTime.ToUniversalTime();
 
             this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: latitude={latitude}, longitude={longitude}, dateTime={dateTime:O}");
 
-            var lat = FormatCoordinate(latitude);
-            var lon = FormatCoordinate(longitude);
-
             var epochDateTime = EpochDateTimeConverter.Convert(dateTime);
-
-            var builder = new UriBuilder(this.apiEndpoint)
-            {
-                Path = "data/2.5/onecall/timemachine",
-                Query = $"lat={lat}&lon={lon}&dt={epochDateTime}{(onlyCurrent == true ? "&only_current" : "")}&units={this.unitSystem}&lang={this.language}&appid={this.apiKey}"
-            };
-
-            var uri = builder.ToString();
-            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
-
-            var response = await this.httpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            if (this.verboseLogging)
-            {
-                this.logger.LogDebug($"GetWeatherOneCallHistoricAsync returned content:{Environment.NewLine}{responseJson}");
-            }
-
-            var oneCallWeatherInfo = this.jsonSerializer.DeserializeObject<OneCallWeatherInfo>(responseJson);
-            return oneCallWeatherInfo;
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&dt={epochDateTime}{(onlyCurrent ? "&only_current" : "")}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallWeatherInfo>(nameof(this.GetWeatherOneCallHistoricAsync), ApiPaths.OneCallTimeMachine, query);
         }
 
         private static string? GetExcludeQueryParameter(OneCallOptions oneCallOptions)
@@ -289,6 +191,67 @@ namespace OpenWeatherMap
             return excludeQueryParameter;
         }
 
+        public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null)
+        {
+            weatherIconMapping ??= this.defaultWeatherIconMapping;
+
+            this.logger.LogDebug($"GetWeatherIconAsync: weatherCondition.Id={weatherCondition.Id}, weatherIconMapping={weatherIconMapping.GetType().Name}");
+
+            var imageStream = await weatherIconMapping.GetIconAsync(weatherCondition);
+            return imageStream;
+        }
+
+        public Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude)
+        {
+            this.logger.LogDebug($"GetAirPollutionAsync: latitude={latitude}, longitude={longitude}");
+
+            var query = GetCoordinatesQuery(latitude, longitude);
+            return this.GetAsync<AirPollutionInfo>(nameof(this.GetAirPollutionAsync), ApiPaths.AirPollution, query);
+        }
+
+        /// <summary>
+        /// Sends a GET request to the given API <paramref name="path"/> and deserializes the response.
+        /// </summary>
+        /// <param name="methodName">The name of the calling method (used for logging).</param>
+        /// <param name="path">The relative API path, see <see cref="ApiPaths"/>.</param>
+        /// <param name="query">The query string without the API key.</param>
+        private async Task<T> GetAsync<T>(string methodName, string path, string query)
+        {
+            var builder = new UriBuilder(this.apiEndpoint)
+            {
+                Path = path,
+                Query = $"{query}&appid={this.apiKey}"
+            };
+
+            var uri = builder.ToString();
+            this.logger.LogDebug($"{methodName}: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
+
+            var response = await this.httpClient.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+
+            var responseJson = await response.Content.ReadAsStringAsync();
+
+            if (this.verboseLogging)
+            {
+                this.logger.LogDebug($"{methodName} returned content:{Environment.NewLine}{responseJson}");
+            }
+
+            return this.jsonSerializer.DeserializeObject<T>(responseJson);
+        }
+
+        private string GetUnitsAndLanguageQuery()
+        {
+            return $"units={this.unitSystem}&lang={this.language}";
+        }
+
+        private static string GetCoordinatesQuery(double latitude, double longitude)
+        {
+            EnsureLatitude(latitude);
+            EnsureLongitude(longitude);
+
+            return $"lat={FormatCoordinate(latitude)}&lon={FormatCoordinate(longitude)}";
+        }
+
         private static void EnsureLongitude(double longitude)
         {
             if (longitude is < MinLongitude or > MaxLongitude)
@@ -305,52 +268,9 @@ namespace OpenWeatherMap
             }
         }
 
-        public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null)
+        private static string FormatCoordinate(double coordinate)
         {
-            weatherIconMapping ??= this.defaultWeatherIconMapping;
-
-            this.logger.LogDebug($"GetWeatherIconAsync: weatherCondition.Id={weatherCondition.Id}, weatherIconMapping={weatherIconMapping.GetType().Name}");
-
-            var imageStream = await weatherIconMapping.GetIconAsync(weatherCondition);
-            return imageStream;
-        }
-
-        public async Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude)
-        {
-            EnsureLatitude(latitude);
-            EnsureLongitude(longitude);
-
-            this.logger.LogDebug($"GetAirPollutionAsync: latitude={latitude}, longitude={longitude}");
-
-            var lat = FormatCoordinate(latitude);
-            var lon = FormatCoordinate(longitude);
-
-            var builder = new UriBuilder(this.apiEndpoint)
-            {
-                Path = "data/2.5/air_pollution",
-                Query = $"lat={lat}&lon={lon}&appid={this.apiKey}"
-            };
-
-            var uri = builder.ToString();
-            this.logger.LogDebug($"GetAirPollutionAsync: GET {StringUtil.ReplaceWithWildcardChars(uri, this.apiKey)}");
-
-            var response = await this.httpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-
-            var responseJson = await response.Content.ReadAsStringAsync();
-
-            if (this.verboseLogging)
-            {
-                this.logger.LogDebug($"GetAirPollutionAsync returned content:{Environment.NewLine}{responseJson}");
-            }
-
-            var pollutionInfo = this.jsonSerializer.DeserializeObject<AirPollutionInfo>(responseJson);
-            return pollutionInfo;
-        }
-
-        private static string FormatCoordinate(double latitude)
-        {
-            return latitude.ToString("0.0000", CultureInfo.InvariantCulture);
+            return coordinate.ToString("0.0000", CultureInfo.InvariantCulture);
         }
     }
 }

@@ -70,7 +70,25 @@ namespace OpenWeatherMap.Tests
         }
 
         [Theory]
-        [InlineData(null, 96, "https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey")]
+        [InlineData(-90.1d, 0d, "latitude")]
+        [InlineData(90.1d, 0d, "latitude")]
+        [InlineData(0d, -180.1d, "longitude")]
+        [InlineData(0d, 180.1d, "longitude")]
+        public async Task GetCurrentWeatherAsync_InvalidCoordinates_ThrowsArgumentOutOfRangeException(double latitude, double longitude, string expectedParamName)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetCurrentWeatherAsync(latitude, longitude);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName(expectedParamName);
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null, 96,"https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey")]
         [InlineData(24, 24, "https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&cnt=24&appid=apikey")]
         public async Task GetWeatherForecast4Async_WithCount_ReturnsHourlyForecast(int? count, int expectedCount, string expectedUri)
         {
