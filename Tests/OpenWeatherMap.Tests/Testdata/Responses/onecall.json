@@ -298,7 +298,10 @@
           "icon": "01d"
         }
       ],
-      "pop": 0.0
+      "pop": 0.0,
+      "rain": {
+        "1h": 0.21
+      }
     },
     {
       "dt": 1791291600,
@@ -321,7 +324,10 @@
           "icon": "02d"
         }
       ],
-      "pop": 0.2
+      "pop": 0.2,
+      "rain": {
+        "1h": 0.21
+      }
     },
     {
       "dt": 1791295200,
@@ -344,7 +350,10 @@
           "icon": "04d"
         }
       ],
-      "pop": 0.4
+      "pop": 0.4,
+      "rain": {
+        "1h": 0.21
+      }
     },
     {
       "dt": 1791298800,
@@ -1390,6 +1399,7 @@
       "moonrise": 1791271877,
       "moonset": 1791309428,
       "moon_phase": 0.0,
+      "summary": "Expect a day of partly cloudy with clear spells",
       "temp": {
         "day": 14,
         "min": 8,
@@ -1430,6 +1440,7 @@
       "moonrise": 1791358277,
       "moonset": 1791395828,
       "moon_phase": 0.1,
+      "summary": "There will be clear sky today",
       "temp": {
         "day": 15,
         "min": 9,
@@ -1470,6 +1481,7 @@
       "moonrise": 1791444677,
       "moonset": 1791482228,
       "moon_phase": 0.2,
+      "summary": "Expect a day of partly cloudy with rain",
       "temp": {
         "day": 16,
         "min": 10,
@@ -1510,6 +1522,7 @@
       "moonrise": 1791531077,
       "moonset": 1791568628,
       "moon_phase": 0.3,
+      "summary": "You can expect partly cloudy in the morning, with rain in the afternoon",
       "temp": {
         "day": 17,
         "min": 11,
@@ -1550,6 +1563,7 @@
       "moonrise": 1791617477,
       "moonset": 1791655028,
       "moon_phase": 0.4,
+      "summary": "There will be rain until morning, then partly cloudy",
       "temp": {
         "day": 18,
         "min": 12,
@@ -1590,6 +1604,7 @@
       "moonrise": 1791703877,
       "moonset": 1791741428,
       "moon_phase": 0.5,
+      "summary": "The day will start with clear sky through the late morning hours, transitioning to partly cloudy",
       "temp": {
         "day": 19,
         "min": 13,
@@ -1630,6 +1645,7 @@
       "moonrise": 1791790277,
       "moonset": 1791827828,
       "moon_phase": 0.6,
+      "summary": "Expect a day of partly cloudy with clear spells",
       "temp": {
         "day": 20,
         "min": 14,
@@ -1670,6 +1686,7 @@
       "moonrise": 1791876677,
       "moonset": 1791914228,
       "moon_phase": 0.7,
+      "summary": "There will be clear sky today",
       "temp": {
         "day": 21,
         "min": 15,

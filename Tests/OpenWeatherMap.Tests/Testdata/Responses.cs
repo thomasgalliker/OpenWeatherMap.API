@@ -14,7 +14,9 @@ namespace OpenWeatherMap.Tests.Testdata
         internal const string ForecastHourly = "forecast_hourly.json";
         internal const string ForecastDaily = "forecast_daily.json";
         internal const string OneCall = "onecall.json";
-        internal const string OneCallTimemachine = "onecall_timemachine.json";
+        internal const string OneCallTimeMachine = "onecall_timemachine.json";
+        internal const string OneCallDaySummary = "onecall_day_summary.json";
+        internal const string OneCallOverview = "onecall_overview.json";
         internal const string AirPollution = "air_pollution.json";
 
         private static readonly Assembly Assembly = typeof(Responses).Assembly;

@@ -54,14 +54,32 @@ namespace OpenWeatherMap
             throw new NotImplementedException();
         }
 
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
             throw new NotImplementedException();
         }
 
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
-        public Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
+        public Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date)
         {
             throw new NotImplementedException();
         }

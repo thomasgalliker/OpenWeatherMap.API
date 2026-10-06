@@ -29,6 +29,21 @@ namespace OpenWeatherMap
         internal const double MinLongitude = -180d;
         internal const double MaxLongitude = 180d;
 
+        /// <summary>
+        /// The earliest timestamp for which One Call API 3.0 (timemachine) provides weather data.
+        /// </summary>
+        internal static readonly DateTime MinOneCallTimeMachineDate = new DateTime(1979, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        /// <summary>
+        /// The earliest date for which One Call API 3.0 (day_summary) provides aggregated weather data.
+        /// </summary>
+        internal static readonly DateTime MinOneCallDaySummaryDate = new DateTime(1979, 1, 2);
+
+        /// <summary>
+        /// The maximum absolute timezone offset (UTC-14:00 to UTC+14:00).
+        /// </summary>
+        internal static readonly TimeSpan MaxTimezoneOffset = TimeSpan.FromHours(14);
+
         private readonly ILogger<OpenWeatherMapService> logger;
         private readonly HttpClient httpClient;
         private readonly IWeatherIconMapping defaultWeatherIconMapping;
@@ -137,7 +152,6 @@ namespace OpenWeatherMap
             return this.GetAsync<T>("GetWeatherForecastAsync", path, query);
         }
 
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
             this.logger.LogDebug($"GetWeatherOneCallAsync: latitude={latitude}, longitude={longitude}");
@@ -149,16 +163,68 @@ namespace OpenWeatherMap
             return this.GetAsync<OneCallWeatherInfo>(nameof(this.GetWeatherOneCallAsync), ApiPaths.OneCall, query);
         }
 
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
-        public Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
+        public Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime)
         {
             dateTime = dateTime.ToUniversalTime();
+            if (dateTime < MinOneCallTimeMachineDate)
+            {
+                throw new ArgumentOutOfRangeException(nameof(dateTime), $"Weather data is available from {MinOneCallTimeMachineDate:yyyy-MM-dd}");
+            }
 
-            this.logger.LogDebug($"GetWeatherOneCallHistoricAsync: latitude={latitude}, longitude={longitude}, dateTime={dateTime:O}");
+            this.logger.LogDebug($"GetWeatherOneCallTimeMachineAsync: latitude={latitude}, longitude={longitude}, dateTime={dateTime:O}");
 
             var epochDateTime = EpochDateTimeConverter.Convert(dateTime);
-            var query = $"{GetCoordinatesQuery(latitude, longitude)}&dt={epochDateTime}{(onlyCurrent ? "&only_current" : "")}&{this.GetUnitsAndLanguageQuery()}";
-            return this.GetAsync<OneCallWeatherInfo>(nameof(this.GetWeatherOneCallHistoricAsync), ApiPaths.OneCallTimeMachine, query);
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&dt={epochDateTime}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallTimeMachineInfo>(nameof(this.GetWeatherOneCallTimeMachineAsync), ApiPaths.OneCallTimeMachine, query);
+        }
+
+        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date)
+        {
+            return this.GetWeatherOneCallDaySummaryInternalAsync(latitude, longitude, date, timezoneQuery: "");
+        }
+
+        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset)
+        {
+            if (timezoneOffset.Duration() > MaxTimezoneOffset)
+            {
+                throw new ArgumentOutOfRangeException(nameof(timezoneOffset));
+            }
+
+            var sign = timezoneOffset < TimeSpan.Zero ? "-" : "+";
+            var timezone = $"{sign}{timezoneOffset.Duration().ToString(@"hh\:mm", CultureInfo.InvariantCulture)}";
+            return this.GetWeatherOneCallDaySummaryInternalAsync(latitude, longitude, date, $"&tz={Uri.EscapeDataString(timezone)}");
+        }
+
+        private Task<OneCallDaySummary> GetWeatherOneCallDaySummaryInternalAsync(double latitude, double longitude, DateTime date, string timezoneQuery)
+        {
+            if (date.Date < MinOneCallDaySummaryDate)
+            {
+                throw new ArgumentOutOfRangeException(nameof(date), $"Weather data is available from {MinOneCallDaySummaryDate:yyyy-MM-dd}");
+            }
+
+            this.logger.LogDebug($"GetWeatherOneCallDaySummaryAsync: latitude={latitude}, longitude={longitude}, date={FormatDate(date)}");
+
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&date={FormatDate(date)}{timezoneQuery}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallDaySummary>("GetWeatherOneCallDaySummaryAsync", ApiPaths.OneCallDaySummary, query);
+        }
+
+        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude)
+        {
+            return this.GetWeatherOneCallOverviewInternalAsync(latitude, longitude, dateQuery: "");
+        }
+
+        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date)
+        {
+            return this.GetWeatherOneCallOverviewInternalAsync(latitude, longitude, $"&date={FormatDate(date)}");
+        }
+
+        private Task<OneCallWeatherOverview> GetWeatherOneCallOverviewInternalAsync(double latitude, double longitude, string dateQuery)
+        {
+            this.logger.LogDebug($"GetWeatherOneCallOverviewAsync: latitude={latitude}, longitude={longitude}");
+
+            // The overview endpoint does not support parameter lang.
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}{dateQuery}&units={this.unitSystem}";
+            return this.GetAsync<OneCallWeatherOverview>("GetWeatherOneCallOverviewAsync", ApiPaths.OneCallOverview, query);
         }
 
         private static string? GetExcludeQueryParameter(OneCallOptions oneCallOptions)
@@ -180,6 +246,10 @@ namespace OpenWeatherMap
             if (!oneCallOptions.IncludeDailyForecasts)
             {
                 excludes.Add("daily");
+            }
+            if (!oneCallOptions.IncludeAlerts)
+            {
+                excludes.Add("alerts");
             }
 
             string? excludeQueryParameter = null;
@@ -266,6 +336,11 @@ namespace OpenWeatherMap
             {
                 throw new ArgumentOutOfRangeException(nameof(latitude));
             }
+        }
+
+        private static string FormatDate(DateTime date)
+        {
+            return date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
 
         private static string FormatCoordinate(double coordinate)

@@ -39,18 +39,81 @@ namespace OpenWeatherMap
         Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null);
 
         /// <summary>
-        /// Current weather, minutely, hourly and daily forecasts and weather alerts using One Call API 2.5.
+        /// Current weather, minutely forecast for 1 hour, hourly forecast for 48 hours, daily forecast for 8 days
+        /// and government weather alerts using One Call API 3.0.
+        /// https://openweathermap.org/api/one-call-3
         /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
         /// <param name="oneCallOptions">Selects the parts of the response to be returned.</param>
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null);
 
         /// <summary>
-        /// Historical weather data for the given <paramref name="dateTime"/> using One Call API 2.5.
+        /// Weather data for the given <paramref name="dateTime"/> (from 1979-01-01 up to 4 days ahead) using One Call API 3.0.
+        /// https://openweathermap.org/api/one-call-3#history
         /// </summary>
-        /// <param name="onlyCurrent">Returns only the current weather data if set to <c>true</c>.</param>
-        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
-        Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false);
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="dateTime">The requested timestamp.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="dateTime"/> is before 1979-01-01.</exception>
+        Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime);
+
+        /// <summary>
+        /// Aggregated weather data for the given <paramref name="date"/> (from 1979-01-02 up to 1.5 years ahead) using One Call API 3.0.
+        /// The timezone is detected from the given coordinates.
+        /// https://openweathermap.org/api/one-call-3#history_daily_aggregation
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="date">The requested date (the time part is ignored).</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="date"/> is before 1979-01-02.</exception>
+        Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date);
+
+        /// <summary>
+        /// Aggregated weather data for the given <paramref name="date"/> (from 1979-01-02 up to 1.5 years ahead) using One Call API 3.0.
+        /// https://openweathermap.org/api/one-call-3#history_daily_aggregation
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="date">The requested date (the time part is ignored).</param>
+        /// <param name="timezoneOffset">The timezone offset from UTC to be used for the aggregation (between -14h and +14h).</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="date"/> is before 1979-01-02 or <paramref name="timezoneOffset"/> is out of range.</exception>
+        Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset);
+
+        /// <summary>
+        /// Human-readable weather summary for today using One Call API 3.0.
+        /// https://openweathermap.org/api/one-call-3#weather_overview
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// Human-readable weather summary for the given <paramref name="date"/> (today or tomorrow) using One Call API 3.0.
+        /// https://openweathermap.org/api/one-call-3#weather_overview
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="date">The requested date (the time part is ignored).</param>
+        Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date);
 
         Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude);
     }
