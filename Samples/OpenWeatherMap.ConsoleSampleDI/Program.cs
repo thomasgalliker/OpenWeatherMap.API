@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OpenWeatherMap;
@@ -17,24 +19,22 @@ internal static class Program
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddLogging();
 
-        // Use code-based configuration:
-        serviceCollection.AddOpenWeatherMap(o =>
-        {
-            o.ApiEndpoint = "https://api.openweathermap.org";
-            o.ApiKey = "<-INSERT-YOUR-API-KEY-HERE->";
-            o.UnitSystem = UnitSystem.Metric;
-            o.Language = "en";
-            o.VerboseLogging = false;
-        });
+        // Use configuration from appsettings.json:
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
 
-        // Use configuration from appSettings.json:
-        //var configuration = new ConfigurationBuilder()
-        //    .SetBasePath(Directory.GetCurrentDirectory())
-        //    .AddJsonFile("appsettings.json", true, true)
-        //    .Build();
+        var configurationSection = configuration.GetSection("OpenWeatherMap");
+        serviceCollection.AddOpenWeatherMap(configurationSection);
 
-        //var configurationSection = configuration.GetSection("OpenWeatherMap");
-        //serviceCollection.AddOpenWeatherMap(configurationSection);
+        // Alternatively, use code-based configuration:
+        //serviceCollection.AddOpenWeatherMap(o =>
+        //{
+        //    o.ApiKey = "<-INSERT-YOUR-API-KEY-HERE->";
+        //    o.UnitSystem = UnitSystem.Metric;
+        //    o.Language = "en";
+        //});
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
