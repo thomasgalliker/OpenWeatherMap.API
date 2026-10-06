@@ -48,18 +48,27 @@ namespace OpenWeatherMap.Models
         [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }
 
-        /// <see cref="Wind">
+        /// <summary>
+        /// Wind speed. Exposed via <see cref="Wind"/>.
+        /// </summary>
+        [JsonInclude]
         [JsonPropertyName("speed")]
-        private Speed Speed { get; set; } = Speed.FromMetersPerSecond(0d);
+        internal Speed Speed { get; set; } = Speed.FromMetersPerSecond(0d);
 
-        /// <see cref="Wind">
+        /// <summary>
+        /// Wind direction. Exposed via <see cref="Wind"/>.
+        /// </summary>
+        [JsonInclude]
         [JsonPropertyName("deg")]
         [JsonConverter(typeof(WindDirectionJsonConverter))]
-        private Angle Direction { get; set; }
+        internal Angle Direction { get; set; }
 
-        /// <see cref="Wind">
+        /// <summary>
+        /// Wind gust. Exposed via <see cref="Wind"/>.
+        /// </summary>
+        [JsonInclude]
         [JsonPropertyName("gust")]
-        private Speed? Gust { get; set; }
+        internal Speed? Gust { get; set; }
 
         /// <summary>
         /// Wind info.

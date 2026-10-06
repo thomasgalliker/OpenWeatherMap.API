@@ -1,5 +1,6 @@
 using FluentAssertions;
 using OpenWeatherMap.Models;
+using OpenWeatherMap.Tests.Testdata;
 using UnitsNet;
 using UnitsNet.Units;
 using Xunit;
@@ -39,6 +40,23 @@ namespace OpenWeatherMap.Tests
 
             // Assert
             windInfo.Speed.Should().Be(new Speed(3.5d, expectedSpeedUnit));
+        }
+
+        [Fact]
+        public void DeserializeObject_WeatherForecastDaily_ReturnsWindInfo()
+        {
+            // Arrange
+            var serializer = new OpenWeatherMapJsonSerializer(UnitSystem.Metric);
+            var json = Responses.GetJson(Responses.ForecastDaily);
+
+            // Act
+            var weatherForecast = serializer.DeserializeObject<WeatherForecastDaily>(json);
+
+            // Assert
+            var wind = weatherForecast.Items.First().Wind;
+            wind.Speed.Should().Be(Speed.FromMetersPerSecond(2.4d));
+            wind.Direction.Should().Be(Angle.FromDegrees(220d));
+            wind.Gust.Should().Be(Speed.FromMetersPerSecond(4.8d));
         }
     }
 }
