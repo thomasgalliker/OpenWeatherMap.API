@@ -427,6 +427,91 @@ namespace OpenWeatherMap.Tests
         }
 
         [Fact]
+        public async Task GetAirPollutionForecastAsync_ValidCoordinates_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            this.SetupResponse("/data/2.5/air_pollution/forecast", Responses.GetJson(Responses.AirPollutionForecast));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionForecastAsync(Latitude, Longitude);
+
+            // Assert
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().HaveCount(4);
+            airPollutionInfo.Items.Should().BeInAscendingOrder(i => i.DateTime);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=1.1111&lon=1.2222&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_ValidPeriod_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            var start = new DateTime(2026, 10, 5, 0, 0, 0, DateTimeKind.Utc);
+            var end = new DateTime(2026, 10, 5, 3, 0, 0, DateTimeKind.Utc);
+
+            this.SetupResponse("/data/2.5/air_pollution/history", Responses.GetJson(Responses.AirPollutionHistory));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().HaveCount(3);
+            airPollutionInfo.Items.First().DateTime.Should().Be(start);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/2.5/air_pollution/history?lat=1.1111&lon=1.2222&start=1791158400&end=1791169200&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_StartBeforeMinDate_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            var start = new DateTime(2020, 11, 26, 23, 59, 59, DateTimeKind.Utc);
+            var end = new DateTime(2020, 11, 28, 0, 0, 0, DateTimeKind.Utc);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("start");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public async Task GetAirPollutionHistoryAsync_EndNotAfterStart_ThrowsArgumentOutOfRangeException(int endOffsetHours)
+        {
+            // Arrange
+            var start = new DateTime(2026, 10, 5, 0, 0, 0, DateTimeKind.Utc);
+            var end = start.AddHours(endOffsetHours);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("end");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
         public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
         {
             // Arrange

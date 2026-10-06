@@ -234,6 +234,41 @@ namespace OpenWeatherMap.Tests
         }
 
         [Fact]
+        public async Task GetAirPollutionForecastAsync_ValidCoordinates_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionForecastAsync(Latitude, Longitude);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
+
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_ValidPeriod_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            var end = DateTime.UtcNow.Date;
+            var start = end.AddHours(-3);
+
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
+
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().NotBeEmpty();
+        }
+
+        [Fact]
         public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
         {
             // Arrange

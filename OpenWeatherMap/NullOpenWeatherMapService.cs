@@ -24,6 +24,16 @@ namespace OpenWeatherMap
             throw new NotImplementedException();
         }
 
+        public Task<AirPollutionInfo> GetAirPollutionForecastAsync(double latitude, double longitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<AirPollutionInfo> GetAirPollutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude)
         {
             return Task.FromResult(new WeatherInfo

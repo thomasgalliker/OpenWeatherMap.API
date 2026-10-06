@@ -49,6 +49,11 @@ namespace OpenWeatherMap
         /// </summary>
         internal const int MaxGeocodingLimit = 5;
 
+        /// <summary>
+        /// The earliest timestamp for which historical air pollution data is available.
+        /// </summary>
+        internal static readonly DateTime MinAirPollutionHistoryDate = new DateTime(2020, 11, 27, 0, 0, 0, DateTimeKind.Utc);
+
         private readonly ILogger<OpenWeatherMapService> logger;
         private readonly HttpClient httpClient;
         private readonly IWeatherIconMapping defaultWeatherIconMapping;
@@ -282,6 +287,35 @@ namespace OpenWeatherMap
 
             var query = GetCoordinatesQuery(latitude, longitude);
             return this.GetAsync<AirPollutionInfo>(nameof(this.GetAirPollutionAsync), ApiPaths.AirPollution, query);
+        }
+
+        public Task<AirPollutionInfo> GetAirPollutionForecastAsync(double latitude, double longitude)
+        {
+            this.logger.LogDebug($"GetAirPollutionForecastAsync: latitude={latitude}, longitude={longitude}");
+
+            var query = GetCoordinatesQuery(latitude, longitude);
+            return this.GetAsync<AirPollutionInfo>(nameof(this.GetAirPollutionForecastAsync), ApiPaths.AirPollutionForecast, query);
+        }
+
+        public Task<AirPollutionInfo> GetAirPollutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end)
+        {
+            start = start.ToUniversalTime();
+            end = end.ToUniversalTime();
+
+            if (start < MinAirPollutionHistoryDate)
+            {
+                throw new ArgumentOutOfRangeException(nameof(start), $"Historical air pollution data is available from {MinAirPollutionHistoryDate:yyyy-MM-dd}");
+            }
+
+            if (end <= start)
+            {
+                throw new ArgumentOutOfRangeException(nameof(end), "End must be after start");
+            }
+
+            this.logger.LogDebug($"GetAirPollutionHistoryAsync: latitude={latitude}, longitude={longitude}, start={start:O}, end={end:O}");
+
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&start={EpochDateTimeConverter.Convert(start)}&end={EpochDateTimeConverter.Convert(end)}";
+            return this.GetAsync<AirPollutionInfo>(nameof(this.GetAirPollutionHistoryAsync), ApiPaths.AirPollutionHistory, query);
         }
 
         public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query)

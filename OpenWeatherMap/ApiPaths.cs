@@ -14,6 +14,8 @@ namespace OpenWeatherMap
         internal const string OneCallDaySummary = "data/3.0/onecall/day_summary";
         internal const string OneCallOverview = "data/3.0/onecall/overview";
         internal const string AirPollution = "data/2.5/air_pollution";
+        internal const string AirPollutionForecast = "data/2.5/air_pollution/forecast";
+        internal const string AirPollutionHistory = "data/2.5/air_pollution/history";
         internal const string GeocodingDirect = "geo/1.0/direct";
         internal const string GeocodingZip = "geo/1.0/zip";
         internal const string GeocodingReverse = "geo/1.0/reverse";

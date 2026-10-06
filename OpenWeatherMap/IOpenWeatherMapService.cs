@@ -116,7 +116,32 @@ namespace OpenWeatherMap
         /// <param name="date">The requested date (the time part is ignored).</param>
         Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date);
 
+        /// <summary>
+        /// Current air pollution data for the given coordinates.
+        /// https://openweathermap.org/api/air-pollution
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
         Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// Hourly air pollution forecast for 4 days for the given coordinates.
+        /// https://openweathermap.org/api/air-pollution#forecast
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        Task<AirPollutionInfo> GetAirPollutionForecastAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// Historical air pollution data (available from 2020-11-27) for the given coordinates.
+        /// https://openweathermap.org/api/air-pollution#history
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="start">The start of the requested period.</param>
+        /// <param name="end">The end of the requested period.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="start"/> is before 2020-11-27 or <paramref name="end"/> is not after <paramref name="start"/>.</exception>
+        Task<AirPollutionInfo> GetAirPollutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end);
 
         /// <summary>
         /// Gets the coordinates of locations by name using the Geocoding API (direct geocoding).
