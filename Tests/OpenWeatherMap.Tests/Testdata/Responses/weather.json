@@ -1,0 +1,45 @@
+{
+  "coord": {
+    "lon": 8.0559,
+    "lat": 47.0907
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 21.28,
+    "feels_like": 21,
+    "temp_min": 19.86,
+    "temp_max": 23.06,
+    "pressure": 1016,
+    "humidity": 59,
+    "sea_level": 1016,
+    "grnd_level": 933
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 0.51,
+    "deg": 0
+  },
+  "clouds": {
+    "all": 72
+  },
+  "dt": 1791295891,
+  "sys": {
+    "type": 2,
+    "id": 2034458,
+    "country": "CH",
+    "sunrise": 1791264771,
+    "sunset": 1791305929
+  },
+  "timezone": 7200,
+  "id": 2659685,
+  "name": "Menznau",
+  "cod": 200
+}

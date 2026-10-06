@@ -1,6 +1,8 @@
 2.2
 - Maintenance updates
 - Replace Newtonsoft.Json with System.Text.Json
+- Change WeatherInfo.CityId from string to int
+- Mark GetWeatherOneCallAsync and GetWeatherOneCallHistoricAsync as obsolete (One Call API 2.5 was retired by OpenWeatherMap)
 
 2.1
 - Extended the 16-day forecast model (DailyWeatherForecastItem) with missing properties

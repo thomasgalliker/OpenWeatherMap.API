@@ -3,14 +3,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace OpenWeatherMap.Tests.Testdata
 {
-    internal class AppSettings
+    internal static class AppSettings
     {
-        public static OpenWeatherMapOptions GetApiConfiguration(string sectionName = "OpenWeatherMap")
+        public static OpenWeatherMapOptions GetApiConfiguration(string sectionName)
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
-                .AddUserSecrets<AppSettings>()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddUserSecrets(typeof(AppSettings).Assembly)
                 .Build();
 
             var openWeatherMapOptions = new OpenWeatherMapOptions();

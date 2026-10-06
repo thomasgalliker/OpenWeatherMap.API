@@ -14,12 +14,18 @@ trigger:
     include:
       - main
       - develop
-      - feature/*
-      - bugfix/*
 
   paths:
     exclude:
       - Docs/*
+
+schedules:
+  - cron: "0 0 1 * *"
+    displayName: At 00:00 on day-of-month 1
+    branches:
+      include:
+        - develop
+    always: true
 
 variables:
   buildPlatform: 'Any CPU'
@@ -101,19 +107,34 @@ steps:
       arguments: '--no-restore --configuration $(buildConfiguration)'
 
   - task: DotNetCoreCLI@2
-    displayName: 'Run UnitTests'
+    displayName: 'Run Unit Tests'
     inputs:
       command: test
       projects: '**/*.Tests.csproj'
-      arguments: '--no-restore --no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
+      arguments: >
+        --no-restore --no-build 
+        --configuration $(buildConfiguration) 
+        --filter "Category=UnitTests&Category!=Ignore&Category!=Manual"
+        /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*"
+        /p:CollectCoverage=true
+        /p:CoverletOutputFormat=json%2Ccobertura%2Copencover
+        /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/CodeCoverage/
+        /p:MergeWith=$(Build.SourcesDirectory)/TestResults/CodeCoverage/coverage.json
 
-  - task: reportgenerator@5
-    displayName: 'Create Code Coverage Report'
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Integration Tests'
     inputs:
-      reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura*.xml'
-      targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
-      reporttypes: 'Cobertura'
-      assemblyfilters: '-xunit*'
+      command: test
+      projects: '**/*.Tests.csproj'
+      arguments: >
+        --no-restore --no-build 
+        --configuration $(buildConfiguration) 
+        --filter "Category=IntegrationTests&Category!=Ignore&Category!=Manual"
+        /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*"
+        /p:CollectCoverage=true
+        /p:CoverletOutputFormat=json%2Ccobertura%2Copencover
+        /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/CodeCoverage/
+        /p:MergeWith=$(Build.SourcesDirectory)/TestResults/CodeCoverage/coverage.json
 
   - task: DotNetCoreCLI@2
     displayName: 'Pack OpenWeatherMap'
@@ -136,11 +157,11 @@ steps:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishCodeCoverageResults@2
-    displayName: 'Publish code coverage'
+    displayName: 'Publish Code Coverage Results'
     inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
-      reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
+      summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/**/coverage.cobertura.xml'
+      pathToSources: '$(Build.SourcesDirectory)'
+      failIfCoverageEmpty: true
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

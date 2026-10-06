@@ -5,12 +5,12 @@ using Microsoft.Extensions.Logging;
 using OpenWeatherMap;
 using OpenWeatherMap.Extensions;
 
-internal class Program
+internal static class Program
 {
     private static async Task Main(string[] _)
     {
-        Console.WriteLine($"OpenWeatherMap.ConsoleSampleDI [Version 1.0.0.0]");
-        Console.WriteLine($"(c)2023 superdev gmbh. All rights reserved.");
+        Console.WriteLine("OpenWeatherMap.ConsoleSampleDI [Version 1.0.0.0]");
+        Console.WriteLine("(c) 2026 superdev gmbh. All rights reserved.");
         Console.WriteLine();
 
         // Create DI container and register services

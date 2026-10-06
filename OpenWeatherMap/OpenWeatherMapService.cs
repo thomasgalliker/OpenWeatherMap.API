@@ -183,6 +183,7 @@ namespace OpenWeatherMap
             return weatherForecast;
         }
 
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         public async Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
         {
             EnsureLatitude(latitude);
@@ -220,6 +221,7 @@ namespace OpenWeatherMap
             return oneCallWeatherInfo;
         }
 
+        [Obsolete(ObsoleteMessages.OneCallApi25Retired, error: false)]
         public async Task<OneCallWeatherInfo> GetWeatherOneCallHistoricAsync(double latitude, double longitude, DateTime dateTime, bool onlyCurrent = false)
         {
             EnsureLatitude(latitude);
