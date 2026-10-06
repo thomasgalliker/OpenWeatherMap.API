@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.AutoMock;
 using Moq.Contrib.HttpClient;
+using OpenWeatherMap.Models;
 using OpenWeatherMap.Tests.Logging;
 using OpenWeatherMap.Tests.Testdata;
 using UnitsNet;
@@ -400,6 +401,52 @@ namespace OpenWeatherMap.Tests
                 "https://api.openweathermap.org/data/3.0/onecall/overview?lat=1.1111&lon=1.2222&date=2026-10-07&units=metric&appid=apikey",
                 Times.Once());
 
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherIconAsync_DefaultWeatherIconMapping_ReturnsIconFromOpenWeatherMap()
+        {
+            // Arrange
+            var weatherCondition = new WeatherCondition { Id = WeatherConditionCode.Clear, IconId = "01d" };
+            var iconBytes = new byte[] { 0x89, 0x50, 0x4E, 0x47 };
+
+            var iconRequestSetup = this.httpMessageHandlerMock.SetupRequest(HttpMethod.Get, "https://openweathermap.org/img/wn/01d@2x.png");
+            MockHttpMessageHandlerExtensions.ReturnsResponse(iconRequestSetup, iconBytes, "image/png");
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var iconStream = await openWeatherMapService.GetWeatherIconAsync(weatherCondition);
+
+            // Assert
+            using var memoryStream = new MemoryStream();
+            await iconStream.CopyToAsync(memoryStream);
+            memoryStream.ToArray().Should().Equal(iconBytes);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get, "https://openweathermap.org/img/wn/01d@2x.png", Times.Once());
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherIconAsync_CustomWeatherIconMapping_ReturnsIconFromMapping()
+        {
+            // Arrange
+            var weatherCondition = new WeatherCondition { Id = WeatherConditionCode.Clear, IconId = "01d" };
+            var iconStream = new MemoryStream();
+
+            var weatherIconMappingMock = new Mock<IWeatherIconMapping>();
+            weatherIconMappingMock.Setup(m => m.GetIconAsync(weatherCondition))
+                .ReturnsAsync(iconStream);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var result = await openWeatherMapService.GetWeatherIconAsync(weatherCondition, weatherIconMappingMock.Object);
+
+            // Assert
+            result.Should().BeSameAs(iconStream);
+            weatherIconMappingMock.Verify(m => m.GetIconAsync(weatherCondition), Times.Once());
             this.httpMessageHandlerMock.VerifyNoOtherCalls();
         }
 
