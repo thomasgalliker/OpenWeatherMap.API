@@ -47,7 +47,7 @@ namespace OpenWeatherMap.Models
         /// City ID.
         /// </summary>
         [JsonPropertyName("id")]
-        public string CityId { get; set; } = null!;
+        public int CityId { get; set; }
 
         /// <summary>
         /// City name.
