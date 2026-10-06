@@ -1,8 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OpenWeatherMap.Extensions;
@@ -10,7 +6,7 @@ using OpenWeatherMap.Models;
 
 namespace OpenWeatherMap.ConsoleSample
 {
-    public class Program
+    public static class Program
     {
         private static IConfigurationRoot configuration;
 
@@ -18,15 +14,15 @@ namespace OpenWeatherMap.ConsoleSample
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            Console.WriteLine($"OpenWeatherMap.ConsoleSample [Version 1.0.0.0]");
-            Console.WriteLine($"(c) 2023 superdev gmbh. All rights reserved.");
+            Console.WriteLine("OpenWeatherMap.ConsoleSample [Version 1.0.0.0]");
+            Console.WriteLine("(c) 2026 superdev gmbh. All rights reserved.");
             Console.WriteLine();
 
             configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 #if DEBUG
-                .AddUserSecrets<Program>()
+                .AddUserSecrets(typeof(Program).Assembly)
 #endif
                 .Build();
 
@@ -63,16 +59,21 @@ namespace OpenWeatherMap.ConsoleSample
                     $"Wind: {weatherInfo.Wind.Speed} ({weatherInfo.Wind.Direction.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
             }
 
-            // Request weather info using GetWeatherOneCallAsync:
+            // Request 5 day / 3 hour forecast using GetWeatherForecast5Async:
             {
-                var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude);
+                var weatherForecast = await openWeatherMapService.GetWeatherForecast5Async(latitude, longitude, count: 8);
 
-                Console.WriteLine(
-                    $"Current Weather Info:{Environment.NewLine}" +
-                    $"Temperature: {oneCallWeatherInfo.CurrentWeather.Temperature}{Environment.NewLine}" +
-                    $"Humidity: {oneCallWeatherInfo.CurrentWeather.Humidity} ({oneCallWeatherInfo.CurrentWeather.Humidity.GetRange()}){Environment.NewLine}" +
-                    $"Pressure: {oneCallWeatherInfo.CurrentWeather.Pressure} ({oneCallWeatherInfo.CurrentWeather.Pressure.GetRange()}){Environment.NewLine}" +
-                    $"Wind: {oneCallWeatherInfo.CurrentWeather.WindSpeed} ({oneCallWeatherInfo.CurrentWeather.WindDirection.ToSecondaryIntercardinalWindDirection():A}){Environment.NewLine}");
+                Console.WriteLine("Weather Forecast:");
+                foreach (var forecastItem in weatherForecast.Items)
+                {
+                    Console.WriteLine(
+                        $"{forecastItem.DateTime.ToLocalTime():g}: " +
+                        $"{forecastItem.Main.Temperature}, " +
+                        $"{forecastItem.WeatherConditions.ElementAtOrDefault(0)?.Description}, " +
+                        $"Pop: {forecastItem.Pop.Percent}%");
+                }
+
+                Console.WriteLine();
             }
 
             // Request air pollution information:
