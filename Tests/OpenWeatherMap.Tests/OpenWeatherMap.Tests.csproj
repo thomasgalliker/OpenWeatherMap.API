@@ -2,12 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <IsPackable>false</IsPackable>
-    <UserSecretsId>8a5bbe92-d2f9-402b-8cf6-adeab8fffffb</UserSecretsId>
+    <UserSecretsId>OpenWeatherMap.API</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="8.0.1">
+    <PackageReference Include="coverlet.msbuild" Version="10.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -16,18 +15,18 @@
     <PackageReference Include="Moq.AutoMock" Version="4.0.1" />
     <PackageReference Include="Moq.Contrib.HttpClient" Version="1.4.0" />
     <PackageReference Include="ObjectDumper.NET" Version="4.3.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageReference Include="ResourceLoader" Version="3.3.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-	<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.5" />
-	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.5" />
-	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
-	<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.5" />
-	<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.5" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.12" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.12" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.12" />
+	<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.12" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +37,10 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Testdata\Responses\*.json" />
   </ItemGroup>
 
 </Project>
