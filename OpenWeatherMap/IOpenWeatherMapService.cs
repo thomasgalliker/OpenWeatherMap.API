@@ -13,13 +13,14 @@ namespace OpenWeatherMap
         /// </summary>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <returns></returns>
         Task<WeatherInfo> GetCurrentWeatherAsync(double latitude, double longitude);
 
         /// <summary>
         /// Hourly forecast for 4 days (max. 96 timestamps).
         /// https://openweathermap.org/api/hourly-forecast
         /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
         /// <param name="count">Number of 1-hour forecasts to be returned.</param>
         Task<WeatherForecast> GetWeatherForecast4Async(double latitude, double longitude, int? count = null);
 
@@ -27,6 +28,8 @@ namespace OpenWeatherMap
         /// 5 day / 3 hour forecast (max. 40 timestamps).
         /// https://openweathermap.org/forecast5
         /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
         /// <param name="count">Number of 3-hour forecasts to be returned.</param>
         Task<WeatherForecast> GetWeatherForecast5Async(double latitude, double longitude, int? count = null);
 
@@ -34,9 +37,16 @@ namespace OpenWeatherMap
         /// 16 day / daily forecast (max. 17 timestamps).
         /// https://openweathermap.org/forecast16
         /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
         /// <param name="count">Number of days to be returned.</param>
         Task<WeatherForecastDaily> GetWeatherForecastDailyAsync(double latitude, double longitude, int? count = null);
 
+        /// <summary>
+        /// Gets the icon image for the given <paramref name="weatherCondition"/>.
+        /// </summary>
+        /// <param name="weatherCondition">The weather condition.</param>
+        /// <param name="weatherIconMapping">The icon mapping to be used. Default: <see cref="DefaultWeatherIconMapping"/> which downloads the icon from openweathermap.org.</param>
         Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null);
 
         /// <summary>
