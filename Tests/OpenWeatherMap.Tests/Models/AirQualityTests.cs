@@ -6,6 +6,7 @@ using Xunit.Abstractions;
 
 namespace OpenWeatherMap.Tests.Models
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class AirQualityTests
     {
         private readonly ITestOutputHelper testOutputHelper;
