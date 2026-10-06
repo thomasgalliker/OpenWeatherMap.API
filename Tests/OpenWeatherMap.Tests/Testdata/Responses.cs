@@ -18,6 +18,9 @@ namespace OpenWeatherMap.Tests.Testdata
         internal const string OneCallDaySummary = "onecall_day_summary.json";
         internal const string OneCallOverview = "onecall_overview.json";
         internal const string AirPollution = "air_pollution.json";
+        internal const string GeocodingDirect = "geo_direct.json";
+        internal const string GeocodingZip = "geo_zip.json";
+        internal const string GeocodingReverse = "geo_reverse.json";
 
         private static readonly Assembly Assembly = typeof(Responses).Assembly;
 

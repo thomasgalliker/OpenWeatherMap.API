@@ -44,6 +44,11 @@ namespace OpenWeatherMap
         /// </summary>
         internal static readonly TimeSpan MaxTimezoneOffset = TimeSpan.FromHours(14);
 
+        /// <summary>
+        /// The maximum number of locations returned by the Geocoding API.
+        /// </summary>
+        internal const int MaxGeocodingLimit = 5;
+
         private readonly ILogger<OpenWeatherMapService> logger;
         private readonly HttpClient httpClient;
         private readonly IWeatherIconMapping defaultWeatherIconMapping;
@@ -277,6 +282,75 @@ namespace OpenWeatherMap
 
             var query = GetCoordinatesQuery(latitude, longitude);
             return this.GetAsync<AirPollutionInfo>(nameof(this.GetAirPollutionAsync), ApiPaths.AirPollution, query);
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query)
+        {
+            return this.GetLocationsByNameInternalAsync(query, limitQuery: "");
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query, int limit)
+        {
+            return this.GetLocationsByNameInternalAsync(query, GetLimitQuery(limit));
+        }
+
+        private Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameInternalAsync(string query, string limitQuery)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                throw new ArgumentException("Query must not be null or empty", nameof(query));
+            }
+
+            this.logger.LogDebug($"GetLocationsByNameAsync: query={query}");
+
+            var requestQuery = $"q={Uri.EscapeDataString(query)}{limitQuery}";
+            return this.GetAsync<IReadOnlyCollection<GeocodingLocation>>("GetLocationsByNameAsync", ApiPaths.GeocodingDirect, requestQuery);
+        }
+
+        public Task<ZipCodeLocation> GetLocationByZipCodeAsync(string zipCode, string countryCode)
+        {
+            if (string.IsNullOrWhiteSpace(zipCode))
+            {
+                throw new ArgumentException("Zip code must not be null or empty", nameof(zipCode));
+            }
+
+            if (string.IsNullOrWhiteSpace(countryCode))
+            {
+                throw new ArgumentException("Country code must not be null or empty", nameof(countryCode));
+            }
+
+            this.logger.LogDebug($"GetLocationByZipCodeAsync: zipCode={zipCode}, countryCode={countryCode}");
+
+            var query = $"zip={Uri.EscapeDataString(zipCode)},{Uri.EscapeDataString(countryCode)}";
+            return this.GetAsync<ZipCodeLocation>(nameof(this.GetLocationByZipCodeAsync), ApiPaths.GeocodingZip, query);
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude)
+        {
+            return this.GetLocationsByCoordinatesInternalAsync(latitude, longitude, limitQuery: "");
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude, int limit)
+        {
+            return this.GetLocationsByCoordinatesInternalAsync(latitude, longitude, GetLimitQuery(limit));
+        }
+
+        private Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesInternalAsync(double latitude, double longitude, string limitQuery)
+        {
+            this.logger.LogDebug($"GetLocationsByCoordinatesAsync: latitude={latitude}, longitude={longitude}");
+
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}{limitQuery}";
+            return this.GetAsync<IReadOnlyCollection<GeocodingLocation>>("GetLocationsByCoordinatesAsync", ApiPaths.GeocodingReverse, query);
+        }
+
+        private static string GetLimitQuery(int limit)
+        {
+            if (limit is < 1 or > MaxGeocodingLimit)
+            {
+                throw new ArgumentOutOfRangeException(nameof(limit), $"Limit must be between 1 and {MaxGeocodingLimit}");
+            }
+
+            return $"&limit={limit}";
         }
 
         /// <summary>

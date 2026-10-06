@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using OpenWeatherMap.Models;
@@ -116,5 +117,50 @@ namespace OpenWeatherMap
         Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date);
 
         Task<AirPollutionInfo> GetAirPollutionAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// Gets the coordinates of locations by name using the Geocoding API (direct geocoding).
+        /// https://openweathermap.org/api/geocoding-api#direct_name
+        /// </summary>
+        /// <param name="query">City name, state code (only for the US) and ISO 3166 country code divided by comma, e.g. "Menznau,CH".</param>
+        /// <exception cref="ArgumentException">If <paramref name="query"/> is null or empty.</exception>
+        Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query);
+
+        /// <summary>
+        /// Gets the coordinates of locations by name using the Geocoding API (direct geocoding).
+        /// https://openweathermap.org/api/geocoding-api#direct_name
+        /// </summary>
+        /// <param name="query">City name, state code (only for the US) and ISO 3166 country code divided by comma, e.g. "Menznau,CH".</param>
+        /// <param name="limit">The maximum number of locations to be returned (1 to 5).</param>
+        /// <exception cref="ArgumentException">If <paramref name="query"/> is null or empty.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="limit"/> is out of range.</exception>
+        Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query, int limit);
+
+        /// <summary>
+        /// Gets the coordinates of a zip/post code using the Geocoding API.
+        /// https://openweathermap.org/api/geocoding-api#direct_zip
+        /// </summary>
+        /// <param name="zipCode">The zip/post code, e.g. "6122".</param>
+        /// <param name="countryCode">The ISO 3166 country code, e.g. "CH".</param>
+        /// <exception cref="ArgumentException">If <paramref name="zipCode"/> or <paramref name="countryCode"/> is null or empty.</exception>
+        Task<ZipCodeLocation> GetLocationByZipCodeAsync(string zipCode, string countryCode);
+
+        /// <summary>
+        /// Gets the names of locations near the given coordinates using the Geocoding API (reverse geocoding).
+        /// https://openweathermap.org/api/geocoding-api#reverse
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// Gets the names of locations near the given coordinates using the Geocoding API (reverse geocoding).
+        /// https://openweathermap.org/api/geocoding-api#reverse
+        /// </summary>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="limit">The maximum number of locations to be returned (1 to 5).</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="limit"/> is out of range.</exception>
+        Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude, int limit);
     }
 }

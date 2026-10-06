@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
@@ -80,6 +81,31 @@ namespace OpenWeatherMap
         }
 
         public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByNameAsync(string query, int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ZipCodeLocation> GetLocationByZipCodeAsync(string zipCode, string countryCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<GeocodingLocation>> GetLocationsByCoordinatesAsync(double latitude, double longitude, int limit)
         {
             throw new NotImplementedException();
         }

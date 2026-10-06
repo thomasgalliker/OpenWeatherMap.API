@@ -232,5 +232,54 @@ namespace OpenWeatherMap.Tests
             airPollutionInfo.Should().NotBeNull();
             airPollutionInfo.Items.Should().NotBeEmpty();
         }
+
+        [Fact]
+        public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByNameAsync("Menznau,CH", 5);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(locations, this.dumpOptions));
+
+            locations.Should().NotBeEmpty();
+            locations.Should().AllSatisfy(l => l.Country.Should().Be("CH"));
+        }
+
+        [Fact]
+        public async Task GetLocationByZipCodeAsync_ValidZipCode_ReturnsZipCodeLocation()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var zipCodeLocation = await openWeatherMapService.GetLocationByZipCodeAsync("6122", "CH");
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(zipCodeLocation, this.dumpOptions));
+
+            zipCodeLocation.Should().NotBeNull();
+            zipCodeLocation.ZipCode.Should().Be("6122");
+            zipCodeLocation.Country.Should().Be("CH");
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_ValidCoordinates_ReturnsLocations()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, 1);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(locations, this.dumpOptions));
+
+            locations.Should().ContainSingle()
+                .Which.Name.Should().NotBeNullOrEmpty();
+        }
     }
 }

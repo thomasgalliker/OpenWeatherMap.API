@@ -426,6 +426,186 @@ namespace OpenWeatherMap.Tests
             this.httpMessageHandlerMock.VerifyNoOtherCalls();
         }
 
+        [Fact]
+        public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/direct", Responses.GetJson(Responses.GeocodingDirect));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByNameAsync("Menznau,CH");
+
+            // Assert
+            var location = locations.Should().ContainSingle().Subject;
+            location.Name.Should().Be(ExpectedCityName);
+            location.LocalNames.Should().ContainKey("de");
+            location.Latitude.Should().Be(47.0838106d);
+            location.Longitude.Should().Be(8.040131d);
+            location.Country.Should().Be("CH");
+            location.State.Should().Be("Lucerne");
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/direct?q=Menznau%2CCH&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByNameAsync_WithLimit_RequestsLimit()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/direct", Responses.GetJson(Responses.GeocodingDirect));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetLocationsByNameAsync("Menznau", 5);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/direct?q=Menznau&limit=5&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public async Task GetLocationsByNameAsync_EmptyQuery_ThrowsArgumentException(string? query)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByNameAsync(query!);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentException>().WithParameterName("query");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(6)]
+        public async Task GetLocationsByNameAsync_InvalidLimit_ThrowsArgumentOutOfRangeException(int limit)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByNameAsync("Menznau", limit);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("limit");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationByZipCodeAsync_ValidZipCode_ReturnsZipCodeLocation()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/zip", Responses.GetJson(Responses.GeocodingZip));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var zipCodeLocation = await openWeatherMapService.GetLocationByZipCodeAsync("6122", "CH");
+
+            // Assert
+            zipCodeLocation.Should().NotBeNull();
+            zipCodeLocation.ZipCode.Should().Be("6122");
+            zipCodeLocation.Name.Should().Be(ExpectedCityName);
+            zipCodeLocation.Latitude.Should().Be(47.0775d);
+            zipCodeLocation.Longitude.Should().Be(8.0373d);
+            zipCodeLocation.Country.Should().Be("CH");
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/zip?zip=6122,CH&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null, "CH", "zipCode")]
+        [InlineData("", "CH", "zipCode")]
+        [InlineData("6122", null, "countryCode")]
+        [InlineData("6122", "", "countryCode")]
+        public async Task GetLocationByZipCodeAsync_EmptyParameter_ThrowsArgumentException(string? zipCode, string? countryCode, string expectedParamName)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationByZipCodeAsync(zipCode!, countryCode!);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentException>().WithParameterName(expectedParamName);
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_ValidCoordinates_ReturnsLocations()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/reverse", Responses.GetJson(Responses.GeocodingReverse));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude);
+
+            // Assert
+            locations.Should().ContainSingle()
+                .Which.Name.Should().Be(ExpectedCityName);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/reverse?lat=1.1111&lon=1.2222&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_WithLimit_RequestsLimit()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/reverse", Responses.GetJson(Responses.GeocodingReverse));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, 1);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/reverse?lat=1.1111&lon=1.2222&limit=1&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(6)]
+        public async Task GetLocationsByCoordinatesAsync_InvalidLimit_ThrowsArgumentOutOfRangeException(int limit)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, limit);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("limit");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
         private void SetupResponse(string localPath, string responseJson)
         {
             this.httpMessageHandlerMock.SetupRequest(HttpMethod.Get, r => r.RequestUri!.LocalPath == localPath)
