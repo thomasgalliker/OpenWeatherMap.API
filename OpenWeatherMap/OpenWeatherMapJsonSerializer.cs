@@ -36,8 +36,9 @@ namespace OpenWeatherMap
             {
                 case UnitSystem.Imperial:
                     return TemperatureUnit.DegreeFahrenheit;
-                case UnitSystem.Metric:
                 case UnitSystem.Standard:
+                    return TemperatureUnit.Kelvin;
+                case UnitSystem.Metric:
                 default:
                     return TemperatureUnit.DegreeCelsius;
             }
