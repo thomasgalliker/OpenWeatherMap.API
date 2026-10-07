@@ -65,32 +65,57 @@ namespace OpenWeatherMap
             throw new NotImplementedException();
         }
 
-        public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
+        public Task<OneCallTimeline<CurrentWeatherForecast>> GetWeatherOneCallCurrentAsync(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime)
+        public Task<OneCallTimeline<MinutelyWeatherForecast>> GetWeatherOneCallMinutelyAsync(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude, DateTime start)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude, DateTime start)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude, DateTime start)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallTimeline<T>?> GetWeatherOneCallNextPageAsync<T>(OneCallTimeline<T> timeline)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OneCallTimeline<T>?> GetWeatherOneCallPreviousPageAsync<T>(OneCallTimeline<T> timeline)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<AlertInfo> GetWeatherOneCallAlertAsync(string alertId)
         {
             throw new NotImplementedException();
         }

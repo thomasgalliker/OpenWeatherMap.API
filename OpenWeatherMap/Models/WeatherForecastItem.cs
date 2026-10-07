@@ -20,8 +20,11 @@ namespace OpenWeatherMap.Models
         [JsonPropertyName("clouds")]
         public CloudsInformation Clouds { get; set; } = null!;
 
+        /// <summary>
+        /// Precipitation volume of rain (where available).
+        /// </summary>
         [JsonPropertyName("rain")]
-        public PrecipitationVolume Rain { get; set; } = null!;
+        public PrecipitationVolume? Rain { get; set; }
 
         /// <summary>
         /// Probability of precipitation.

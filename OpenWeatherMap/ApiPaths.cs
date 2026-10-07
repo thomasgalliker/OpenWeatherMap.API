@@ -9,10 +9,13 @@ namespace OpenWeatherMap
         internal const string Forecast = "data/2.5/forecast";
         internal const string ForecastHourly = "data/2.5/forecast/hourly";
         internal const string ForecastDaily = "data/2.5/forecast/daily";
-        internal const string OneCall = "data/3.0/onecall";
-        internal const string OneCallTimeMachine = "data/3.0/onecall/timemachine";
-        internal const string OneCallDaySummary = "data/3.0/onecall/day_summary";
-        internal const string OneCallOverview = "data/3.0/onecall/overview";
+        internal const string OneCallCurrent = "data/4.0/onecall/current";
+        internal const string OneCallTimelinePrefix = "data/4.0/onecall/timeline/";
+        internal const string OneCallTimeline1Minute = OneCallTimelinePrefix + "1min";
+        internal const string OneCallTimeline15Minutes = OneCallTimelinePrefix + "15min";
+        internal const string OneCallTimeline1Hour = OneCallTimelinePrefix + "1h";
+        internal const string OneCallTimeline1Day = OneCallTimelinePrefix + "1day";
+        internal const string OneCallAlert = "data/4.0/onecall/alert";
         internal const string AirPollution = "data/2.5/air_pollution";
         internal const string AirPollutionForecast = "data/2.5/air_pollution/forecast";
         internal const string AirPollutionHistory = "data/2.5/air_pollution/history";

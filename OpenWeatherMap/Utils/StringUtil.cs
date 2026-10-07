@@ -1,11 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace OpenWeatherMap.Utils
+﻿namespace OpenWeatherMap.Utils
 {
     internal static class StringUtil
     {
-        [return: NotNullIfNotNull(nameof(stringToReplace))]
-        internal static string? ReplaceWithWildcardChars(string input, string? stringToReplace)
+        internal static string ReplaceWithWildcardChars(string input, string? stringToReplace)
         {
             if (string.IsNullOrEmpty(stringToReplace))
             {

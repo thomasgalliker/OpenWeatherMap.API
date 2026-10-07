@@ -6,9 +6,12 @@ using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    public class HourlyWeatherForecast
+    /// <summary>
+    /// Weather record of the 15 minutes or 1 hour step timeline of One Call API 4.0.
+    /// </summary>
+    public class TimelineWeatherForecast
     {
-        public HourlyWeatherForecast()
+        public TimelineWeatherForecast()
         {
             this.Weather = Array.Empty<WeatherCondition>();
         }
@@ -46,11 +49,11 @@ namespace OpenWeatherMap.Models
         public Ratio Clouds { get; set; }
 
         /// <summary>
-        ///  Average visibility. The maximum value of the visibility is 10km.
+        ///  Average visibility (where available). The maximum value of the visibility is 10km.
         /// </summary>
         [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
-        public Length Visibility { get; set; } = Length.FromMeters(0d);
+        public Length? Visibility { get; set; }
 
         [JsonPropertyName("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
@@ -86,6 +89,14 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("snow")]
         public PrecipitationSpeed? Snow { get; set; }
+
+
+        /// <summary>
+        /// IDs of the weather alerts associated with the location and time.
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallAlertAsync"/> to get the details of an alert.
+        /// </summary>
+        [JsonPropertyName("alerts")]
+        public IReadOnlyCollection<string> Alerts { get; set; } = Array.Empty<string>();
 
         public override string ToString()
         {

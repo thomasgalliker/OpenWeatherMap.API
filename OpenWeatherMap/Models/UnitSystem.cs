@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 
-namespace OpenWeatherMap
+namespace OpenWeatherMap.Models
 {
     [DebuggerDisplay("UnitSystem: {this.name}")]
     public struct UnitSystem
@@ -11,20 +9,20 @@ namespace OpenWeatherMap
         public const string Metric = "metric";
         public const string Imperial = "imperial";
 
-        public static UnitSystem Default = Standard;
+        public static readonly UnitSystem Default = Standard;
 
-        private readonly string name;
+        private readonly string? name;
 
         private UnitSystem(string name)
         {
             this.name = name;
         }
 
-        public static UnitSystem FromName(string name)
+        public static UnitSystem FromName(string? name)
         {
             if (name == null)
             {
-                return new UnitSystem(Default);
+                return Default;
             }
 
             var all = new[] { Metric, Imperial, Standard };
@@ -37,9 +35,9 @@ namespace OpenWeatherMap
             return new UnitSystem(name);
         }
 
-        public static implicit operator string(UnitSystem u) => u.name;
+        public static implicit operator string(UnitSystem unitSystem) => unitSystem.ToString();
 
-        public static implicit operator UnitSystem(string n) => FromName(n);
+        public static implicit operator UnitSystem(string? name) => FromName(name);
 
         public override string ToString()
         {

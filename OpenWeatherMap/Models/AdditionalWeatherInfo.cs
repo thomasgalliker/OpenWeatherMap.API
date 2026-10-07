@@ -12,15 +12,21 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; } = null!;
+        public RegionInfo? Country { get; set; }
 
+        /// <summary>
+        /// Sunrise time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunrise { get; set; }
 
+        /// <summary>
+        /// Sunset time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunset { get; set; }
 
         public override string ToString()
         {

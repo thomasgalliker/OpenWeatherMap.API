@@ -21,11 +21,11 @@ namespace OpenWeatherMap.Models
 
         public UVIndexRange Range { get; private set; }
 
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
-            if (obj is UVIndex)
+            if (obj is UVIndex uvIndex)
             {
-                return this.Value.CompareTo((double)obj);
+                return this.Value.CompareTo(uvIndex.Value);
             }
 
             return this.Value.CompareTo(obj);

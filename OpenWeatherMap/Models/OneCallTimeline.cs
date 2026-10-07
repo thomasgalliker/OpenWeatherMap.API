@@ -4,13 +4,14 @@ using System.Text.Json.Serialization;
 namespace OpenWeatherMap.Models
 {
     /// <summary>
-    /// Weather data for a single timestamp returned by One Call API 3.0 (onecall/timemachine).
+    /// Response of a One Call API 4.0 endpoint: a (page of a) timeline of weather records for a location.
     /// </summary>
-    public sealed class OneCallTimeMachineInfo
+    /// <typeparam name="T">The type of the weather records.</typeparam>
+    public sealed class OneCallTimeline<T>
     {
-        public OneCallTimeMachineInfo()
+        public OneCallTimeline()
         {
-            this.Data = new List<CurrentWeatherForecast>();
+            this.Data = new List<T>();
         }
 
         /// <summary>
@@ -38,10 +39,24 @@ namespace OpenWeatherMap.Models
         public int TimezoneOffset { get; set; }
 
         /// <summary>
-        /// Weather data for the requested timestamp.
+        /// The weather records.
         /// </summary>
         [JsonPropertyName("data")]
-        public IReadOnlyCollection<CurrentWeatherForecast> Data { get; set; }
+        public IReadOnlyList<T> Data { get; set; }
+
+        /// <summary>
+        /// API URL of the previous page of the timeline (if available).
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallPreviousPageAsync{T}"/> to request it.
+        /// </summary>
+        [JsonPropertyName("prev")]
+        public string? Previous { get; set; }
+
+        /// <summary>
+        /// API URL of the next page of the timeline (if available).
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallNextPageAsync{T}"/> to request it.
+        /// </summary>
+        [JsonPropertyName("next")]
+        public string? Next { get; set; }
 
         public override string ToString()
         {
