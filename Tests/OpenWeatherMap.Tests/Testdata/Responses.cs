@@ -13,10 +13,12 @@ namespace OpenWeatherMap.Tests.Testdata
         internal const string Forecast5 = "forecast.json";
         internal const string ForecastHourly = "forecast_hourly.json";
         internal const string ForecastDaily = "forecast_daily.json";
-        internal const string OneCall = "onecall.json";
-        internal const string OneCallTimeMachine = "onecall_timemachine.json";
-        internal const string OneCallDaySummary = "onecall_day_summary.json";
-        internal const string OneCallOverview = "onecall_overview.json";
+        internal const string OneCallCurrent = "onecall_current.json";
+        internal const string OneCallMinutely = "onecall_1min.json";
+        internal const string OneCall15Minutes = "onecall_15min.json";
+        internal const string OneCallHourly = "onecall_1h.json";
+        internal const string OneCallDaily = "onecall_1day.json";
+        internal const string OneCallAlert = "onecall_alert.json";
         internal const string AirPollution = "air_pollution.json";
         internal const string AirPollutionForecast = "air_pollution_forecast.json";
         internal const string AirPollutionHistory = "air_pollution_history.json";

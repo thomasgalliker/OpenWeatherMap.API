@@ -1,0 +1,252 @@
+{
+  "lat": 47.0907,
+  "lon": 8.0559,
+  "timezone": "Europe/Zurich",
+  "timezone_offset": 7200,
+  "data": [
+    {
+      "dt": 1791288000,
+      "precipitation": 0.0,
+      "alerts": [
+        "2.49.0.0.756.0.CH.20261006120000.MeteoSwiss:TS01:7c1f0e2a",
+        "2.49.0.0.756.0.CH.20261006120000.MeteoSwiss:RN02:91ab33d4"
+      ]
+    },
+    {
+      "dt": 1791288060,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791288120,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791288180,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791288240,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791288300,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791288360,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791288420,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791288480,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791288540,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791288600,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791288660,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791288720,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791288780,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791288840,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791288900,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791288960,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791289020,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791289080,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791289140,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791289200,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791289260,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791289320,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791289380,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791289440,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791289500,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791289560,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791289620,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791289680,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791289740,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791289800,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791289860,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791289920,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791289980,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791290040,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791290100,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791290160,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791290220,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791290280,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791290340,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791290400,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791290460,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791290520,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791290580,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791290640,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791290700,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791290760,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791290820,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791290880,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791290940,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791291000,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791291060,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791291120,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791291180,
+      "precipitation": 0.25
+    },
+    {
+      "dt": 1791291240,
+      "precipitation": 0.0
+    },
+    {
+      "dt": 1791291300,
+      "precipitation": 0.05
+    },
+    {
+      "dt": 1791291360,
+      "precipitation": 0.1
+    },
+    {
+      "dt": 1791291420,
+      "precipitation": 0.15
+    },
+    {
+      "dt": 1791291480,
+      "precipitation": 0.2
+    },
+    {
+      "dt": 1791291540,
+      "precipitation": 0.25
+    }
+  ]
+}

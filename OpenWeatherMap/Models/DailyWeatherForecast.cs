@@ -6,6 +6,9 @@ using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
+    /// <summary>
+    /// Weather record of the 1 day step timeline of One Call API 4.0.
+    /// </summary>
     public class DailyWeatherForecast
     {
         public DailyWeatherForecast()
@@ -40,12 +43,6 @@ namespace OpenWeatherMap.Models
         [JsonPropertyName("moon_phase")]
         [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
-
-        /// <summary>
-        /// Human-readable description of the weather conditions for the day.
-        /// </summary>
-        [JsonPropertyName("summary")]
-        public string? Summary { get; set; }
 
         [JsonPropertyName("temp")]
         public DailyTemperatureForecast Temperature { get; set; } = null!;
@@ -116,15 +113,23 @@ namespace OpenWeatherMap.Models
         /// Daily volume of rain, in mm (where available).
         /// </summary>
         [JsonPropertyName("rain")]
-        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        [JsonConverter(typeof(PrecipitationVolumeJsonConverter))]
         public Length Rain { get; set; } = Length.FromMillimeters(0d);
 
         /// <summary>
         /// Daily volume of snow, in mm (where available).
         /// </summary>
         [JsonPropertyName("snow")]
-        [JsonConverter(typeof(MillimeterLengthJsonConverter))]
+        [JsonConverter(typeof(PrecipitationVolumeJsonConverter))]
         public Length Snow { get; set; } = Length.FromMillimeters(0d);
+
+
+        /// <summary>
+        /// IDs of the weather alerts associated with the location and time.
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallAlertAsync"/> to get the details of an alert.
+        /// </summary>
+        [JsonPropertyName("alerts")]
+        public IReadOnlyCollection<string> Alerts { get; set; } = Array.Empty<string>();
 
         public override string ToString()
         {

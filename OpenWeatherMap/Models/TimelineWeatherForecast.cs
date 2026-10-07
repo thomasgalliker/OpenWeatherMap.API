@@ -6,9 +6,12 @@ using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
-    public class HourlyWeatherForecast
+    /// <summary>
+    /// Weather record of the 15 minutes or 1 hour step timeline of One Call API 4.0.
+    /// </summary>
+    public class TimelineWeatherForecast
     {
-        public HourlyWeatherForecast()
+        public TimelineWeatherForecast()
         {
             this.Weather = Array.Empty<WeatherCondition>();
         }
@@ -86,6 +89,14 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("snow")]
         public PrecipitationSpeed? Snow { get; set; }
+
+
+        /// <summary>
+        /// IDs of the weather alerts associated with the location and time.
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallAlertAsync"/> to get the details of an alert.
+        /// </summary>
+        [JsonPropertyName("alerts")]
+        public IReadOnlyCollection<string> Alerts { get; set; } = Array.Empty<string>();
 
         public override string ToString()
         {

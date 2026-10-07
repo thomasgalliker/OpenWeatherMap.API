@@ -30,19 +30,9 @@ namespace OpenWeatherMap
         internal const double MaxLongitude = 180d;
 
         /// <summary>
-        /// The earliest timestamp for which One Call API 3.0 (timemachine) provides weather data.
+        /// The earliest timestamp for which the One Call API 4.0 timelines provide weather data.
         /// </summary>
-        internal static readonly DateTime MinOneCallTimeMachineDate = new DateTime(1979, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-        /// <summary>
-        /// The earliest date for which One Call API 3.0 (day_summary) provides aggregated weather data.
-        /// </summary>
-        internal static readonly DateTime MinOneCallDaySummaryDate = new DateTime(1979, 1, 2);
-
-        /// <summary>
-        /// The maximum absolute timezone offset (UTC-14:00 to UTC+14:00).
-        /// </summary>
-        internal static readonly TimeSpan MaxTimezoneOffset = TimeSpan.FromHours(14);
+        internal static readonly DateTime MinOneCallTimelineDate = new DateTime(1979, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         /// The maximum number of locations returned by the Geocoding API.
@@ -162,113 +152,135 @@ namespace OpenWeatherMap
             return this.GetAsync<T>("GetWeatherForecastAsync", path, query);
         }
 
-        public Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null)
+        public Task<OneCallTimeline<CurrentWeatherForecast>> GetWeatherOneCallCurrentAsync(double latitude, double longitude)
         {
-            this.logger.LogDebug($"GetWeatherOneCallAsync: latitude={latitude}, longitude={longitude}");
+            this.logger.LogDebug($"GetWeatherOneCallCurrentAsync: latitude={latitude}, longitude={longitude}");
 
-            oneCallOptions ??= OneCallOptions.Default;
-
-            var excludeQueryParameter = GetExcludeQueryParameter(oneCallOptions);
-            var query = $"{GetCoordinatesQuery(latitude, longitude)}{excludeQueryParameter}&{this.GetUnitsAndLanguageQuery()}";
-            return this.GetAsync<OneCallWeatherInfo>(nameof(this.GetWeatherOneCallAsync), ApiPaths.OneCall, query);
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallTimeline<CurrentWeatherForecast>>(nameof(this.GetWeatherOneCallCurrentAsync), ApiPaths.OneCallCurrent, query);
         }
 
-        public Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime)
+        public Task<OneCallTimeline<MinutelyWeatherForecast>> GetWeatherOneCallMinutelyAsync(double latitude, double longitude)
         {
-            dateTime = dateTime.ToUniversalTime();
-            if (dateTime < MinOneCallTimeMachineDate)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dateTime), $"Weather data is available from {MinOneCallTimeMachineDate:yyyy-MM-dd}");
-            }
-
-            this.logger.LogDebug($"GetWeatherOneCallTimeMachineAsync: latitude={latitude}, longitude={longitude}, dateTime={dateTime:O}");
-
-            var epochDateTime = EpochDateTimeConverter.Convert(dateTime);
-            var query = $"{GetCoordinatesQuery(latitude, longitude)}&dt={epochDateTime}&{this.GetUnitsAndLanguageQuery()}";
-            return this.GetAsync<OneCallTimeMachineInfo>(nameof(this.GetWeatherOneCallTimeMachineAsync), ApiPaths.OneCallTimeMachine, query);
+            return this.GetWeatherOneCallTimelineAsync<MinutelyWeatherForecast>(ApiPaths.OneCallTimeline1Minute, latitude, longitude, start: null);
         }
 
-        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude)
         {
-            return this.GetWeatherOneCallDaySummaryInternalAsync(latitude, longitude, date, timezoneQuery: "");
+            return this.GetWeatherOneCallTimelineAsync<TimelineWeatherForecast>(ApiPaths.OneCallTimeline15Minutes, latitude, longitude, start: null);
         }
 
-        public Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude, DateTime start)
         {
-            if (timezoneOffset.Duration() > MaxTimezoneOffset)
-            {
-                throw new ArgumentOutOfRangeException(nameof(timezoneOffset));
-            }
-
-            var sign = timezoneOffset < TimeSpan.Zero ? "-" : "+";
-            var timezone = $"{sign}{timezoneOffset.Duration().ToString(@"hh\:mm", CultureInfo.InvariantCulture)}";
-            return this.GetWeatherOneCallDaySummaryInternalAsync(latitude, longitude, date, $"&tz={Uri.EscapeDataString(timezone)}");
+            return this.GetWeatherOneCallTimelineAsync<TimelineWeatherForecast>(ApiPaths.OneCallTimeline15Minutes, latitude, longitude, start);
         }
 
-        private Task<OneCallDaySummary> GetWeatherOneCallDaySummaryInternalAsync(double latitude, double longitude, DateTime date, string timezoneQuery)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude)
         {
-            if (date.Date < MinOneCallDaySummaryDate)
-            {
-                throw new ArgumentOutOfRangeException(nameof(date), $"Weather data is available from {MinOneCallDaySummaryDate:yyyy-MM-dd}");
-            }
-
-            this.logger.LogDebug($"GetWeatherOneCallDaySummaryAsync: latitude={latitude}, longitude={longitude}, date={FormatDate(date)}");
-
-            var query = $"{GetCoordinatesQuery(latitude, longitude)}&date={FormatDate(date)}{timezoneQuery}&{this.GetUnitsAndLanguageQuery()}";
-            return this.GetAsync<OneCallDaySummary>("GetWeatherOneCallDaySummaryAsync", ApiPaths.OneCallDaySummary, query);
+            return this.GetWeatherOneCallTimelineAsync<TimelineWeatherForecast>(ApiPaths.OneCallTimeline1Hour, latitude, longitude, start: null);
         }
 
-        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude)
+        public Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude, DateTime start)
         {
-            return this.GetWeatherOneCallOverviewInternalAsync(latitude, longitude, dateQuery: "");
+            return this.GetWeatherOneCallTimelineAsync<TimelineWeatherForecast>(ApiPaths.OneCallTimeline1Hour, latitude, longitude, start);
         }
 
-        public Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date)
+        public Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude)
         {
-            return this.GetWeatherOneCallOverviewInternalAsync(latitude, longitude, $"&date={FormatDate(date)}");
+            return this.GetWeatherOneCallTimelineAsync<DailyWeatherForecast>(ApiPaths.OneCallTimeline1Day, latitude, longitude, start: null);
         }
 
-        private Task<OneCallWeatherOverview> GetWeatherOneCallOverviewInternalAsync(double latitude, double longitude, string dateQuery)
+        public Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude, DateTime start)
         {
-            this.logger.LogDebug($"GetWeatherOneCallOverviewAsync: latitude={latitude}, longitude={longitude}");
-
-            // The overview endpoint does not support parameter lang.
-            var query = $"{GetCoordinatesQuery(latitude, longitude)}{dateQuery}&units={this.unitSystem}";
-            return this.GetAsync<OneCallWeatherOverview>("GetWeatherOneCallOverviewAsync", ApiPaths.OneCallOverview, query);
+            return this.GetWeatherOneCallTimelineAsync<DailyWeatherForecast>(ApiPaths.OneCallTimeline1Day, latitude, longitude, start);
         }
 
-        private static string? GetExcludeQueryParameter(OneCallOptions oneCallOptions)
+        private Task<OneCallTimeline<T>> GetWeatherOneCallTimelineAsync<T>(string path, double latitude, double longitude, DateTime? start)
         {
-            var excludes = new HashSet<string>();
+            var startQuery = "";
+            if (start is DateTime startDateTime)
+            {
+                startDateTime = startDateTime.ToUniversalTime();
+                if (startDateTime < MinOneCallTimelineDate)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(start), $"Weather data is available from {MinOneCallTimelineDate:yyyy-MM-dd}");
+                }
 
-            if (!oneCallOptions.IncludeCurrentWeather)
-            {
-                excludes.Add("current");
-            }
-            if (!oneCallOptions.IncludeMinutelyForecasts)
-            {
-                excludes.Add("minutely");
-            }
-            if (!oneCallOptions.IncludeHourlyForecasts)
-            {
-                excludes.Add("hourly");
-            }
-            if (!oneCallOptions.IncludeDailyForecasts)
-            {
-                excludes.Add("daily");
-            }
-            if (!oneCallOptions.IncludeAlerts)
-            {
-                excludes.Add("alerts");
+                startQuery = $"&start={EpochDateTimeConverter.Convert(startDateTime)}";
             }
 
-            string? excludeQueryParameter = null;
-            if (excludes.Any())
+            this.logger.LogDebug($"GetWeatherOneCallTimelineAsync: path={path}, latitude={latitude}, longitude={longitude}, start={start:O}");
+
+            var query = $"{GetCoordinatesQuery(latitude, longitude)}{startQuery}&{this.GetUnitsAndLanguageQuery()}";
+            return this.GetAsync<OneCallTimeline<T>>("GetWeatherOneCallTimelineAsync", path, query);
+        }
+
+        public Task<OneCallTimeline<T>?> GetWeatherOneCallNextPageAsync<T>(OneCallTimeline<T> timeline)
+        {
+            if (timeline == null)
             {
-                excludeQueryParameter = $"&exclude={string.Join(",", excludes)}";
+                throw new ArgumentNullException(nameof(timeline));
             }
 
-            return excludeQueryParameter;
+            return this.GetWeatherOneCallPageAsync<T>(nameof(this.GetWeatherOneCallNextPageAsync), timeline.Next);
+        }
+
+        public Task<OneCallTimeline<T>?> GetWeatherOneCallPreviousPageAsync<T>(OneCallTimeline<T> timeline)
+        {
+            if (timeline == null)
+            {
+                throw new ArgumentNullException(nameof(timeline));
+            }
+
+            return this.GetWeatherOneCallPageAsync<T>(nameof(this.GetWeatherOneCallPreviousPageAsync), timeline.Previous);
+        }
+
+        private async Task<OneCallTimeline<T>?> GetWeatherOneCallPageAsync<T>(string methodName, string? pageUrl)
+        {
+            if (string.IsNullOrEmpty(pageUrl))
+            {
+                return null;
+            }
+
+            // Only follow page URLs of the configured API endpoint, since the API key is added to the request.
+            var pageUri = new Uri(pageUrl, UriKind.Absolute);
+            var path = pageUri.AbsolutePath.TrimStart('/');
+            if (!string.Equals(pageUri.Host, new Uri(this.apiEndpoint).Host, StringComparison.OrdinalIgnoreCase) ||
+                !path.StartsWith(ApiPaths.OneCallTimelinePrefix, StringComparison.Ordinal))
+            {
+                throw new InvalidOperationException($"Page URL is not a One Call API 4.0 timeline URL of {this.apiEndpoint}");
+            }
+
+            var queryParameters = pageUri.Query.TrimStart('?')
+                .Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(p => !p.StartsWith("appid=", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            // Page URLs are not guaranteed to contain the units and language of the initial request.
+            if (!queryParameters.Any(p => p.StartsWith("units=", StringComparison.OrdinalIgnoreCase)))
+            {
+                queryParameters.Add($"units={this.unitSystem}");
+            }
+
+            if (!queryParameters.Any(p => p.StartsWith("lang=", StringComparison.OrdinalIgnoreCase)))
+            {
+                queryParameters.Add($"lang={this.language}");
+            }
+
+            return await this.GetAsync<OneCallTimeline<T>>(methodName, path, string.Join("&", queryParameters));
+        }
+
+        public Task<AlertInfo> GetWeatherOneCallAlertAsync(string alertId)
+        {
+            if (string.IsNullOrWhiteSpace(alertId))
+            {
+                throw new ArgumentException("Alert ID must not be null or empty", nameof(alertId));
+            }
+
+            this.logger.LogDebug($"GetWeatherOneCallAlertAsync: alertId={alertId}");
+
+            var path = $"{ApiPaths.OneCallAlert}/{Uri.EscapeDataString(alertId)}";
+            return this.GetAsync<AlertInfo>(nameof(this.GetWeatherOneCallAlertAsync), path, query: "");
         }
 
         public async Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null)
@@ -398,7 +410,7 @@ namespace OpenWeatherMap
             var builder = new UriBuilder(this.apiEndpoint)
             {
                 Path = path,
-                Query = $"{query}&appid={this.apiKey}"
+                Query = string.IsNullOrEmpty(query) ? $"appid={this.apiKey}" : $"{query}&appid={this.apiKey}"
             };
 
             var uri = builder.ToString();
@@ -444,11 +456,6 @@ namespace OpenWeatherMap
             {
                 throw new ArgumentOutOfRangeException(nameof(latitude));
             }
-        }
-
-        private static string FormatDate(DateTime date)
-        {
-            return date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
 
         private static string FormatCoordinate(double coordinate)

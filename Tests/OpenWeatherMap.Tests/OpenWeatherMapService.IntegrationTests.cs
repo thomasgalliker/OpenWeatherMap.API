@@ -20,7 +20,7 @@ namespace OpenWeatherMap.Tests
         private const string? ProLicenseSkipReason = "Requires an OpenWeatherMap pro license";
 
         /// <summary>
-        /// Skip reason for tests which require a One Call API 3.0 subscription.
+        /// Skip reason for tests which require a One Call API 4.0 subscription.
         /// Set to null to run them (requires a valid OpenWeatherMap:ApiKey with a "One Call by Call" subscription).
         /// </summary>
         private const string? OneCallSubscriptionSkipReason = "Requires an OpenWeatherMap 'One Call by Call' subscription";
@@ -144,77 +144,85 @@ namespace OpenWeatherMap.Tests
         }
 
         [Fact(Skip = OneCallSubscriptionSkipReason)]
-        public async Task GetWeatherOneCallAsync_WithOptions_ReturnsOneCallWeatherInfo()
+        public async Task GetWeatherOneCallCurrentAsync_ValidCoordinates_ReturnsCurrentWeather()
         {
             // Arrange
-            var oneCallOptions = OneCallOptions.Default;
-
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-            var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(Latitude, Longitude, oneCallOptions);
+            var timeline = await openWeatherMapService.GetWeatherOneCallCurrentAsync(Latitude, Longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallWeatherInfo, this.dumpOptions));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(timeline, this.dumpOptions));
 
-            oneCallWeatherInfo.Should().NotBeNull();
-            oneCallWeatherInfo.CurrentWeather.Should().NotBeNull();
-            oneCallWeatherInfo.HourlyForecasts.Should().NotBeEmpty();
-            oneCallWeatherInfo.DailyForecasts.Should().NotBeEmpty();
+            timeline.Should().NotBeNull();
+            timeline.Data.Should().ContainSingle();
         }
 
         [Fact(Skip = OneCallSubscriptionSkipReason)]
-        public async Task GetWeatherOneCallTimeMachineAsync_ValidDateTime_ReturnsOneCallTimeMachineInfo()
+        public async Task GetWeatherOneCallMinutelyAsync_ValidCoordinates_ReturnsMinutelyTimeline()
         {
             // Arrange
-            var dateTime = DateTime.UtcNow.AddDays(-1);
-
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-            var oneCallTimeMachineInfo = await openWeatherMapService.GetWeatherOneCallTimeMachineAsync(Latitude, Longitude, dateTime);
+            var timeline = await openWeatherMapService.GetWeatherOneCallMinutelyAsync(Latitude, Longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallTimeMachineInfo, this.dumpOptions));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(timeline, this.dumpOptions));
 
-            oneCallTimeMachineInfo.Should().NotBeNull();
-            oneCallTimeMachineInfo.Data.Should().ContainSingle();
+            timeline.Data.Should().NotBeEmpty();
         }
 
         [Fact(Skip = OneCallSubscriptionSkipReason)]
-        public async Task GetWeatherOneCallDaySummaryAsync_ValidDate_ReturnsOneCallDaySummary()
+        public async Task GetWeatherOneCall15MinutesAsync_ValidCoordinates_Returns15MinutesTimeline()
         {
             // Arrange
-            var date = DateTime.Today.AddDays(-1);
-
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-            var daySummary = await openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date);
+            var timeline = await openWeatherMapService.GetWeatherOneCall15MinutesAsync(Latitude, Longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(daySummary, this.dumpOptions));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(timeline, this.dumpOptions));
 
-            daySummary.Should().NotBeNull();
-            daySummary.Date.Should().Be(date);
-            daySummary.Temperature.Should().NotBeNull();
-            daySummary.Wind.Max.Should().NotBeNull();
+            timeline.Data.Should().NotBeEmpty();
         }
 
         [Fact(Skip = OneCallSubscriptionSkipReason)]
-        public async Task GetWeatherOneCallOverviewAsync_ValidCoordinates_ReturnsOneCallWeatherOverview()
+        public async Task GetWeatherOneCallHourlyAsync_StartInThePast_ReturnsHistoricalTimelineWithNextPage()
+        {
+            // Arrange
+            var start = DateTime.UtcNow.Date.AddDays(-1);
+
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var timeline = await openWeatherMapService.GetWeatherOneCallHourlyAsync(Latitude, Longitude, start);
+            var nextPage = await openWeatherMapService.GetWeatherOneCallNextPageAsync(timeline);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(timeline, this.dumpOptions));
+
+            timeline.Data.Should().NotBeEmpty();
+            timeline.Data.First().DateTime.Should().BeOnOrAfter(start);
+            nextPage.Should().NotBeNull();
+            nextPage!.Data.First().DateTime.Should().BeAfter(timeline.Data.Last().DateTime);
+        }
+
+        [Fact(Skip = OneCallSubscriptionSkipReason)]
+        public async Task GetWeatherOneCallDailyAsync_ValidCoordinates_ReturnsDailyTimeline()
         {
             // Arrange
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-            var weatherOverview = await openWeatherMapService.GetWeatherOneCallOverviewAsync(Latitude, Longitude);
+            var timeline = await openWeatherMapService.GetWeatherOneCallDailyAsync(Latitude, Longitude);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(weatherOverview, this.dumpOptions));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(timeline, this.dumpOptions));
 
-            weatherOverview.Should().NotBeNull();
-            weatherOverview.WeatherOverview.Should().NotBeNullOrEmpty();
+            timeline.Data.Should().NotBeEmpty();
         }
 
         [Fact]

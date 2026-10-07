@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet;
 
 namespace OpenWeatherMap.Models
 {
+    /// <summary>
+    /// Current weather record of One Call API 4.0.
+    /// </summary>
     public class CurrentWeatherForecast
     {
         public CurrentWeatherForecast()
@@ -91,6 +95,14 @@ namespace OpenWeatherMap.Models
 
         [JsonPropertyName("weather")]
         public WeatherCondition[] Weather { get; set; }
+
+
+        /// <summary>
+        /// IDs of the weather alerts associated with the location and time.
+        /// Use <see cref="IOpenWeatherMapService.GetWeatherOneCallAlertAsync"/> to get the details of an alert.
+        /// </summary>
+        [JsonPropertyName("alerts")]
+        public IReadOnlyCollection<string> Alerts { get; set; } = Array.Empty<string>();
 
         public override string ToString()
         {
