@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 namespace OpenWeatherMap.Models
 {
@@ -12,7 +11,7 @@ namespace OpenWeatherMap.Models
 
         public static readonly UnitSystem Default = Standard;
 
-        private readonly string name;
+        private readonly string? name;
 
         private UnitSystem(string name)
         {
@@ -36,12 +35,9 @@ namespace OpenWeatherMap.Models
             return new UnitSystem(name);
         }
 
-        public static implicit operator string(UnitSystem unitSystem) => unitSystem.name;
+        public static implicit operator string(UnitSystem unitSystem) => unitSystem.ToString();
 
-        [return: NotNullIfNotNull(nameof(name))]
-        public static implicit operator UnitSystem?(string? name) => FromName(name);
-
-        public static implicit operator UnitSystem(string name) => FromName(name);
+        public static implicit operator UnitSystem(string? name) => FromName(name);
 
         public override string ToString()
         {
