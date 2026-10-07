@@ -28,11 +28,11 @@ namespace OpenWeatherMap.Models
         public Coordinates Coordinates { get; set; } = null!;
 
         /// <summary>
-        /// Country code.
+        /// Country code (where available).
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; } = null!;
+        public RegionInfo? Country { get; set; }
 
         [JsonPropertyName("population")]
         public int Population { get; set; }

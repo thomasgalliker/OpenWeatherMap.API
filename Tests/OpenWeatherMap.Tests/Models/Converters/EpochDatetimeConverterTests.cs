@@ -18,6 +18,7 @@ namespace OpenWeatherMap.Tests.Models.Converters
             var testObject = JsonSerializer.Deserialize<EpochDateTimeTestObject>(json);
 
             // Assert
+            testObject.Should().NotBeNull();
             testObject.DateTime.Should().Be(expectedDateTime);
         }
 

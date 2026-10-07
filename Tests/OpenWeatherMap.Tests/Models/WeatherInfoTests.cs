@@ -47,6 +47,21 @@ namespace OpenWeatherMap.Tests.Models
                 .WhenTypeIs<Ratio>());
         }
 
+        [Theory]
+        [InlineData("""{"sys":{"sunrise":1791264677,"sunset":1791305828}}""")]
+        [InlineData("""{"sys":{"country":"","sunrise":1791264677,"sunset":1791305828}}""")]
+        public void DeserializeObject_WithoutCountry_ReturnsNullCountry(string json)
+        {
+            // Arrange
+            var serializer = new OpenWeatherMapJsonSerializer(UnitSystem.Metric);
+
+            // Act
+            var result = serializer.DeserializeObject<WeatherInfo>(json);
+
+            // Assert
+            result.AdditionalInformation.Country.Should().BeNull();
+        }
+
         private static WeatherInfo GetExpectedWeatherInfo()
         {
             return new WeatherInfo

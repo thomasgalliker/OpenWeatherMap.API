@@ -68,7 +68,7 @@ namespace OpenWeatherMap.Models
                 case "N":
                 default:
                     var str = PressureRanges.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));
-                    return str;
+                    return str ?? this.resourceId;
             }
 
         }

@@ -155,11 +155,11 @@ namespace OpenWeatherMap.Models
             return weatherConditionCode.Value;
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
-            if (obj is WeatherConditionCode)
+            if (obj is WeatherConditionCode weatherConditionCode)
             {
-                return this.Value.CompareTo((int)obj);
+                return this.Value.CompareTo(weatherConditionCode.Value);
             }
 
             return this.Value.CompareTo(obj);

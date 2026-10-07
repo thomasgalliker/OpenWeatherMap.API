@@ -12,11 +12,12 @@ namespace OpenWeatherMap.Models.Converters
             writer.WriteStringValue(value.TwoLetterISORegionName);
         }
 
-        public override RegionInfo Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override RegionInfo? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.String)
             {
-                return new RegionInfo(reader.GetString());
+                var name = reader.GetString();
+                return string.IsNullOrEmpty(name) ? null : new RegionInfo(name);
             }
 
             throw new NotSupportedException($"Cannot convert from {reader.TokenType} to RegionInfo");

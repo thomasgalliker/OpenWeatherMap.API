@@ -8,11 +8,11 @@ namespace OpenWeatherMap.Models
     public class AdditionalWeatherInfo
     {
         /// <summary>
-        /// Country code.
+        /// Country code (where available).
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
-        public RegionInfo Country { get; set; } = null!;
+        public RegionInfo? Country { get; set; }
 
         [JsonPropertyName("sunrise")]
         [JsonConverter(typeof(EpochDateTimeConverter))]

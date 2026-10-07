@@ -58,5 +58,19 @@ namespace OpenWeatherMap.Tests.Models
             // Assert
             action.Should().Throw<ArgumentOutOfRangeException>();
         }
+
+        [Fact]
+        public void CompareTo_BoxedUVIndex_ReturnsComparisonResult()
+        {
+            // Arrange
+            var uvIndex = new UVIndex(5d);
+            object other = new UVIndex(3d);
+
+            // Act
+            var result = uvIndex.CompareTo(other);
+
+            // Assert
+            result.Should().BePositive();
+        }
     }
 }

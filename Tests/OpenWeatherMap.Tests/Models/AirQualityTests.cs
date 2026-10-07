@@ -76,5 +76,18 @@ namespace OpenWeatherMap.Tests.Models
                 }
             }
         }
+
+        [Fact]
+        public void CompareTo_Null_ReturnsPositive()
+        {
+            // Arrange
+            var airQuality = AirQuality.Good;
+
+            // Act
+            var result = airQuality.CompareTo((AirQuality?)null);
+
+            // Assert
+            result.Should().BePositive();
+        }
     }
 }

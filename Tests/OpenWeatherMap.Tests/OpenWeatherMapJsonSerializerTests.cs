@@ -1,3 +1,4 @@
+using System.Text.Json;
 using FluentAssertions;
 using OpenWeatherMap.Models;
 using OpenWeatherMap.Tests.Testdata;
@@ -57,6 +58,34 @@ namespace OpenWeatherMap.Tests
             wind.Speed.Should().Be(Speed.FromMetersPerSecond(2.4d));
             wind.Direction.Should().Be(Angle.FromDegrees(220d));
             wind.Gust.Should().Be(Speed.FromMetersPerSecond(4.8d));
+        }
+
+        [Fact]
+        public void DeserializeObject_WeatherForecast5_ReturnsRainOnlyWhereAvailable()
+        {
+            // Arrange
+            var serializer = new OpenWeatherMapJsonSerializer(UnitSystem.Metric);
+            var json = Responses.GetJson(Responses.Forecast5);
+
+            // Act
+            var weatherForecast = serializer.DeserializeObject<WeatherForecast>(json);
+
+            // Assert
+            weatherForecast.Items.Should().Contain(i => i.Rain == null);
+            weatherForecast.Items.Should().Contain(i => i.Rain != null);
+        }
+
+        [Fact]
+        public void DeserializeObject_JsonNull_ThrowsJsonException()
+        {
+            // Arrange
+            var serializer = new OpenWeatherMapJsonSerializer(UnitSystem.Metric);
+
+            // Act
+            Action action = () => serializer.DeserializeObject<WeatherInfo>("null");
+
+            // Assert
+            action.Should().Throw<JsonException>();
         }
     }
 }
