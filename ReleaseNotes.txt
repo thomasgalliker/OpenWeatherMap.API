@@ -1,3 +1,15 @@
+3.0
+- Migrate One Call API from 2.5 (retired by OpenWeatherMap) to 3.0; requires a "One Call by Call" subscription
+- Breaking: GetWeatherOneCallAsync now calls One Call API 3.0 and is no longer obsolete
+- Breaking: Replace GetWeatherOneCallHistoricAsync with GetWeatherOneCallTimeMachineAsync (returns OneCallTimeMachineInfo)
+- Add GetWeatherOneCallDaySummaryAsync and GetWeatherOneCallOverviewAsync
+- Add OneCallOptions.IncludeAlerts, DailyWeatherForecast.Summary and HourlyWeatherForecast.Rain/Snow
+- Add Geocoding API: GetLocationsByNameAsync, GetLocationByZipCodeAsync, GetLocationsByCoordinatesAsync
+- Add GetAirPollutionForecastAsync and GetAirPollutionHistoryAsync
+- Breaking: UnitSystem.Standard returns temperatures in Kelvin (was Celsius)
+- Breaking: IOpenWeatherMapService has new members
+- GetCurrentWeatherAsync validates latitude and longitude
+
 2.2
 - Maintenance updates
 - Replace Newtonsoft.Json with System.Text.Json

@@ -7,6 +7,7 @@ using Xunit;
 
 namespace OpenWeatherMap.Tests.Models
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class WeatherInfoTests
     {
         // Recorded response of GET https://api.openweathermap.org/data/2.5/weather?lat=47.1815&lon=8.4606&units=metric&lang=en

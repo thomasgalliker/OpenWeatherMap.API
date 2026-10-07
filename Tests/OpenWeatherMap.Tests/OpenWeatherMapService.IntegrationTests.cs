@@ -18,7 +18,12 @@ namespace OpenWeatherMap.Tests
         /// Set to null to run them (requires a valid OpenWeatherMap_PRO:ApiKey).
         /// </summary>
         private const string? ProLicenseSkipReason = "Requires an OpenWeatherMap pro license";
-        private const string OneCallSkipReason = "One Call API 2.5 was retired by OpenWeatherMap";
+
+        /// <summary>
+        /// Skip reason for tests which require a One Call API 3.0 subscription.
+        /// Set to null to run them (requires a valid OpenWeatherMap:ApiKey with a "One Call by Call" subscription).
+        /// </summary>
+        private const string? OneCallSubscriptionSkipReason = "Requires an OpenWeatherMap 'One Call by Call' subscription";
 
         private const double Latitude = 47.0907124d;
         private const double Longitude = 8.0559381d;
@@ -138,24 +143,16 @@ namespace OpenWeatherMap.Tests
             }
         }
 
-        [Fact(Skip = OneCallSkipReason)]
+        [Fact(Skip = OneCallSubscriptionSkipReason)]
         public async Task GetWeatherOneCallAsync_WithOptions_ReturnsOneCallWeatherInfo()
         {
             // Arrange
-            var oneCallOptions = new OneCallOptions
-            {
-                IncludeCurrentWeather = true,
-                IncludeDailyForecasts = true,
-                IncludeMinutelyForecasts = true,
-                IncludeHourlyForecasts = true,
-            };
+            var oneCallOptions = OneCallOptions.Default;
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapProOptions);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-#pragma warning disable CS0618 // Tests the obsolete One Call API 2.5
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(Latitude, Longitude, oneCallOptions);
-#pragma warning restore CS0618
 
             // Assert
             this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallWeatherInfo, this.dumpOptions));
@@ -166,25 +163,58 @@ namespace OpenWeatherMap.Tests
             oneCallWeatherInfo.DailyForecasts.Should().NotBeEmpty();
         }
 
-        [Fact(Skip = OneCallSkipReason)]
-        public async Task GetWeatherOneCallHistoricAsync_ValidDateTime_ReturnsOneCallWeatherInfo()
+        [Fact(Skip = OneCallSubscriptionSkipReason)]
+        public async Task GetWeatherOneCallTimeMachineAsync_ValidDateTime_ReturnsOneCallTimeMachineInfo()
         {
             // Arrange
-            var dateTime = DateTime.UtcNow.AddHours(-1);
+            var dateTime = DateTime.UtcNow.AddDays(-1);
 
-            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapProOptions);
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
 
             // Act
-#pragma warning disable CS0618 // Tests the obsolete One Call API 2.5
-            var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallHistoricAsync(Latitude, Longitude, dateTime);
-#pragma warning restore CS0618
+            var oneCallTimeMachineInfo = await openWeatherMapService.GetWeatherOneCallTimeMachineAsync(Latitude, Longitude, dateTime);
 
             // Assert
-            this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallWeatherInfo, this.dumpOptions));
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(oneCallTimeMachineInfo, this.dumpOptions));
 
-            oneCallWeatherInfo.Should().NotBeNull();
-            oneCallWeatherInfo.CurrentWeather.Should().NotBeNull();
-            oneCallWeatherInfo.HourlyForecasts.Should().NotBeEmpty();
+            oneCallTimeMachineInfo.Should().NotBeNull();
+            oneCallTimeMachineInfo.Data.Should().ContainSingle();
+        }
+
+        [Fact(Skip = OneCallSubscriptionSkipReason)]
+        public async Task GetWeatherOneCallDaySummaryAsync_ValidDate_ReturnsOneCallDaySummary()
+        {
+            // Arrange
+            var date = DateTime.Today.AddDays(-1);
+
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var daySummary = await openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(daySummary, this.dumpOptions));
+
+            daySummary.Should().NotBeNull();
+            daySummary.Date.Should().Be(date);
+            daySummary.Temperature.Should().NotBeNull();
+            daySummary.Wind.Max.Should().NotBeNull();
+        }
+
+        [Fact(Skip = OneCallSubscriptionSkipReason)]
+        public async Task GetWeatherOneCallOverviewAsync_ValidCoordinates_ReturnsOneCallWeatherOverview()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var weatherOverview = await openWeatherMapService.GetWeatherOneCallOverviewAsync(Latitude, Longitude);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(weatherOverview, this.dumpOptions));
+
+            weatherOverview.Should().NotBeNull();
+            weatherOverview.WeatherOverview.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
@@ -201,6 +231,90 @@ namespace OpenWeatherMap.Tests
 
             airPollutionInfo.Should().NotBeNull();
             airPollutionInfo.Items.Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionForecastAsync_ValidCoordinates_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionForecastAsync(Latitude, Longitude);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
+
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_ValidPeriod_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            var end = DateTime.UtcNow.Date;
+            var start = end.AddHours(-3);
+
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(airPollutionInfo, this.dumpOptions));
+
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByNameAsync("Menznau,CH", 5);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(locations, this.dumpOptions));
+
+            locations.Should().NotBeEmpty();
+            locations.Should().AllSatisfy(l => l.Country.Should().Be("CH"));
+        }
+
+        [Fact]
+        public async Task GetLocationByZipCodeAsync_ValidZipCode_ReturnsZipCodeLocation()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var zipCodeLocation = await openWeatherMapService.GetLocationByZipCodeAsync("6122", "CH");
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(zipCodeLocation, this.dumpOptions));
+
+            zipCodeLocation.Should().NotBeNull();
+            zipCodeLocation.ZipCode.Should().Be("6122");
+            zipCodeLocation.Country.Should().Be("CH");
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_ValidCoordinates_ReturnsLocations()
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(this.logger, this.openWeatherMapOptions);
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, 1);
+
+            // Assert
+            this.testOutputHelper.WriteLine(ObjectDumper.Dump(locations, this.dumpOptions));
+
+            locations.Should().ContainSingle()
+                .Which.Name.Should().NotBeNullOrEmpty();
         }
     }
 }

@@ -7,6 +7,7 @@ using Xunit;
 
 namespace OpenWeatherMap.Tests.Extensions
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class AngleExtensionsTests
     {
         [Theory]

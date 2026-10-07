@@ -13,7 +13,7 @@
     <Version>1.0.0</Version>
     <Authors>Thomas Galliker</Authors>
     <PackageId>OpenWeatherMap.API</PackageId>
-    <PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation</PackageTags>
+    <PackageTags>OpenWeatherMap;Weather;API;Forecast;Temperature;Precipitation;OneCall;Geocoding;AirPollution</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>

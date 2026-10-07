@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OpenWeatherMap.Extensions;
@@ -8,8 +9,6 @@ namespace OpenWeatherMap.ConsoleSample
 {
     public static class Program
     {
-        private static IConfigurationRoot configuration;
-
         private static async Task Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -18,7 +17,7 @@ namespace OpenWeatherMap.ConsoleSample
             Console.WriteLine("(c) 2026 superdev gmbh. All rights reserved.");
             Console.WriteLine();
 
-            configuration = new ConfigurationBuilder()
+            var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 #if DEBUG
@@ -42,8 +41,14 @@ namespace OpenWeatherMap.ConsoleSample
             var logger = loggerFactory.CreateLogger<OpenWeatherMapService>();
             IOpenWeatherMapService openWeatherMapService = new OpenWeatherMapService(logger, openWeatherMapOptions);
 
-            var latitude = 47.181510d;
-            var longitude = 8.460620d;
+            // Resolve the coordinates of a location by name using GetLocationsByNameAsync (Geocoding API):
+            var location = (await openWeatherMapService.GetLocationsByNameAsync("Menznau,CH", limit: 1)).First();
+            var latitude = location.Latitude;
+            var longitude = location.Longitude;
+
+            Console.WriteLine(
+                $"Location:{Environment.NewLine}" +
+                $"{location.Name}, {location.State}, {location.Country} ({latitude}, {longitude}){Environment.NewLine}");
 
             // Request weather info using GetCurrentWeatherAsync:
             {
@@ -74,6 +79,28 @@ namespace OpenWeatherMap.ConsoleSample
                 }
 
                 Console.WriteLine();
+            }
+
+            // Request current weather and forecasts using GetWeatherOneCallAsync (One Call API 3.0):
+            try
+            {
+                var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude);
+
+                Console.WriteLine("Daily Forecast (One Call API 3.0):");
+                foreach (var dailyForecast in oneCallWeatherInfo.DailyForecasts)
+                {
+                    Console.WriteLine(
+                        $"{dailyForecast.DateTime.ToLocalTime():d}: " +
+                        $"{dailyForecast.Temperature.Min}/{dailyForecast.Temperature.Max}, " +
+                        $"{dailyForecast.Summary}");
+                }
+
+                Console.WriteLine();
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                Console.WriteLine(
+                    $"One Call API 3.0 requires a 'One Call by Call' subscription: https://openweathermap.org/api/one-call-3{Environment.NewLine}");
             }
 
             // Request air pollution information:

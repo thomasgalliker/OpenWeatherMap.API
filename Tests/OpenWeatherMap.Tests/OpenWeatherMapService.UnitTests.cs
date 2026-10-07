@@ -4,8 +4,10 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.AutoMock;
 using Moq.Contrib.HttpClient;
+using OpenWeatherMap.Models;
 using OpenWeatherMap.Tests.Logging;
 using OpenWeatherMap.Tests.Testdata;
+using UnitsNet;
 using Xunit;
 using Xunit.Abstractions;
 using MockHttpMessageHandlerExtensions = Moq.Contrib.HttpClient.MockHttpMessageHandlerExtensions;
@@ -70,7 +72,25 @@ namespace OpenWeatherMap.Tests
         }
 
         [Theory]
-        [InlineData(null, 96, "https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey")]
+        [InlineData(-90.1d, 0d, "latitude")]
+        [InlineData(90.1d, 0d, "latitude")]
+        [InlineData(0d, -180.1d, "longitude")]
+        [InlineData(0d, 180.1d, "longitude")]
+        public async Task GetCurrentWeatherAsync_InvalidCoordinates_ThrowsArgumentOutOfRangeException(double latitude, double longitude, string expectedParamName)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetCurrentWeatherAsync(latitude, longitude);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName(expectedParamName);
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null, 96,"https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey")]
         [InlineData(24, 24, "https://api.openweathermap.org/data/2.5/forecast/hourly?lat=1.1111&lon=1.2222&units=metric&lang=en&cnt=24&appid=apikey")]
         public async Task GetWeatherForecast4Async_WithCount_ReturnsHourlyForecast(int? count, int expectedCount, string expectedUri)
         {
@@ -156,22 +176,23 @@ namespace OpenWeatherMap.Tests
         public async Task GetWeatherOneCallAsync_WithOptions_ReturnsOneCallWeatherInfo(OneCallOptions oneCallOptions, string expectedUri)
         {
             // Arrange
-            this.SetupResponse("/data/2.5/onecall", Responses.GetJson(Responses.OneCall));
+            this.SetupResponse("/data/3.0/onecall", Responses.GetJson(Responses.OneCall));
 
             IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
 
             // Act
-#pragma warning disable CS0618 // Tests the obsolete One Call API 2.5
             var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(Latitude, Longitude, oneCallOptions);
-#pragma warning restore CS0618
 
             // Assert
             oneCallWeatherInfo.Should().NotBeNull();
             oneCallWeatherInfo.Timezone.Should().Be("Europe/Zurich");
             oneCallWeatherInfo.CurrentWeather.Should().NotBeNull();
+            oneCallWeatherInfo.CurrentWeather.Rain!.Last1h.Should().NotBeNull();
             oneCallWeatherInfo.MinutelyForecasts.Should().HaveCount(61);
             oneCallWeatherInfo.HourlyForecasts.Should().HaveCount(48);
+            oneCallWeatherInfo.HourlyForecasts.First().Rain!.Last1h.Should().NotBeNull();
             oneCallWeatherInfo.DailyForecasts.Should().HaveCount(8);
+            oneCallWeatherInfo.DailyForecasts.Should().OnlyContain(d => !string.IsNullOrEmpty(d.Summary));
             oneCallWeatherInfo.Alerts.Should().ContainSingle();
 
             this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get, expectedUri, Times.Once());
@@ -184,7 +205,7 @@ namespace OpenWeatherMap.Tests
             {
                 this.Add(
                     OneCallOptions.Default,
-                    "https://api.openweathermap.org/data/2.5/onecall?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey");
+                    "https://api.openweathermap.org/data/3.0/onecall?lat=1.1111&lon=1.2222&units=metric&lang=en&appid=apikey");
 
                 this.Add(new OneCallOptions
                 {
@@ -193,34 +214,239 @@ namespace OpenWeatherMap.Tests
                     IncludeHourlyForecasts = false,
                     IncludeDailyForecasts = true,
                 },
-                "https://api.openweathermap.org/data/2.5/onecall?lat=1.1111&lon=1.2222&exclude=current,minutely,hourly&units=metric&lang=en&appid=apikey");
+                "https://api.openweathermap.org/data/3.0/onecall?lat=1.1111&lon=1.2222&exclude=current,minutely,hourly&units=metric&lang=en&appid=apikey");
+
+                this.Add(new OneCallOptions
+                {
+                    IncludeAlerts = false,
+                },
+                "https://api.openweathermap.org/data/3.0/onecall?lat=1.1111&lon=1.2222&exclude=alerts&units=metric&lang=en&appid=apikey");
             }
         }
 
         [Fact]
-        public async Task GetWeatherOneCallHistoricAsync_ValidDateTime_ReturnsOneCallWeatherInfo()
+        public async Task GetWeatherOneCallTimeMachineAsync_ValidDateTime_ReturnsOneCallTimeMachineInfo()
         {
             // Arrange
             var dateTime = new DateTime(2026, 10, 6, 12, 0, 0, DateTimeKind.Utc);
 
-            this.SetupResponse("/data/2.5/onecall/timemachine", Responses.GetJson(Responses.OneCallTimemachine));
+            this.SetupResponse("/data/3.0/onecall/timemachine", Responses.GetJson(Responses.OneCallTimeMachine));
 
             IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
 
             // Act
-#pragma warning disable CS0618 // Tests the obsolete One Call API 2.5
-            var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallHistoricAsync(Latitude, Longitude, dateTime);
-#pragma warning restore CS0618
+            var oneCallTimeMachineInfo = await openWeatherMapService.GetWeatherOneCallTimeMachineAsync(Latitude, Longitude, dateTime);
 
             // Assert
-            oneCallWeatherInfo.Should().NotBeNull();
-            oneCallWeatherInfo.CurrentWeather.DateTime.Should().Be(dateTime);
-            oneCallWeatherInfo.HourlyForecasts.Should().HaveCount(24);
+            oneCallTimeMachineInfo.Should().NotBeNull();
+            oneCallTimeMachineInfo.Timezone.Should().Be("Europe/Zurich");
+            oneCallTimeMachineInfo.Data.Should().ContainSingle()
+                .Which.DateTime.Should().Be(dateTime);
 
             this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
-                "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=1.1111&lon=1.2222&dt=1791288000&units=metric&lang=en&appid=apikey",
+                "https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=1.1111&lon=1.2222&dt=1791288000&units=metric&lang=en&appid=apikey",
                 Times.Once());
 
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherOneCallTimeMachineAsync_DateTimeBefore1979_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            var dateTime = new DateTime(1978, 12, 31, 23, 59, 59, DateTimeKind.Utc);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetWeatherOneCallTimeMachineAsync(Latitude, Longitude, dateTime);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("dateTime");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherOneCallDaySummaryAsync_ValidDate_ReturnsOneCallDaySummary()
+        {
+            // Arrange
+            var date = new DateTime(2026, 10, 6);
+
+            this.SetupResponse("/data/3.0/onecall/day_summary", Responses.GetJson(Responses.OneCallDaySummary));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var daySummary = await openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date);
+
+            // Assert
+            daySummary.Should().NotBeNull();
+            daySummary.Date.Should().Be(date);
+            daySummary.Timezone.Should().Be("+02:00");
+            daySummary.Units.Should().Be(UnitSystem.Metric);
+            daySummary.CloudCover.Afternoon.Should().Be(Ratio.FromPercent(20d));
+            daySummary.Humidity.Afternoon.Should().Be(RelativeHumidity.FromPercent(56d));
+            daySummary.Precipitation.Total.Should().Be(Length.FromMillimeters(1.25d));
+            daySummary.Temperature.Min.Should().Be(Temperature.FromDegreesCelsius(8.1d));
+            daySummary.Temperature.Max.Should().Be(Temperature.FromDegreesCelsius(17.4d));
+            daySummary.Pressure.Afternoon.Should().Be(Pressure.FromHectopascals(1017d));
+            daySummary.Wind.Max.Speed.Should().Be(Speed.FromMetersPerSecond(4.8d));
+            daySummary.Wind.Max.Direction.Should().Be(Angle.FromDegrees(220d));
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/3.0/onecall/day_summary?lat=1.1111&lon=1.2222&date=2026-10-06&units=metric&lang=en&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(2, "%2B02%3A00")]
+        [InlineData(-5.5, "-05%3A30")]
+        [InlineData(0, "%2B00%3A00")]
+        public async Task GetWeatherOneCallDaySummaryAsync_WithTimezoneOffset_RequestsTimezone(double offsetHours, string expectedTimezone)
+        {
+            // Arrange
+            var date = new DateTime(2026, 10, 6);
+            var timezoneOffset = TimeSpan.FromHours(offsetHours);
+
+            this.SetupResponse("/data/3.0/onecall/day_summary", Responses.GetJson(Responses.OneCallDaySummary));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date, timezoneOffset);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                $"https://api.openweathermap.org/data/3.0/onecall/day_summary?lat=1.1111&lon=1.2222&date=2026-10-06&tz={expectedTimezone}&units=metric&lang=en&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherOneCallDaySummaryAsync_DateBefore1979_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            var date = new DateTime(1979, 1, 1);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("date");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(14.5)]
+        [InlineData(-14.5)]
+        public async Task GetWeatherOneCallDaySummaryAsync_InvalidTimezoneOffset_ThrowsArgumentOutOfRangeException(double offsetHours)
+        {
+            // Arrange
+            var date = new DateTime(2026, 10, 6);
+            var timezoneOffset = TimeSpan.FromHours(offsetHours);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetWeatherOneCallDaySummaryAsync(Latitude, Longitude, date, timezoneOffset);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("timezoneOffset");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherOneCallOverviewAsync_ValidCoordinates_ReturnsOneCallWeatherOverview()
+        {
+            // Arrange
+            this.SetupResponse("/data/3.0/onecall/overview", Responses.GetJson(Responses.OneCallOverview));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var weatherOverview = await openWeatherMapService.GetWeatherOneCallOverviewAsync(Latitude, Longitude);
+
+            // Assert
+            weatherOverview.Should().NotBeNull();
+            weatherOverview.Date.Should().Be(new DateTime(2026, 10, 6));
+            weatherOverview.WeatherOverview.Should().StartWith("The current weather is partly cloudy");
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/3.0/onecall/overview?lat=1.1111&lon=1.2222&units=metric&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherOneCallOverviewAsync_WithDate_RequestsDate()
+        {
+            // Arrange
+            var date = new DateTime(2026, 10, 7);
+
+            this.SetupResponse("/data/3.0/onecall/overview", Responses.GetJson(Responses.OneCallOverview));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetWeatherOneCallOverviewAsync(Latitude, Longitude, date);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/3.0/onecall/overview?lat=1.1111&lon=1.2222&date=2026-10-07&units=metric&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherIconAsync_DefaultWeatherIconMapping_ReturnsIconFromOpenWeatherMap()
+        {
+            // Arrange
+            var weatherCondition = new WeatherCondition { Id = WeatherConditionCode.Clear, IconId = "01d" };
+            var iconBytes = new byte[] { 0x89, 0x50, 0x4E, 0x47 };
+
+            var iconRequestSetup = this.httpMessageHandlerMock.SetupRequest(HttpMethod.Get, "https://openweathermap.org/img/wn/01d@2x.png");
+            MockHttpMessageHandlerExtensions.ReturnsResponse(iconRequestSetup, iconBytes, "image/png");
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var iconStream = await openWeatherMapService.GetWeatherIconAsync(weatherCondition);
+
+            // Assert
+            using var memoryStream = new MemoryStream();
+            await iconStream.CopyToAsync(memoryStream);
+            memoryStream.ToArray().Should().Equal(iconBytes);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get, "https://openweathermap.org/img/wn/01d@2x.png", Times.Once());
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetWeatherIconAsync_CustomWeatherIconMapping_ReturnsIconFromMapping()
+        {
+            // Arrange
+            var weatherCondition = new WeatherCondition { Id = WeatherConditionCode.Clear, IconId = "01d" };
+            var iconStream = new MemoryStream();
+
+            var weatherIconMappingMock = new Mock<IWeatherIconMapping>();
+            weatherIconMappingMock.Setup(m => m.GetIconAsync(weatherCondition))
+                .ReturnsAsync(iconStream);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var result = await openWeatherMapService.GetWeatherIconAsync(weatherCondition, weatherIconMappingMock.Object);
+
+            // Assert
+            result.Should().BeSameAs(iconStream);
+            weatherIconMappingMock.Verify(m => m.GetIconAsync(weatherCondition), Times.Once());
             this.httpMessageHandlerMock.VerifyNoOtherCalls();
         }
 
@@ -244,6 +470,271 @@ namespace OpenWeatherMap.Tests
                 "https://api.openweathermap.org/data/2.5/air_pollution?lat=1.1111&lon=1.2222&appid=apikey",
                 Times.Once());
 
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionForecastAsync_ValidCoordinates_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            this.SetupResponse("/data/2.5/air_pollution/forecast", Responses.GetJson(Responses.AirPollutionForecast));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionForecastAsync(Latitude, Longitude);
+
+            // Assert
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().HaveCount(4);
+            airPollutionInfo.Items.Should().BeInAscendingOrder(i => i.DateTime);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=1.1111&lon=1.2222&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_ValidPeriod_ReturnsAirPollutionInfo()
+        {
+            // Arrange
+            var start = new DateTime(2026, 10, 5, 0, 0, 0, DateTimeKind.Utc);
+            var end = new DateTime(2026, 10, 5, 3, 0, 0, DateTimeKind.Utc);
+
+            this.SetupResponse("/data/2.5/air_pollution/history", Responses.GetJson(Responses.AirPollutionHistory));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var airPollutionInfo = await openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            airPollutionInfo.Should().NotBeNull();
+            airPollutionInfo.Items.Should().HaveCount(3);
+            airPollutionInfo.Items.First().DateTime.Should().Be(start);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/data/2.5/air_pollution/history?lat=1.1111&lon=1.2222&start=1791158400&end=1791169200&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetAirPollutionHistoryAsync_StartBeforeMinDate_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            var start = new DateTime(2020, 11, 26, 23, 59, 59, DateTimeKind.Utc);
+            var end = new DateTime(2020, 11, 28, 0, 0, 0, DateTimeKind.Utc);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("start");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public async Task GetAirPollutionHistoryAsync_EndNotAfterStart_ThrowsArgumentOutOfRangeException(int endOffsetHours)
+        {
+            // Arrange
+            var start = new DateTime(2026, 10, 5, 0, 0, 0, DateTimeKind.Utc);
+            var end = start.AddHours(endOffsetHours);
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetAirPollutionHistoryAsync(Latitude, Longitude, start, end);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("end");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByNameAsync_ValidQuery_ReturnsLocations()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/direct", Responses.GetJson(Responses.GeocodingDirect));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByNameAsync("Menznau,CH");
+
+            // Assert
+            var location = locations.Should().ContainSingle().Subject;
+            location.Name.Should().Be(ExpectedCityName);
+            location.LocalNames.Should().ContainKey("de");
+            location.Latitude.Should().Be(47.0838106d);
+            location.Longitude.Should().Be(8.040131d);
+            location.Country.Should().Be("CH");
+            location.State.Should().Be("Lucerne");
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/direct?q=Menznau%2CCH&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByNameAsync_WithLimit_RequestsLimit()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/direct", Responses.GetJson(Responses.GeocodingDirect));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetLocationsByNameAsync("Menznau", 5);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/direct?q=Menznau&limit=5&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public async Task GetLocationsByNameAsync_EmptyQuery_ThrowsArgumentException(string? query)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByNameAsync(query!);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentException>().WithParameterName("query");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(6)]
+        public async Task GetLocationsByNameAsync_InvalidLimit_ThrowsArgumentOutOfRangeException(int limit)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByNameAsync("Menznau", limit);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("limit");
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationByZipCodeAsync_ValidZipCode_ReturnsZipCodeLocation()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/zip", Responses.GetJson(Responses.GeocodingZip));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var zipCodeLocation = await openWeatherMapService.GetLocationByZipCodeAsync("6122", "CH");
+
+            // Assert
+            zipCodeLocation.Should().NotBeNull();
+            zipCodeLocation.ZipCode.Should().Be("6122");
+            zipCodeLocation.Name.Should().Be(ExpectedCityName);
+            zipCodeLocation.Latitude.Should().Be(47.0775d);
+            zipCodeLocation.Longitude.Should().Be(8.0373d);
+            zipCodeLocation.Country.Should().Be("CH");
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/zip?zip=6122,CH&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null, "CH", "zipCode")]
+        [InlineData("", "CH", "zipCode")]
+        [InlineData("6122", null, "countryCode")]
+        [InlineData("6122", "", "countryCode")]
+        public async Task GetLocationByZipCodeAsync_EmptyParameter_ThrowsArgumentException(string? zipCode, string? countryCode, string expectedParamName)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationByZipCodeAsync(zipCode!, countryCode!);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentException>().WithParameterName(expectedParamName);
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_ValidCoordinates_ReturnsLocations()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/reverse", Responses.GetJson(Responses.GeocodingReverse));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            var locations = await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude);
+
+            // Assert
+            locations.Should().ContainSingle()
+                .Which.Name.Should().Be(ExpectedCityName);
+
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/reverse?lat=1.1111&lon=1.2222&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task GetLocationsByCoordinatesAsync_WithLimit_RequestsLimit()
+        {
+            // Arrange
+            this.SetupResponse("/geo/1.0/reverse", Responses.GetJson(Responses.GeocodingReverse));
+
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            await openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, 1);
+
+            // Assert
+            this.httpMessageHandlerMock.VerifyRequest(HttpMethod.Get,
+                "https://api.openweathermap.org/geo/1.0/reverse?lat=1.1111&lon=1.2222&limit=1&appid=apikey",
+                Times.Once());
+
+            this.httpMessageHandlerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(6)]
+        public async Task GetLocationsByCoordinatesAsync_InvalidLimit_ThrowsArgumentOutOfRangeException(int limit)
+        {
+            // Arrange
+            IOpenWeatherMapService openWeatherMapService = this.autoMocker.CreateInstance<OpenWeatherMapService>();
+
+            // Act
+            Func<Task> action = () => openWeatherMapService.GetLocationsByCoordinatesAsync(Latitude, Longitude, limit);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentOutOfRangeException>().WithParameterName("limit");
             this.httpMessageHandlerMock.VerifyNoOtherCalls();
         }
 

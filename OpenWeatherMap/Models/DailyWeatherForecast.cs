@@ -41,6 +41,12 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio MoonPhase { get; set; } = Ratio.FromPercent(0d);
 
+        /// <summary>
+        /// Human-readable description of the weather conditions for the day.
+        /// </summary>
+        [JsonPropertyName("summary")]
+        public string? Summary { get; set; }
+
         [JsonPropertyName("temp")]
         public DailyTemperatureForecast Temperature { get; set; } = null!;
 
