@@ -1,4 +1,3 @@
-using System;
 using FluentAssertions;
 using Xunit;
 
@@ -69,6 +68,19 @@ namespace OpenWeatherMap.Tests.Models
 
             // Assert
             toString.Should().Be(UnitSystem.Standard);
+        }
+
+        [Fact]
+        public void ImplicitStringConversion_Default_ReturnsStandard()
+        {
+            // Arrange
+            UnitSystem unitSystem = default;
+
+            // Act
+            string name = unitSystem;
+
+            // Assert
+            name.Should().Be(UnitSystem.Standard);
         }
     }
 }

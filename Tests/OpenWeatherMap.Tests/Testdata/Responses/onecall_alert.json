@@ -1,0 +1,20 @@
+{
+  "id": "2.49.0.0.756.0.CH.20261006120000.MeteoSwiss:TS01:7c1f0e2a",
+  "sender_name": "MeteoSwiss",
+  "event": "Thunderstorm warning",
+  "start": 1791309600,
+  "end": 1791331200,
+  "description": [
+    {
+      "language": "de-CH",
+      "description": "Gewitter mit Starkregen und Hagel werden erwartet."
+    },
+    {
+      "language": "en-GB",
+      "description": "Thunderstorms with heavy rain and hail are expected."
+    }
+  ],
+  "tags": [
+    "Thunderstorm"
+  ]
+}

@@ -50,7 +50,7 @@ namespace OpenWeatherMap.Models
             return a1.Value < a2.Value;
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
             if (obj is AirQuality airQuality)
             {
@@ -60,8 +60,13 @@ namespace OpenWeatherMap.Models
             return this.Value.CompareTo(obj);
         }
 
-        public int CompareTo(AirQuality other)
+        public int CompareTo(AirQuality? other)
         {
+            if (other is null)
+            {
+                return 1;
+            }
+
             return this.Value.CompareTo(other.Value);
         }
 
@@ -90,7 +95,7 @@ namespace OpenWeatherMap.Models
             switch (format)
             {
                 case "I":
-                    return base.ToString();
+                    return base.ToString() ?? this.resourceId;
                 case "N":
                 default:
                     var str = AirQualityTranslations.ResourceManager.GetString(this.resourceId, (CultureInfo)(provider ?? CultureInfo.CurrentCulture));

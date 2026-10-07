@@ -29,6 +29,10 @@
           "description": "broken clouds",
           "icon": "04d"
         }
+      ],
+      "alerts": [
+        "2.49.0.0.756.0.CH.20261006120000.MeteoSwiss:TS01:7c1f0e2a",
+        "2.49.0.0.756.0.CH.20261006120000.MeteoSwiss:RN02:91ab33d4"
       ]
     }
   ]

@@ -81,18 +81,25 @@ namespace OpenWeatherMap.ConsoleSample
                 Console.WriteLine();
             }
 
-            // Request current weather and forecasts using GetWeatherOneCallAsync (One Call API 3.0):
+            // Request the daily forecast using GetWeatherOneCallDailyAsync (One Call API 4.0):
             try
             {
-                var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude);
+                var dailyTimeline = await openWeatherMapService.GetWeatherOneCallDailyAsync(latitude, longitude);
 
-                Console.WriteLine("Daily Forecast (One Call API 3.0):");
-                foreach (var dailyForecast in oneCallWeatherInfo.DailyForecasts)
+                Console.WriteLine("Daily Forecast (One Call API 4.0):");
+                foreach (var dailyForecast in dailyTimeline.Data)
                 {
                     Console.WriteLine(
                         $"{dailyForecast.DateTime.ToLocalTime():d}: " +
                         $"{dailyForecast.Temperature.Min}/{dailyForecast.Temperature.Max}, " +
-                        $"{dailyForecast.Summary}");
+                        $"{dailyForecast.Weather.ElementAtOrDefault(0)?.Description}");
+                }
+
+                // Weather alerts are referenced by ID; request the details of each alert:
+                foreach (var alertId in dailyTimeline.Data.SelectMany(d => d.Alerts).Distinct())
+                {
+                    var alertInfo = await openWeatherMapService.GetWeatherOneCallAlertAsync(alertId);
+                    Console.WriteLine($"Alert: {alertInfo}");
                 }
 
                 Console.WriteLine();
@@ -100,7 +107,7 @@ namespace OpenWeatherMap.ConsoleSample
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
             {
                 Console.WriteLine(
-                    $"One Call API 3.0 requires a 'One Call by Call' subscription: https://openweathermap.org/api/one-call-3{Environment.NewLine}");
+                    $"One Call API 4.0 requires a 'One Call by Call' subscription: https://openweathermap.org/api/one-call-4{Environment.NewLine}");
             }
 
             // Request air pollution information:

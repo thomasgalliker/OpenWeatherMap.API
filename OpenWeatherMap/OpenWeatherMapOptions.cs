@@ -5,7 +5,6 @@
         public OpenWeatherMapOptions()
         {
             this.ApiEndpoint = "https://api.openweathermap.org";
-            this.ApiKey = null!;
             this.UnitSystem = "metric";
             this.Language = "en";
         }

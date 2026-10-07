@@ -12,7 +12,7 @@ namespace OpenWeatherMap.Tests.Models
         [Theory]
         [ClassData(typeof(CardinalWindDirectionTestData))]
 
-        public void ShouldReturnToString(CardinalWindDirection cardinalWindDirection, string format, IFormatProvider formatProvider, string expectedString)
+        public void ShouldReturnToString(CardinalWindDirection cardinalWindDirection, string? format, IFormatProvider formatProvider, string expectedString)
         {
             // Act
             var toString = cardinalWindDirection.ToString(format, formatProvider);
@@ -21,7 +21,7 @@ namespace OpenWeatherMap.Tests.Models
             toString.Should().Be(expectedString);
         }
 
-        public class CardinalWindDirectionTestData : TheoryData<CardinalWindDirection, string, IFormatProvider, string>
+        public class CardinalWindDirectionTestData : TheoryData<CardinalWindDirection, string?, IFormatProvider, string>
         {
             public CardinalWindDirectionTestData()
             {

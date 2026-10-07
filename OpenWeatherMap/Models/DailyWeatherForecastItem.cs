@@ -20,13 +20,19 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
+        /// <summary>
+        /// Sunrise time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunrise { get; set; }
 
+        /// <summary>
+        /// Sunset time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunset { get; set; }
 
         [JsonPropertyName("temp")]
         public DailyTemperatureForecast Temperature { get; set; } = null!;
@@ -103,7 +109,7 @@ namespace OpenWeatherMap.Models
         public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>
-        /// Daily volume of rain, in mm (where available).
+        /// Daily volume of rain, in mm.
         /// </summary>
         [JsonPropertyName("rain")]
         [JsonConverter(typeof(MillimeterLengthJsonConverter))]

@@ -17,7 +17,7 @@ namespace OpenWeatherMap.Tests.Logging
             this.testOutputHelper = testOutputHelper;
         }
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace OpenWeatherMap.Tests.Logging
 
         public bool IsEnabled(LogLevel logLevel) => true;
 
-        public IDisposable BeginScope<TState>(TState state)
+        public IDisposable BeginScope<TState>(TState state) where TState : notnull
         {
             return new NonDisposable();
         }

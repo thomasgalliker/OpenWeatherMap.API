@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using OpenWeatherMap.Models;
 using OpenWeatherMap.Models.Converters;
 using UnitsNet.Units;
 
@@ -59,7 +60,8 @@ namespace OpenWeatherMap
 
         public T DeserializeObject<T>(string value)
         {
-            return JsonSerializer.Deserialize<T>(value, this.serializerOptions)!;
+            return JsonSerializer.Deserialize<T>(value, this.serializerOptions) ??
+                   throw new JsonException($"Cannot deserialize JSON null to {typeof(T).Name}");
         }
 
         public string SerializeObject<T>(T value)

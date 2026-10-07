@@ -50,81 +50,134 @@ namespace OpenWeatherMap
         Task<Stream> GetWeatherIconAsync(WeatherCondition weatherCondition, IWeatherIconMapping? weatherIconMapping = null);
 
         /// <summary>
-        /// Current weather, minutely forecast for 1 hour, hourly forecast for 48 hours, daily forecast for 8 days
-        /// and government weather alerts using One Call API 3.0.
-        /// https://openweathermap.org/api/one-call-3
+        /// Current weather data using One Call API 4.0. The response contains 1 record.
+        /// https://openweathermap.org/api/one-call-4#current
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <param name="oneCallOptions">Selects the parts of the response to be returned.</param>
-        Task<OneCallWeatherInfo> GetWeatherOneCallAsync(double latitude, double longitude, OneCallOptions? oneCallOptions = null);
+        Task<OneCallTimeline<CurrentWeatherForecast>> GetWeatherOneCallCurrentAsync(double latitude, double longitude);
 
         /// <summary>
-        /// Weather data for the given <paramref name="dateTime"/> (from 1979-01-01 up to 4 days ahead) using One Call API 3.0.
-        /// https://openweathermap.org/api/one-call-3#history
+        /// Minute forecast (precipitation) for the next 60 minutes using One Call API 4.0. The response contains up to 60 records.
+        /// https://openweathermap.org/api/one-call-4#min
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <param name="dateTime">The requested timestamp.</param>
-        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="dateTime"/> is before 1979-01-01.</exception>
-        Task<OneCallTimeMachineInfo> GetWeatherOneCallTimeMachineAsync(double latitude, double longitude, DateTime dateTime);
+        Task<OneCallTimeline<MinutelyWeatherForecast>> GetWeatherOneCallMinutelyAsync(double latitude, double longitude);
 
         /// <summary>
-        /// Aggregated weather data for the given <paramref name="date"/> (from 1979-01-02 up to 1.5 years ahead) using One Call API 3.0.
-        /// The timezone is detected from the given coordinates.
-        /// https://openweathermap.org/api/one-call-3#history_daily_aggregation
+        /// 15 minutes step forecast for the next 48 hours using One Call API 4.0. The response contains up to 50 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#15min
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <param name="date">The requested date (the time part is ignored).</param>
-        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="date"/> is before 1979-01-02.</exception>
-        Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date);
+        Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude);
 
         /// <summary>
-        /// Aggregated weather data for the given <paramref name="date"/> (from 1979-01-02 up to 1.5 years ahead) using One Call API 3.0.
-        /// https://openweathermap.org/api/one-call-3#history_daily_aggregation
+        /// 15 minutes step forecast for the next 48 hours using One Call API 4.0, starting at <paramref name="start"/>. The response contains up to 50 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#15min
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <param name="date">The requested date (the time part is ignored).</param>
-        /// <param name="timezoneOffset">The timezone offset from UTC to be used for the aggregation (between -14h and +14h).</param>
-        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="date"/> is before 1979-01-02 or <paramref name="timezoneOffset"/> is out of range.</exception>
-        Task<OneCallDaySummary> GetWeatherOneCallDaySummaryAsync(double latitude, double longitude, DateTime date, TimeSpan timezoneOffset);
+        /// <param name="start">The start of the timeline (UTC). Default: now.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="start"/> is before 1979-01-01.</exception>
+        Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCall15MinutesAsync(double latitude, double longitude, DateTime start);
 
         /// <summary>
-        /// Human-readable weather summary for today using One Call API 3.0.
-        /// https://openweathermap.org/api/one-call-3#weather_overview
+        /// 1 hour step timeline (history since 1979 and forecast for 48 hours) using One Call API 4.0, starting now. The response contains up to 20 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> and <see cref="GetWeatherOneCallPreviousPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#hourly
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude);
+        Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude);
 
         /// <summary>
-        /// Human-readable weather summary for the given <paramref name="date"/> (today or tomorrow) using One Call API 3.0.
-        /// https://openweathermap.org/api/one-call-3#weather_overview
+        /// 1 hour step timeline (history since 1979 and forecast for 48 hours) using One Call API 4.0, starting at <paramref name="start"/>. The response contains up to 20 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> and <see cref="GetWeatherOneCallPreviousPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#hourly
         /// </summary>
         /// <remarks>
-        /// Requires an OpenWeatherMap "One Call by Call" subscription.
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
         /// </remarks>
         /// <param name="latitude">The GPS latitude.</param>
         /// <param name="longitude">The GPS longitude.</param>
-        /// <param name="date">The requested date (the time part is ignored).</param>
-        Task<OneCallWeatherOverview> GetWeatherOneCallOverviewAsync(double latitude, double longitude, DateTime date);
+        /// <param name="start">The start of the timeline (UTC). Default: now.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="start"/> is before 1979-01-01.</exception>
+        Task<OneCallTimeline<TimelineWeatherForecast>> GetWeatherOneCallHourlyAsync(double latitude, double longitude, DateTime start);
+
+        /// <summary>
+        /// 1 day step timeline (history since 1979 and forecast for 1.5 years) using One Call API 4.0, starting today. The response contains up to 10 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> and <see cref="GetWeatherOneCallPreviousPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#daily
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude);
+
+        /// <summary>
+        /// 1 day step timeline (history since 1979 and forecast for 1.5 years) using One Call API 4.0, starting at <paramref name="start"/>. The response contains up to 10 records; use <see cref="GetWeatherOneCallNextPageAsync{T}"/> and <see cref="GetWeatherOneCallPreviousPageAsync{T}"/> to get more.
+        /// https://openweathermap.org/api/one-call-4#daily
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
+        /// </remarks>
+        /// <param name="latitude">The GPS latitude.</param>
+        /// <param name="longitude">The GPS longitude.</param>
+        /// <param name="start">The start of the timeline (UTC). Default: now.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="start"/> is before 1979-01-01.</exception>
+        Task<OneCallTimeline<DailyWeatherForecast>> GetWeatherOneCallDailyAsync(double latitude, double longitude, DateTime start);
+
+        /// <summary>
+        /// Requests the next page of a One Call API 4.0 <paramref name="timeline"/>.
+        /// https://openweathermap.org/api/one-call-4#pagination
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
+        /// </remarks>
+        /// <param name="timeline">A previously requested timeline.</param>
+        /// <returns>The next page, or <c>null</c> if <see cref="OneCallTimeline{T}.Next"/> is not set.</returns>
+        /// <exception cref="InvalidOperationException">If the page URL does not belong to the configured API endpoint.</exception>
+        Task<OneCallTimeline<T>?> GetWeatherOneCallNextPageAsync<T>(OneCallTimeline<T> timeline);
+
+        /// <summary>
+        /// Requests the previous page of a One Call API 4.0 <paramref name="timeline"/>.
+        /// https://openweathermap.org/api/one-call-4#pagination
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
+        /// </remarks>
+        /// <param name="timeline">A previously requested timeline.</param>
+        /// <returns>The previous page, or <c>null</c> if <see cref="OneCallTimeline{T}.Previous"/> is not set.</returns>
+        /// <exception cref="InvalidOperationException">If the page URL does not belong to the configured API endpoint.</exception>
+        Task<OneCallTimeline<T>?> GetWeatherOneCallPreviousPageAsync<T>(OneCallTimeline<T> timeline);
+
+        /// <summary>
+        /// Detailed information of a national weather alert using One Call API 4.0.
+        /// The alert IDs are provided by the weather records of the other One Call API 4.0 methods.
+        /// https://openweathermap.org/api/one-call-4#alerts
+        /// </summary>
+        /// <remarks>
+        /// Requires an OpenWeatherMap "One Call by Call" subscription for One Call API 4.0.
+        /// </remarks>
+        /// <param name="alertId">The alert ID.</param>
+        /// <exception cref="ArgumentException">If <paramref name="alertId"/> is null or empty.</exception>
+        Task<AlertInfo> GetWeatherOneCallAlertAsync(string alertId);
 
         /// <summary>
         /// Current air pollution data for the given coordinates.
