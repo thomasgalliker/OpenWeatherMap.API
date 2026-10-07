@@ -20,10 +20,13 @@ An API key is required for all API methods. Some API methods require a paid [Ope
 | `GetWeatherForecast5Async` | [5 day / 3 hour forecast](https://openweathermap.org/forecast5) (`data/2.5/forecast`) | Free |
 | `GetWeatherForecast4Async` | [Hourly forecast 4 days](https://openweathermap.org/api/hourly-forecast) (`data/2.5/forecast/hourly`) | Pro |
 | `GetWeatherForecastDailyAsync` | [Daily forecast 16 days](https://openweathermap.org/forecast16) (`data/2.5/forecast/daily`) | Pro |
-| `GetWeatherOneCallAsync` | [One Call API 3.0](https://openweathermap.org/api/one-call-3) (`data/3.0/onecall`) | One Call by Call |
-| `GetWeatherOneCallTimeMachineAsync` | One Call API 3.0 (`data/3.0/onecall/timemachine`) | One Call by Call |
-| `GetWeatherOneCallDaySummaryAsync` | One Call API 3.0 (`data/3.0/onecall/day_summary`) | One Call by Call |
-| `GetWeatherOneCallOverviewAsync` | One Call API 3.0 (`data/3.0/onecall/overview`) | One Call by Call |
+| `GetWeatherOneCallCurrentAsync` | [One Call API 4.0](https://openweathermap.org/api/one-call-4) (`data/4.0/onecall/current`) | One Call by Call |
+| `GetWeatherOneCallMinutelyAsync` | One Call API 4.0 (`data/4.0/onecall/timeline/1min`) | One Call by Call |
+| `GetWeatherOneCall15MinutesAsync` | One Call API 4.0 (`data/4.0/onecall/timeline/15min`) | One Call by Call |
+| `GetWeatherOneCallHourlyAsync` | One Call API 4.0 (`data/4.0/onecall/timeline/1h`) | One Call by Call |
+| `GetWeatherOneCallDailyAsync` | One Call API 4.0 (`data/4.0/onecall/timeline/1day`) | One Call by Call |
+| `GetWeatherOneCallNextPageAsync`, `GetWeatherOneCallPreviousPageAsync` | One Call API 4.0 timeline pagination | One Call by Call |
+| `GetWeatherOneCallAlertAsync` | One Call API 4.0 (`data/4.0/onecall/alert/{id}`) | One Call by Call |
 | `GetAirPollutionAsync`, `GetAirPollutionForecastAsync`, `GetAirPollutionHistoryAsync` | [Air pollution](https://openweathermap.org/api/air-pollution) (`data/2.5/air_pollution`) | Free |
 | `GetLocationsByNameAsync`, `GetLocationByZipCodeAsync`, `GetLocationsByCoordinatesAsync` | [Geocoding API](https://openweathermap.org/api/geocoding-api) (`geo/1.0`) | Free |
 | `GetWeatherIconAsync` | [Weather icons](https://openweathermap.org/weather-conditions) | Free |
@@ -82,29 +85,38 @@ foreach (var forecastItem in weatherForecast.Items)
 }
 ```
 
-#### Request weather data using One Call API 3.0
-One Call API 3.0 provides current weather, minutely forecast for 1 hour, hourly forecast for 48 hours, daily forecast for 8 days and government weather alerts in one request.
-It requires a ["One Call by Call" subscription](https://openweathermap.org/api/one-call-3); requests without this subscription fail with HTTP 401 (Unauthorized).
+#### Request weather data using One Call API 4.0
+One Call API 4.0 provides current weather, a minute forecast for 1 hour, a 15 minutes forecast for 48 hours, an hourly timeline (history since 1979 and forecast for 48 hours),
+a daily timeline (history since 1979 and forecast for 1.5 years) and national weather alerts.
+It requires a ["One Call by Call" subscription](https://openweathermap.org/api/one-call-4) for One Call API 4.0; requests without this subscription fail with HTTP 401 (Unauthorized).
+
+All One Call API 4.0 methods return a `OneCallTimeline<T>` with the weather records in property `Data`.
 ```C#
-var oneCallWeatherInfo = await openWeatherMapService.GetWeatherOneCallAsync(latitude, longitude, new OneCallOptions
-{
-    IncludeMinutelyForecasts = false,
-    IncludeAlerts = false,
-});
+var currentTimeline = await openWeatherMapService.GetWeatherOneCallCurrentAsync(latitude, longitude);
+var currentWeather = currentTimeline.Data.Single();
 
-foreach (var dailyForecast in oneCallWeatherInfo.DailyForecasts)
+var dailyTimeline = await openWeatherMapService.GetWeatherOneCallDailyAsync(latitude, longitude);
+foreach (var dailyForecast in dailyTimeline.Data)
 {
-    Console.WriteLine($"{dailyForecast.DateTime:d}: {dailyForecast.Temperature.Min}/{dailyForecast.Temperature.Max}, {dailyForecast.Summary}");
+    Console.WriteLine($"{dailyForecast.DateTime:d}: {dailyForecast.Temperature.Min}/{dailyForecast.Temperature.Max}");
 }
+```
 
-// Weather data for any timestamp from 1979-01-01 up to 4 days ahead
-var timeMachineInfo = await openWeatherMapService.GetWeatherOneCallTimeMachineAsync(latitude, longitude, new DateTime(2020, 3, 4, 12, 0, 0, DateTimeKind.Utc));
+The timelines are paginated. Request the previous or next page of a timeline with `GetWeatherOneCallPreviousPageAsync` and `GetWeatherOneCallNextPageAsync`
+(each page is billed as a separate API call). Historical data is requested by passing a `start` date:
+```C#
+// Hourly weather data of 2020-03-04, starting at 00:00 UTC
+var hourlyTimeline = await openWeatherMapService.GetWeatherOneCallHourlyAsync(latitude, longitude, start: new DateTime(2020, 3, 4, 0, 0, 0, DateTimeKind.Utc));
+var nextPage = await openWeatherMapService.GetWeatherOneCallNextPageAsync(hourlyTimeline); // null if there is no next page
+```
 
-// Aggregated weather data for a date from 1979-01-02 up to 1.5 years ahead
-var daySummary = await openWeatherMapService.GetWeatherOneCallDaySummaryAsync(latitude, longitude, new DateTime(2020, 3, 4));
-
-// Human-readable weather summary for today or tomorrow
-var weatherOverview = await openWeatherMapService.GetWeatherOneCallOverviewAsync(latitude, longitude);
+Weather records reference weather alerts by ID. Use `GetWeatherOneCallAlertAsync` to get the details of an alert:
+```C#
+foreach (var alertId in currentWeather.Alerts)
+{
+    var alertInfo = await openWeatherMapService.GetWeatherOneCallAlertAsync(alertId);
+    Console.WriteLine($"{alertInfo.SenderName}: {alertInfo.EventName}");
+}
 ```
 
 #### Find locations using the Geocoding API
@@ -126,10 +138,22 @@ var airPollutionForecast = await openWeatherMapService.GetAirPollutionForecastAs
 var airPollutionHistory = await openWeatherMapService.GetAirPollutionHistoryAsync(latitude, longitude, start: DateTime.UtcNow.AddDays(-1), end: DateTime.UtcNow);
 ```
 
-### Migrating from 2.x to 3.0
-OpenWeatherMap retired One Call API 2.5. Version 3.0 of this library migrates to One Call API 3.0 and contains the following breaking changes:
-- `GetWeatherOneCallAsync` calls One Call API 3.0 which requires a "One Call by Call" subscription.
-- `GetWeatherOneCallHistoricAsync` was removed. Use `GetWeatherOneCallTimeMachineAsync` instead. It returns `OneCallTimeMachineInfo` with the weather data of the requested timestamp in property `Data`. Parameter `onlyCurrent` is no longer supported by OpenWeatherMap.
+### Migrating from 2.x to 4.0
+OpenWeatherMap retired One Call API 2.5. Version 4.0 of this library migrates to One Call API 4.0 and contains the following breaking changes:
+
+| 2.x | 4.0 |
+| --- | --- |
+| `GetWeatherOneCallAsync` (`CurrentWeather`) | `GetWeatherOneCallCurrentAsync` |
+| `GetWeatherOneCallAsync` (`MinutelyForecasts`) | `GetWeatherOneCallMinutelyAsync` |
+| `GetWeatherOneCallAsync` (`HourlyForecasts`) | `GetWeatherOneCallHourlyAsync` (or `GetWeatherOneCall15MinutesAsync`) |
+| `GetWeatherOneCallAsync` (`DailyForecasts`) | `GetWeatherOneCallDailyAsync` |
+| `GetWeatherOneCallAsync` (`Alerts`) | Alert IDs in `Alerts` of each weather record + `GetWeatherOneCallAlertAsync` |
+| `GetWeatherOneCallHistoricAsync` | `GetWeatherOneCallHourlyAsync` with parameter `start` |
+| `OneCallOptions`, `OneCallWeatherInfo` | Removed; each method returns a `OneCallTimeline<T>` |
+| `HourlyWeatherForecast` | `TimelineWeatherForecast` |
+| `AlertInfo.Description` | `AlertInfo.Descriptions` (one description per language) |
+
+Further breaking changes:
 - `UnitSystem.Standard` returns temperatures in Kelvin (as provided by OpenWeatherMap) instead of Celsius.
 - `IOpenWeatherMapService` has new members. Custom implementations of this interface need to be extended.
 - `CurrentWeatherForecast.Rain` and `CurrentWeatherForecast.Snow` are nullable since they are only provided if available.
