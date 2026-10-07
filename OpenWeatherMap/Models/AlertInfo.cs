@@ -55,7 +55,7 @@ namespace OpenWeatherMap.Models
         public IReadOnlyCollection<AlertDescription> Descriptions { get; set; }
 
         /// <summary>
-        /// Type of severe weather (where available).
+        /// Type of severe weather.
         /// </summary>
         [JsonPropertyName("tags")]
         public IReadOnlyCollection<string> Tags { get; set; }

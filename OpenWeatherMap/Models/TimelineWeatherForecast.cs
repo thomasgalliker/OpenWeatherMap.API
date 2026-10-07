@@ -49,11 +49,11 @@ namespace OpenWeatherMap.Models
         public Ratio Clouds { get; set; }
 
         /// <summary>
-        ///  Average visibility. The maximum value of the visibility is 10km.
+        ///  Average visibility (where available). The maximum value of the visibility is 10km.
         /// </summary>
         [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
-        public Length Visibility { get; set; } = Length.FromMeters(0d);
+        public Length? Visibility { get; set; }
 
         [JsonPropertyName("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);

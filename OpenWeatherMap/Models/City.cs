@@ -28,7 +28,7 @@ namespace OpenWeatherMap.Models
         public Coordinates Coordinates { get; set; } = null!;
 
         /// <summary>
-        /// Country code (where available).
+        /// Country code.
         /// </summary>
         [JsonPropertyName("country")]
         [JsonConverter(typeof(RegionInfoJsonConverter))]
@@ -43,12 +43,18 @@ namespace OpenWeatherMap.Models
         [JsonPropertyName("timezone")]
         public int Timezone { get; set; }
 
+        /// <summary>
+        /// Sunrise time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunrise { get; set; }
 
+        /// <summary>
+        /// Sunset time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunset { get; set; }
     }
 }

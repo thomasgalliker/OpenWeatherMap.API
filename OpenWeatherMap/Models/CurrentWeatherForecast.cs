@@ -20,13 +20,19 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
+        /// <summary>
+        /// Sunrise time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunrise { get; set; }
 
+        /// <summary>
+        /// Sunset time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunset { get; set; }
 
         [JsonPropertyName("temp")]
         public Temperature Temperature { get; set; }
@@ -64,7 +70,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
-        public Length Visibility { get; set; } = Length.FromMeters(0d);
+        public Length? Visibility { get; set; }
 
         [JsonPropertyName("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
@@ -75,20 +81,19 @@ namespace OpenWeatherMap.Models
 
         /// <summary>
         /// Wind gust is a brief increase in the speed of the wind, usually less than 20 seconds.
-        /// (where available)
         /// (German: Windböe).
         /// </summary>
         [JsonPropertyName("wind_gust")]
         public Speed? WindGust { get; set; }
 
         /// <summary>
-        /// Precipitation of rain, mm/h (where available).
+        /// Precipitation of rain, mm/h.
         /// </summary>
         [JsonPropertyName("rain")]
         public PrecipitationSpeed? Rain { get; set; }
 
         /// <summary>
-        /// Precipitation of snow, mm/h (where available).
+        /// Precipitation of snow, mm/h.
         /// </summary>
         [JsonPropertyName("snow")]
         public PrecipitationSpeed? Snow { get; set; }

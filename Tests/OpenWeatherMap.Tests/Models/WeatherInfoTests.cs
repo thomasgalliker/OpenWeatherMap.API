@@ -62,6 +62,26 @@ namespace OpenWeatherMap.Tests.Models
             result.AdditionalInformation.Country.Should().BeNull();
         }
 
+        [Fact]
+        public void DeserializeObject_PolarArea_ReturnsNullCountrySunriseAndSunset()
+        {
+            // Arrange
+            // Recorded response of GET https://api.openweathermap.org/data/2.5/weather?lat=90.0&lon=0.0&units=metric&lang=en
+            const string json =
+                """
+                {"coord":{"lon":0,"lat":90},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":-19.92,"feels_like":-26.92,"temp_min":-19.92,"temp_max":-19.92,"pressure":1014,"humidity":100,"sea_level":1014,"grnd_level":1014},"visibility":6541,"wind":{"speed":5.01,"deg":328,"gust":9.01},"clouds":{"all":100},"dt":1791389107,"sys":{"sunrise":0,"sunset":0},"timezone":0,"id":0,"name":"","cod":200}
+                """;
+            var serializer = new OpenWeatherMapJsonSerializer(UnitSystem.Metric);
+
+            // Act
+            var result = serializer.DeserializeObject<WeatherInfo>(json);
+
+            // Assert
+            result.AdditionalInformation.Country.Should().BeNull();
+            result.AdditionalInformation.Sunrise.Should().BeNull();
+            result.AdditionalInformation.Sunset.Should().BeNull();
+        }
+
         private static WeatherInfo GetExpectedWeatherInfo()
         {
             return new WeatherInfo

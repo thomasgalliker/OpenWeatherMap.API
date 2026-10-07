@@ -20,21 +20,33 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(EpochDateTimeConverter))]
         public DateTime DateTime { get; set; }
 
+        /// <summary>
+        /// Sunrise time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunrise { get; set; }
 
+        /// <summary>
+        /// Sunset time (UTC). <c>null</c> in polar areas during midnight sun and polar night.
+        /// </summary>
         [JsonPropertyName("sunset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Sunset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Sunset { get; set; }
 
+        /// <summary>
+        /// Moonrise time (UTC). <c>null</c> if the moon does not rise on this day.
+        /// </summary>
         [JsonPropertyName("moonrise")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Moonrise { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Moonrise { get; set; }
 
+        /// <summary>
+        /// Moonset time (UTC). <c>null</c> if the moon does not set on this day.
+        /// </summary>
         [JsonPropertyName("moonset")]
-        [JsonConverter(typeof(EpochDateTimeConverter))]
-        public DateTime Moonset { get; set; }
+        [JsonConverter(typeof(NullableEpochDateTimeConverter))]
+        public DateTime? Moonset { get; set; }
 
         /// <summary>
         /// Moon phase (0-100%). 0 and 100% are 'new moon', 25% is 'first quarter moon', 50% is 'full moon' and 75% is 'last quarter moon'.
@@ -83,7 +95,7 @@ namespace OpenWeatherMap.Models
         /// </summary>
         [JsonPropertyName("visibility")]
         [JsonConverter(typeof(MeterLengthJsonConverter))]
-        public Length Visibility { get; set; } = Length.FromMeters(0d);
+        public Length? Visibility { get; set; }
 
         [JsonPropertyName("wind_speed")]
         public Speed WindSpeed { get; set; } = Speed.FromMetersPerSecond(0d);
@@ -110,14 +122,14 @@ namespace OpenWeatherMap.Models
         public Ratio Pop { get; set; } = Ratio.FromPercent(0d);
 
         /// <summary>
-        /// Daily volume of rain, in mm (where available).
+        /// Daily volume of rain, in mm.
         /// </summary>
         [JsonPropertyName("rain")]
         [JsonConverter(typeof(PrecipitationVolumeJsonConverter))]
         public Length Rain { get; set; } = Length.FromMillimeters(0d);
 
         /// <summary>
-        /// Daily volume of snow, in mm (where available).
+        /// Daily volume of snow, in mm.
         /// </summary>
         [JsonPropertyName("snow")]
         [JsonConverter(typeof(PrecipitationVolumeJsonConverter))]
