@@ -7,6 +7,7 @@ using Xunit.Abstractions;
 
 namespace OpenWeatherMap.Tests.Models
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class HumidityRangeTests
     {
         private readonly ITestOutputHelper testOutputHelper;

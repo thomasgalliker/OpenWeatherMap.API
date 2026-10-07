@@ -7,6 +7,7 @@ using Xunit;
 
 namespace OpenWeatherMap.Tests.Models.Converters
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class EpochDateTimeConverterTests
     {
         [Theory]

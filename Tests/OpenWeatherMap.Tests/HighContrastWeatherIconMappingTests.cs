@@ -5,6 +5,7 @@ using Xunit;
 
 namespace OpenWeatherMap.Tests
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class HighContrastWeatherIconMappingTests
     {
         [Theory]

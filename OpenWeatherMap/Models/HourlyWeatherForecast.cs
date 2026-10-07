@@ -75,6 +75,18 @@ namespace OpenWeatherMap.Models
         [JsonConverter(typeof(DecimalFractionRatioJsonConverter))]
         public Ratio Pop { get; set; }
 
+        /// <summary>
+        /// Precipitation of rain, mm/h (where available).
+        /// </summary>
+        [JsonPropertyName("rain")]
+        public PrecipitationSpeed? Rain { get; set; }
+
+        /// <summary>
+        /// Precipitation of snow, mm/h (where available).
+        /// </summary>
+        [JsonPropertyName("snow")]
+        public PrecipitationSpeed? Snow { get; set; }
+
         public override string ToString()
         {
             return $"DateTime: {this.DateTime}, Temperature: {this.Temperature}";

@@ -6,6 +6,7 @@ using Xunit;
 
 namespace OpenWeatherMap.Tests.Models
 {
+    [Trait(Traits.Category, Traits.UnitTests)]
     public class CardinalWindDirectionTests
     {
         [Theory]
